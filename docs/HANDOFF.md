@@ -1,6 +1,6 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-15 (B03 plan rev 1.1, Grok reviewing), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
+Last updated: 2026-10-15 (B03 plan rev 1.2 after Grok review; awaiting user approval to dispatch), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
 
 ## What this project is
 
@@ -159,12 +159,14 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
     - include the Layer-1 scope note;
     - give no location verdict on "imposter";
     - say that generations and decoupling need dynamics.
-  - **In flight: Grok (pi, 0:4) is reviewing plan rev 1.1**, at `.agent-handoff/b03-plan-review-grok/`. It writes its findings before reading the others, then marks them NEW/DUPLICATE. Watch `status`.
+  - **Plan rev 1.2 + ansatz rev 1.3** (`a5a3b99`, 2023 lines) fold in **Grok's review** (`.agent-handoff/b03-plan-review-grok/`; *accept with fixes*, 3 findings, all reproduced):
+    - `projector_controls` builds a traceless map T and a gamma-inserted map W from the gammas; `verify_split` and the test assert Q T = d T, γ·T = 0, Q W = 0 (the old assert was implied by Q² = dQ);
+    - F10 keys by (SU3, SU2, n), so it fails at the Imposter quark sum `2 == 3` (checked);
+    - E′ is the charge formula, not the y₄, y₅ flip (ansatz wording).
+    - Fresh rebuild (`scratchpad/b03fresh3`): 297 pass, 13/13 faults RED.
   - **Next:**
-    1. On Grok DONE, reproduce its decisive findings and fold them in (rev 1.2). For every code change:
-       - re-smoke in `scratchpad/b03smoke/`: 297 tests, `faults.py` with all 13 RED, fresh rebuild via `scratchpad/extract_b03.py`;
-       - rebuild with `python scratchpad/build_b03_plan.py <scratchpad> docs/superpowers/plans/2026-10-15-b03-branching.md` (skeleton `scratchpad/b03-plan-skeleton.md`).
-    2. Ask the user to approve; they have not yet approved B03 dispatch.
+    1. Ask the user to approve; **they have not yet approved B03 dispatch**.
+    2. To re-smoke after any change: `scratchpad/b03smoke/` (297 tests, `faults.py` all RED); rebuild with `python scratchpad/build_b03_plan.py <scratchpad> docs/superpowers/plans/2026-10-15-b03-branching.md`; fresh rebuild by running `scratchpad/extract_b03.py` **from inside a fresh `git archive` scratch dir** (it writes to cwd; never run it from the repo).
     3. Dispatch Tasks 1–4 to Codex (0:3, freshly compacted).
     4. Claude: P7 verification, then Task 5.
   - **Smoke-copy caveat:** files in `b03smoke/` are CRLF. Python edits there must keep newlines (read and write bytes); `faults.py` matches either newline style.
