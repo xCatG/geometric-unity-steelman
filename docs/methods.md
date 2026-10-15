@@ -135,3 +135,27 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
     - When a rationale sentence carries a claim, review checks it like a claim.
     - Every orchestrator-run check saves its command and output to a file before it is cited.
     - Formalization is a cheap first-pass auditor of stated hypotheses. Starting it early, in parallel, works.
+- **2026-10-15 · B03 (ansatz → plan rev 1.2 → Tasks 1–5) · Claude (plan, README), Codex (reviews, execution, re-derivation, audit), Grok via pi and argon (plan reviews).**
+  - *Worked:*
+    - An external oracle (LiE, fixture hashed and tracked) gave every expected value without trusting our code (P3). Tests compared the draft rows to LiE directly, without importing the B03 code.
+    - Three review families each found something the others had missed:
+      - Codex: the runner accepted Q = 0 while still reporting a matching RS character.
+      - argon: J² = +1 and J² = −1 license different statements, which became a README requirement.
+      - Grok: a fixed-vector gate that Q² = dQ already implied; a seeded fault keyed so that it missed the row it named; a sentence calling two different maps the same.
+    - Plan code equalled tested code again: Codex's 9 files were byte-identical modulo CRLF.
+    - Codex's final review then found P4 holes *in the approved code*, and reported them under P6 instead of silently fixing them. The user approved a separate fix, and a clean-clone rerun showed the fix changes no result.
+    - Codex's README audit caught three wording errors with no numerical disagreement.
+  - *Didn't:*
+    - Claude ran the plan's extraction script from the repo root, and it wrote 11 untracked files there. They were removed by exact path.
+    - Claude cited its first clean-clone rerun (`895fc08`) without saving the output. This repeats the B02 "save before citing" slip; the audit flagged it, and the rerun at `835d7c8` is now logged.
+    - Claude's README wording errors:
+      - it wrote "Q fixes T" where QT = dT;
+      - it attributed the n = X impostor to F4, which is n → n + X;
+      - it called ten comparisons "ten printed rows".
+      Each sentence was right in spirit and wrong in its stated object.
+    - Literal plan fidelity is not an API contract: the approved code promised exactness at entries it did not guard.
+  - *Changes:*
+    - Scratch scripts that write files take an explicit output directory, never the working directory.
+    - A seeded fault's description must name the assertion it is expected to trip, and the fault run checks that assertion's message.
+    - Before a README is committed, every gate or fault it cites is checked against the code's exact expression, normalization included.
+    - P4 reviews cover every public entry, not only the functions the plan exercises.
