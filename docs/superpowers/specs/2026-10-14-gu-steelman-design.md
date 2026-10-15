@@ -1,6 +1,6 @@
 # GU Steelman: Design Spec
 
-Date: 2026-10-14 · Revision 2, after adversarial review · Status: draft for user review
+Date: 2026-10-14 · Revision 3, after adversarial review + argon review · Status: draft for user review
 
 ## 1. Purpose
 
@@ -68,7 +68,12 @@ lean/                       only when a Lean task is scheduled
 
 Dropped from revision 1 as YAGNI: a general `dewitt.py`, since GU's base is a fixed 4D X, so B01 lives in `experiments/B01/`. Also dropped: a generic `equivariant.py`; the intertwiner search is now a fallback (§5).
 
-Exact arithmetic means sympy and integer matrices for small objects. For exact rank and nullspace at size 10³ or more, use `python-flint`, or modular rank at several random primes followed by rational reconstruction.
+`gu/clifford.py` stores gamma matrices as monomial matrices (a permutation plus a ℤ₄ phase), the representation from argon_update.md, with its broken assert removed. Positive controls for the Rarita–Schwinger projector P^a_b = δ^a_b − (1/d)Γ^aΓ_b, all in integers:
+- (dP)² = d(dP)
+- Γ_a P^a_b = 0
+- tr P = (d−1)·2^{d/2}, i.e. 13·128 for d = 14
+
+Exact arithmetic means sympy and integer matrices for small objects. python-flint has no Gaussian-integer matrix type, so a + ib is embedded as the real block [[a,−b],[b,a]], and complex rank = real rank / 2. For exact rank and nullspace at size 10³ or more, use `python-flint`, or modular rank at several random primes followed by rational reconstruction.
 
 ## 5. Technical approach
 
@@ -90,6 +95,10 @@ B01 (the inertia of a quadratic form on T⊕Sym²) is none of these layers. It i
   2. that the image stays in the real form u(64,64)
   3. the dressed covariance identity `Shiab_(εh)(h⁻¹ηh) = h⁻¹ Shiab_ε(η) h` (register B02), on Lie-algebra generators of u(64,64) and Spin(7,7), plus component representatives
   4. separately, the claimed kernel on Weyl-type curvature, restricted to the Levi-Civita-induced subspace and with a cited page
+- **How test 3 is run.** Primarily with *finite* exact group elements: Cayley transforms h = (I−X)(I+X)⁻¹ of A-skew X over ℚ(i), which stay in U(64,64) with no exponentials. If a linearized test is also used, `transcription.md` must write out the two-term Leibniz form, including the variation of the dressing ε. Dropping that term makes a correct (9.3) look broken.
+- **Signature is a runtime parameter.** `(p,q)` is a parameter taken from B01's outcome, never hard-coded. Run B02 for (7,7) and for (9,5). Their real forms differ: p−q ≡ 0 mod 8 gives real Majorana–Weyl spinors, p−q ≡ 4 mod 8 gives quaternionic ones.
+- **Generating sets, never full bases.** u(64,64) has dimension 16384, so its basis is never materialized. Its elements are 128×128 Gaussian-integer matrices M with M†A + AM = 0. Test on all 91 spin(p,q) generators, a generating set for u(64,64), and 5–10 random exact Cayley elements. The generating set must be shown to generate, by a dimension count of bracket closure done modulo a prime.
+- **The non-identity component of Spin(p,q)** (2 components for p,q ≥ 1) is represented by γ_s γ_t: a unit spacelike vector times a unit timelike vector.
 - Only if (9.3) fails do we search for alternatives. That search counts Hom with characters first, uses ★ to turn Λ¹³ into Λ¹, splits ad as ⊕Λᵏ, and applies the pre-registered constraints (degree, dressing, Weyl-kernel target) before solving anything. The full space is about 3×10¹¹ entries, so we never solve it unreduced.
 
 ## 6. Gap lifecycle
