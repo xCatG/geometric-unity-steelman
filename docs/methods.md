@@ -16,6 +16,16 @@ A test that has no scope is a control.
 
 A passing test is evidence only if a plausible bug would have made it fail. For each new module, the implementer seeds 2–3 realistic faults by hand: a flipped sign, a wrong contraction slot, a dropped phase or an off-by-one index. They confirm that at least one test fails for each fault, then revert. The seeded faults and the tests that caught them are recorded in the task's `result.md`. A fault that no test catches means a test is missing; add it.
 
+Check *why* each seeded fault fails. A fault that only raises `NameError` or `ImportError` tests nothing. Read the failure message, and keep only faults that fail an assertion.
+
+### P2b. Representation adapters get a positive example and an ambient impostor
+
+Every adapter between representations (e.g. the ℂ → ℝ 2×2-block embedding) gets two tests:
+- one independently specified positive example;
+- one input that satisfies the ambient representation's equations but lies outside the intended domain, and must be rejected.
+
+Example: a real orthogonal matrix that is not complex-linear passes the block-form unitarity equation, but it is not in U(A). (Proposed by Codex, who caught exactly this hole in the plan's `adjoint.py`.)
+
 ### P3. Expected values come from outside the code under test
 
 Expected values come from one of: textbook formulas, hand derivations written in the test or in `rederivation.md`, an oracle, or a different algorithm. Expected values are never pasted from the code's own output. When an expected value fails, stop and report it; do not edit the expectation.
@@ -78,3 +88,7 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
   - *Worked:* the adversarial re-derivation earned its keep. It confirmed all the arithmetic, and it found two errors in Claude's README that a passing signature table could not detect: an exact-form overclaim (λ = 1/2 "no rescaling") and a false repair (tie the trace sign to the base, which gives (4,10), not (7,7)). Claude reproduced the counterexample exactly. Codex's second subagent read the PDF independently.
   - *Didn't:* Claude's brief asked for `git grep agent-handoff` over all of `docs/`, which legitimately matches the methods and spec text. Codex recorded the exception rather than editing protected files, which was the right call.
   - *Changes:* new P9 (proposed by Codex). Acceptance checks in briefs must be scoped to exactly the files they police.
+- **2026-10-15 · Tasks 5–8 · Codex (worker) and Claude (review).**
+  - *Worked:* 10 seeded faults, all caught, each restoration verified by SHA-256. Every expected value has a one-line outside source (P3). Codex caught two plan bugs no test had exercised: (1) `is_in_algebra`/`is_in_group` admitted real-orthogonal, non-complex-linear matrices; (2) `int(x)` casts in `embed` silently truncated rationals and could overflow int64 in `curvature`.
+  - *Didn't:* Claude's first reproduced fault died with a `NameError`, so it tested nothing; noticed only by reading the failure. A system-Python vs uv runtime clash cost Codex a rerun.
+  - *Changes:* P2 now requires reading why a fault fails; new P2b for adapters. **Lesson for plan-writing:** code smoke-tested by its own author missed both bugs. Plans should list the ambient-impostor input for every adapter.
