@@ -43,6 +43,9 @@ Codex owns code, tests and the register. Claude owns transcriptions, reconciliat
 
 Commit the pre-registration first and the results second. One task produces one or more commits, and a commit never mixes authors' files.
 
+- Both agents share one working tree and one git index, so always commit with an explicit pathspec (`git commit -m … -- <paths>` or `git commit --only`). A bare `git commit` can sweep up the other agent's staged files.
+- When a generated result records `source_commit`, commit the producing code and inputs first and check they have no uncommitted changes. Then run, and commit the result separately. A revision that lacks the producing code is not a valid source.
+
 ## Review checklist (orchestrator, per task)
 
 - [ ] Ran `uv run pytest -q` myself and got the same results as the worker reported.
@@ -57,3 +60,8 @@ Commit the pre-registration first and the results second. One task produces one 
 Each entry: date, task, who, what worked, what didn't, what to change. Promote a lesson to **Practices** once it has come up twice.
 
 - **2026-10-15 · plan writing · Claude.** Smoke-testing the plan's code blocks in a scratch copy before handoff (101 → 102 tests) caught nothing structural. An outside review found a real false rejection (unexpanded ℚ(i) expressions in `inertia`), which none of my tests exercised. **Change:** add P2 (seeded faults) so that false negatives and false positives in a tool get looked for deliberately, not by luck.
+- **2026-10-15 · Tasks 1–2 · Codex (worker) and Claude (review).**
+  - *Worked:* 4 seeded faults, all caught; Claude reproduced an extra fault (transpose instead of conjugate in the Schur step), caught by 3 complex-path tests. Narrow file ownership let Task 3 run in parallel. Codex added float guards at the public API (P4) and split the code and results commits, so `source_commit` is accurate.
+  - *Didn't:* the plan's basis shorthand `{E_ij+E_ji}` was ambiguous on the diagonal. The generic skill's worktree/wrapper assumptions clashed with the shared-master setup.
+  - *Changes:* P8 now requires pathspec commits and code-before-result for `source_commit` (both promoted immediately, because each fixes a provenance hazard rather than a style choice). Plans must define bases explicitly.
+- **2026-10-15 · Tasks 3–4 · Claude.** Transcribing from rendered page images (pymupdf at 110 dpi) worked well; text extraction alone would have lost the fractions in (3.9). The reconciliation produced a finding the plan didn't anticipate (B01 F1, the base mirror). *Change:* reconciliation READMEs end with a "What this does not establish" section.
