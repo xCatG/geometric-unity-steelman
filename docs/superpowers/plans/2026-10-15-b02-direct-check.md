@@ -38,6 +38,14 @@
 - **Argon:** a mixed-Φ formula test, an end-to-end Spin₀ equivariance test, and a general `_in_u_A` that checks `shiab` outputs (Test 2) with a mixed-phase impostor.
 - **Claude:** one dressing sample was identically zero, because KN(E₀₁+E₁₀, diag(1,2,0,…)) = 0. It was replaced, and `test_xi_samples_are_nonzero` added.
 
+**Revision 3 (2026-10-15).** This revision folds in an independent Grok review via pi (`.agent-handoff/b02-plan-review-grok/`; verdict *revise*, 5 new findings, all reproduced by Claude).
+- **G1 (Hodge convention):** the other standard star, ∗′ = (−1)^{k(n−k)}∗, is *exactly* the pinned operator with Φ² → −Φ². Claude checked this for all 8 modes × {F, F′} × {B, B′} in (3,1) and (2,2); the proof goes in Task 5. Task 6 now carries the star as a branch: under ∗′ the Einstein point is γ = −1.
+- **G2 (normalization):** the verdict must lead with the scale-stable consequence (CCC has no scalar term at any scale). κ = ½ belongs to unit Γ_aΓ_b (N-a). Under the spin generator σ_ab = ½Γ_aΓ_b it is ¼, and under N-b it is 1 (Task 6).
+- **G3:** Task 6 no longer asks to confirm κ "against `result.json`", which contains no κ. κ is derived from the formula the runner asserts.
+- **G4:** `spanning_rank` asserts that every KN product is an algebraic curvature tensor. The coordinate chart Sym²(Λ²) has C(n,4) more coordinates than the algebraic space (1 at n = 4, 1001 at n = 14; the first Bianchi map onto Λ⁴). Argon caught that an earlier draft said "one more".
+- **G5:** the runner's hand control now also checks CAA on KN(g,g), giving (n−1)(n−2)·F, so the −½ scalar term has an independent numerical control.
+- **Claude:** the relative sign of the two terms holds for odd q. For even q, κ → −κ (checked at (2,2) and (4,0)). Every signature in this project has odd q: (3,1), (1,3), (7,7), (9,5), (5,9). Task 6 states this.
+
 ## File structure
 
 | File | Owner | Responsibility |
@@ -1010,7 +1018,7 @@ import numpy as np
 from flint import nmod_mat
 
 from gu.cliffform import plus, scale, star
-from gu.curvature import dims, kulkarni_nomizu, ricci, scalar
+from gu.curvature import dims, is_algebraic_curvature, kulkarni_nomizu, ricci, scalar
 from gu.shiab import assemble, embed_tensor, eta_of, phi_basis, shiab_parts, xi
 
 MODES = ["".join(m) for m in itertools.product("CA", repeat=3)]
@@ -1035,7 +1043,9 @@ def spanning_pairs(n: int) -> list[tuple[int, int]]:
 def spanning_rank(n: int) -> tuple[int, int]:
     """(rank mod PRIME of the KN products, dim of algebraic curvature tensors).
 
-    rank mod p <= rank over Q <= dim, so equality certifies spanning over Q.
+    rank mod p <= rank over Q <= dim, so equality certifies spanning over Q, provided
+    every row is an algebraic curvature tensor (the chart is Sym^2(Lambda^2), which has
+    C(n,4) more coordinates than dim: 1 at n = 4, 1001 at n = 14; asserted below).
     """
     sym = sym_basis(n)
     cols = [(a, b, c, d) for a, b in itertools.combinations(range(n), 2)
@@ -1043,6 +1053,8 @@ def spanning_rank(n: int) -> tuple[int, int]:
     rows = []
     for s, t in spanning_pairs(n):
         R = kulkarni_nomizu(sym[s], sym[t])
+        if not is_algebraic_curvature(R):
+            raise AssertionError(f"KN product {(s, t)} is not algebraic")
         rows.append([int(R[k]) % PRIME for k in cols])
     return nmod_mat(rows, PRIME).rank(), sum(dims(n))
 
@@ -1126,13 +1138,21 @@ def weyl_control(p: int, q: int) -> np.ndarray:
 
 
 def hand_control(p: int, q: int) -> bool:
-    """Independent nonzero control: KN(g, g) has Ric = 2(n-1) g (gu.curvature tests),
-    so CCC with Phi1 = F gives *shiab = -E_F(Ric) = -2(n-1) F, built from F directly."""
+    """Independent nonzero controls on KN(g, g): Ric = 2(n-1) g and S = 2n(n-1)
+    (gu.curvature tests), and E_F(g) = F. With Phi1 = F, Phi2 = B:
+      CCC (no scalar term): *shiab = -E_F(Ric) = -2(n-1) F;
+      CAA (inner A on B gives i(S/2) I by hand; outer A doubles it; times -1/2):
+          *shiab = -2(n-1) F + (S/2) F = (n-1)(n-2) F.  Built from F directly.
+    The relative sign holds for q odd (every signature run here); for q even both
+    hand values change (checked at (2,2), (4,0))."""
     eta, n = eta_of(p, q), p + q
     g = np.diag(eta).astype(np.int64)
     phis = phi_basis(p, q)
-    got = star(shiab(phis["F"], phis["B"], xi(kulkarni_nomizu(g, g), eta), "CCC", eta), eta)
-    return bool(got) and got == scale(phis["F"], -2 * (n - 1))
+    x = xi(kulkarni_nomizu(g, g), eta)
+    ccc = star(shiab(phis["F"], phis["B"], x, "CCC", eta), eta)
+    caa = star(shiab(phis["F"], phis["B"], x, "CAA", eta), eta)
+    return (bool(ccc) and ccc == scale(phis["F"], -2 * (n - 1))
+            and bool(caa) and caa == scale(phis["F"], (n - 1) * (n - 2)))
 
 
 def open_data(p: int, q: int) -> list[dict]:
@@ -1262,6 +1282,7 @@ Codex then checks it adversarially (a brief, with a `result.md`).
   - **Test 3(a) (covariance):** (εh)⁻¹Φ(εh) = h⁻¹(ε⁻¹Φε)h. Conjugation by h is an algebra automorphism, so it commutes with both brackets. ∗ and the wedge act on the form factor only. Hence Shiab_{εh}(h⁻¹ξh) = h⁻¹Shiab_ε(ξ)h.
   - **Test 4 (equivariance, identity component):** the generators act as derivations of the wedge (form factor) and as ad_X, a derivation of the Clifford product, so they act as derivations of both brackets. ∗ is equivariant (Task 2, on full bases). Φ is invariant (Task 2). Composing these gives equivariance of (9.3) for Spin₀(p,q).
   - **Parameter extension** (review: affine, not jointly bilinear). U(Φ¹, Φ²) = L(Φ¹) + B(Φ¹, Φ²) is linear in Φ¹ and affine in Φ². So U(F, γB + δB′) = (1−γ−δ)U(F, 0) + γU(F, B) + δU(F, B′), likewise for F′, and then combine in (α, β). The formula's right side has the same structure. Task 4 checks F, F′ × {B, B′, 0}, so the formula holds for all real (α, β, γ, δ). By linearity in R, it holds on all algebraic curvature tensors (spanning rank = dimension).
+  - **Hodge convention (review G1):** let ∗′ = (−1)^{k(n−k)}∗ on k-forms (the convention ∗β ∧ α = ⟨α,β⟩vol). For even n, ∗′ = ∗ except on odd k. In (9.3) the stars act on degrees 2 (∗ξ), n (inner) and 1 (outer, inside the second term). Only the last of these flips, so Shiab′(Φ¹, Φ²) = Shiab(Φ¹, −Φ²) exactly, for every bracket assignment. The final ∗ on the (n−1)-form flips the overall sign of the response under ∗′; κ is unaffected. The star convention is therefore a reparametrization (γ, δ) → (−γ, −δ), not a new branch.
   - **Recorded substitutions:** the composition proof replaces the ansatz's literal operator-basis execution for test 4, which applies to Spin₀ only (no Pin/O claim). The full response identity replaces separate pure-sector executions for test 5. The `int()`-free adapters are needed for the executable code to accept rational curvature; the formal identity does not depend on them.
 
 - [ ] **Step 2: Commit** with `git add -- experiments/B02/proofs.md`, then the pathspec commit. Then brief Codex to check it.
@@ -1276,7 +1297,7 @@ Codex then checks it adversarially (a brief, with a `result.md`).
 
 - [ ] **Step 1 (Claude): Classify κ from the verified formula.**
 
-  On ξ, ∗Shiab = −[m₀=C]·E_T(Ric) + (S/2)·([m₁m₂=AA]·γ·E_T(g) + [m₁m₂=AC]·δ·E_{T′}(g)), with T = (α,β) and T′ = (β,α). The classification below is revision 2, corrected per review R3–R5 and checked by Codex's exact counterexamples. These are **predictions** to confirm against `result.json`, not assumptions. For T ≠ 0:
+  On ξ, ∗Shiab = −[m₀=C]·E_T(Ric) + (S/2)·([m₁m₂=AA]·γ·E_T(g) + [m₁m₂=AC]·δ·E_{T′}(g)), with T = (α,β) and T′ = (β,α). The classification below is revision 2, corrected per review R3–R5 and checked by Codex's exact counterexamples. `result.json` does not contain κ. Derive κ from the formula that the runner asserts at identity scope; the classification below is a consequence of that formula, not something read off `result.json` (review G3). It holds for odd q, which covers every signature in this project; for even q, κ → −κ. For T ≠ 0:
   - **m₀ = A, or T = 0:** r_T = 0, so 5a fails and κ is **undefined** (not 0).
   - **CCC (literal) and CCA:** κ = 0 for every Φ; the scalar and traceless sectors are both nonzero.
   - **CAA:** κ = γ/2. The scalar response vanishes at γ = 2/n, which fails 5a. Einstein holds iff γ = 1 (N-a).
@@ -1284,11 +1305,13 @@ Codex then checks it adversarially (a brief, with a `result.md`).
   - **N-b domain (R3):** the inner A result is (S/2)(iγI − δC). Rescaling to exactly iS·I is possible only when the inner bracket is A, δ = 0 and γ ≠ 0. Then CAA has κ = 1 and CAC has κ = 0, so there is **no N-b Einstein branch**. Elsewhere, N-b is "unavailable".
   - **Which norm** (argon's clarification request; verified exactly in all three signatures with this plan's code). "The trace norm" means the Ad-invariant, complex-bilinear (no conjugate), indefinite form N(X) = Σ_I η_I Tr(X_I X_I)/dim S. Under it, N(αF + βF′) = n(α² − β²) and N(γB + δB′) = C(n,2)(δ² − γ²). The dual copies carry the opposite-sign norm, because (Γₐ C)² = −Γₐ² for odd Γₐ and (iC)² = −1 for even blades, and the cross terms are traceless. So F ± F′ and B ± B′ are null for one shared reason. A positive-definite norm such as Re Tr(X†Y) has no null directions, but it is not Ad-invariant for U(64,64).
   - **Norm filter:** the source names no norm. If null directions under the trace norm are excluded, apply this to Φ² as well, since B ± B′ is null (R5). CAA Einstein then additionally needs α² ≠ β² and δ ≠ ±1. Report both the filtered and unfiltered families; do not pick a norm silently.
-  - **H0** (F, B, N-a): CAA alone gives κ = ½. Confirm it as its own line.
+  - **H0** (F, B, N-a, pinned star): CAA alone gives κ = ½. Confirm it as its own line, with all four qualifiers.
+  - **Star branch (G1):** under the other Hodge convention ∗′, every γ and δ above changes sign (Task 5). So CAA Einstein holds iff γ = −1, and CAC Einstein holds iff sδ = −1. The pinned star is a choice, not a transcription; the convention map must say so.
+  - **Scale (G2):** the source fixes neither the scale nor the sign of Φ² relative to Φ¹ ("normed" names no norm). With the spin generator σ_ab = ½Γ_aΓ_b as the unit 2-form, γ = ½ and κ = ¼. This still passes 5a at n = 14, since ½ ≠ 2/14. Under N-b, κ = 1. Under N-a, κ = ½.
   - **Open-data scope:** 5′ samples cover only F, B with CCC and CAA, and two odd dressings. Say so.
 
 - [ ] **Step 2 (Claude): Write `README.md`.** Follow the structure of `experiments/B01/README.md`:
-  - verdict lines per the ansatz rules (the literal reading; every reconstructed reading that passes; H0);
+  - verdict lines per the ansatz rules (the literal reading; every reconstructed reading that passes; H0). Lead with the consequence that is stable under every convention (P9, review G2): literal CCC has no scalar term at any scale of ξ, Φ¹ or Φ², under either Hodge convention and either generator normalization, because the inner commutator is antisymmetric under pair exchange and R_abcd = R_cdab. Only then state that the Einstein point of CAA depends on the unit and sign of Φ²: γ = 1 under (N-a, pinned star), γ = −1 under ∗′, κ = ¼ under σ, and κ = 1 under N-b;
   - the convention map (P9: formula / normalization / consequence);
   - findings;
   - 3(b) and 5′ data;

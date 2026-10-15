@@ -62,13 +62,18 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - N(αF + βF′) = n(α² − β²) and N(γB + δB′) = C(n,2)(δ² − γ²).
 
   Argon reviewed rev 2: zero blockers.
-- **In flight: the Grok review.** pi (pane 0:4, now **Grok** `x-ai/grok-4.7` via openrouter) is doing an independent adversarial review of rev 2.1. Brief and results: `.agent-handoff/b02-plan-review-grok/` (`status`, `result.md`). Watcher `bhq4zvi09`. If the watcher is lost, check `status` directly. pi writes its own findings first, then marks each NEW or DUPLICATE against Codex's review.
-- **The user is also reviewing rev 2.1.** When both are in: verify each NEW Grok finding yourself, then fold the accepted ones into the plan. Edit `scratchpad/plan-skeleton.md` and rebuild with `scratchpad/build_plan.py`, which inlines the tested scratch files from `scratchpad/smoke/`. Re-run the rebuild-from-plan smoke test (`scratchpad/extract.py`, stages 1 and 2), commit, and ask the user for approval.
+- **B02 plan rev 3** folds in the independent Grok review (pi; `.agent-handoff/b02-plan-review-grok/`; verdict *revise*, findings G1–G5, all reproduced by Claude) and argon's docstring nit (the chart has C(n,4) extra coordinates).
+  - **G1:** the other Hodge convention is exactly Φ² → −Φ², so the Einstein point moves to γ = −1.
+  - **G2:** the README leads with the convention-stable result (literal CCC has no scalar term). κ = ½ requires N-a plus the pinned star; it is ¼ under σ = ½ΓΓ and 1 under N-b.
+  - **Claude:** even q flips κ. All of this project's signatures have odd q.
+
+  Rebuilt from the plan text: 222 tests pass, and the full run passes (about 10 min). **The user approved rev 3** and asked to be told if anything changes.
+- **In flight: Tasks 1–4 dispatched to Codex.** Brief: `.agent-handoff/b02-impl/task.md`. Watch `status`. Next, Claude writes Task 5 (`experiments/B02/proofs.md`, which includes the Hodge-reparametrization proof). After Codex reports DONE, rerun the decisive checks yourself (P7), then do Task 6.
 - **Agents:** Codex is in pane 0:3. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
 
 **Next**
 1. ~~Resolve Codex's review~~ (done, `f75bb66`). ~~Retro~~ (done). ~~Write the B02 plan~~ (done).
-2. **Wait for the Grok review and the user's approval of B02 plan rev 2.x.** Then dispatch Tasks 1–4 to Codex (one brief; the plan is self-contained). Claude does Task 5 (`proofs.md`) in parallel.
+2. ~~Approval~~ (rev 3 approved). Codex: Tasks 1–4 (in flight). Claude: Task 5 `proofs.md` in parallel. Then Task 6.
 3. (Superseded; kept for the record.) Write the follow-up plan `docs/superpowers/plans/<date>-b02-direct-check.md` (writing-plans skill), from the reviewed transcription. Include the symbolic covariance derivation (Claude), the branch enumeration (brackets 2³ × Φ choices × signatures), tests 1–5 and 5′, and the H0 line item. Smoke-test the plan's code, and list the ambient impostors (P2b).
 4. Get the user's approval of that plan, then dispatch it to Codex.
 5. Later: P3 (B03 branching), P4 repairs, the write-up.
