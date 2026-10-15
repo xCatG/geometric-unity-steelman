@@ -23,7 +23,7 @@ where T = (α, β) and T′ = (β, α). The bracket string m₀m₁m₂ names (R
 - **Not in `result.json`.** κ is derived below from the asserted formula, not read from a field (review G3).
 - **Signatures.** All three have odd q. At even q (sampled at (2,2) and (4,0)) the relative sign of the two terms flips. Every signature this project uses has odd q.
 
-Response coefficients follow the ansatz: the output is c·E_T(Ric − κSg). κ = ½ is "Einstein-like". This requires r_T ≠ 0 (test 5a).
+Response coefficients follow the ansatz: the output is c·E_T(Ric − κSg). κ = ½ is "Einstein-like". This requires r_T ≠ 0 (test 5a), and a nonzero traceless-Ricci sector (n ≥ 3; at n = 2, (c, κ) is not identifiable). Every κ here is for n = 4 and n = 14.
 
 ## Verdict
 

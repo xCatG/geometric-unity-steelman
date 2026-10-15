@@ -104,7 +104,7 @@ For B, Y_{ab} = Γ_aΓ_b. The weight w_{ab} η_cη_d is not symmetric in (ab) �
 
 For B′: for even n the volume element anticommutes with each Γ_a, so C commutes with every even element; so [Γ_aΓ_b iC, Γ_cΓ_d] = iC[Γ_aΓ_b, Γ_cΓ_d], and the same cancellation applies.
 
-So [Φ² ∧ ∗ξ]_C = 0 for every Φ² in the invariant span. So m₁ = C implies that the −½ term is identically zero, whatever Φ¹ and the outer bracket are, within the scope above. κ = 0 additionally needs the first term to be the same nonzero multiple of E_T(Ric) on the scalar and traceless sectors. The pinned closed form (Task 4) gives the multiple −1 for odd q. Either standard star changes only its sign, and even q also flips it to +1 (sampled). In every case κ stays 0 for CCC with T ≠ 0.
+So [Φ² ∧ ∗ξ]_C = 0 for every Φ² in the invariant span. So m₁ = C implies that the −½ term is identically zero, whatever Φ¹ and the outer bracket are, within the scope above. κ = 0 additionally needs the first term to be the same nonzero multiple of E_T(Ric) on the scalar and traceless sectors. The pinned closed form (Task 4) gives the multiple −1 for odd q. Either standard star changes only its sign, and even q also flips it to +1 (sampled). In every case κ stays 0 for CCC with T ≠ 0. (κ itself needs n ≥ 3, so that the traceless-Ricci sector is nonzero and r_T is defined: at n = 2, Ric = (S/2)g and (c, κ) is not identifiable. The inner-C cancellation above holds for every even n. Found by the Lean formalization.)
 
 This uses pair symmetry R_abcd = R_cdab. It holds for Levi-Civita (algebraic) curvature, but not for a general gauge curvature. That limit belongs in the README's "What this does not establish".
 
