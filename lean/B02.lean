@@ -6,3 +6,7 @@ import B02.Semantics
 import B02.ConcreteHeadline
 import B02.TwistedHeadline
 import B02.ConcreteTwistedHeadline
+import B02.Bilinearity
+import B02.Hodge
+import B02.Degree
+import B02.ConcreteHodge
