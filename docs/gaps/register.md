@@ -1,6 +1,6 @@
 # GU gap register
 
-Research snapshot: 2026-10-14. This is a map of questions and repair candidates, not a verdict on GU. Only the explicitly scoped signature probe below has been computationally checked in this handoff. No Lean proof or physical validation is claimed.
+Research snapshot: 2026-10-14; B01/A01 updated 2026-10-15. This is a map of questions and repair candidates. B01 has an exact fibrewise reconstruction under stated conventions and a base-mirror finding. No Lean proof or physical validation is claimed.
 
 ## Priorities
 
@@ -8,7 +8,7 @@ Cost is the effort for the **next check**, not for resolving the whole research 
 
 | Priority | Entry | Question | Importance | Next-check cost | Immediate deliverable |
 |---|---|---|---|---|---|
-| 1 | B01 | Signature as a function of the vertical trace coefficient and chimeric metric signs | H | L | Reconcile the explicit family below with GU's conventions |
+| 1 | B01 | Signature as a function of the vertical trace coefficient and chimeric metric signs | H | L | Carry the reconciled conventions and F1 into both signature branches |
 | 2 | B02 | Exact Shiab type, covariance, and real-form closure | H | M | Typed transcription and a finite algebraic test specification |
 | 3 | B03 | Spinor/vector-spinor branching and the claimed third generation | H | M | Branching table with chirality, reality, and unwanted sectors |
 | 4 | B05 | Actual gauged symmetry and anomalies in 14D and 4D | H | M | Fermion/generator inventory before computing an anomaly |
@@ -39,12 +39,12 @@ Access date: 2026-10-14. The parallel source collector owns `sources/`; local S-
 
 ### A01 — A selected signature is presented as the foundation without its choices
 
-- **Tags / evidence:** `[GU-orig]`, `[ext]`; source comparison established, physical choice unresolved.
-- **Draft says:** GU sections 3.1–3.5, pp. 19–22, permit trace/sign choices and adopt `(7,7)`.
-- **Gap / source:** O tasks 1 and 4 fix `(9,5)` without identifying the corresponding vertical metric and relative sign. A quadratic form with that signature does not establish that it is the form induced by the proposed observerse construction.
-- **Counterargument / repair:** `[ext]` Retain `(9,5)` as a deliberate variant, parameterize the choices, and compare it with the split case. Do not call a different convention or variant a refutation.
+- **Provenance / evidence / scope:** `[GU-recon]`; `verified:experiments/B01/rederivation.md`, `verified:experiments/B01/result.json`, `verified:tests/test_b01.py`; `identity` for the fibrewise signature map under R1. The physical selection remains `unverified`.
+- **Draft says:** `[GU-orig]` GU sections 3.1–3.5, pp. 19–22, permit trace/sign choices and adopt `(7,7)`; the isolated `(9,5)` alternative admits the readings recorded in the [reconciliation](../../experiments/B01/README.md).
+- **Status / gap:** The [exact experiment](../../experiments/B01/result.json) and [independent derivation](../../experiments/B01/rederivation.md) reproduce both live signature classes. O tasks 1 and 4 fix `(9,5)` without specifying those choices; neither class is physically selected by this algebra.
+- **Counterargument / repair:** `[ext]` Retain both `(7,7)` and `(9,5)` as explicit configurations, recording slot order, base sign, vertical sign and trace normalization. F1 shows that mirroring the base alone can change the total class; it is not merely a notation change.
 - **Dependencies:** B01 and B10. **Importance / cost:** H / L.
-- **Falsifiable next check:** State the vertical form and both direct-sum signs; compute its inertia. A mismatch with the advertised signature falsifies that configuration.
+- **Next check:** Carry this convention map into the downstream representation tests. A claimed physical preference needs further evidence beyond the signature computation.
 
 ### A02 — Dirac, Weyl, real, and complex spinors are conflated
 
@@ -95,18 +95,18 @@ Access date: 2026-10-14. The parallel source collector owns `sources/`; local S-
 
 ### B01 — Signature choices and their geometric meaning
 
-- **Tags / evidence:** `[GU-orig]`, `[GU-recon]`, `[ext]`, `[verified]` **only for the explicit probe below**. The identification with GU's exact metric convention remains unresolved.
-- **Draft says:** GU equations (3.8)–(3.10), p. 19, and section 3.5, p. 22, allow a trace-direction sign and relative chimeric signs.
-- **Gap / source:** The unforced choices need a normalized formula and a reason for choosing one physical sector. Neither “14 dimensions” nor a signature calculation selects `(7,7)` uniquely. Calling the construction a DeWitt family is our parameterization; the draft does not give the lambda used below.
-- **Counterargument / repair:** `[ext]` Make every sign/parameter explicit and investigate the variants before searching for a selection principle. `[ext]` If no mechanism selects the trace coefficient, treat it as a parameter of a family rather than an already-derived prediction.
-- **Dependencies:** B10 for global interpretation; A01 for blueprint correction. **Importance / cost:** H / L.
-- **Falsifiable next check:** Independently translate GU equations (3.8)–(3.10) into our convention and test the claimed tracefree/trace inertia. If no sign/parameter assignment reproduces the intended form, document the exact mismatch before changing the theory.
+- **Provenance / evidence / scope:** `[GU-recon]`; `verified:experiments/B01/rederivation.md`, `verified:experiments/B01/result.json`, `verified:tests/test_b01.py`; `identity` for the fibrewise reconstruction and F1 under the conventions below. The lambda family itself remains `[ext]`.
+- **Verdict:** **Match: holds under R1**, as in the [README](../../experiments/B01/README.md): all four draft totals and both live signature classes are reproduced. R1 assumes a uniform negative-first signature order and the literal positive double contraction. The exact lambda=1/2 representative additionally preserves the trace magnitude while reversing its sign. The [independent derivation](../../experiments/B01/rederivation.md#source-audit-and-limits-of-reconciliation) records these qualifications; an unstated trace magnitude does not affect the inertia verdict.
+- **Draft says:** `[GU-orig]` Equations (3.8)–(3.10), p. 19, and section 3.5, p. 22, leave trace and relative direct-sum signs open. The [transcription](../../experiments/B01/transcription.md) preserves the alternative readings. The draft supplies no DeWitt parameter or counterpart of the degenerate lambda=1/4 boundary.
+- **Remaining gap:** The signature calculation selects no physical sector and establishes no global splitting of TY. Physical selection remains `unverified`.
+- **Dependencies:** B10 for global interpretation; A01 for blueprint correction. **Importance / cost:** H / L for convention checks; physical selection is outside this algebraic check.
+- **Next check:** Keep both signature classes in downstream B02 work with explicit conventions. Resolve the meaning of the base mirror before treating it as a physical equivalence.
 
-**Explicit probe, not a GU equivalence claim.** Set `eta=diag(1,-1,-1,-1)`, take real symmetric 4-square matrices, and define
+**Family and exact evidence.** Set `eta=diag(1,-1,-1,-1)`, take real symmetric 4-square matrices, and define
 
 `B_lambda(H,K) = tr(eta H eta K) - lambda tr(eta H) tr(eta K)`.
 
-The script computes the Gram matrix in the ten elementary symmetric matrices. Exact SymPy checks give eigenvalues `-2` (multiplicity 3), `2` (3), `1` (3), and `1-4 lambda` (1). The tracefree restriction has inertia `(6,3,0)`. Here and below inertia means **(positive, negative, zero)**. Analytically reading the computed eigenvalues gives:
+The [hand trace/traceless split](../../experiments/B01/rederivation.md) proves traceless inertia `(6,3,0)` and trace norm `4(1-4 lambda)`. The symbolic eigenvalues in the elementary symmetric basis are `-2` (three), `+2` (three), `+1` (three), and `1-4 lambda` (one). Here and below inertia means **(positive, negative, zero)**:
 
 | Parameter | Vertical inertia | Character |
 |---|---|---|
@@ -114,7 +114,7 @@ The script computes the Gram matrix in the ten elementary symmetric matrices. Ex
 | `lambda = 1/4` | `(6,3,1)` | Degenerate; unsuitable for an ordinary nondegenerate Hodge star |
 | `lambda > 1/4` | `(6,4,0)` | Nondegenerate with reversed trace-direction sign |
 
-For `lambda=1`, numerical inertia checks of `s_H eta direct-sum s_V B_lambda` give:
+For `lambda=1/2` (and every `lambda>1/4`), exact direct-sum counts of `s_H eta direct-sum s_V B_lambda` give:
 
 | `s_H` | `s_V` | Total inertia |
 |---|---|---|
@@ -123,9 +123,9 @@ For `lambda=1`, numerical inertia checks of `s_H eta direct-sum s_V B_lambda` gi
 | `-1` | `+1` | `(9,5,0)` |
 | `-1` | `-1` | `(7,7,0)` |
 
-This separates the relative-sign choice from the trace coefficient. Reversing the four-dimensional metric does not reverse its **double** contraction on symmetric tensors, which is why `s_H` and `s_V` must be recorded independently. This family diagnoses alternatives; it supplies no preferred time direction, dynamics, or quantum theory.
+**F1 — A base-only mirror changes the total signature class.** `[GU-recon]`; `verified:experiments/B01/rederivation.md`, `verified:tests/test_b01.py`; `identity` for vertical evenness and `counterexample` for a universal cosmetic-mirror claim. The two inverse-metric factors make B_lambda unchanged by eta -> -eta, while the horizontal summand negates. The draft split configuration `(lambda,s_H,s_V)=(1/2,-1,-1)` therefore changes from `(7,7,0)` to `(5,9,0)`. Symbolic Gram equality and this exact case are pinned in the tests. This note belongs inside B01 because it concerns the same relative-sign choice and evidence, rather than a new independent obstruction. Reversing the whole vertical summand as well would preserve the class up to overall sign; reversing only the trace line cannot do so. That correlated-sign rule would be an `[ext]` assumption.
 
-Evidence: [script](../../.agent-handoff/gap-register/evidence/signature_probe.py), [command](../../.agent-handoff/gap-register/evidence/signature-command.txt), [raw output](../../.agent-handoff/gap-register/evidence/signature-output.txt). This is symbolic/numerical computational support, not a Lean theorem. The initial assertion failure is preserved separately; it compared algebraically equal expressions structurally and was corrected by simplifying their difference to zero.
+Evidence: [implementation](../../experiments/B01/dewitt_family.py), [pre-registration](../../experiments/B01/ansatz.md), [exact recorded results](../../experiments/B01/result.json), [tests](../../tests/test_b01.py), [independent proof and source audit](../../experiments/B01/rederivation.md). The original results record their generating source commit and command; they are retained unchanged. Run the current checks with `uv run --no-sync pytest tests/test_b01.py -q`. These are exact algebraic results and tests, not a Lean proof or physical validation.
 
 ### B02 — Shiab typing, dressing, and closure in a real adjoint algebra
 

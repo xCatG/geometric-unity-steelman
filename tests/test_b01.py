@@ -4,6 +4,7 @@ The symbolic spectrum is an identity. Numeric matrices are exact sampled
 regressions of that identity; expected table values follow the hand derivation
 in ansatz.md (direct-sum inertias, with signs swapping positive/negative counts).
 Fault targets: sign of lambda and omission of the two Lorentzian metric factors.
+The F1 findings use the independent trace/traceless proof in rederivation.md.
 """
 # tests/test_b01.py
 import pytest
@@ -78,3 +79,38 @@ def test_chimeric_rejects_invalid_signs(hs, vs):
     """Control: only exact signs from the registered family are admissible."""
     with pytest.raises(ValueError):
         chimeric_gram(R(0), hs, vs)
+
+
+def test_base_mirror_preserves_vertical_gram_symbolically():
+    """F1 identity: two metric factors make B_lambda even under eta -> -eta.
+
+    Catches an erroneous overall base sign on the vertical summand.
+    """
+    assert vertical_gram(LAM, base_sign=-1) == vertical_gram(LAM)
+
+
+def test_base_mirror_changes_draft_split_signature():
+    """F1 counterexample: a base-only mirror sends split to (5,9,0).
+
+    Hand counts: horizontal (3,1)->(1,3), vertical stays (4,6).
+    Catches ignoring the base mirror or negating both summands.
+    """
+    original = chimeric_gram(R(1, 2), -1, -1)
+    mirrored = chimeric_gram(R(1, 2), -1, -1, base_sign=-1)
+    assert original[:4, :4] == -ETA
+    assert mirrored[:4, :4] == ETA
+    assert mirrored[4:, 4:] == original[4:, 4:]
+    assert inertia(original) == (7, 7, 0)
+    assert inertia(mirrored) == (5, 9, 0)
+
+
+@pytest.mark.parametrize("base_sign", [0, 1.0])
+@pytest.mark.parametrize("api", [
+    lambda sign: dewitt(ETA, ETA, R(0), base_sign=sign),
+    lambda sign: vertical_gram(R(0), base_sign=sign),
+    lambda sign: chimeric_gram(R(0), 1, 1, base_sign=sign),
+])
+def test_rejects_invalid_base_sign(api, base_sign):
+    """Control: mirror selection must be exact +/-1 at each public boundary."""
+    with pytest.raises(ValueError):
+        api(base_sign)

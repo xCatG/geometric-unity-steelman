@@ -35,22 +35,34 @@ def _reject_floats(*values) -> None:
             raise ValueError("B01 requires exact inputs; use Rational instead of float")
 
 
-def dewitt(h: sp.Matrix, k: sp.Matrix, lam) -> sp.Expr:
+def _base_metric(base_sign: int) -> sp.Matrix:
+    _reject_floats(base_sign)
+    if base_sign not in (-1, 1):
+        raise ValueError("base sign must be exact +1 or -1")
+    return base_sign * ETA
+
+
+def dewitt(h: sp.Matrix, k: sp.Matrix, lam, *, base_sign: int = 1) -> sp.Expr:
+    """Contract using g=base_sign*ETA (which equals its own inverse)."""
     _reject_floats(h, k, lam)
-    return (ETA * h * ETA * k).trace() - lam * (ETA * h).trace() * (ETA * k).trace()
+    g = _base_metric(base_sign)
+    return (g * h * g * k).trace() - lam * (g * h).trace() * (g * k).trace()
 
 
-def vertical_gram(lam) -> sp.Matrix:
+def vertical_gram(lam, *, base_sign: int = 1) -> sp.Matrix:
+    """Vertical form for either base mirror, in the same tensor basis."""
     _reject_floats(lam)
     b = _sym_basis()
-    return sp.Matrix(10, 10, lambda i, j: dewitt(b[i], b[j], lam))
+    return sp.Matrix(10, 10, lambda i, j: dewitt(b[i], b[j], lam, base_sign=base_sign))
 
 
-def chimeric_gram(lam, h_sign: int, v_sign: int) -> sp.Matrix:
+def chimeric_gram(lam, h_sign: int, v_sign: int, *, base_sign: int = 1) -> sp.Matrix:
+    """Mirror the base before applying the independent direct-sum signs."""
     _reject_floats(lam, h_sign, v_sign)
     if h_sign not in (-1, 1) or v_sign not in (-1, 1):
         raise ValueError("chimeric signs must be exact +1 or -1")
-    return sp.diag(h_sign * ETA, v_sign * vertical_gram(lam))
+    g = _base_metric(base_sign)
+    return sp.diag(h_sign * g, v_sign * vertical_gram(lam, base_sign=base_sign))
 
 
 def run(lams) -> dict:
