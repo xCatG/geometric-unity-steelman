@@ -31,9 +31,31 @@ and Clifford operations share the general sign definitions in `B02/Signs.lean`.
 Chirality phase is an explicit argument and is cross-checked against Python.
 
 Formal proof coverage and outstanding instantiation obligations are recorded in
-`COVERAGE.md` when the remaining milestones are integrated. An abstract theorem
+`COVERAGE.md`, with every theorem mapped in `THEOREMS.md`. An abstract theorem
 with uninstantiated operation laws is not a proof of those laws for the executable model.
 
 The negative-scope B-prime witness currently uses `native_decide`; in Lean 4.24
 its axioms include `Lean.ofReduceBool` and `Lean.trustCompiler`. The B witness,
 its Bianchi identity, and the pinned-B witness use kernel reduction.
+
+
+Additional exact checks, from the repository root with the environment above:
+
+```powershell
+uv run python lean/bridge/samples.py
+uv run python lean/bridge/dimension_two.py
+uv run python lean/bridge/mutations.py
+uv run python lean/bridge/inventory.py
+cd lean
+lake env lean Audit.lean
+```
+
+The sample and dimension-two certificates also use `native_decide`. All native
+axiom dependencies, including downstream theorems, appear in `AxiomAudit.txt`.
+The mutation check uses disposable copies, reverses the star sign, drops xi's
+raising factors, and removes the A-bracket imaginary factor. It requires each
+fault to disagree with unchanged expectations from the actual Python functions.
+
+`Validation.md` records the final clean-project build timing and bridge output.
+A clean-project build removes only this project's `.lake/build`; Mathlib and
+other dependency caches remain populated by `lake exe cache get`.
