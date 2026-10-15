@@ -145,7 +145,12 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
       - χ = 0.
     - **Codex two-subagent plan review dispatched:** `.agent-handoff/b03-plan-review/`. Claude expects one finding: `rs_character` uses the Q″ formula, not the `projector_Q` matrix.
   - **Next:** fold in the review, then ask the user to approve the plan, then dispatch Tasks 1–4.
-- **Lean (B02):** the worker is DONE (`.agent-handoff/b02-lean/result.md`, branch `b02-lean`, 9 commits). Coverage is partial: concrete headline, Hodge, degree and interpolation are proved; Spin, covariance and the curvature extension are hypothesis-level. Grok's review is in flight (`.agent-handoff/b02-lean-review-grok/`). After it: merge decision, README/register notes.
+- **Lean (B02): merged** (`e48a0e3`, from `b02-lean`).
+  - Grok's review: *accept*, with two minor findings (`otherStar` is not in the bridge; `native_decide` theorems are outside the kernel).
+  - The B02 README has a "Formal check" section (`f8cf6b5`). The headline holds for all n with pair symmetry only.
+  - **Pending:**
+    - Codex updates the register's "No Lean proof … claimed" line, in its next register task (the B03 Task 5 brief).
+    - The worktree `C:\work\src\GU-b02-lean` (6.8 GB of Mathlib build cache) is kept; ask the user before removing it.
 - **Agents:** Codex is in pane 0:3. A second GPT-6-Astra (the Lean worker) is in pane 0:5. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
 
 **Next**
