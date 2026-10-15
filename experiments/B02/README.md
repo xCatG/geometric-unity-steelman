@@ -9,7 +9,7 @@ Inputs:
 - `result.json` (exact identity check; `source_commit` d66cd8f)
 - plan `docs/superpowers/plans/2026-10-15-b02-direct-check.md` (revision 3)
 
-Independent re-derivation of the classification: Codex (Task 6, step 3). It confirmed every Einstein family, H0 and the N-b, star, σ and norm statements, with exact checks in all three signatures. Its four wording corrections are applied here. A Lean 4 formalization of `proofs.md` is in progress on branch `b02-lean`. Neither is claimed here until it is merged.
+Independent re-derivation of the classification: Codex (Task 6, step 3). It confirmed every Einstein family, H0 and the N-b, star, σ and norm statements, with exact checks in all three signatures. Its four wording corrections are applied here. A Lean 4 formalization of `proofs.md` is merged under `lean/` (see "Formal check").
 
 ## The closed form everything below follows from
 
@@ -125,6 +125,27 @@ Some reconstructed branch passes 5b, so (9.3) is not a counterexample family. It
 - **Test 3(b), Cayley-dressed covariance:** exact samples in `tests/test_dressing.py`. They pass in (3,1), (7,7) and (9,5), with sparse Cayley matching the library Cayley.
 - **Seeded faults** (P2): eleven, all red, including −½ → +½ in `assemble` turning the standalone verifier red at `(3,1,0,4,F,B,CAA)`. Claude independently seeded −½ → −1 and got the same verifier failure. See `.agent-handoff/b02-impl/result.md` and `claude-seeded-fault.md`; these are untracked working notes, cited for provenance only.
 - **Test suite:** 222 passed.
+
+## Formal check (Lean 4, `lean/`)
+
+The work was done by a GPT-6-Astra worker on branch `b02-lean`, which is merged. It was reviewed by Grok, with verdict *accept* (`.agent-handoff/b02-lean-review-grok/`). The machine-checked boundaries are in `lean/COVERAGE.md` and `lean/THEOREMS.md`. The build and a 3115-case exact Lean/Python bridge pass. There are no `sorry`s and no custom axioms. Theorems that use `native_decide` are listed there; they are not kernel certificates.
+
+**Machine-checked on the executable sparse model:**
+- **The CCC headline.** The inner commutator against B and against B′ vanishes. This is **stronger than stated here**: it needs pair symmetry only, and holds for every n and any integer η.
+- **The other conventions.** The pinned Hodge weight; the Hodge reparametrization Φ² → −Φ² (even n, all 8 modes); the degree count (test 1); input linearity; and the rational parameter interpolation.
+- **Counterexamples.** The dropped-η counterexamples in (3,1); the n = 2 non-identifiability of κ.
+
+**Proved only as algebra with explicit hypotheses** (not tied to the sparse code):
+- 𝔲(A) closure;
+- dressed covariance (on genuine tensor products);
+- the Spin₀ composition (Leibniz and composition are proved; Lie generation and the exponential–group link are hypotheses);
+- the spanning and rank argument (rank 20 and 3185 are inputs).
+
+The full closed form and the 3185-row computation are **not** formally certified. They remain `identity` scope via the exact computation in `result.json`.
+
+The Lean work found two errors in the wording of `proofs.md`, both now fixed:
+- the bracket parity argument depends on the product of the form degrees, not their total;
+- κ needs n ≥ 3.
 
 ## What this does not establish
 
