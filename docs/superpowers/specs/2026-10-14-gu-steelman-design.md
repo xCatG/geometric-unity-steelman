@@ -1,6 +1,6 @@
 # GU Steelman: Design Spec
 
-Date: 2026-10-14 · Revision 4, after Codex adversarial review (with one independent subagent) · Status: draft for user review
+Date: 2026-10-14 · Revision 4.1, after Codex adversarial review (with one independent subagent) and argon's final review · Status: draft for user review
 
 ## 1. Purpose
 
@@ -64,7 +64,8 @@ docs/fable-ledger.md
 gu/
   inertia.py    exact inertia of symmetric/Hermitian forms (Sylvester / LDLᵀ over ℚ or ℚ(i)). No floating-point signature claims.
   clifford.py   gamma matrices for any (p,q), exact Gaussian integers, monomial storage; chirality; the Dirac pairing A
-  forms.py      exterior algebra on R^{p,q}; Hodge star with the ★² sign; the explicit Λ^{n-1} ≅ Λ¹ identification
+  forms.py      exterior algebra on R^{p,q}; Hodge star defined by α∧★β = ⟨α,β⟩_η vol; the explicit Λ^{n-1} ≅ Λ¹ identification.
+                Controls: e_I∧★e_I = η_II vol for every basis form; ★★ = (−1)^{k(n−k)+q} for k ∈ {0,1,2,7,13,14}, both (9,5) and (7,7)
   adjoint.py    the internal gauge algebra u(64,64) = {M : M†A + AM = 0}: membership predicate, Cayley elements, ℂl ≅ End(ℂ¹²⁸) ≅ ⊕Λᵏ
   curvature.py  algebraic curvature tensors: scalar / traceless-Ricci / Weyl split with one documented index convention
   reps.py       only when B03 needs it: weights and branching for D_n (Freudenthal), checked against the oracle
@@ -106,16 +107,17 @@ B01 (the inertia of a quadratic form on T⊕Sym²) is none of these layers. It i
 Transcribe (9.3) independently: bracket conventions, phases, normalization, which invariant Φ embeddings. Implement it on u(64,64)-valued forms; everything is a 128×128 matrix. Then test, in order:
 
 1. **Form degree.**
-2. **Real form:** the image stays in u(64,64).
+2. **Real form:** the image stays in u(64,64). Only commutators of u(64,64) elements stay in u(64,64); raw Clifford products and anticommutators land in i·u(64,64), and grades differ by factors of i. The transcription records, as `[GU-recon]` branches where unclear, whether (9.3) uses a bracket, i·anticommutator, or raw product followed by the projection M ↦ ½(M − A⁻¹M†A).
 3. **Dressed gauge covariance** `Shiab_(εh)(h⁻¹ηh) = h⁻¹ Shiab_ε(η) h` for h with h†Ah = A.
    - *Primary, scope identity:* derive it symbolically from conjugation of each dressed Φ, matrix products and brackets, and ★ acting only on form indices. Claude writes the derivation; Codex checks it independently (§3 step 5).
    - *Regression, scope sampled:* exact Cayley elements h = (I−X)(I+X)⁻¹ of A-skew X over ℚ(i). Require det(I+X) ≠ 0; if singular (the unit boost already is), rescale X by a rational or resample, and log the rejection separately from operator failures.
    - If an infinitesimal form is used, it is the two-term Leibniz identity `D_ε Shiab[εX](η) + Shiab_ε([η,X]) = [Shiab_ε(η), X]`. With the Cayley parameterization, the generator at 0 is −2X, used on both sides. Passing it on a generating set is sampled scope unless the passage to the connected group is argued.
-4. **Geometric Spin(p,q) equivariance of the undressed tensors**, checked separately. Dressing can make test 3 hold for any underlying linear map, even a geometrically wrong one.
+4. **Geometric Spin(p,q) equivariance of the undressed tensors**, checked separately. Dressing can make test 3 hold for any underlying linear map, even a geometrically wrong one. Since the undressed map L is linear and commuting with X, Y implies commuting with [X,Y], exact commutation with the 13 adjacent generators J_{a,a+1} on a basis of the input space proves Lie-algebra equivariance (scope identity, identity component only). This shortcut does not apply to the dressed group identity in test 3.
 5. **Curvature response, the exit gate.** On certified pure-sector inputs from `gu/curvature.py` (Levi-Civita-induced subspace only):
    - scalar and traceless-Ricci inputs must give *nonzero*, candidate-specific outputs matching the transcribed response, with normalization and relative coefficient stated or explicitly marked unresolved;
    - Weyl inputs give zero, as a consistency check only;
-   - with nontrivial dressing, covariance transports the Weyl subspace to Ad(ε⁻¹)·Weyl; the test uses that subspace, not a fixed undressed one.
+   - with nontrivial dressing, covariance transports the Weyl subspace to Ad(ε⁻¹)·Weyl; the test uses that subspace, not a fixed undressed one. Shiab_ε(ε⁻¹Wε) = ε⁻¹Shiab₁(W)ε = 0 follows from tests 3 and 5, so it is a regression check, not new evidence;
+   - **open data, no expected outcome:** Shiab_ε(W) for undressed geometric W and ε ∈ U(64,64) outside the image of Spin(p,q). Record whether it vanishes; no physical interpretation is drawn in P2.
 
 **Generating sets, never full bases.** u(64,64) has real dimension 16384, so its basis is never materialized; elements are Gaussian-integer matrices tested by M†A + AM = 0. No bracket-closure dimension certificate is computed. Where a generating claim is needed, prove that a small standard generating set (including the central iI) generates, by hand.
 
