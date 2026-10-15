@@ -68,20 +68,13 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - **Claude:** even q flips κ. All of this project's signatures have odd q.
 
   Rebuilt from the plan text: 222 tests pass, and the full run passes (about 10 min). **The user approved rev 3** and asked to be told if anything changes.
-- **In flight: Codex reported DONE on Tasks 1–4** (`.agent-handoff/b02-impl/result.md`; "no implementation or expected-value deviation"). **Not yet verified by Claude**. Codex commits so far:
-  - `30c87d0` cliffform (Task 1);
-  - `d63c7c5` shiab (Task 2);
-  - `14f4c65` dressing (Task 3);
-  - `d66cd8f` response/run (Task 4 code);
-  - `806b2e2` result.json.
-
-  Codex is now on the final suite and its `result.md`.
-- **On Codex DONE (P7):**
-  1. Read `result.md`, including the seeded-fault table. Check that the −½ fault turned the *runner* red.
-  2. Run `uv run pytest -q` yourself; expect 222 tests.
-  3. Check that `result.json` has spanning ranks 20/20 and 3185/3185, and response rows of 912 / 57512 / 57512 nonzero outputs out of 2640 / 267120 / 267120 cases.
-  4. Check that `source_commit` is the code commit, then reproduce one seeded fault yourself.
-  5. Report to the user, who asked to be told if anything changes from the plan. Then do Task 6.
+- **Tasks 1–4 verified by Claude (P7).** Codex commits: `30c87d0` (cliffform), `d63c7c5` (shiab), `14f4c65` (dressing), `d66cd8f` (response/run), `806b2e2` (result.json).
+  - All 8 code files are identical to Claude's rebuild from the plan, with CRLF stripped.
+  - 222 tests pass.
+  - result.json: ranks 20/20 and 3185/3185; 912 / 57512 / 57512 nonzero out of 2640 / 267120 / 267120; `source_commit` d66cd8f.
+  - Codex's 11 seeded faults were all red, including −½ → +½, which turned the verifier red.
+  - Claude seeded −½ → −1 in a scratch copy, and the verifier went red at `(3,1,0,4,F,B,CAA)`.
+  - No change from the plan.
 - **Task 5 done:** `experiments/B02/proofs.md` (`93cf975`, revised `1c89d5b` after Grok's adversarial check, `.agent-handoff/b02-proofs-check-grok/`). Every argument holds. Wording fixes:
   - narrow scope for the CCC headline (even n, pinned ξ with η_cη_d, global scale, either standard star; *not* any ξ index convention or pair-dependent star);
   - κ = 0 also needs the first-term multiple;
@@ -89,11 +82,22 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - even-q is sampled only.
 
   Claude also ran the full n = 4 identity check at (1,3) in scratch: it passes; it is not in `result.json`.
-- **Task 6 (next, after verification):**
-  - Claude writes `experiments/B02/README.md` per plan Task 6: lead with the convention-stable CCC result, then the CAA Einstein point's dependence on N-a / ∗′ / σ / N-b, the norm caveat, CAC chiral, H0 with its four qualifiers, and odd q.
-  - Then a Codex brief to re-derive the classification independently and update the register.
-  - Then the retro and HANDOFF.
-- **Agents:** Codex is in pane 0:3. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
+- **Task 6 in flight.**
+  - Steps 1–2 are done: `experiments/B02/README.md` (`a70c6d4`).
+  - Its verdict lines:
+    - literal CCC is `obstructed-within-literal`, and this is convention-stable;
+    - reconstructed CAA (γ = 1) and CAC (chiral, null) are `holds-Einstein`;
+    - H0 is confirmed with four qualifiers;
+    - (9.3) as a whole is not obstructed.
+  - Findings F1–F6 (F5: Weyl is not annihilated after odd dressing, sampled).
+  - **Step 3** is dispatched to Codex: `.agent-handoff/b02-verdict/` (independent re-derivation, README audit, register B02 entry). Watch `status`.
+  - **Step 4 remains (Claude):** resolve disagreements, the methods.md retro, then HANDOFF.
+- **Lean side task (the user's request, 2026-10-15).**
+  - The user started a second GPT-6-Astra in **pane 0:5** to formalize all of `proofs.md` in Lean 4 + Mathlib.
+  - It works in the worktree `C:\work\src\GU-b02-lean`, branch `b02-lean`, created from 36add8f. Brief and status are in `.agent-handoff/b02-lean/`. `progress.md` gets `FINDING:` lines.
+  - Extra dependencies (elan, Mathlib) are approved by the user.
+  - **Unify at the end of Task 6:** review its `result.md`, covering the claim-to-theorem fidelity table, `#print axioms` and the Python bridge cross-check. Fold any FINDING into proofs.md and the README, merge `b02-lean`, then update the register's "no Lean proof claimed" line.
+- **Agents:** Codex is in pane 0:3. A second GPT-6-Astra (the Lean worker) is in pane 0:5. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
 
 **Next**
 1. ~~Resolve Codex's review~~ (done, `f75bb66`). ~~Retro~~ (done). ~~Write the B02 plan~~ (done).
