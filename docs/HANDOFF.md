@@ -1,6 +1,6 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-15 (B03 plan rev 1.2 after Grok review; awaiting user approval to dispatch), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
+Last updated: 2026-10-15 (B03 Tasks 1–4 done by Codex and verified by Claude; Task 5 next), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
 
 ## What this project is
 
@@ -164,10 +164,11 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
     - F10 keys by (SU3, SU2, n), so it fails at the Imposter quark sum `2 == 3` (checked);
     - E′ is the charge formula, not the y₄, y₅ flip (ansatz wording).
     - Fresh rebuild (`scratchpad/b03fresh3`): 297 pass, 13/13 faults RED.
+  - **Tasks 1–4 DONE** (user approved dispatch; Codex, `.agent-handoff/b03-impl/result.md`). Commits `5b85fd9`, `ee6c59f`, `71409f3`, `895fc08` (code, = `source_commit`), `2cf2c71` (result.json).
+    - **Claude P7:** all 9 committed code files equal the plan's blocks (newline-normalized); fixture SHA `576888f2…`; `result.json` regenerated from a clone at `895fc08` is identical; full suite at `2cf2c71` = 297 passed.
+    - Results: p51 10/10 blocks hold, (12.20) both hold, full Dirac holds, p52 = 16 / 16̄, p53 = H̄ (23 terms); fibre 1920; J² = +1 (7,7), −1 (9,5); 8 imposter records, 6 J-partner pairs.
+    - **Open (Codex P6, reproduced by Claude):** two P4 holes in the frozen `gu/reps.py`, neither touching the pinned run: `sm_weight_flipped` sums the raw argument (NumPy int64 overflow → spurious ValueError); `Simple.to_dynkin_root`/`ip` skip `weight()` coercion (overflow; float accepted). Fix = coerce via `weight(...)` at each public entry, add controls. Needs user OK (frozen code).
   - **Next:**
-    1. Ask the user to approve; **they have not yet approved B03 dispatch**.
-    2. To re-smoke after any change: `scratchpad/b03smoke/` (297 tests, `faults.py` all RED); rebuild with `python scratchpad/build_b03_plan.py <scratchpad> docs/superpowers/plans/2026-10-15-b03-branching.md`; fresh rebuild by running `scratchpad/extract_b03.py` **from inside a fresh `git archive` scratch dir** (it writes to cwd; never run it from the repo).
-    3. Dispatch Tasks 1–4 to Codex (0:3, freshly compacted).
     4. Claude: P7 verification, then Task 5.
   - **Smoke-copy caveat:** files in `b03smoke/` are CRLF. Python edits there must keep newlines (read and write bytes); `faults.py` matches either newline style.
 - **Lean (B02): merged** (`e48a0e3`, from `b02-lean`).
