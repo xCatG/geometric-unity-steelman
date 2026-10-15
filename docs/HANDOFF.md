@@ -144,7 +144,13 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
       - J² = +1 (7,7) / −1 (9,5);
       - χ = 0.
     - **Codex two-subagent plan review dispatched:** `.agent-handoff/b03-plan-review/`. Claude expects one finding: `rs_character` uses the Q″ formula, not the `projector_Q` matrix.
-  - **Next:** fold in the review, then ask the user to approve the plan, then dispatch Tasks 1–4.
+  - **Plan review:** Codex said *revise*, with findings 1–4 (`.agent-handoff/b03-plan-review/`). **Plan rev 1 applies all four:**
+    1. The character gate reads the production Q, through a shared `verify_split`; wrong-projector and zero-Q controls added.
+    2. A P4 exactness layer in reps.
+    3. Expected values come from LiE compared directly with the draft rows; the ansatz ledger is corrected (rev 1.2, `a70337e`).
+    4. Imposter records, J partners and SU(5) × U(1)_X labels.
+  - Smoke test: 297 pass; 13/13 seeded faults red; a fresh rebuild from the plan text plus a fresh LiE run matches the fixture hash `576888f2…`.
+  - **Next:** ask the user to approve rev 1, then dispatch Tasks 1–4 to Codex. Claude does Task 5 (README).
 - **Lean (B02): merged** (`e48a0e3`, from `b02-lean`).
   - Grok's review: *accept*, with two minor findings (`otherStar` is not in the bridge; `native_decide` theorems are outside the kernel).
   - The B02 README has a "Formal check" section (`f8cf6b5`). The headline holds for all n with pair symmetry only.
