@@ -82,16 +82,18 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - even-q is sampled only.
 
   Claude also ran the full n = 4 identity check at (1,3) in scratch: it passes; it is not in `result.json`.
-- **Task 6 in flight.**
-  - Steps 1–2 are done: `experiments/B02/README.md` (`a70c6d4`).
-  - Its verdict lines:
-    - literal CCC is `obstructed-within-literal`, and this is convention-stable;
-    - reconstructed CAA (γ = 1) and CAC (chiral, null) are `holds-Einstein`;
-    - H0 is confirmed with four qualifiers;
-    - (9.3) as a whole is not obstructed.
-  - Findings F1–F6 (F5: Weyl is not annihilated after odd dressing, sampled).
-  - **Step 3** is dispatched to Codex: `.agent-handoff/b02-verdict/` (independent re-derivation, README audit, register B02 entry). Watch `status`.
-  - **Step 4 remains (Claude):** resolve disagreements, the methods.md retro, then HANDOFF.
+- **Task 6 done, except for the Lean unification.**
+  - README `a70c6d4`, revised `88c99b2`, `723593b` and `fc7d5e6`.
+  - Codex re-derived the classification independently and confirmed it (`.agent-handoff/b02-verdict/result.md`, 70 exact checks).
+  - Codex's README audit R1–R4 is applied:
+    - the headline is "stable under the conventions varied, with ξ pinned";
+    - T = 0 is unidentifiable, not r_T = 0;
+    - the Bianchi kill covers both grade 3 and grade n−3;
+    - the norm filters admissibility rather than moving κ.
+  - New fact: the σ unit fails 5a at n = 4.
+  - Register B02 entry: `109eab5` (Codex).
+  - Lean FINDINGs folded in: `482b73d` (pq is even, not the total degree) and `88c99b2` (κ needs n ≥ 3).
+  - Retro: `fc7d5e6`.
 - **Lean side task (the user's request, 2026-10-15).**
   - The user started a second GPT-6-Astra in **pane 0:5** to formalize all of `proofs.md` in Lean 4 + Mathlib.
   - It works in the worktree `C:\work\src\GU-b02-lean`, branch `b02-lean`, created from 36add8f. Brief and status are in `.agent-handoff/b02-lean/`. `progress.md` gets `FINDING:` lines.
