@@ -150,7 +150,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - The B02 README has a "Formal check" section (`f8cf6b5`). The headline holds for all n with pair symmetry only.
   - **Pending:**
     - Codex updates the register's "No Lean proof … claimed" line, in its next register task (the B03 Task 5 brief).
-    - The worktree `C:\work\src\GU-b02-lean` (6.8 GB of Mathlib build cache) is kept; ask the user before removing it.
+    - **Keep the worktree** `C:\work\src\GU-b02-lean` (6.8 GB of Mathlib build cache). The user wants Lean validation in later steps too. To reuse it, check out a fresh branch from current master there (`lean/` is merged) before briefing a Lean worker.
 - **Agents:** Codex is in pane 0:3. A second GPT-6-Astra (the Lean worker) is in pane 0:5. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
 
 **Next**
