@@ -99,6 +99,13 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - It works in the worktree `C:\work\src\GU-b02-lean`, branch `b02-lean`, created from 36add8f. Brief and status are in `.agent-handoff/b02-lean/`. `progress.md` gets `FINDING:` lines.
   - Extra dependencies (elan, Mathlib) are approved by the user.
   - **Unify at the end of Task 6:** review its `result.md`, covering the claim-to-theorem fidelity table, `#print axioms` and the Python bridge cross-check. Fold any FINDING into proofs.md and the README, merge `b02-lean`, then update the register's "no Lean proof claimed" line.
+- **B03 (P3) started 2026-10-15 (the user's request, while the Lean worker runs).**
+  - Claude: transcription rev 0 at `experiments/B03/transcription.md` (`8c83fc5`). It covers pp. 50–53 and 61–62, with 7 `[GU-recon]` branches and properties B1–B6. Key open items:
+    - the chirality dictionary (11.6) vs (12.20);
+    - the location of the "imposter" generation: ℱ ⊂ 832 in (12.22), vs the p. 53 names on rows of a 144;
+    - the U(1) embedding (n = 6Y fits all 25 rows of the p. 53 table).
+  - Codex: `.agent-handoff/b03-oracle/`. It installs LiE in WSL (or a fallback), runs the positive controls (Spin(10) 16 → SU(5)) and the D7 ⊃ D2 × D5 tables for S±, RS± and V⊗S±, gives an independent second reading of the pages, and proposes a `reps.py` interface. It must not commit.
+  - Next: compare the second reading with the transcription (rev 1), write the ansatz (pre-registered), run the plan's two-subagent Codex review, then ask the user to approve.
 - **Agents:** Codex is in pane 0:3. A second GPT-6-Astra (the Lean worker) is in pane 0:5. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
 
 **Next**
