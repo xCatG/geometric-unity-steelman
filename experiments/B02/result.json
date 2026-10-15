@@ -1,0 +1,156 @@
+{
+  "scope": {
+    "response": "identity (spanning set of algebraic curvature, all real Phi by multilinearity)",
+    "open_data": "sampled, no expectation"
+  },
+  "formula": "*shiab(xi) == -[m0=C] E_T(Ric) + S/2 ([m1m2=AA] gamma E_T(g) + [m1m2=AC] delta E_T'(g))",
+  "spanning_rank": {
+    "4": {
+      "rank_mod_p": 20,
+      "dim": 20
+    },
+    "14": {
+      "rank_mod_p": 3185,
+      "dim": 3185
+    }
+  },
+  "response": [
+    {
+      "signature": [
+        3,
+        1
+      ],
+      "inputs": 55,
+      "cases": 2640,
+      "nonzero_outputs": 912
+    },
+    {
+      "signature": [
+        7,
+        7
+      ],
+      "inputs": 5565,
+      "cases": 267120,
+      "nonzero_outputs": 57512
+    },
+    {
+      "signature": [
+        9,
+        5
+      ],
+      "inputs": 5565,
+      "cases": 267120,
+      "nonzero_outputs": 57512
+    }
+  ],
+  "open_data_5prime": {
+    "3,1": [
+      {
+        "eps": "Cayley(G_0/2)",
+        "modes": "CCC",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 4
+      },
+      {
+        "eps": "Cayley(G_0/2)",
+        "modes": "CAA",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 4
+      },
+      {
+        "eps": "Cayley(i G_0 G_1 G_2/2)",
+        "modes": "CCC",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 2
+      },
+      {
+        "eps": "Cayley(i G_0 G_1 G_2/2)",
+        "modes": "CAA",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 2
+      }
+    ],
+    "7,7": [
+      {
+        "eps": "Cayley(G_0/2)",
+        "modes": "CCC",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 4
+      },
+      {
+        "eps": "Cayley(G_0/2)",
+        "modes": "CAA",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 4
+      },
+      {
+        "eps": "Cayley(i G_0 G_1 G_2/2)",
+        "modes": "CCC",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 2
+      },
+      {
+        "eps": "Cayley(i G_0 G_1 G_2/2)",
+        "modes": "CAA",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 2
+      }
+    ],
+    "9,5": [
+      {
+        "eps": "Cayley(G_0/2)",
+        "modes": "CCC",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 4
+      },
+      {
+        "eps": "Cayley(G_0/2)",
+        "modes": "CAA",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 4
+      },
+      {
+        "eps": "Cayley(i G_0 G_1 G_2/2)",
+        "modes": "CCC",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 2
+      },
+      {
+        "eps": "Cayley(i G_0 G_1 G_2/2)",
+        "modes": "CAA",
+        "phi": "F,B",
+        "undressed_zero": true,
+        "dressed_zero": false,
+        "dressed_terms": 2
+      }
+    ]
+  },
+  "versions": {
+    "python": "3.14.0",
+    "numpy": "2.5.4"
+  },
+  "source_commit": "d66cd8f7c3ac4f2f5b0aaa7eb0f5c9dc831cac6b",
+  "command": "uv run python -m experiments.B02.run"
+}
