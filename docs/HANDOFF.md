@@ -131,7 +131,21 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
       - test 7 is data only.
     - Outcomes the review already computed are declared as known.
   - **Claude's scratch `reps.py`** (`scratchpad/b03/reps.py`, exact Freudenthal for A_n/D_n) reproduces every LiE output in 0.6 s.
-  - **Next:** write the B03 plan (writing-plans) and smoke-test it, then a Codex two-subagent plan review, then the user's approval.
+  - **Ansatz rev 1.1** (`fcc408f`): JW-pair axis lists and the Euclidean-frame adapter. **`source_tables.py`** (Claude's draft data): `65b9d2c`.
+  - **Plan rev 0:** `docs/superpowers/plans/2026-10-15-b03-branching.md` (`06a5f3b`, 1627 lines).
+    - Smoke test, in scratch `b03smoke/`:
+      - 286 tests pass;
+      - all 11 seeded faults are red (`faults.py`);
+      - a fresh rebuild from the plan text is green;
+      - the LiE fixture now also includes the A1 controls and the SM restriction under E.
+    - Smoke outcomes (not evidence):
+      - every draft identity holds under the dictionary;
+      - p. 52 = 16 / 16̄, and p. 53 = H̄ = 144₊ exactly;
+      - J² = +1 (7,7) / −1 (9,5);
+      - χ = 0.
+    - **Codex two-subagent plan review dispatched:** `.agent-handoff/b03-plan-review/`. Claude expects one finding: `rs_character` uses the Q″ formula, not the `projector_Q` matrix.
+  - **Next:** fold in the review, then ask the user to approve the plan, then dispatch Tasks 1–4.
+- **Lean (B02):** the worker is DONE (`.agent-handoff/b02-lean/result.md`, branch `b02-lean`, 9 commits). Coverage is partial: concrete headline, Hodge, degree and interpolation are proved; Spin, covariance and the curvature extension are hypothesis-level. Grok's review is in flight (`.agent-handoff/b02-lean-review-grok/`). After it: merge decision, README/register notes.
 - **Agents:** Codex is in pane 0:3. A second GPT-6-Astra (the Lean worker) is in pane 0:5. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
 
 **Next**
