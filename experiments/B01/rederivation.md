@@ -62,7 +62,7 @@ Euclidean coefficient length 2.
 
 Replace g by -g while fixing lambda and both direct-sum signs. Each term of
 F contains two inverse-metric factors, and the trace product also contains
-two. Therefore B_lambda[-g](H,K) = B_lambda[g](H,K) identically. The same
+two. Therefore `B_lambda[-g](H,K) = B_lambda[g](H,K)` identically. The same
 argument holds for general invertible g using g inverse. The traceless
 kernel is unchanged; its defining trace functional only changes sign.
 The tangent map H -> -H for the mirror on metric space also contributes
