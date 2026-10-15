@@ -1,0 +1,223 @@
+'B02.Concrete.bracketContribution_kernel_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.weighted_sum_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_bracket_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_bracket_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_bracket_scale_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_bracket_scale_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.witness_pair_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.witness_first_antisymmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.witness_second_antisymmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.witness_bianchi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.pinned_witness_inner_B' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.dropped_witness_inner_B' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.dropped_witness_inner_BPrime' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.Concrete.linearEval_nil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.linearEval_cons' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.linearEval_addTerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.linearEval_clean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.linearEval_star' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.bracketContribution_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_bracket_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.mem_pairs' depends on axioms: [propext, Quot.sound]
+'B02.Concrete.nodup_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.pairSet_injective' depends on axioms: [propext, Quot.sound]
+'B02.Concrete.rational_eq_algebraMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.integer_eq_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.commKernel_antisymm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.pair_disjoint_compl_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.diagonal_star_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_inner_B_expanded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_inner_B_contracted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.headline_inner_B_concrete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.integer_negation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_otherStar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.homogeneous_coefficient_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.otherStar_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.otherStar_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_otherStar_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.homogeneous_otherStar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_star_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_otherStar_output' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.otherShiab_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.otherShiab_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_bracket_scaled_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.otherShiab_reparametrization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.otherShiab_readout_reparametrization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.denote_plus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.denote_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.denote_star' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.denote_bracket' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.denote_shiab' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.concrete_parameter_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.concrete_six_probe_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.concrete_input_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.reorderSign_compl_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.reorderSign_compl_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.metric_union_compl_inter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.twisted_coefficient_normal_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.twisted_coefficient_antisymm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.twisted_output_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.twistedCommKernel_antisymm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.bladeMul_volume_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.linearEval_rightMulVolume' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.diagonal_star_kernel_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_inner_BPrime_expanded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_inner_BPrime_contracted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.headline_inner_BPrime_concrete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.addTerm_form_property' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.fold_addTerm_form_property' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.clean_form_property' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.homogeneous_plus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.homogeneous_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.homogeneous_star' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.homogeneous_bracket' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.shiab_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.DimensionTwo.sectional_component' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.DimensionTwo.curvature_is_algebraic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.DimensionTwo.ricci_is_metric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.DimensionTwo.scalar_is_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.DimensionTwo.embedded_metric' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.DimensionTwo.description_kappa_zero' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.DimensionTwo.description_kappa_one' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.DimensionTwo.response_nonzero' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.DimensionTwo.nonunique_parameter_descriptions' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.rank_sandwich' depends on axioms: [propext, Quot.sound]
+'B02.span_eq_top_of_rank_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.curvature_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.curvature_dimension_numerals' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.rational_span_extends_to_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.real_scalar_extension_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.wedgeStarWeight_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.symmetric_commutator_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.headline_inner_C' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.central_twisted_commutator' depends on axioms: [propext]
+'B02.even_dimension_star_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.oppositeStarSign_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.oppositeStarSign_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.oppositeStarSign_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.oppositeStarSign_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.oppositeStarSign_output' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Samples.split_CCC' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.Samples.split_CAA' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.Samples.euclidean_CCC' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.Samples.euclidean_CAA' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.Samples.dimension_two_CCC' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'B02.Concrete.coefficient_nil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_cons' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_addTerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_clean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_plus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_star' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_bracket_raw' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.coefficient_bracket' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.reorderSign_sq' depends on axioms: [propext, Quot.sound]
+'B02.pinned_hodge_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.pinned_pair_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.wedge_total_degree_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.bracket_degree_products_even' depends on axioms: [propext, Quot.sound]
+'B02.dimension_two_kappa_nonunique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.commutation_lie_closed' depends on axioms: [propext]
+'B02.commutation_exponential' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.invariant_lie_closed' depends on axioms: [propext, Quot.sound]
+'B02.Structural.OperatorData.response_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.OperatorData.response_input_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.OperatorData.response_input_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.OperatorData.response_first_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.OperatorData.response_first_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.OperatorData.response_second_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.OperatorData.response_parameter_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.OperatorData.hodge_reparametrization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.OperatorData.response_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.OperatorData.response_covariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.OperatorData.response_derivation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.linear_eq_of_spanning' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.commutator_skew' depends on axioms: [propext, Quot.sound]
+'B02.Structural.imaginary_anticommutator_skew' depends on axioms: [propext, Quot.sound]
+'B02.Structural.inner_derivation_product' depends on axioms: [propext, Quot.sound]
+'B02.Structural.unitConjugate_mul' depends on axioms: [propext]
+'B02.Structural.unitConjugate_add' depends on axioms: [propext]
+'B02.Structural.unitConjugate_sub' depends on axioms: [propext]
+'B02.Structural.unitConjugate_composition' depends on axioms: [propext]
+'B02.Structural.unitConjugate_commutator' depends on axioms: [propext]
+'B02.Structural.unitConjugate_central' depends on axioms: [propext]
+'B02.Structural.unitConjugate_imaginary_anticommutator' depends on axioms: [propext]
+'B02.Structural.AssociativeDerivation.commutator_rule' depends on axioms: [propext, Quot.sound]
+'B02.Structural.AssociativeDerivation.imaginary_anticommutator_rule' depends on axioms: [propext, Quot.sound]
+'B02.Structural.AssociativeDerivation.scalar_killed' depends on axioms: [propext, Quot.sound]
+'B02.Structural.AssociativeDerivation.inner_kills_central' depends on axioms: [propext, Quot.sound]
+'B02.Structural.equivariant_of_exponential_generators' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.tensorConjugate_tmul' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorFormMap_tmul' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorConjugate_formMap' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorConjugate_composition' depends on axioms: [propext, Quot.sound]
+'B02.Structural.componentC_covariance' depends on axioms: [propext, Quot.sound]
+'B02.Structural.componentA_covariance' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorBracketC_tmul' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorBracketA_tmul' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorBracketC_covariance' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorBracketA_covariance' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorBracket_covariance' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorBracketC_derivation' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorBracketA_derivation' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorBracket_derivation' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorDerivation_formMap' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensor_response_covariance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.tensor_dressed_covariance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.tensor_response_derivation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Structural.tensorDerivationMap_tmul' depends on axioms: [propext, Quot.sound]
+'B02.Structural.tensorDerivation_product' depends on axioms: [propext, Quot.sound]
+'B02.Structural.componentC_derivation' depends on axioms: [propext, Quot.sound]
+'B02.Structural.componentA_derivation' depends on axioms: [propext, Quot.sound]
+'B02.expandedTwistedInnerC_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.headline_inner_C_twisted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.reorderSign_volume_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.reorderSign_volume_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.bladeMul_volume_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.bladeMul_volume_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'B02.Concrete.bladeMul_volume_bivector' depends on axioms: [propext, Classical.choice, Quot.sound]
