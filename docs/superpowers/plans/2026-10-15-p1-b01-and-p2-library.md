@@ -108,6 +108,11 @@ def test_rational_entries():
     assert inertia(sp.Matrix([[sp.Rational(1, 3), 0], [0, sp.Rational(-2, 7)]])) == (1, 1, 0)
 
 
+def test_accepts_unexpanded_gaussian_expressions():
+    z = (1 + sp.I) ** 2  # = 2i
+    assert inertia(sp.Matrix([[0, z], [sp.conjugate(z), 0]])) == (1, 1, 0)
+
+
 def test_rejects_float():
     with pytest.raises(ValueError):
         inertia(sp.Matrix([[0.5]]))
@@ -155,7 +160,7 @@ def _check_exact(M: sp.Matrix) -> None:
 
 def inertia(M) -> tuple[int, int, int]:
     """Return (n_pos, n_neg, n_zero) of a Hermitian matrix with entries in QQ(i)."""
-    M = sp.Matrix(M)
+    M = sp.Matrix(M).applyfunc(sp.expand)  # unexpanded QQ(i) expressions like (1+I)**2 confuse sp.im
     if M.rows != M.cols:
         raise ValueError("matrix must be square")
     _check_exact(M)
@@ -192,7 +197,7 @@ def inertia(M) -> tuple[int, int, int]:
 - [ ] **Step 5: Run the tests to verify they pass**
 
 Run: `uv run pytest tests/test_inertia.py -v`
-Expected: 11 passed.
+Expected: 12 passed.
 
 - [ ] **Step 6: Commit**
 
