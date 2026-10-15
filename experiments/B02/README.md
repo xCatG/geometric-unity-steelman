@@ -9,7 +9,7 @@ Inputs:
 - `result.json` (exact identity check; `source_commit` d66cd8f)
 - plan `docs/superpowers/plans/2026-10-15-b02-direct-check.md` (revision 3)
 
-Independent re-derivation of the classification: Codex (Task 6, step 3). A Lean 4 formalization of `proofs.md` is in progress on branch `b02-lean`. Neither is claimed here until it is merged.
+Independent re-derivation of the classification: Codex (Task 6, step 3). It confirmed every Einstein family, H0 and the N-b, star, σ and norm statements, with exact checks in all three signatures. Its four wording corrections are applied here. A Lean 4 formalization of `proofs.md` is in progress on branch `b02-lean`. Neither is claimed here until it is merged.
 
 ## The closed form everything below follows from
 
@@ -29,10 +29,12 @@ Response coefficients follow the ansatz: the output is c·E_T(Ric − κSg). κ 
 
 **1. Literal reading CCC: `obstructed-within-literal`, scope `identity`.**
 
-The "Ricci-scalar-like" −½ term of (9.3) is identically zero on Levi-Civita curvature. So ∗Shiab(ξ) = −E_T(Ric): κ = 0, for every Φ¹ ≠ 0 and every Φ². This is the consequence of the literal reading that does not depend on any convention. It holds:
-- at any scale of ξ, Φ¹ or Φ²;
-- under either standard Hodge star;
+The "Ricci-scalar-like" −½ term of (9.3) is identically zero on Levi-Civita curvature. With the pinned star, ∗Shiab(ξ) = −E_T(Ric), so κ = 0 for every Φ¹ ≠ 0, every Φ² and every nonzero scale of ξ. This is the consequence of the literal reading that survives every convention we vary, with ξ pinned. The vanishing of the second term holds:
+- at any scale of ξ, Φ¹ or Φ² (at zero scale the operator is zero and κ is undefined);
+- under either standard Hodge star (∗′ flips the sign of the first term, c = +1, and leaves κ = 0);
 - with either generator normalization (Γ_aΓ_b or ½Γ_aΓ_b).
+
+It does not survive a change of the ξ index convention (see the convention map).
 
 **Mechanism** (`proofs.md`, § "Literal CCC has no scalar term"): with inner bracket C, the inner term pairs R_abcd (symmetric under (ab) ↔ (cd)) with [Γ_aΓ_b, Γ_cΓ_d] (antisymmetric). The weight that the pinned ξ and the Hodge star put on each term is η_aη_bη_cη_d up to one global sign, which is symmetric. So the sum vanishes. CCA behaves the same way.
 
@@ -52,7 +54,7 @@ Every listed branch passes tests 1, 2, 4 and 5b with 3(a) proved:
 | CAA, N-a | Φ¹ = αF + βF′ with T ≠ 0; any δ | γ/2 | **γ = 1** | Under the trace norm, admissible iff α² ≠ β² and δ ≠ ±1 |
 | CAC, N-a, chiral | Φ¹ = α(F ± F′), i.e. β = sα with s = ±1; any γ | sδ/2 | **sδ = 1** | Φ¹ is null under the trace norm. Excluded if null directions are excluded. Not a headline. |
 
-- **Undefined or zero branches.** All other branches either have κ = 0 (CCC, CCA, and CAC with δ = 0) or κ undefined. κ is undefined for m₀ = A and for T = 0, because there r_T = 0 and 5a fails; undefined is not the same as 0.
+- **Undefined or zero branches.** All other branches either have κ = 0 (CCC, CCA, and CAC with δ = 0) or κ undefined. κ is undefined for m₀ = A with T ≠ 0, because there r_T = 0 and 5a fails. It is also undefined for T = 0, where the reference embedding E_T is zero, so the ratios are 0/0; the zero operator fails the nonzero gate. Undefined is not the same as 0. CAC with β ≠ ±α and δ ≠ 0 has a nonzero traceless response but no scalar ratio in E_T, so κ is undefined there too.
 - **Branches where 5a fails.** CAA at γ = 2/n and CAC at sδ = 2/n have no scalar response, so 5a fails there too.
 - **N-b.** N-b is defined only when the inner bracket is A, δ = 0 and γ ≠ 0. It gives CAA κ = 1 and CAC κ = 0, so **N-b has no Einstein branch**.
 
@@ -77,7 +79,7 @@ Some reconstructed branch passes 5b, so (9.3) is not a counterexample family. It
 | Bracket in each of the three slots | All 8 assignments; literal = CCC. Square brackets mean commutator per (12.26). | Verdict lines 1 and 2 |
 | Φ¹, Φ² ("a basis element per degree"; the invariant spaces are 2-dimensional) | Φ¹ = αF + βF′, Φ² = γB + δB′, all real | κ, through γ, δ and s |
 | Hodge star (convention unstated) | Pinned: α∧∗β = ⟨α,β⟩vol | Under ∗′ = (−1)^k∗ (even n), Shiab′(Φ¹, Φ²) = Shiab(Φ¹, −Φ²) exactly. So γ, δ → −γ, −δ: CAA Einstein iff γ = −1, CAC iff sδ = −1. The final read-off ∗ flips c, not κ (`proofs.md`). CCC unaffected. |
-| Unit 2-form in Φ² ("normed", no norm) | N-a: Γ_aΓ_b, unit coefficients | With the spin generator σ_ab = ½Γ_aΓ_b, γ = ½ gives κ = ¼. This still passes 5a at n = 14, since ½ ≠ 2/14. CCC unaffected. |
+| Unit 2-form in Φ² ("normed", no norm) | N-a: Γ_aΓ_b, unit coefficients | With the spin generator σ_ab = ½Γ_aΓ_b, γ = ½ gives κ = ¼. This passes 5a at n = 14, since ½ ≠ 2/14, but **fails 5a at n = 4**, where ½ = 2/n and the scalar response vanishes (Codex's audit). CCC unaffected. |
 | Normalization to Einstein's S | N-b: inner contraction exactly iS·I | CAA κ = 1; no Einstein branch |
 | Norm used to exclude null Φ | Reported both ways | Trace norm N(X) = Σ_I η_I Tr(X_I X_I)/dim S. This is complex-bilinear, Ad-invariant and indefinite. It gives N(αF + βF′) = n(α² − β²) and N(γB + δB′) = C(n,2)(δ² − γ²). F ± F′ and B ± B′ are null for one shared reason: the dual copies carry the opposite-sign norm. A positive-definite norm (Re Tr X†Y) has no null directions but is not Ad-invariant for U(64,64). |
 | ξ index convention | ξ(R) = ½ Σ R_abcd η_cη_d e^{ab} ⊗ Γ_cΓ_d | Dropping η_cη_d breaks the CCC cancellation (nonzero in (3,1)). This convention is pinned, not optional. |
@@ -87,19 +89,19 @@ Some reconstructed branch passes 5b, so (9.3) is not a counterexample family. It
 ## Findings
 
 **F1. The literal operator has no scalar curvature term** `[GU-orig]` operator, `identity`.
-- With the draft's own bracket notation (12.26), the term it labels "Ricci Scalar Like" vanishes on every Levi-Civita curvature, under every convention we could vary.
+- With the draft's own bracket notation (12.26), the term it labels "Ricci Scalar Like" vanishes on every Levi-Civita curvature, under every convention we vary (scale, Hodge star, generator unit), with the ξ index convention pinned.
 - The literal (9.3) therefore contracts curvature to −E_T(Ric), which is Ricci, not Einstein.
 - The −½ coefficient the text draws attention to multiplies zero.
-- This is the result of B02 that is stable under every convention.
+- This is the result of B02 that is stable under the conventions we vary. The signed equation −E_T(Ric) is for the pinned star (∗′ gives +E_T(Ric)), and κ = 0 needs nonzero scale.
 
 **F2. Einstein requires a reconstructed bracket and a chosen unit and sign for Φ²** `[GU-recon]`, `identity`.
 - The reconstructed CAA (inner and outer i·anticommutators) is Einstein-like exactly at γ = 1 under N-a and the pinned star. It is at γ = −1 under ∗′.
-- κ = ¼ under the spin-generator unit, and κ = 1 under N-b.
+- κ = ¼ under the spin-generator unit (passes 5a at n = 14, fails it at n = 4), and κ = 1 under N-b.
 - The draft fixes none of these, so "the operator is Einstein-like" is a statement about a choice, not about (9.3) as printed.
 - The ansatz pre-registered H0 as a sampled observation (κ = ½ for CAA, F, B, N-a). It is now `identity` scope, with the qualifiers stated.
 
 **F3. The Ricci term needs the commutator** `identity`.
-- With m₀ = A, the Ricci term vanishes on algebraic curvature: its Clifford grade-3 coefficient is killed by the first Bianchi identity.
+- With m₀ = A, the Ricci term vanishes on algebraic curvature. The first Bianchi identity kills its grade-3 coefficient (from F) and the volume-dual copy, grade n − 3 (from F′).
 - r_T = 0, so 5a fails and κ is undefined.
 - This uses the Bianchi identity, so it does not carry over to general gauge curvature.
 
@@ -121,7 +123,7 @@ Some reconstructed branch passes 5b, so (9.3) is not a counterexample family. It
 - **Test 1 (degree), test 2 (real form), test 3(a) (dressed covariance), test 4(iii) (Spin₀ equivariance):** proved in `proofs.md`.
 - **Tests 2(b) and 4(i)/(ii):** `identity` checks in `tests/test_shiab.py`.
 - **Test 3(b), Cayley-dressed covariance:** exact samples in `tests/test_dressing.py`. They pass in (3,1), (7,7) and (9,5), with sparse Cayley matching the library Cayley.
-- **Seeded faults** (P2): eleven, all red, including −½ → +½ in `assemble` turning the standalone verifier red at `(3,1,0,4,F,B,CAA)`. Claude independently seeded −½ → −1 and got the same verifier failure. See `.agent-handoff/b02-impl/result.md`; it is an untracked working note, cited for provenance only.
+- **Seeded faults** (P2): eleven, all red, including −½ → +½ in `assemble` turning the standalone verifier red at `(3,1,0,4,F,B,CAA)`. Claude independently seeded −½ → −1 and got the same verifier failure. See `.agent-handoff/b02-impl/result.md` and `claude-seeded-fault.md`; these are untracked working notes, cited for provenance only.
 - **Test suite:** 222 passed.
 
 ## What this does not establish
@@ -131,4 +133,4 @@ Some reconstructed branch passes 5b, so (9.3) is not a counterexample family. It
 - **Pin or O equivariance.** Equivariance is proved for Spin₀ only.
 - **Even q.** Even-q signatures are sampled, not proved.
 - **Dressed behavior beyond the 5′ samples.**
-- **A physical choice of norm, star convention or unit for Φ.** The draft makes none, and the Einstein point moves with each.
+- **A physical choice of star convention, unit or norm for Φ.** The draft makes none. The star convention and the unit move the Einstein locus. The norm, used as a null filter, changes which Φ are admissible, not the κ of a fixed Φ. A norm also used to fix a unit would be a separate normalization choice.
