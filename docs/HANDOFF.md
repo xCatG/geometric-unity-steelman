@@ -1,6 +1,6 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-15, by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
+Last updated: 2026-10-15 (B03 plan rev 1.1, Grok reviewing), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
 
 ## What this project is
 
@@ -150,7 +150,24 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
     3. Expected values come from LiE compared directly with the draft rows; the ansatz ledger is corrected (rev 1.2, `a70337e`).
     4. Imposter records, J partners and SU(5) × U(1)_X labels.
   - Smoke test: 297 pass; 13/13 seeded faults red; a fresh rebuild from the plan text plus a fresh LiE run matches the fixture hash `576888f2…`.
-  - **Next:** ask the user to approve rev 1, then dispatch Tasks 1–4 to Codex. Claude does Task 5 (README).
+  - **Plan rev 1.1** (`7e4ea9c`, 2008 lines) folds in **argon's review** (no blockers):
+    - the parser rejects an unfinished polynomial;
+    - `faults.py` prints the failing test names (F12 includes `test_verify_split_gate`);
+    - a Layer-1 scope note on `rs_character`: c-conjugation is a GL(14, ℂ) similarity, real-form data are only J and `chirality_vs_parity`, and only the Cartan-pair blocks are read, so call it through `verify_split`.
+  - **Task 5 README must:**
+    - state that J² = +1 (7,7) admits Majorana–Weyl Jψ = ψ, so (R;16̄) is the conjugate of (L;16), while J² = −1 (9,5) has no nonzero Jψ = ψ; the J pairing never removes a block by itself;
+    - include the Layer-1 scope note;
+    - give no location verdict on "imposter";
+    - say that generations and decoupling need dynamics.
+  - **In flight: Grok (pi, 0:4) is reviewing plan rev 1.1**, at `.agent-handoff/b03-plan-review-grok/`. It writes its findings before reading the others, then marks them NEW/DUPLICATE. Watch `status`.
+  - **Next:**
+    1. On Grok DONE, reproduce its decisive findings and fold them in (rev 1.2). For every code change:
+       - re-smoke in `scratchpad/b03smoke/`: 297 tests, `faults.py` with all 13 RED, fresh rebuild via `scratchpad/extract_b03.py`;
+       - rebuild with `python scratchpad/build_b03_plan.py <scratchpad> docs/superpowers/plans/2026-10-15-b03-branching.md` (skeleton `scratchpad/b03-plan-skeleton.md`).
+    2. Ask the user to approve; they have not yet approved B03 dispatch.
+    3. Dispatch Tasks 1–4 to Codex (0:3, freshly compacted).
+    4. Claude: P7 verification, then Task 5.
+  - **Smoke-copy caveat:** files in `b03smoke/` are CRLF. Python edits there must keep newlines (read and write bytes); `faults.py` matches either newline style.
 - **Lean (B02): merged** (`e48a0e3`, from `b02-lean`).
   - Grok's review: *accept*, with two minor findings (`otherStar` is not in the bridge; `native_decide` theorems are outside the kernel).
   - The B02 README has a "Formal check" section (`f8cf6b5`). The headline holds for all n with pair symmetry only.
@@ -164,7 +181,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
 2. ~~Approval~~ (rev 3 approved). Codex: Tasks 1–4 (code and result.json committed; final suite and result.md in flight). ~~Task 5~~ (done). Then verify, report to the user, and do Task 6.
 3. (Superseded; kept for the record.) Write the follow-up plan `docs/superpowers/plans/<date>-b02-direct-check.md` (writing-plans skill), from the reviewed transcription. Include the symbolic covariance derivation (Claude), the branch enumeration (brackets 2³ × Φ choices × signatures), tests 1–5 and 5′, and the H0 line item. Smoke-test the plan's code, and list the ambient impostors (P2b).
 4. Get the user's approval of that plan, then dispatch it to Codex.
-5. Later: P3 (B03 branching), P4 repairs, the write-up.
+5. **Now: P3 (B03)**; see the B03 bullets above for the exact next steps. Later: P4 repairs and the write-up.
 
 ## Facts that are easy to get wrong
 
