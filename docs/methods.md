@@ -121,3 +121,17 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
   - *Worked:* a reviewer from a third model family found five issues that Codex and argon had both missed. The decisive one: an unstated Hodge convention moves the Einstein point. Grok wrote its findings before reading Codex's review, then marked each one NEW or DUPLICATE, which kept the comparison honest. Claude reproduced every finding with its own code. Doing so sharpened finding 1: the other star is *exactly* the pinned operator with Φ² → −Φ², a reparametrization rather than a new branch. It also turned up a related fact: the q-parity of the signature flips κ.
   - *Didn't:* (1) The transcription had flagged the star as "record a branch if it matters", but the plan never tested whether it matters. (2) The plan told the README author to confirm κ "against `result.json`", which contains no κ; that check could never be carried out. (3) The runner's only hand control skipped the term under test.
   - *Changes:* for every convention a transcription leaves open, the plan either tests it or proves it irrelevant (an extension of P9/P11). Every "confirm against X" instruction names a field that X actually contains. Hand controls must exercise each term of the formula under test.
+- **2026-10-15 · B02 execution (Tasks 1–6) · Codex (worker, re-derivation), Claude (proofs, README), GPT-6-Astra (Lean side task).**
+  - *Worked:*
+    - The plan-equals-tested-code discipline paid off. Codex's 8 code files were byte-identical (modulo CRLF) to Claude's rebuild, there was no deviation, and verification took minutes.
+    - Codex wrote its classification **before** reading the README table. That separated two cases the README had blurred: "measured r_T = 0" versus "zero reference embedding", and "the norm moves κ" versus "the norm filters admissibility". Its cheap exact controls also found that the σ unit fails 5a at n = 4 (γ = ½ = 2/n), which the plan had stated only for n = 14.
+    - Formalizing in Lean found two real wording errors within its first milestone, before any proofs were written. proofs.md said "even total degree" where it should say "even product of degrees", and it gave κ for "all even n" when n ≥ 3 is needed for identifiability.
+  - *Didn't:*
+    - Claude's README overstated the headline as "independent of every convention". It is stable under the conventions varied, with ξ pinned; the signed equation depends on the star.
+    - Two Grok passes and Codex's review did not catch the "total degree" slip, because each reader checked the conclusion, not the stated reason.
+    - Claude's extra seeded-fault run was cited without saved output until the audit asked for it.
+  - *Changes:*
+    - Headline claims list the conventions they were tested under, never "every convention".
+    - When a rationale sentence carries a claim, review checks it like a claim.
+    - Every orchestrator-run check saves its command and output to a file before it is cited.
+    - Formalization is a cheap first-pass auditor of stated hypotheses. Starting it early, in parallel, works.

@@ -113,7 +113,7 @@ Some reconstructed branch passes 5b, so (9.3) is not a counterexample family. It
 **F5. Weyl annihilation holds undressed, but not after an odd dressing** `sampled`.
 - Undressed: Weyl curvature is annihilated in every branch. This is automatic for an equivariant map, and the closed form has no Weyl dependence.
 - Open data 5′ (`result.json`, `open_data_5prime`): for F, B under CCC and CAA, dressing by two odd Cayley elements gives Shiab_ε(W) ≠ 0 on the sampled Weyl input, in all three signatures. The vector dressing gives 4 terms and the triple-blade dressing 2.
-- The draft's "the Weyl curvature tensor is annihilated" therefore holds for ε in the stabilizer, not for a general gauge dressing.
+- The draft's "the Weyl curvature tensor is annihilated" therefore holds for the undressed operator, not for a general gauge dressing acting on the fixed geometric Weyl subspace. This does not contradict covariance (test 3(a)), which moves the input along with the dressing.
 - This is sampled open data with no expectation. It covers only F, B with CCC and CAA, and two odd dressings.
 
 **F6. Signature parity** `sampled`. At even q (2,2) and (4,0), the relative sign between the two terms flips, so CAA has κ = −½, while CCC stays at κ = 0. No project signature is affected.
