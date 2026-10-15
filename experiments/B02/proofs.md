@@ -7,7 +7,7 @@ These are the hand arguments that carry tests 1, 2(a), 3(a) and 4(iii), together
 Notation follows `experiments/B02/ansatz.md` (amendment 1) and `gu/shiab.py`:
 - An element of Λ(V\*) ⊗ Cl(V) is Σ e^f ⊗ X_f, with real form basis e^f and complex Clifford coefficients X_f.
 - For mode C, [x ∧ y] = Σ (e^f ∧ e^g) ⊗ (X_f Y_g − Y_g X_f) (GU 12.26). For mode A it is Σ (e^f ∧ e^g) ⊗ i(X_f Y_g + Y_g X_f) (GU 12.27).
-- Both brackets act componentwise and are ungraded in the form factor. Ungraded is harmless here: every form product in (9.3) has even total degree at n = 4 and n = 14 (Grok review, answer 2).
+- Both brackets act componentwise and are ungraded in the form factor. Ungraded is harmless here: the graded bracket differs by (−1)^{pq} for operand degrees p, q, and every bracket in (9.3) has pq even — 1·(n−2), 2·(n−2), 1·0 — for even n (transcription, branch 1). (Revision: an earlier wording said "even total degree", which is false; the totals are n−1, n, 1. Found by the Lean formalization.)
 - (9.3) with ε = 1 is
   Shiab(x) = [Φ¹ ∧ ∗x]_{m₀} − ½ ∗[Φ¹ ∧ ∗[Φ² ∧ ∗x]_{m₁}]_{m₂}.
 
