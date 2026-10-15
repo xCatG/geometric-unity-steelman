@@ -1,6 +1,6 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-15 (B03 Task 5: README committed; Codex doing reps.py P4 fix + re-derivation + audit + register), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
+Last updated: 2026-10-15 (**B03 complete**; next experiment awaits the user's choice), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
 
 ## What this project is
 
@@ -168,10 +168,9 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
     - **Claude P7:** all 9 committed code files equal the plan's blocks (newline-normalized); fixture SHA `576888f2…`; `result.json` regenerated from a clone at `895fc08` is identical; full suite at `2cf2c71` = 297 passed.
     - Results: p51 10/10 blocks hold, (12.20) both hold, full Dirac holds, p52 = 16 / 16̄, p53 = H̄ (23 terms); fibre 1920; J² = +1 (7,7), −1 (9,5); 8 imposter records, 6 J-partner pairs.
     - **Open (Codex P6, reproduced by Claude):** two P4 holes in the frozen `gu/reps.py`, neither touching the pinned run: `sm_weight_flipped` sums the raw argument (NumPy int64 overflow → spurious ValueError); `Simple.to_dynkin_root`/`ip` skip `weight()` coercion (overflow; float accepted). Fix = coerce via `weight(...)` at each public entry, add controls. User approved bundling it with Codex's Task 5.
-  - **Task 5 in flight.** Claude README: `d91fa21`, `de24f31`; signal file `.agent-handoff/b03-task5/readme-ready` exists. Codex brief `.agent-handoff/b03-task5/task.md`: Part A reps.py P4 fix (one commit; result.json must regenerate equal except source_commit; not recommitted), Part B `experiments/B03/rederivation.md` (fresh LiE input, own gammas, no gu.reps/gu.rarita/branching imports), Part C `readme-audit.md` + register (B03 entry, "No Lean proof" lines). Watcher on its status.
-  - **Then (Claude, Task 5 step 3):** verify Part A (suite, faults, result.json equality), resolve audit findings in the README (add the re-derivation line and the reps.py fix note), retro entry in `docs/methods.md`, HANDOFF.
-  - **Next:**
-    4. Claude: P7 verification, then Task 5.
+  - **Task 5 DONE.** Codex: `835d7c8` (reps.py P4 fix: every public numeric entry coerced; 310 tests; 13/13 faults RED; clean-clone result.json equal except source_commit), `9bfaf04` (`experiments/B03/rederivation.md`: fresh LiE + own Pauli gammas, 44/44 entries agree), `dda3bd5` (register: B03 entry, partial-Lean wording). Claude: README `d91fa21`/`de24f31`/`df64ed9` (audit's 3 wording fixes applied), retro `01c58ff`. Claude P7 log: `.agent-handoff/b03-task5/claude-p7.log` (runner at 835d7c8 equal except source_commit; suite 310 at dda3bd5).
+  - **B03 verdict (README):** all branching identities hold (full-module forms convention-free; chiral forms under the declared dictionary, 144+ = H̄); p.52 = 16/16̄, p.53 = H̄ under E; J² = +1 (7,7) / −1 (9,5); both imposter candidates (ℱ⊗16, 𝒵⊗H̄) contain one generation pattern per chirality, no location verdict; fibre 1920, χ = 0; generations/decoupling need dynamics.
+  - **Next:** ask the user which register item to take next (register priorities: B05 anomalies, B04 reality/unitarity, B07 action variation; B03's next check is now a specified mass/constraint mechanism on the full inventory).
   - **Smoke-copy caveat:** files in `b03smoke/` are CRLF. Python edits there must keep newlines (read and write bytes); `faults.py` matches either newline style.
 - **Lean (B02): merged** (`e48a0e3`, from `b02-lean`).
   - Grok's review: *accept*, with two minor findings (`otherStar` is not in the bridge; `native_decide` theorems are outside the kernel).
