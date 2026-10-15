@@ -1,6 +1,6 @@
 # GU gap register
 
-Research snapshot: 2026-10-14; B01/A01 updated 2026-10-15. This is a map of questions and repair candidates. B01 has an exact fibrewise reconstruction under stated conventions and a base-mirror finding. No Lean proof or physical validation is claimed.
+Research snapshot: 2026-10-14; B01/A01 and B02 updated 2026-10-15. B01 has an exact fibrewise reconstruction and a base-mirror finding. B02 has an exact algebraic-curvature response: the literal CCC reading is obstructed as an Einstein contraction within the pinned ansatz, while specified reconstructed readings pass. No Lean proof or physical validation is claimed.
 
 ## Priorities
 
@@ -9,7 +9,7 @@ Cost is the effort for the **next check**, not for resolving the whole research 
 | Priority | Entry | Question | Importance | Next-check cost | Immediate deliverable |
 |---|---|---|---|---|---|
 | 1 | B01 | Signature as a function of the vertical trace coefficient and chimeric metric signs | H | L | Carry the reconciled conventions and F1 into both signature branches |
-| 2 | B02 | Exact Shiab type, covariance, and real-form closure | H | M | Typed transcription and a finite algebraic test specification |
+| 2 | B02 | Shiab response beyond the checked algebraic-curvature ansatz | H | M | Carry the verified convention map into general gauge curvature and dynamics |
 | 3 | B03 | Spinor/vector-spinor branching and the claimed third generation | H | M | Branching table with chirality, reality, and unwanted sectors |
 | 4 | B05 | Actual gauged symmetry and anomalies in 14D and 4D | H | M | Fermion/generator inventory before computing an anomaly |
 | 5 | B04 | Reality conditions, positive physical states, and kinetic signs | H | M | Quadratic-action diagnostic for one specified background |
@@ -33,7 +33,7 @@ Section A corrects the implementation blueprint. Section B investigates the theo
 
 Access date: 2026-10-14. The parallel source collector owns `sources/`; local S-ids will be used if its index is available before handoff. URLs and page/section locators above remain the fallback.
 
-**Provenance and evidence are separate.** `[GU-orig]` identifies a draft claim, `[GU-recon]` an interpretation, `[lit]` a literature claim, and `[ext]` a proposed repair or explicit new assumption. Each entry also states its evidence status. `[verified]` is reserved here for the recorded signature experiment and does not erase its `[ext]` provenance. “Unresolved” does not mean false. Short source statements below identify mathematical facts to audit; the repair proposals and next checks are our own analysis.
+**Provenance and evidence are separate.** `[GU-orig]` identifies a draft claim, `[GU-recon]` an interpretation, `[lit]` a literature claim, and `[ext]` a proposed repair or explicit new assumption. Each checked claim states `verified:<tracked path>` and its scope (`identity`, `sampled` or `counterexample`); verification does not erase its provenance. “Unresolved” does not mean false. Short source statements below identify mathematical facts to audit; the repair proposals and next checks are our own analysis.
 
 ## A. Defects in overview.md
 
@@ -129,12 +129,25 @@ Evidence: [implementation](../../experiments/B01/dewitt_family.py), [pre-registr
 
 ### B02 — Shiab typing, dressing, and closure in a real adjoint algebra
 
-- **Tags / evidence:** `[GU-orig]`, `[lit]`, `[GU-recon]`, `[ext]`; explicit candidate located, mathematical properties unresolved.
-- **Draft says:** GU (8.1)–(8.6), pp. 41–42, provide Clifford/phase ingredients; (9.2)–(9.3), p. 43, provide a candidate.
-- **Gap / source:** NP section 3.1, pp. 5–6, objects to the lecture's real-Clifford/adjoint identification. The April draft includes complexification, but that alone does not establish real-form closure, all signs, or the required Bianchi properties. The preferred earlier operator is explicitly unavailable in GU section 8.2 and footnote 10 on p. 43. “No formula at all” would therefore misdescribe the April draft; “the selected operator's required properties are unproved here” is the actionable question.
-- **Counterargument / repair:** `[ext]` First test (9.3), with a complete declaration of brackets and real structure. `[ext]` Investigate grade-dependent phases in a complex matrix realization while keeping fields in a real Lie algebra. Real algebras may be realized by complex matrices; this does not automatically require complex-valued gauge-field degrees of freedom. `[ext]` Only if this fails, search a finite invariant ansatz with stated normalization and curvature-projection targets.
-- **Dependencies:** B01, B10; informs B04, B05, B07, B08. **Importance / cost:** H / M.
-- **Falsifiable next check:** Transcribe (9.3); test degree, adjoint reality, and equivariance under a non-Spin gauge transformation. Then test a pure-Weyl algebraic curvature input. Failure of any condition rejects that candidate/convention. Success for examples is not proof for the whole gauge group.
+- **Provenance / evidence / scope:** `[GU-orig]` displayed operator (9.3); `[GU-recon]` its pinned input, invariant forms, bracket readings and Einstein target; `[ext]` the (9,5) signature extension. `verified:experiments/B02/response.py`, `verified:experiments/B02/result.json`, `verified:experiments/B02/proofs.md`, `verified:tests/test_shiab.py`, `verified:tests/test_dressing.py`; `identity` for the algebraic-curvature response in (3,1), (7,7), (9,5), degree, real-form closure, dressed covariance and Spin₀ equivariance as specified below; `sampled` for Cayley regression and open dressing data.
+- **Draft says:** `[GU-orig]` GU (8.1) and (8.7), pp. 41–42, dress invariant adjoint-valued forms by conjugation. Equations (9.2)–(9.3), p. 43, give an Ω²(ad) → Ω¹³(ad) candidate, label its terms Ricci-like and Ricci-scalar-like, and state Weyl annihilation. Appendix (12.26)–(12.27), pp. 65–66, defines the commutator and i·anticommutator. The [transcription](../../experiments/B02/transcription.md) records the unresolved Φ choice, norm and relative scale, and the unavailable preferred operator in section 8.2 / footnote 10.
+- **Status / gap:** **Literal CCC: `obstructed-within-literal` as an Einstein contraction, `identity`.** On algebraic curvature, its inner commutator vanishes by pair symmetry with the pinned index-raising factors. Thus the −½ term is zero and the pinned response is −E_T(Ric), κ = 0 for nonzero T. Vanishing of that term survives global rescalings, either standard Hodge convention and either global generator normalization; a nonzero scale is required to retain the nonzero-response gate. It is not invariant under arbitrary changes to the ξ index convention. This does not obstruct every reconstructed reading of the displayed candidate.
+- **Reconstructed verdicts:** **`holds-Einstein`**, under N-a, the pinned star, and nonzero T=(α,β): CAA iff γ=1 (any δ); CAC iff β=sα and sδ=1, s=±1 (any γ). H0 fixes Φ¹=F, Φ²=B and has CAA as its unique passing bracket assignment. These are algebraic statements within the [amended ansatz](../../experiments/B02/ansatz.md), not a physical selection of Φ or a verdict on the lost preferred operator.
+- **Remaining gap:** The source does not choose the unit/sign or norm of Φ. The trace-norm exclusion, if imposed on both forms, requires α²≠β² and γ²≠δ²; it removes the chiral CAC family and restricts CAA Einstein to δ≠±1. It filters admissible forms without changing their computed κ. General gauge curvature need not have pair symmetry or the algebraic first Bianchi identity, so the curvature classification does not extend to it. NP section 3.1, pp. 5–6, concerns the earlier real-Clifford identification; checking this April candidate's real form does not settle the physical objections in B04/B05.
+- **Dependencies:** B01, B10; informs B04, B05, B07, B08. **Importance / next-check cost:** H / M.
+- **Next check:** Use the explicit conventions in a stated general-gauge-curvature or variational problem, retaining the dependence on the metric and dressed Φ. Do not use undressed Weyl annihilation alone as an Einstein gate or infer full-gauge behavior from Levi-Civita inputs.
+
+**Response and normalization.** Write Φ¹=αF+βF′, Φ²=γB+δB′, T′=(β,α), and use the branch's own embedding E_T. The [checker](../../experiments/B02/response.py) verifies
+
+`*Shiab(xi(R)) = -[m0=C] E_T(Ric) + (S/2)([m1m2=AA] gamma E_T(g) + [m1m2=AC] delta E_T'(g))`.
+
+For T≠0, the first-bracket-C modes have c=r_T=−1. CCC/CCA have κ=0. CAA has κ=γ/2 and fails gate 5a when γ=2/n because its scalar response vanishes. CAC has κ=0 for δ=0; for δ≠0 it fits the same embedding only on β=sα, with κ=sδ/2, and fails 5a at sδ=2/n. Nonchiral CAC with δ≠0 has no scalar ratio in E_T. Every first-bracket-A mode has r_T=0 and fails 5a; κ is undefined. T=0 is the zero embedding/operator and fails the nonzero gate; its response ratios are not identifiable.
+
+N-b is available only with inner A, δ=0 and γ≠0: the whole inner contraction `(S/2)(i gamma I - delta C)` can then be rescaled to `iS I`. Under the pinned star this gives CAA κ=1 and CAC κ=0, with no Einstein branch. Under the alternative star `*' = (-1)^{k(n-k)} *`, the operator is the pinned one with Φ² negated; the final read-off star also reverses c. Thus CAA Einstein moves to γ=−1 and CAC to sδ=−1. Using the unit spin generator `sigma_ab=(1/2)Gamma_aGamma_b` instead gives ordinary CAA κ=1/4, still passing 5a at n=14. These coefficient claims use the three verified odd-q signatures; even-q observations remain sampled. The [reconciliation](../../experiments/B02/README.md) gives the branch discussion.
+
+**Evidence.** [result.json](../../experiments/B02/result.json) records producing source commit `d66cd8f7c3ac4f2f5b0aaa7eb0f5c9dc831cac6b`: ranks 20/20 at n=4 and 3185/3185 at n=14, with 2640, 267120 and 267120 response cases respectively and positive nonzero-output counts. It records no κ field: the classification follows algebraically from the verified formula. The [proofs](../../experiments/B02/proofs.md) extend the rational spanning checks to real algebraic curvature and real Φ parameters by linearity in R and Φ¹ and affinity in Φ². They also establish degree, real-form closure, dressed covariance and Spin₀ equivariance by composition; no Pin/O claim is made. [Small response controls](../../tests/test_b02_response.py), [operator tests](../../tests/test_shiab.py) and [dressing tests](../../tests/test_dressing.py) exercise these paths. Reproduce the response evidence with `uv run python -m experiments.B02.run`; run the tests with `uv run pytest -q`.
+
+**Open dressing data (`sampled`).** For F,B with CCC/CAA, two odd Cayley dressings of one undressed Weyl control give nonzero outputs in all three signatures: four terms for the vector dressing and two for the triple-blade dressing. The [recorded data](../../experiments/B02/result.json) refute universal annihilation of that fixed geometric Weyl subspace under arbitrary dressings. They do not classify all dressings or contradict covariance, which transports the Weyl subspace along with the input. No Lean proof or physical validation is claimed.
 
 **Working type dictionary.** GU section 3.6, equations (3.31)–(3.36), p. 24, supplies the finite structure group and bundles. NP uses different `Ad(P)` notation for its Lie-algebra bundle; here `ad P` always denotes the Lie-algebra bundle, and `Ad P` the group bundle.
 
@@ -155,7 +168,7 @@ For a fixed spacetime metric, the desired dressed covariance has the form
 
 `Shiab_(epsilon h)(h^-1 eta h) = h^-1 Shiab_epsilon(eta) h`.
 
-This is a **target identity**, not a verified theorem here. Internal gauge transformations act on coefficient fibers; the geometric Spin action and the enlarged internal gauge action must not be conflated. Dressing may repair covariance without making an undressed contraction invariant under the full enlarged group. Equivariance under Spin alone is insufficient for that claim. The adjoint-valued bosonic map must also be distinguished from the spinor-valued fermionic maps of section 9.3.
+This is now an **identity** for the implemented dressed operator, by the [conjugation proof](../../experiments/B02/proofs.md#test-3a-dressed-covariance), with exact Cayley regressions in all three signatures. Here ε,h are in the internal gauge group and the metric/Hodge star is fixed. Internal gauge transformations act on coefficient fibers; the geometric Spin action and the enlarged internal gauge action remain distinct. Dressed covariance does not make the undressed contraction invariant under the full enlarged group. The adjoint-valued bosonic map is also distinct from the spinor-valued fermionic maps of section 9.3.
 
 ### B03 — Branching is not yet a three-generation dynamical explanation
 
@@ -271,4 +284,4 @@ This table covers the substantive mathematical/physical objections, including te
 
 ## What would constitute progress
 
-The first three next checks are B01's convention reconciliation, B02's typed real-form/covariance test, and B03's full branching inventory. A successful check establishes only its stated claim and assumptions. A failed repair stays in the register with the failed condition and evidence; it does not become a global impossibility result by repetition. No work in this report executes the implementation steps of overview.md.
+The next checks carry B01's reconciled conventions and B02's verified algebraic operator into downstream questions, beginning with B03's full branching inventory. A successful check establishes only its stated claim and assumptions. A failed repair stays in the register with the failed condition and evidence; it does not become a global impossibility result by repetition. No work in this report executes the implementation steps of overview.md.
