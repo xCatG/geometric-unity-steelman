@@ -1,0 +1,200 @@
+{
+  "scope": "identity for listed lambda; [ext] family, not yet reconciled with GU",
+  "method": "exact Hermitian congruence (gu.inertia)",
+  "inertia_order": "(n_pos, n_neg, n_zero)",
+  "chimeric_key": "h_sign,v_sign",
+  "eigenvalues": {
+    "1 - 4*lambda": 1,
+    "1": 3,
+    "-2": 3,
+    "2": 3
+  },
+  "cases": [
+    {
+      "lambda": "-1",
+      "vertical": [
+        7,
+        3,
+        0
+      ],
+      "chimeric": {
+        "1,1": [
+          8,
+          6,
+          0
+        ],
+        "1,-1": [
+          4,
+          10,
+          0
+        ],
+        "-1,1": [
+          10,
+          4,
+          0
+        ],
+        "-1,-1": [
+          6,
+          8,
+          0
+        ]
+      }
+    },
+    {
+      "lambda": "0",
+      "vertical": [
+        7,
+        3,
+        0
+      ],
+      "chimeric": {
+        "1,1": [
+          8,
+          6,
+          0
+        ],
+        "1,-1": [
+          4,
+          10,
+          0
+        ],
+        "-1,1": [
+          10,
+          4,
+          0
+        ],
+        "-1,-1": [
+          6,
+          8,
+          0
+        ]
+      }
+    },
+    {
+      "lambda": "1/8",
+      "vertical": [
+        7,
+        3,
+        0
+      ],
+      "chimeric": {
+        "1,1": [
+          8,
+          6,
+          0
+        ],
+        "1,-1": [
+          4,
+          10,
+          0
+        ],
+        "-1,1": [
+          10,
+          4,
+          0
+        ],
+        "-1,-1": [
+          6,
+          8,
+          0
+        ]
+      }
+    },
+    {
+      "lambda": "1/4",
+      "vertical": [
+        6,
+        3,
+        1
+      ],
+      "chimeric": {
+        "1,1": [
+          7,
+          6,
+          1
+        ],
+        "1,-1": [
+          4,
+          9,
+          1
+        ],
+        "-1,1": [
+          9,
+          4,
+          1
+        ],
+        "-1,-1": [
+          6,
+          7,
+          1
+        ]
+      }
+    },
+    {
+      "lambda": "1/2",
+      "vertical": [
+        6,
+        4,
+        0
+      ],
+      "chimeric": {
+        "1,1": [
+          7,
+          7,
+          0
+        ],
+        "1,-1": [
+          5,
+          9,
+          0
+        ],
+        "-1,1": [
+          9,
+          5,
+          0
+        ],
+        "-1,-1": [
+          7,
+          7,
+          0
+        ]
+      }
+    },
+    {
+      "lambda": "1",
+      "vertical": [
+        6,
+        4,
+        0
+      ],
+      "chimeric": {
+        "1,1": [
+          7,
+          7,
+          0
+        ],
+        "1,-1": [
+          5,
+          9,
+          0
+        ],
+        "-1,1": [
+          9,
+          5,
+          0
+        ],
+        "-1,-1": [
+          7,
+          7,
+          0
+        ]
+      }
+    }
+  ],
+  "versions": {
+    "python": "3.14.0",
+    "sympy": "1.14.0"
+  },
+  "source_commit": "0815385d06f2cc28bac6154156712e1e9da5bba0",
+  "command": "uv run python -m experiments.B01.dewitt_family"
+}
