@@ -1,6 +1,6 @@
-# Coverage of the B02 prose arguments
+# Lean coverage: B02 prose and B03 explicit matrices
 
-This is a partial formalization with explicit boundaries, not a certificate of the complete B02 classification or of `result.json`. The concrete model follows the repository's sparse form/blade conventions over exact Gaussian rationals. General tensor-algebra theorems are separate from that executable model wherever the algebra identification has not been proved.
+The B02 portion is a partial formalization with explicit boundaries, not a certificate of the complete B02 classification or of `result.json`. The concrete model follows the repository's sparse form/blade conventions over exact Gaussian rationals. General tensor-algebra theorems are separate from that executable model wherever the algebra identification has not been proved.
 
 ## Findings
 
@@ -54,3 +54,66 @@ Names below are qualified by B02 unless otherwise stated. The exhaustive theorem
 ## Trust boundary
 
 No sorry and no custom axioms. General identities use at most propext, Classical.choice and Quot.sound. `native_decide` adds Lean.ofReduceBool **and Lean.trustCompiler** in Lean 4.24. It occurs in the dropped-factor B-prime witness and optional sample/dimension-two canonical-list certificates (including downstream users). These finite computations trust the native compiler; they are additionally compared with the actual Python implementation. Kernel `decide +kernel` certificates do not incur those native axioms. `Audit.lean` prints every public theorem's actual dependencies; `AxiomAudit.txt` and the handoff result retain the full output.
+
+## B03: explicit real structures and chirality
+
+All required fixed-instance claims in the B03 handoff are proved for the four
+specified splits. There are 81 new public theorem declarations, no sorry, no
+custom axioms, and no native_decide in B03. The existing B02 coverage and its
+separate native-computation boundary remain as documented above.
+
+The coefficients of the interpreted operators are complex numbers. The
+executable monomial representation stores a column permutation on Fin (2^m)
+and phases in Fin 4, with M[perm[j],j]=i^phase[j]. `act_column_entry` proves
+that the complex-linear interpretation uses precisely this column convention;
+`act_mul` proves compatibility with matrix composition. `J` is an actual
+complex-antilinear map on the full complex spinor space, not just a sign table.
+
+The model computes leading-Z Jordan-Wigner columns directly from the bits of j.
+The 14,644-column bridge compares those entries exhaustively with the actual
+Python functions on every requested matrix and split. This is an executable
+cross-check, not a formal semantics proof for the Python language. The generic
+Mono structure permits arbitrary column maps; all concrete Clifford generators
+have the certified square relations, so the required inverse/permutation laws
+are consequences rather than an unverified matrix-instance assumption.
+
+Two optimizations are explicitly justified. `imaginary_selector_iff` and the
+three `selection*` certificates prove that the axis-parity selector is exactly
+the Python predicate that all gamma entries are imaginary. Each `first_chirality*`
+certificate proves the selected candidate squares to one and is Hermitian,
+and rejects every earlier phase by failure of square-one. `hermitian_entries`
+connects that predicate to actual conjugate-transposed complex entries. Thus
+the model checks the library's *first* accepted phase, not just an arbitrary
+valid chirality sign.
+
+| Required claim | Theorems in namespace B03 | Fidelity |
+|---|---|---|
+| Clifford anticommutators | clifford_relations77, clifford_relations95, clifford_relations31; underlying clifford* certificates | exact on every complex spinor and every pair of axes |
+| J complex-antilinear | J_antilinear | stronger: arbitrary dimension and arbitrary monomial B |
+| J squared is +1 at (7,7), -1 at (9,5),(3,1) | real_structure_square77, real_structure_square95, real_structure_square31; underlying j_square* | exact; both (9,5) splits share the same matrix |
+| J commutes with spin generators | J_all_generators77, J_all_generators95, J_all_generators31 | stronger than adjacent-only scope: every gamma bivector, with no Lie-generation hypothesis |
+| J preserves C at d=14 and exchanges at (3,1) | J_chirality77/95/31; chirality_preserves77/95; chirality_exchanges31 | exact operator and real-eigenvalue statements; J-square supplies invertibility |
+| Cartans diagonal with entries +1 or -1 | cartan2, cartan7; cartan_eigenvalues | exact, for every pair/column in the natural ordering; split order selects these same pairs |
+| Cartans pairwise commute | cartan_commutes with cartan2 or cartan7 | exact via the proved general diagonal-monomial commutation law |
+| Every sign pattern occurs once | every_weight31, every_weight77, every_weight95a, every_weight95b | exact existence and uniqueness for every Boolean sign tuple; false means +1, true means -1 |
+| C=-Pi at (7,7), C=+Pi at the others | chirality_parity77, chirality_parity95a, chirality_parity95b, chirality_parity31 | exact full monomial equality; Pi is defined from even-minus-count parity of the actual Cartan weights |
+| J weight signs (+------), (+------), (-+-----), (+-) | j_weight77, j_weight95a, j_weight95b, j_weight31 | exact for every basis column and every split-ordered coordinate |
+
+**Findings:** no numerical disagreement or unstated convention was found within
+these explicitly pinned constructions. In particular the control's J-square
+is -1 and it exchanges chirality, as recorded. The signs are claims about the
+specified B and library C; this does not assert that every possible real
+structure or chirality convention gives the same representative.
+
+**Remaining gaps within the requested fixed-instance claims:** none. The
+optional general-signature formula was not proved. This work does not prove
+RS projector identities, branching/character equalities, the named module
+partner dictionary, Spin-group integration, or dynamical conclusions. Those
+are outside this handoff's enumerated matrix claims. B02's earlier explicit
+gaps are unchanged.
+
+All B03 finite certificates use `decide +kernel`, including the 128-dimensional
+J-square and C/Pi facts. The complete public axiom output is retained in
+`AxiomAuditB03.txt` and the combined `AxiomAudit.txt`. See `ValidationB03.md` for
+fresh build, bridge and seeded-fault evidence; every B03 theorem is mapped in
+the appended section of `THEOREMS.md`.

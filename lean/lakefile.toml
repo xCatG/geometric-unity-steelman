@@ -1,6 +1,6 @@
 name = "b02"
 version = "0.1.0"
-defaultTargets = ["B02", "bridge"]
+defaultTargets = ["B02", "B03", "bridge"]
 
 [[require]]
 name = "mathlib"
@@ -13,3 +13,6 @@ name = "B02"
 [[lean_exe]]
 name = "bridge"
 root = "Bridge"
+
+[[lean_lib]]
+name = "B03"
