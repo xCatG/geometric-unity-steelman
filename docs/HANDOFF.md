@@ -68,7 +68,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - **Claude:** even q flips κ. All of this project's signatures have odd q.
 
   Rebuilt from the plan text: 222 tests pass, and the full run passes (about 10 min). **The user approved rev 3** and asked to be told if anything changes.
-- **In flight: Codex is executing Tasks 1–4** (brief: `.agent-handoff/b02-impl/task.md`; watch `status`, last seen `WORKING: task4-suite`; background watcher `b5mdc39ju`, which may be lost on reset, so check `status` directly). Codex commits so far:
+- **In flight: Codex reported DONE on Tasks 1–4** (`.agent-handoff/b02-impl/result.md`; "no implementation or expected-value deviation"). **Not yet verified by Claude**. Codex commits so far:
   - `30c87d0` cliffform (Task 1);
   - `d63c7c5` shiab (Task 2);
   - `14f4c65` dressing (Task 3);
