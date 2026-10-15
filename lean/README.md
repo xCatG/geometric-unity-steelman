@@ -1,4 +1,4 @@
-# B02 Lean formalization
+# B02 and B03 Lean formalization
 
 Lean is pinned to `leanprover/lean4:v4.24.0`; Mathlib is pinned by
 `lake-manifest.json` to `f897ebcf72cd16f89ab4577d0c826cd14afaafc7` (tag `v4.24.0`).
@@ -59,3 +59,24 @@ fault to disagree with unchanged expectations from the actual Python functions.
 `Validation.md` records the final clean-project build timing and bridge output.
 A clean-project build removes only this project's `.lake/build`; Mathlib and
 other dependency caches remain populated by `lake exe cache get`.
+
+B03's fixed-instance real-structure and chirality proofs are also included in
+`lake build`. They add 81 public theorems with no `native_decide`: the finite
+128-dimensional certificates reduce inside Lean's kernel, and generic lemmas
+interpret their column maps as genuine complex-linear/antilinear operators.
+See the B03 sections of `COVERAGE.md` and `THEOREMS.md` for exact scope.
+
+From the repository root, with the same Python environment as above:
+
+```powershell
+uv run python lean/bridge/b03_check.py
+uv run python lean/bridge/b03_mutations.py
+```
+
+The first command dumps Python and Lean's perm/phase arrays to ignored
+`lean/bridge/b03-{python,lean}.actual.json` and compares every entry: 127 matrices,
+14,644 columns, all four splits. It also checks all 16 real-structure/adapter
+fields in B03's recorded matrix rows. The second injects three convention faults
+in disposable source copies and requires disagreements with unchanged Python
+expectations. `ValidationB03.md` retains the actual results and combined clean
+build timing; `AxiomAuditB03.txt` records the new theorems' trust dependencies.
