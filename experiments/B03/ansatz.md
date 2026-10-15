@@ -1,4 +1,4 @@
-# B03 ansatz: spinor and Rarita–Schwinger branching (pre-registered, revision 1)
+# B03 ansatz: spinor and Rarita–Schwinger branching (pre-registered, revision 1.1)
 
 Provenance:
 - The draft identities are `[GU-orig]`.
@@ -13,7 +13,12 @@ Provenance:
   - R3: a concrete gamma-to-weight adapter is added (test 0).
   - R4: p. 53 rows are aggregated before the character comparison.
   - R5: test 7 is data only, with defined counts.
-- The review's scratch scripts computed some outcomes before this revision. These are listed under "Known before the run". This revision pre-registers what is still unknown:
+- **Revision 1.1** (2026-10-15, before any production code) changes only the conventions:
+  - The real axes are now Jordan–Wigner pairs (2k, 2k+1), so that every Cartan generator is diagonal in the library's basis.
+  - The adapter is defined in the Euclidean frame, as in the review's chirality probe.
+  - The signatures of every split are unchanged.
+  - Claude's plan smoke test ran after this revision; its outcomes are not evidence.
+- The review's scratch scripts computed some outcomes before revision 1. These are listed under "Known before the run". This revision pre-registers what is still unknown:
   - the row-by-row comparison of the §11.3 tables;
   - every concrete-matrix result produced by tracked code;
   - the adapter.
@@ -24,16 +29,20 @@ The library `gu.clifford.gammas(p, q)` puts the p positive axes first (indices 0
 
 | Ambient | Horizontal (signature: axes) | Normal (signature: axes) | Status |
 |---|---|---|---|
-| (7,7) | (1,3): 0, 7, 8, 9 | (6,4): 1–6, 10–13 | the draft's split (12.19) |
-| (9,5) | (1,3): 0, 9, 10, 11 | (8,2): 1–8, 12, 13 | `[ext]` |
-| (9,5) | (3,1): 0, 1, 2, 9 | (6,4): 3–8, 10–13 | `[ext]` |
-| (3,1) | (1,1): 0, 3 | (2,0): 1, 2 | small control (P5) only |
+| (7,7) | (1,3): pairs (6,7), (8,9) | (6,4): pairs (0,1), (2,3), (4,5), (10,11), (12,13) | the draft's split (12.19) |
+| (9,5) | (1,3): pairs (8,9), (10,11) | (8,2): pairs (0,1), (2,3), (4,5), (6,7), (12,13) | `[ext]` |
+| (9,5) | (3,1): pairs (6,7), (8,9) | (6,4): pairs (0,1), (2,3), (4,5), (10,11), (12,13) | `[ext]` |
+| (3,1) | (1,1): pair (2,3) | (2,0): pair (0,1) | small control (P5) only |
 
 The complex data are the same for all three 14-dimensional rows. Real-structure data are tested per row.
 
 ## Pinned conventions
 
-- **Cartan adapter** (review R3). Within each axis list, pair consecutive axes (a, b) in the listed order. For each pair, set h = −iΓ_aΓ_b if η_aη_b = +1, and h = Γ_aΓ_b if η_aη_b = −1, so that h² = 1. Horizontal pairs give coordinates (y₁, y₂), and normal pairs give (y₃, …, y₇). A simultaneous eigenvector with eigenvalues y_k = ±1 has doubled weight y.
+- **Cartan adapter** (review R3; rev 1.1).
+  - Euclidean frame: E_a = Γ_a if η_a = +1, and E_a = −iΓ_a if η_a = −1.
+  - For each listed pair (a, b), h = −iE_aE_b. This is diagonal with entries ±1 in the library basis (asserted).
+  - Horizontal pairs give the coordinates (y₁, y₂), and normal pairs give (y₃, …, y₇). The doubled weight of basis spinor j is y.
+  - The RS weight character is read from Q″ = dδ − E_aE_b, which equals cQc⁻¹ with c = diag(1 or i) on the vector index (asserted exactly). The vectors E_a ± iE_b of a pair carry doubled weight ±2.
 - **Abstract chirality.** S₊ is the span of even-minus-count weights, i.e. ω₇ of D7. The relation between `gu.clifford.chirality(p, q)` and S± is **computed and asserted per row** by test 0, not assumed.
 - **D2 = A1_L × A1_R.** The A1_L doubled weight is (y₁ + y₂)/2 and the A1_R weight is (y₁ − y₂)/2. So L = (2,1) is the even horizontal half-spin, and R = (1,2) is the odd one. This reverses Bourbaki's D2 node order (review R3), on purpose.
 - **D5.** 16 = ω₅ is even in (y₃…y₇), and 16̄ = ω₄.
