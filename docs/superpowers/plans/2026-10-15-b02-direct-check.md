@@ -27,7 +27,16 @@
 2. **A vacuous spanning set.** If the KN products were rank-deficient, or outputs all zero, a green run would prove nothing. Assert rank = dim (3185 at n = 14, 20 at n = 4), and record `nonzero_outputs` > 0 (Task 4).
 3. **The chirality phase differs by dimension** (C = vol at n = 14, i·vol at n = 4). It is derived from `gu.clifford.chirality`, never hard-coded, and tested in all signatures (Task 1).
 4. **Wrong controls.** Dressing by a Spin-image ε is **not** a no-op: Φ is invariant under the joint form + Clifford action, while dressing acts on the Clifford factor alone. The no-op control uses a central ε (Task 3). This was a real error in the first draft of this plan's tests.
-5. **Exactness leaks** through numpy scalars or floats into coefficients. `GQ` accepts numpy integers (exact) and rejects floats (Task 1).
+5. **Exactness leaks.** Two were found in review: `Fraction(np.int64)` keeps the fixed-width numerator, so `GQ(np.int64(2**62))*4` was 0 (R1); and `int()` casts in `xi` and `embed_tensor` dropped rationals and silently truncated floats (R2). The fix routes every coefficient through `gu.cliffform.exact`, which converts to Python `int`/`Fraction` and raises on floats. Tests: Task 1 (large integers), Task 2 (rational inputs, float rejection).
+
+**Revision 2 (2026-10-15).** This revision folds in Codex's two-subagent plan review (`.agent-handoff/b02-plan-review/`; verdict *revise*, R1–R8) and argon's review.
+- **R1/R2 (exactness):** `exact()`, plus controls.
+- **R3–R5 (Task 6 classification):** corrected families, the N-b domain, the scalar-sector boundary, and null Φ² directions.
+- **R6:** `git add` before every new-file commit.
+- **R7:** (9,5) covariance samples.
+- **R8:** runner asserts case counts, nonzero outputs and an independent hand control; the small rank test now exists.
+- **Argon:** a mixed-Φ formula test, an end-to-end Spin₀ equivariance test, and a general `_in_u_A` that checks `shiab` outputs (Test 2) with a mixed-phase impostor.
+- **Claude:** one dressing sample was identically zero, because KN(E₀₁+E₁₀, diag(1,2,0,…)) = 0. It was replaced, and `test_xi_samples_are_nonzero` added.
 
 ## File structure
 
@@ -44,7 +53,9 @@
 
 Tasks 1 → 2 → 3 → 4 are sequential (Codex). Task 5 (Claude) can run in parallel with Tasks 1–4. Task 6 needs Tasks 4 and 5.
 
-**Smoke test (not evidence).** Claude ran every code block below in an uncommitted scratch copy of the repo. Results: 209 tests passed (164 existing + 45 new). The full (7,7) and (9,5) response checks passed in about 4 minutes each, and the −½ seeded fault turned `response.py` red. Only Codex's committed run counts as evidence.
+**Smoke test (not evidence).** Claude ran every code block below (revision 2) in an uncommitted scratch copy of the repo: 222 tests passed (164 existing + 58 new). Codex's practical reviewer replayed revision 1 literally: all Expected lines matched, all 9 seeded faults failed assertions, and the full run took 541 s. Only Codex's committed run counts as evidence.
+
+**Commit rule for every task (R6).** New files must be staged before a pathspec commit: `git add -- <exact paths>`, then `git commit -m "..." -- <exact paths>`. Never use a bare `git add -A` or a bare `git commit`; the index is shared.
 
 ---
 
@@ -56,7 +67,7 @@ Tasks 1 → 2 → 3 → 4 are sequential (Codex). Task 5 (Claude) can run in par
 
 **Interfaces:**
 - Consumes: `gu.clifford.{gammas, chirality, Mono}`, `gu.forms.hodge`.
-- Produces: `GQ(re, im)`, `I`, `bits(mask)`, `reorder_sign(a, b) -> ±1`, `blade_mul(a, b, eta) -> (blade, ±1)`, `clean`, `scale(x, c)`, `plus(*xs)`, `star(x, eta)`, `bracket(x, y, mode, eta)` with mode `"C"`/`"A"`, `right_mul_volume(x, phase, eta)`, `blade_to_mono(blade, gs)`, `chirality_phase(p, q) -> GQ` (cached).
+- Produces: `exact(x) -> Fraction` (rejects floats/bools; numpy ints become Python ints), `GQ(re, im)`, `I`, `bits(mask)`, `reorder_sign(a, b) -> ±1`, `blade_mul(a, b, eta) -> (blade, ±1)`, `clean`, `scale(x, c)`, `plus(*xs)`, `star(x, eta)`, `bracket(x, y, mode, eta)` with mode `"C"`/`"A"`, `right_mul_volume(x, phase, eta)`, `blade_to_mono(blade, gs)`, `chirality_phase(p, q) -> GQ` (cached).
 
 - [ ] **Step 1: Write the tests** (`tests/test_cliffform.py`):
 
@@ -95,6 +106,13 @@ def test_gq_arithmetic_against_hand_values():
     assert a * b == GQ(Fraction(5, 2), 0)          # (1+2i)(1/2-i) = 1/2 - i + i + 2
     assert I * I == -1 and (a / a) == 1 and a - a == 0 and not (a - a)
     assert GQ(np.int64(3)) == 3
+
+
+def test_gq_numpy_integers_cannot_overflow():
+    """Exactness control (review R1): numpy fixed-width ints become Python ints."""
+    big = GQ(np.int64(2**62)) * 4
+    assert big == 2**64 and type(big.re.numerator) is int
+    assert GQ(Fraction(np.int64(3), np.int64(4))) == Fraction(3, 4)
 
 
 @pytest.mark.parametrize("p,q", [(1, 1), (3, 1), (2, 2)])
@@ -189,15 +207,25 @@ from functools import lru_cache
 from numbers import Integral, Rational
 
 
+def exact(x) -> Fraction:
+    """Exact rational from an integer or rational (incl. numpy ints); rejects floats/bools.
+
+    Numerators/denominators are converted to Python int so numpy fixed-width
+    integers cannot overflow later.
+    """
+    if isinstance(x, bool) or not isinstance(x, (Integral, Rational)):
+        raise TypeError(f"exact integer or rational required, got {type(x).__name__}")
+    if isinstance(x, Integral):
+        return Fraction(int(x))
+    return Fraction(int(x.numerator), int(x.denominator))
+
+
 class GQ:
     """Exact Gaussian rational re + i*im."""
     __slots__ = ("re", "im")
 
     def __init__(self, re=0, im=0):
-        for x in (re, im):
-            if isinstance(x, bool) or not isinstance(x, (Integral, Rational)):
-                raise TypeError("GQ takes exact integers or rationals only")
-        self.re, self.im = Fraction(re), Fraction(im)
+        self.re, self.im = exact(re), exact(im)
 
     @staticmethod
     def _of(x) -> "GQ":
@@ -358,9 +386,10 @@ def chirality_phase(p: int, q: int) -> GQ:
 - [ ] **Step 4: Run the tests**
 
 Run: `uv run pytest tests/test_cliffform.py -q`
-Expected: `19 passed`.
+Expected: `20 passed`.
 
 - [ ] **Step 5: Seeded faults (P2).** Apply each fault, run the file, confirm assertion failures, then restore and verify by SHA-256:
+  - In `exact`, return `Fraction(x)` for integers (no `int(...)`). Expected: `test_gq_numpy_integers_cannot_overflow` fails.
   - In `blade_mul`, replace `s *= eta[i]` with `s *= 1`. Expected: `test_blade_mul_matches_mono_*`, `test_bracket_hand_values_3_1` and `test_right_mul_volume_is_mono_product` fail (Claude saw 7 failures).
   - In `reorder_sign`, return `1` unconditionally. Expected: `test_reorder_sign_hand_values` and the Mono and Hodge comparisons fail.
   - In `bracket`, drop the `* I` for mode `"A"`. Expected: `test_bracket_hand_values_3_1` fails.
@@ -370,6 +399,7 @@ Expected: `19 passed`.
 - [ ] **Step 6: Commit**
 
 ```bash
+git add -- gu/cliffform.py tests/test_cliffform.py
 git commit -m "Add sparse exact Lambda (x) Cl engine with Mono/Hodge adapter controls" -- gu/cliffform.py tests/test_cliffform.py
 ```
 (With the Codex trailer.)
@@ -415,15 +445,17 @@ from gu.shiab import (embed_tensor, eta_of, generator_action, phi_basis, shiab,
 SIGS = [(3, 1), (7, 7), (9, 5)]
 
 
-def _unit_power(v: GQ) -> int:
-    return {GQ(1): 0, I: 1, GQ(-1): 2, -I: 3}[v]
-
-
 def _in_u_A(x: dict, p: int, q: int) -> bool:
-    """Every Clifford coefficient (one per key here) lies in u(A)."""
+    """x is u(A)-valued. Distinct blades are linearly independent and each blade is
+    sharp-even or sharp-odd, so this holds iff every coefficient is purely real or
+    purely imaginary with the phase its blade requires (sign is irrelevant)."""
     gs, A = gammas(p, q), from_mono(dirac_pairing(p, q))
-    return all(is_in_algebra(from_mono(blade_to_mono(c, gs).times_i_power(_unit_power(v))), A)
-               for (f, c), v in x.items())
+    for (f, c), v in x.items():
+        if v.re and v.im:
+            return False
+        if not is_in_algebra(from_mono(blade_to_mono(c, gs).times_i_power(1 if v.im else 0)), A):
+            return False
+    return True
 
 
 @pytest.mark.parametrize("p,q", SIGS)
@@ -439,6 +471,7 @@ def test_impostors_outside_u_A_are_rejected(p, q):
     phis = phi_basis(p, q)
     assert not _in_u_A(scale(phis["F"], I), p, q)       # i F
     assert not _in_u_A(scale(phis["B'"], -I), p, q)     # B C without the i
+    assert not _in_u_A({(1, 1): GQ(1, 1)}, p, q)         # mixed phase on one blade
 
 
 @pytest.mark.parametrize("p,q", SIGS)
@@ -500,7 +533,7 @@ def predicted(R, eta, modes, al, be, ga, de, p, q):
 @pytest.mark.parametrize("p,q", [(3, 1)])
 def test_response_closed_form_on_spanning_set_small(p, q):
     """Test 5, scope: identity for (3,1) on all KN products of a symmetric basis
-    (spanning set; rank checked in test_kn_products_span)."""
+    (spanning set; rank certified in tests/test_b02_response.py, Task 4)."""
     eta = eta_of(p, q)
     phis = phi_basis(p, q)
     sym = _sym_basis(p + q)
@@ -524,6 +557,79 @@ def test_shiab_parts_assemble_to_shiab():
     for modes in map("".join, itertools.product("CA", repeat=3)):
         assert shiab(phis["F"], phis["B"], x, modes, eta) == \
             plus(parts["first"][modes[0]], scale(parts["second"][modes[1:]], Fraction(-1, 2)))
+
+
+def _R31():
+    h = np.diag([1, 2, 0, -1]).astype(np.int64)
+    k = np.zeros((4, 4), dtype=np.int64)
+    k[0, 1] = k[1, 0] = 1
+    k[2, 2] = 3
+    return kulkarni_nomizu(h, k)
+
+
+MODES = ["".join(m) for m in itertools.product("CA", repeat=3)]
+
+
+def test_mixed_phi_matches_formula():
+    """Control on the bilinear extension: a genuinely mixed Phi1, Phi2 (argon review)."""
+    p, q = 3, 1
+    eta, phis, R = eta_of(p, q), phi_basis(p, q), _R31()
+    phi1 = plus(scale(phis["F"], 2), scale(phis["F'"], -3))
+    phi2 = plus(scale(phis["B"], 5), scale(phis["B'"], 7))
+    x = xi(R, eta)
+    assert x
+    for m in MODES:
+        assert star(shiab(phi1, phi2, x, m, eta), eta) == predicted(R, eta, m, 2, -3, 5, 7, p, q), m
+
+
+def test_shiab_is_equivariant_end_to_end():
+    """Test 4, scope: sampled direct check of the composition proof (argon review);
+    includes a non-Levi-Civita gauge term."""
+    p, q = 3, 1
+    eta, phis = eta_of(p, q), phi_basis(p, q)
+    x = plus(xi(_R31(), eta), {(0b11, 0b111): GQ(0, 1)})
+    for m in MODES:
+        for a in range(3):
+            assert generator_action(shiab(phis["F"], phis["B'"], x, m, eta), a, a + 1, eta) == \
+                shiab(phis["F"], phis["B'"], generator_action(x, a, a + 1, eta), m, eta)
+
+
+@pytest.mark.parametrize("p,q", [(3, 1), (7, 7), (9, 5)])
+def test_outputs_stay_in_u_A(p, q):
+    """Test 2, scope: sampled direct check of the closure proof on shiab outputs."""
+    eta, phis, n = eta_of(p, q), phi_basis(p, q), p + q
+    s = np.zeros((n, n), dtype=np.int64)
+    s[0, 1] = s[1, 0] = 1
+    t = np.diag([1, 2, 3] + [0] * (n - 3)).astype(np.int64)
+    t[0, 2] = t[2, 0] = 1
+    x = plus(xi(kulkarni_nomizu(s, t), eta), {(0b11, 0b111): GQ(0, 1)})
+    assert x and _in_u_A(x, p, q)
+    nonzero = 0
+    for m in (MODES if n == 4 else ["CCC", "CAA", "CAC"]):
+        for k1, k2 in itertools.product(["F", "F'"], ["B", "B'"]):
+            out = shiab(phis[k1], phis[k2], x, m, eta)
+            assert _in_u_A(out, p, q), (m, k1, k2)
+            nonzero += bool(out)
+    assert nonzero > 0
+
+
+def test_adapters_take_exact_rationals_and_reject_floats():
+    """Exactness controls (review R2, P4)."""
+    eta = eta_of(3, 1)
+    half = Fraction(1, 2)
+    R = np.zeros((4, 4, 4, 4), dtype=object)
+    R[:] = 0
+    R[0, 1, 0, 1] = R[1, 0, 1, 0] = half
+    R[0, 1, 1, 0] = R[1, 0, 0, 1] = -half
+    assert xi(R, eta) == {(0b11, 0b11): GQ(Fraction(1, 4))}    # 1/2 * R_0101 * eta0 eta1
+    H = np.zeros((4, 4), dtype=object)
+    H[:] = 0
+    H[0, 0] = half
+    assert embed_tensor(H, 1, 0, 3, 1) == {(1, 1): GQ(half)}
+    with pytest.raises(TypeError):
+        xi(np.full((4, 4, 4, 4), 0.5), eta)
+    with pytest.raises(TypeError):
+        embed_tensor(np.diag([1.9, 0.0, 0.0, 0.0]), 1, 0, 3, 1)
 ```
 
 - [ ] **Step 2: Run them and see them fail**
@@ -550,7 +656,7 @@ from fractions import Fraction
 
 import numpy as np
 
-from gu.cliffform import (GQ, I, bracket, chirality_phase, clean, plus, reorder_sign,
+from gu.cliffform import (GQ, I, bracket, chirality_phase, clean, exact, plus, reorder_sign,
                           right_mul_volume, scale, star)
 
 
@@ -570,13 +676,14 @@ def phi_basis(p: int, q: int) -> dict[str, dict]:
 
 
 def xi(R: np.ndarray, eta: list[int]) -> dict:
+    """Entries must be exact integers or rationals (floats raise TypeError)."""
     n = len(eta)
     out = {}
     for a, b in itertools.combinations(range(n), 2):
         for c, d in itertools.combinations(range(n), 2):
-            r = int(R[a, b, c, d])
+            r = exact(R[a, b, c, d])
             if r:
-                out[((1 << a) | (1 << b), (1 << c) | (1 << d))] = GQ(Fraction(r * eta[c] * eta[d], 2))
+                out[((1 << a) | (1 << b), (1 << c) | (1 << d))] = GQ(r * eta[c] * eta[d] / 2)
     return out
 
 
@@ -632,17 +739,18 @@ def generator_action(x: dict, a: int, b: int, eta: list[int]) -> dict:
 def embed_tensor(H: np.ndarray, alpha, beta, p: int, q: int) -> dict:
     """E_T(H) = sum e^a (x) H_a^b (alpha G_b + beta G_b C)."""
     eta, n = eta_of(p, q), p + q
-    base = clean({(1 << a, 1 << b): GQ(int(H[a, b]) * eta[b])
-                  for a in range(n) for b in range(n) if H[a, b]})
+    base = clean({(1 << a, 1 << b): GQ(exact(H[a, b]) * eta[b])
+                  for a in range(n) for b in range(n) if exact(H[a, b])})
     return plus(scale(base, alpha), scale(right_mul_volume(base, chirality_phase(p, q), eta), beta))
 ```
 
 - [ ] **Step 4: Run the tests**
 
 Run: `uv run pytest tests/test_shiab.py -q`
-Expected: `16 passed` (about 1 minute; the 14D u(A) membership checks dominate).
+Expected: `22 passed` (about 1.5 minutes; the 14D u(A) membership checks dominate).
 
 - [ ] **Step 5: Seeded faults (P2).** Each must fail an assertion:
+  - In `xi`, replace `exact(R[a, b, c, d])` with `int(R[a, b, c, d])`. Expected: `test_adapters_take_exact_rationals_and_reject_floats` fails.
   - In `assemble`, `Fraction(-1, 2)` → `Fraction(1, 2)`. Expected: `test_response_closed_form_on_spanning_set_small` and `test_shiab_parts_assemble_to_shiab` fail.
   - In `generator_action`, `-eta[b]` → `eta[b]`. Expected: `test_phi_bases_are_spin_invariant` and `test_star_is_equivariant` fail.
   - In `phi_basis`, `I * cph` → `cph` (B′ = B·C without the i). Expected: `test_phi_bases_are_u_A_valued` fails.
@@ -650,6 +758,7 @@ Expected: `16 passed` (about 1 minute; the 14D u(A) membership checks dominate).
 - [ ] **Step 6: Commit**
 
 ```bash
+git add -- gu/shiab.py tests/test_shiab.py
 git commit -m "Add undressed GU (9.3) operator, invariant Phi bases and Spin action" -- gu/shiab.py tests/test_shiab.py
 ```
 
@@ -704,7 +813,7 @@ HALF = GQ(Fraction(1, 2))
 GENERATORS = [(0b1, HALF), (0b11, HALF), (0b111, HALF * I), (0b1010, HALF), (0b1000, HALF)]
 
 
-@pytest.mark.parametrize("p,q", [(3, 1), (7, 7)])
+@pytest.mark.parametrize("p,q", [(3, 1), (7, 7), (9, 5)])
 def test_sparse_cayley_matches_library_cayley(p, q):
     """Positive adapter control (P2b): same matrix as gu.adjoint.cayley; in U(A)."""
     A = from_mono(dirac_pairing(p, q))
@@ -729,13 +838,17 @@ def _xi_samples(p, q):
     eta = eta_of(p, q)
     n = p + q
     s = np.zeros((n, n), dtype=np.int64); s[0, 1] = s[1, 0] = 1
-    t = np.diag([1, 2] + [0] * (n - 2)).astype(np.int64)
+    t = np.diag([1, 2, 3] + [0] * (n - 3)).astype(np.int64); t[0, 2] = t[2, 0] = 1
     return [{(0b11, 0b101): GQ(1), (0b110, 0b1): GQ(2)},
             {(0b101, 0b111): GQ(0, 1)},
             xi(kulkarni_nomizu(s, t), eta)]
 
 
-@pytest.mark.parametrize("p,q", [(3, 1), (7, 7)])
+def test_xi_samples_are_nonzero():
+    assert all(all(_xi_samples(*sig)) for sig in [(3, 1), (7, 7), (9, 5)])
+
+
+@pytest.mark.parametrize("p,q", [(3, 1), (7, 7), (9, 5)])
 def test_dressed_covariance_samples(p, q):
     """Test 3(b), scope: sampled. Shiab_{eps h}(h^-1 xi h) == h^-1 Shiab_eps(xi) h."""
     eta = eta_of(p, q)
@@ -848,7 +961,7 @@ and add `blade_mul` to the `gu.cliffform` import in `gu/shiab.py`.
 - [ ] **Step 4: Run the tests**
 
 Run: `uv run pytest tests/test_dressing.py -q -s`
-Expected: `10 passed` (about 1 minute). The 5′ test prints one zero/nonzero line per case; this is open data, with no expectation.
+Expected: `13 passed` (about 2 minutes). The 5′ test prints one zero/nonzero line per case; this is open data, with no expectation.
 
 - [ ] **Step 5: Seeded faults (P2):**
   - In `shiab_dressed`, conjugate as `left(eps, right(phi, eps_inv))`, i.e. the inverse placed wrongly. Expected: `test_dressed_covariance_samples` fails.
@@ -857,6 +970,7 @@ Expected: `10 passed` (about 1 minute). The 5′ test prints one zero/nonzero li
 - [ ] **Step 6: Commit**
 
 ```bash
+git add -- tests/test_dressing.py
 git commit -m "Add sparse Cayley dressings: covariance samples and Weyl open data" -- gu/shiab.py tests/test_dressing.py
 ```
 
@@ -866,6 +980,7 @@ git commit -m "Add sparse Cayley dressings: covariance samples and Weyl open dat
 
 **Files:**
 - Create: `experiments/B02/__init__.py` (empty), `experiments/B02/response.py`, `experiments/B02/run.py`
+- Test: `tests/test_b02_response.py`
 - Generated: `experiments/B02/result.json`
 
 **Interfaces:**
@@ -990,8 +1105,8 @@ from pathlib import Path
 import numpy as np
 
 from experiments.B02.response import check_signature, spanning_rank
-from gu.cliffform import GQ, I
-from gu.curvature import is_algebraic_curvature, ricci
+from gu.cliffform import GQ, I, scale, star
+from gu.curvature import is_algebraic_curvature, kulkarni_nomizu, ricci
 from gu.shiab import cayley_blade, eta_of, phi_basis, shiab, shiab_dressed, xi
 
 SIGNATURES = [(3, 1), (7, 7), (9, 5)]
@@ -1008,6 +1123,16 @@ def weyl_control(p: int, q: int) -> np.ndarray:
         W[a, b, b, a] = W[b, a, a, b] = -val
     assert is_algebraic_curvature(W) and not np.any(ricci(W, eta))
     return W
+
+
+def hand_control(p: int, q: int) -> bool:
+    """Independent nonzero control: KN(g, g) has Ric = 2(n-1) g (gu.curvature tests),
+    so CCC with Phi1 = F gives *shiab = -E_F(Ric) = -2(n-1) F, built from F directly."""
+    eta, n = eta_of(p, q), p + q
+    g = np.diag(eta).astype(np.int64)
+    phis = phi_basis(p, q)
+    got = star(shiab(phis["F"], phis["B"], xi(kulkarni_nomizu(g, g), eta), "CCC", eta), eta)
+    return bool(got) and got == scale(phis["F"], -2 * (n - 1))
 
 
 def open_data(p: int, q: int) -> list[dict]:
@@ -1040,7 +1165,12 @@ def main() -> None:
         assert rank == dim, (n, rank, dim)
         out["spanning_rank"][str(n)] = {"rank_mod_p": rank, "dim": dim}
     for p, q in SIGNATURES:
-        out["response"].append(check_signature(p, q))
+        row = check_signature(p, q)
+        n_pairs = (p + q) * (p + q + 1) // 2
+        assert row["inputs"] == n_pairs * (n_pairs + 1) // 2 and row["cases"] == 48 * row["inputs"], row
+        assert row["nonzero_outputs"] > 0, row                     # Review Focus 2
+        assert hand_control(p, q), (p, q)
+        out["response"].append(row)
         out["open_data_5prime"][f"{p},{q}"] = open_data(p, q)
         print(f"done {(p, q)}", flush=True)
     out["versions"] = {"python": platform.python_version(), "numpy": np.__version__}
@@ -1056,10 +1186,36 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 3: Small case first (P5)**
+- [ ] **Step 3: Small case first (P5).** Write `tests/test_b02_response.py`:
+
+```python
+# tests/test_b02_response.py
+"""Task 4 small-case permanents (P5): spanning certificate and response identity at n = 4."""
+from experiments.B02.response import check_signature, spanning_rank
+from experiments.B02.run import hand_control
+
+
+def test_kn_products_span():
+    """Certificate control: rank mod p of the 55 KN products = 20 = dim at n = 4."""
+    assert spanning_rank(4) == (20, 20)
+
+
+def test_response_identity_small():
+    """Test 5, scope: identity for (3,1) (spanning set x all branches)."""
+    row = check_signature(3, 1)
+    assert row == {"signature": [3, 1], "inputs": 55, "cases": 2640, "nonzero_outputs": 912}
+
+
+def test_hand_control():
+    """Independent nonzero control (KN(g, g), CCC, Phi1 = F)."""
+    assert hand_control(3, 1)
+```
 
 Run: `uv run python -m experiments.B02.response 3 1`
 Expected: `{'signature': [3, 1], 'inputs': 55, 'cases': 2640, 'nonzero_outputs': 912}`
+
+Run: `uv run pytest tests/test_b02_response.py -q`
+Expected: `3 passed`.
 
 - [ ] **Step 4: Seeded fault against the checker (Review Focus 1).** In `gu/shiab.py` `assemble`, set `Fraction(1, 2)`, then rerun Step 3.
 Expected: `AssertionError: mismatch at (3, 1, 0, 4, 'F', 'B', 'CAA')`.
@@ -1068,7 +1224,8 @@ Restore and verify by SHA-256.
 - [ ] **Step 5: Commit the code before running (P8)**
 
 ```bash
-git commit -m "B02: identity-scope response checker and result runner" -- experiments/B02/__init__.py experiments/B02/response.py experiments/B02/run.py
+git add -- experiments/B02/__init__.py experiments/B02/response.py experiments/B02/run.py tests/test_b02_response.py
+git commit -m "B02: identity-scope response checker and result runner" -- experiments/B02/__init__.py experiments/B02/response.py experiments/B02/run.py tests/test_b02_response.py
 ```
 
 Then check `git status --short gu experiments/B02 tests`: it must show no changes to tracked files.
@@ -1079,15 +1236,16 @@ Run: `uv run python -m experiments.B02.run`
 Expected:
 - `spanning_rank` gives `{"4": {"rank_mod_p": 20, "dim": 20}, "14": {"rank_mod_p": 3185, "dim": 3185}}`;
 - three `response` rows with `cases` of 2640, 267120 and 267120 respectively, each with `nonzero_outputs` > 0;
-- the script exits 0. A mismatch raises `AssertionError` naming the case: **stop and report it (P3); do not edit the formula.**
+- the script exits 0. The runner itself asserts the case counts, `nonzero_outputs > 0` and the hand control (Review Focus 2). A mismatch raises `AssertionError` naming the case: **stop and report it (P3); do not edit the formula.**
 
 - [ ] **Step 7: Commit the result**
 
 ```bash
+git add -- experiments/B02/result.json
 git commit -m "B02: result.json (response identity check, spanning ranks, 5' open data)" -- experiments/B02/result.json
 ```
 
-- [ ] **Step 8: Full suite.** Run `uv run pytest -q`. Expected: `209 passed`.
+- [ ] **Step 8: Full suite.** Run `uv run pytest -q`. Expected: `222 passed` (about 4 minutes).
 
 ---
 
@@ -1103,9 +1261,10 @@ Codex then checks it adversarially (a brief, with a `result.md`).
   - **Test 2(a) (real form):** if X♯ = −X and Y♯ = −Y, then [X,Y]♯ = −[X,Y] and (i(XY+YX))♯ = −i(XY+YX). Together with Φ ∈ 𝔲(A) (Task 2) and real Hodge coefficients (the `star` signs are ±1), the outputs are 𝔲(A)-valued for every 𝔲(A)-valued input.
   - **Test 3(a) (covariance):** (εh)⁻¹Φ(εh) = h⁻¹(ε⁻¹Φε)h. Conjugation by h is an algebra automorphism, so it commutes with both brackets. ∗ and the wedge act on the form factor only. Hence Shiab_{εh}(h⁻¹ξh) = h⁻¹Shiab_ε(ξ)h.
   - **Test 4 (equivariance, identity component):** the generators act as derivations of the wedge (form factor) and as ad_X, a derivation of the Clifford product, so they act as derivations of both brackets. ∗ is equivariant (Task 2, on full bases). Φ is invariant (Task 2). Composing these gives equivariance of (9.3) for Spin₀(p,q).
-  - **Bilinear extension:** shiab_parts' first term is linear in Φ¹, and its second term is bilinear in (Φ¹, Φ²). The formula's right side is bilinear in ((α,β), (γ,δ)). Task 4 checks it on the bases F, F′ × {B, B′, 0}, so it holds for all real (α, β, γ, δ). By linearity in R, it holds on all algebraic curvature tensors (the spanning rank equals the dimension).
+  - **Parameter extension** (review: affine, not jointly bilinear). U(Φ¹, Φ²) = L(Φ¹) + B(Φ¹, Φ²) is linear in Φ¹ and affine in Φ². So U(F, γB + δB′) = (1−γ−δ)U(F, 0) + γU(F, B) + δU(F, B′), likewise for F′, and then combine in (α, β). The formula's right side has the same structure. Task 4 checks F, F′ × {B, B′, 0}, so the formula holds for all real (α, β, γ, δ). By linearity in R, it holds on all algebraic curvature tensors (spanning rank = dimension).
+  - **Recorded substitutions:** the composition proof replaces the ansatz's literal operator-basis execution for test 4, which applies to Spin₀ only (no Pin/O claim). The full response identity replaces separate pure-sector executions for test 5. The `int()`-free adapters are needed for the executable code to accept rational curvature; the formal identity does not depend on them.
 
-- [ ] **Step 2: Commit** with the pathspec `experiments/B02/proofs.md`. Then brief Codex to check it.
+- [ ] **Step 2: Commit** with `git add -- experiments/B02/proofs.md`, then the pathspec commit. Then brief Codex to check it.
 
 ---
 
@@ -1117,11 +1276,15 @@ Codex then checks it adversarially (a brief, with a `result.md`).
 
 - [ ] **Step 1 (Claude): Classify κ from the verified formula.**
 
-  On ξ, ∗Shiab = −[m₀=C]·E_T(Ric) + (S/2)·([m₁m₂=AA]·γ·E_T(g) + [m₁m₂=AC]·δ·E_{T′}(g)), with T = (α,β) and T′ = (β,α). **Predictions** (to be confirmed against `result.json`, not assumed):
-  - m₀ = A: r_T = 0, which fails 5a.
-  - CCC (literal), CCA, ACx: κ = 0 for every Φ.
-  - CAA: κ = γ/2 for every (α,β) ≠ 0. That is ½ exactly when γ = 1 (N-a), and 1 under N-b (γ = 2).
-  - CAC: proportional to E_T only if δ(β,α) = (α,β), i.e. α = δβ with δ = ±1. These are the null chiral combinations, and there κ = ½.
+  On ξ, ∗Shiab = −[m₀=C]·E_T(Ric) + (S/2)·([m₁m₂=AA]·γ·E_T(g) + [m₁m₂=AC]·δ·E_{T′}(g)), with T = (α,β) and T′ = (β,α). The classification below is revision 2, corrected per review R3–R5 and checked by Codex's exact counterexamples. These are **predictions** to confirm against `result.json`, not assumptions. For T ≠ 0:
+  - **m₀ = A, or T = 0:** r_T = 0, so 5a fails and κ is **undefined** (not 0).
+  - **CCC (literal) and CCA:** κ = 0 for every Φ; the scalar and traceless sectors are both nonzero.
+  - **CAA:** κ = γ/2. The scalar response vanishes at γ = 2/n, which fails 5a. Einstein holds iff γ = 1 (N-a).
+  - **CAC:** if δ = 0, κ = 0. Otherwise the same-embedding response needs β = sα with s = ±1. Then δE_{T′} = sδ·E_T, κ = sδ/2, the scalar response vanishes at sδ = 2/n, and Einstein holds iff sδ = 1. These Φ¹ = α(F ± F′) = Σeᵃ⊗αΓₐ(1 ± C) are chirally projected soldering forms, and they are null for the natural trace norm (review F4). Report them as such; this is not a headline.
+  - **N-b domain (R3):** the inner A result is (S/2)(iγI − δC). Rescaling to exactly iS·I is possible only when the inner bracket is A, δ = 0 and γ ≠ 0. Then CAA has κ = 1 and CAC has κ = 0, so there is **no N-b Einstein branch**. Elsewhere, N-b is "unavailable".
+  - **Norm filter:** the source names no norm. If null directions under the trace norm are excluded, apply this to Φ² as well, since B ± B′ is null (R5). CAA Einstein then additionally needs α² ≠ β² and δ ≠ ±1. Report both the filtered and unfiltered families; do not pick a norm silently.
+  - **H0** (F, B, N-a): CAA alone gives κ = ½. Confirm it as its own line.
+  - **Open-data scope:** 5′ samples cover only F, B with CCC and CAA, and two odd dressings. Say so.
 
 - [ ] **Step 2 (Claude): Write `README.md`.** Follow the structure of `experiments/B01/README.md`:
   - verdict lines per the ansatz rules (the literal reading; every reconstructed reading that passes; H0);

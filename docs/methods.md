@@ -18,6 +18,8 @@ A passing test is evidence only if a plausible bug would have made it fail. For 
 
 Check *why* each seeded fault fails. A fault that only raises `NameError` or `ImportError` tests nothing. Read the failure message, and keep only faults that fail an assertion.
 
+**Non-vacuity.** Assert that every sample input is nonzero, and that every batch of outputs contains at least one nonzero output. A verifier must call the production entry point, never re-implement it. Seed a fault in the production code and confirm that the *verifier* (not just the unit tests) turns red. (Promoted 2026-10-15 after a zero curvature sample, and a response checker that bypassed `shiab` and stayed green with the −½ flipped.)
+
 ### P2b. Representation adapters get a positive example and an ambient impostor
 
 Every adapter between representations (e.g. the ℂ → ℝ 2×2-block embedding) gets two tests:
@@ -33,6 +35,8 @@ Expected values come from one of: textbook formulas, hand derivations written in
 ### P4. Exact or explicit
 
 Use no floats in any claim path. Any API that takes numbers rejects floats loudly.
+
+Route every numeric input through **one** coercion helper (e.g. `gu.cliffform.exact`). It converts numpy fixed-width integers to Python `int` and raises on floats. Never cast with a bare `int(...)` on a claim path, because it truncates rationals and floats silently. Before handoff, grep new code for `int(`, `float(` and arithmetic on numpy scalars. Add a large-integer control (e.g. 2⁶² · 4) and a rational-input control for each adapter. (Promoted 2026-10-15: the bare-`int()` bug class appeared twice, in `adjoint.embed` and then in B02 `xi`/`embed_tensor`.)
 
 ### P5. Small, then big
 
@@ -104,3 +108,12 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
   - *Worked:* the adversarial review again earned its keep: verdict *revise*, 9 findings, 3 high. Codex used an independent second reader on the PDF, all-entry commutant ranks rather than a diagonal ansatz, and a representation-theoretic argument for completeness. It separated hand-derived identities from sampled executions. Claude reproduced the runs (exit 0, identical output) and re-checked the two decisive claims with independent code and the page image.
   - *Didn't:* (1) Claude wrote a parity claim (q = 5 vs q = 7 differ) without checking that both are odd: a one-line arithmetic slip that a membership check would have caught. (2) Claude missed the appendix that defines the brackets. (3) Claude's exit gate (fit c, κ) admitted the literal −Ric contraction as "Einstein-like", and fixed a grade-1 target that rejected the equally valid grade-13 embedding. (4) The review's sampled computations now precede the amended pre-registration; the amendment says so explicitly.
   - *Changes:* new P10 (gates name their target value and embedding) and P11 (follow cross-references before declaring a branch), both promoted immediately because each guards evidence validity. **For transcriptions:** any claim checkable by an existing library predicate gets checked before it is written down.
+- **2026-10-15 · B02 plan (rev 1 → rev 2) · Claude (author), Codex (two-subagent review), argon (review).**
+  - *Worked:* smoke-testing the plan in scratch caught a verifier that bypassed `shiab` and a wrong "Spin dressing is a no-op" control before anyone else saw them. Codex's practical subagent replayed the plan literally (all Expected lines, 9 seeded faults, a full 541 s run). Its adversarial subagent confirmed the spanning, affine-extension and equivariance arguments and found real classification errors with exact counterexamples. Argon's three test additions were cheap and are now in. Inlining the tested scratch files into the plan by script, then rebuilding from the plan text, guarantees that the plan code equals the tested code.
+  - *Didn't:*
+    - Claude repeated the bare-`int()` cast bug class (R1/R2).
+    - Claude mis-stated κ as 0 where it is undefined, used the wrong CAC locus, and gave N-b a domain where it is unavailable (R3–R5).
+    - New-file commits lacked `git add` (R6; Claude hit this itself on the plan commit).
+    - One dressing sample was identically zero.
+    - Claude presented the plan for approval before any outside review. The user had to ask.
+  - *Changes:* P4 now requires one coercion helper and large-integer/rational controls. P2 now has a non-vacuity rule. Memory: an adversarial + practical Codex review always precedes asking the user for plan approval. Plans include `git add` before every new-file pathspec commit.

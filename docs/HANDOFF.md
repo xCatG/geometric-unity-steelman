@@ -49,16 +49,19 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - Sampled 5′ observation: odd dressings do **not** annihilate Weyl.
   - Predicted classification (README task): κ = γ/2 for CAA. So κ = ½ is exactly the unit normalization of B (N-a), while CCC gives κ = 0 for every Φ.
 
-- **Plan review in flight:** Codex is reviewing the plan with two subagents, adversarial and practical (`.agent-handoff/b02-plan-review/`). Argon also reviewed it. Accepted from argon and verified in Claude's scratch copy (`scratchpad/smoke/tests/test_argon_additions.py`), to be merged into the plan together with Codex's findings:
-  - a mixed-Φ formula test (2F − 3F′, 5B + 7B′);
-  - an end-to-end Spin₀ equivariance test of `shiab` (all 8 modes, including a non-Levi-Civita term);
-  - a general `in_u_A` (rejects mixed-phase coefficients), with Test 2(a) asserted on `shiab` outputs plus two impostors.
-  - Claude also found that `_xi_samples`' curvature input KN(E₀₁+E₁₀, diag(1,2,0,…)) is identically zero, so one dressing sample was vacuous. Fix: t = diag(1,2,3,…) with t₀₂ = 1, plus `test_xi_samples_are_nonzero`.
-  - Argon's CAC "chiral Weyl projector" framing goes in the README, toned down: F ± F′ = Σeᵃ⊗Γₐ(1 ± C) is chirally projected and is null for the trace norm (Codex F4). It is a legitimate observation, not a "remarkable finding".
+- **B02 plan revision 2** (`docs/superpowers/plans/2026-10-15-b02-direct-check.md`) folds in Codex's two-subagent review (verdict *revise*, R1–R8; `.agent-handoff/b02-plan-review/`) and argon's three test additions:
+  - exactness via `exact()`;
+  - the corrected Task 6 classification: κ undefined for m₀ = A; CAC κ = sδ/2 for β = sα; no N-b Einstein branch; scalar boundary at κ = 1/n; null Φ² directions B ± B′;
+  - `git add` before every new-file commit;
+  - (9,5) covariance samples;
+  - runner guards plus a hand control;
+  - a nonzero dressing sample.
+  It was smoke-tested by rebuilding from the plan text: 222 tests pass, and the full run passes. **Awaiting the user's re-review and approval.**
+- **Agents:** the pi coding agent is now in pane 0:4 (GPT-6-Astra medium, web access) and available for lookups and side checks. agy is retired.
 
 **Next**
 1. ~~Resolve Codex's review~~ (done, `f75bb66`). ~~Retro~~ (done). ~~Write the B02 plan~~ (done).
-2. **Wait for the user's approval of the B02 plan.** Then dispatch Tasks 1–4 to Codex (one brief; the plan is self-contained). Claude does Task 5 (`proofs.md`) in parallel.
+2. **Wait for the user's approval of B02 plan revision 2.** Then dispatch Tasks 1–4 to Codex (one brief; the plan is self-contained). Claude does Task 5 (`proofs.md`) in parallel.
 3. (Superseded; kept for the record.) Write the follow-up plan `docs/superpowers/plans/<date>-b02-direct-check.md` (writing-plans skill), from the reviewed transcription. Include the symbolic covariance derivation (Claude), the branch enumeration (brackets 2³ × Φ choices × signatures), tests 1–5 and 5′, and the H0 line item. Smoke-test the plan's code, and list the ambient impostors (P2b).
 4. Get the user's approval of that plan, then dispatch it to Codex.
 5. Later: P3 (B03 branching), P4 repairs, the write-up.
