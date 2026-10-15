@@ -10,3 +10,6 @@ import B02.Bilinearity
 import B02.Hodge
 import B02.Degree
 import B02.ConcreteHodge
+import B02.Structural
+import B02.TensorDerivation
+import B02.TensorCovariance
