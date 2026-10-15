@@ -8,7 +8,7 @@ def bracketKernel (eta : Fin n → ℤ) (m : Mode)
     (f1 b1 f2 b2 f b : Blade n) : GQ :=
   bracketContribution eta m ⟨f1,b1,1⟩ ⟨f2,b2,1⟩ f b
 
-theorem bracketContribution_factor (eta : Fin n → ℤ) (m : Mode)
+theorem bracketContribution_kernel_factor (eta : Fin n → ℤ) (m : Mode)
     (t u : Term n) (f b : Blade n) :
     bracketContribution eta m t u f b =
       t.value * u.value * bracketKernel eta m t.form t.blade u.form u.blade f b := by
@@ -40,7 +40,7 @@ theorem coefficient_bracket_finite (eta : Fin n → ℤ) (m : Mode)
         coefficient x f1 b1 * coefficient y f2 b2 *
           bracketKernel eta m f1 b1 f2 b2 f b := by
   rw [coefficient_bracket]
-  simp_rw [bracketContribution_factor]
+  simp_rw [bracketContribution_kernel_factor]
   have hinner (t : Term n) :
       (y.map (fun u => t.value * u.value *
         bracketKernel eta m t.form t.blade u.form u.blade f b)).sum =
@@ -94,5 +94,6 @@ theorem coefficient_bracket_scale_left (eta : Fin n → ℤ) (m : Mode)
   ring
 
 end B02.Concrete
+
 
 
