@@ -35,20 +35,14 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - **N1:** the trace magnitude is unspecified in the draft.
   - **Repair:** tie s_V (not the trace sign) to the base sign.
 - **P2 library, Tasks 5–8:** `gu/{inertia,clifford,forms,curvature,adjoint}.py`, 164 tests passing (`uv run pytest -q`, about 30 s).
-- **Task 9 steps 1–2:** `experiments/B02/transcription.md` and `ansatz.md` (commit `ecdf966`).
-
-**In flight**
-- Codex is doing Task 9 step 3: an adversarial review of the B02 transcription and ansatz. Brief at `.agent-handoff/b02-transcription/task.md`. It checks:
-  - fidelity to the PDF;
-  - (3.27)'s signature-dependent i-pattern;
-  - the exact dimension of the invariants Φ¹ and Φ² (Claude predicted 2 each);
-  - hypothesis H0;
-  - the technical appendix (pp. ~64–69);
-  - vacuous or false acceptance in the tests.
+- **Task 9 steps 1–3:** B02 transcription rev 2 and ansatz amendment 1 (`f75bb66`), after Codex's review (verdict *revise*, 9 findings; evidence in `.agent-handoff/b02-transcription/`, reproduced by Claude). Key facts:
+  - The appendix (pp. 65–66, (12.26)–(12.27)) defines [·,·] = commutator and {·,·} = i·anticommutator. (9.3) has 3 square brackets, so the **literal reading is CCC**.
+  - Sampled (not yet identity): under CCC the "−½" scalar term of (9.3) vanishes on Levi-Civita curvature (κ = 0). CAA gives κ = ½ under N-a (κ = 1 under N-b). This is the likely headline B02 finding; the plan must make it identity-scope.
+  - Real-form grade pattern of (3.27) is identical in (7,7) and (9,5). Invariant Φ spaces are real-2-dimensional each: Φ¹ = αF + βF′, Φ² = γB + δB′.
+- Retro and new practices P10, P11 in `docs/methods.md`.
 
 **Next**
-1. Read `.agent-handoff/b02-transcription/result.md`. Verify the decisive claims yourself (rerun computations, reproduce counterexamples). Resolve the disagreements in transcription.md and ansatz.md. Commit; amending the pre-registration is fine before any B02 code exists, but say so in the commit message.
-2. Add a retro entry to `docs/methods.md`.
+1. ~~Resolve Codex's review~~ (done, `f75bb66`). ~~Retro~~ (done).
 3. Write the follow-up plan `docs/superpowers/plans/<date>-b02-direct-check.md` (writing-plans skill), from the reviewed transcription. Include the symbolic covariance derivation (Claude), the branch enumeration (brackets 2³ × Φ choices × signatures), tests 1–5 and 5′, and the H0 line item. Smoke-test the plan's code, and list the ambient impostors (P2b).
 4. Get the user's approval of that plan, then dispatch it to Codex.
 5. Later: P3 (B03 branching), P4 repairs, the write-up.

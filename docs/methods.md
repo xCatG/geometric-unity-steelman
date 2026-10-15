@@ -58,6 +58,14 @@ A reconciliation of a source formula with our code states three things separatel
 
 A match of invariants such as inertia does not show that the source chose our representative.
 
+### P10. Gates name their target value, not just its shape
+
+A pass criterion that fits free parameters ("c ≠ 0 and some κ") admits any map of the right shape. Pre-register the specific target value (κ = ½), the embedding the output is compared in, and every summation and normalization convention it depends on. A gate that passes a known-wrong candidate (e.g. the pure −Ric contraction for an Einstein claim) is an ambient impostor at the level of the experiment (compare P2b). Conversely, do not fix a target copy that silently rejects an equally valid embedding.
+
+### P11. Follow the source's own cross-references before calling something unspecified
+
+Before marking notation as an open branch, read the source's appendix, glossary and end matter for a definition. Record where you looked.
+
 ### P8. Commits mirror the evidence
 
 Commit the pre-registration first and the results second. One task produces one or more commits, and a commit never mixes authors' files.
@@ -92,3 +100,7 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
   - *Worked:* 10 seeded faults, all caught, each restoration verified by SHA-256. Every expected value has a one-line outside source (P3). Codex caught two plan bugs no test had exercised: (1) `is_in_algebra`/`is_in_group` admitted real-orthogonal, non-complex-linear matrices; (2) `int(x)` casts in `embed` silently truncated rationals and could overflow int64 in `curvature`.
   - *Didn't:* Claude's first reproduced fault died with a `NameError`, so it tested nothing; noticed only by reading the failure. A system-Python vs uv runtime clash cost Codex a rerun.
   - *Changes:* P2 now requires reading why a fault fails; new P2b for adapters. **Lesson for plan-writing:** code smoke-tested by its own author missed both bugs. Plans should list the ambient-impostor input for every adapter.
+- **2026-10-15 · Task 9 (B02 transcription review) · Codex (reviewer) and Claude (author).**
+  - *Worked:* the adversarial review again earned its keep: verdict *revise*, 9 findings, 3 high. Codex used an independent second reader on the PDF, all-entry commutant ranks rather than a diagonal ansatz, and a representation-theoretic argument for completeness. It separated hand-derived identities from sampled executions. Claude reproduced the runs (exit 0, identical output) and re-checked the two decisive claims with independent code and the page image.
+  - *Didn't:* (1) Claude wrote a parity claim (q = 5 vs q = 7 differ) without checking that both are odd: a one-line arithmetic slip that a membership check would have caught. (2) Claude missed the appendix that defines the brackets. (3) Claude's exit gate (fit c, κ) admitted the literal −Ric contraction as "Einstein-like", and fixed a grade-1 target that rejected the equally valid grade-13 embedding. (4) The review's sampled computations now precede the amended pre-registration; the amendment says so explicitly.
+  - *Changes:* new P10 (gates name their target value and embedding) and P11 (follow cross-references before declaring a branch), both promoted immediately because each guards evidence validity. **For transcriptions:** any claim checkable by an existing library predicate gets checked before it is written down.
