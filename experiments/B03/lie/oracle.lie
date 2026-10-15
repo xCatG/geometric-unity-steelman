@@ -1,0 +1,95 @@
+"LiE B03 positive controls; Bourbaki Dynkin labels"
+"D5 A4T1 root-derived restriction (unreversed A4)"
+m=res_mat([[1,0,0,0,0],[0,1,0,0,0],[0,0,1,0,0],[0,0,0,1,0]],D5)
+m
+"Reverse A4 diagram: chosen SU5 fundamental is old omega4; charge unchanged"
+r=m*[[0,0,0,1,0],[0,0,1,0,0],[0,1,0,0,0],[1,0,0,0,0],[0,0,0,0,1]]
+r
+"D5 Splus omega5: 16 = 10_1 + 5bar_-3 + 1_5"
+branch([0,0,0,0,1],A4T1,r,D5)
+dim(branch([0,0,0,0,1],A4T1,r,D5),A4T1)
+"D5 vector: 10 = 5_-2 + 5bar_2"
+branch([1,0,0,0,0],A4T1,r,D5)
+"D7 dimensions V Splus Sminus RSplus RSminus"
+dim([1,0,0,0,0,0,0],D7)
+dim([0,0,0,0,0,0,1],D7)
+dim([0,0,0,0,0,1,0],D7)
+dim([1,0,0,0,0,0,1],D7)
+dim([1,0,0,0,0,1,0],D7)
+"D7 tensor V*Splus and V*Sminus: gamma trace has opposite chirality"
+tp=tensor([1,0,0,0,0,0,0],[0,0,0,0,0,0,1],D7)
+tm=tensor([1,0,0,0,0,0,0],[0,0,0,0,0,1,0],D7)
+tp
+tm
+dim(tp,D7)
+dim(tm,D7)
+"Built-in subgroup restriction matrix; output order D5,A1L,A1R"
+b=res_mat(D5A1A1,D7)
+b
+"Vector branch"
+branch([1,0,0,0,0,0,0],D5A1A1,b,D7)
+"Splus branch"
+sp=branch([0,0,0,0,0,0,1],D5A1A1,b,D7)
+sp
+"Sminus branch"
+sm=branch([0,0,0,0,0,1,0],D5A1A1,b,D7)
+sm
+"RSplus branch"
+rp=branch([1,0,0,0,0,0,1],D5A1A1,b,D7)
+rp
+"RSminus branch"
+rm=branch([1,0,0,0,0,1,0],D5A1A1,b,D7)
+rm
+"V*Splus branch"
+bp=branch(tp,D5A1A1,b,D7)
+bp
+"V*Sminus branch"
+bm=branch(tm,D5A1A1,b,D7)
+bm
+"Branch dimension totals Splus Sminus RSplus RSminus V*Splus V*Sminus"
+dim(sp,D5A1A1)
+dim(sm,D5A1A1)
+dim(rp,D5A1A1)
+dim(rm,D5A1A1)
+dim(bp,D5A1A1)
+dim(bm,D5A1A1)
+"Trace subtraction residuals (zero polynomials required)"
+bp-rp-sm
+bm-rm-sp
+"Restriction versus target tensor product residuals"
+tensor(branch([1,0,0,0,0,0,0],D5A1A1,b,D7),sp,D5A1A1)-bp
+tensor(branch([1,0,0,0,0,0,0],D5A1A1,b,D7),sm,D5A1A1)-bm
+"D5 dimensions and tensor chirality, then A1A1 vector-spinors"
+dim([0,0,0,0,1],D5)
+dim([0,0,0,1,0],D5)
+dim([1,0,0,0,1],D5)
+dim([1,0,0,1,0],D5)
+tensor([1,0,0,0,0],[0,0,0,0,1],D5)
+tensor([1,0,0,0,0],[0,0,0,1,0],D5)
+tensor([1,1],[1,0],A1A1)
+tensor([1,1],[0,1],A1A1)
+"A1 controls: 1/2 x 1/2 and 1 x 1/2"
+tensor([1],[1],A1)
+tensor([2],[1],A1)
+"SM embedding E (ansatz rev 1): D5 -> A2 A1 T1, rows = images of fundamental weights; T1 = n = 6Y"
+e=[[-1,0,0,2],[0,-1,0,4],[0,0,0,6],[0,0,-1,3],[0,0,0,0]]
+e
+"SM 16"
+branch([0,0,0,0,1],A2A1T1,e,D5)
+"SM 16bar"
+branch([0,0,0,1,0],A2A1T1,e,D5)
+"SM H"
+branch([1,0,0,0,1],A2A1T1,e,D5)
+"SM Hbar"
+branch([1,0,0,1,0],A2A1T1,e,D5)
+"SU5xU1_X parent labels (reversed A4 matrix r; charge X = sum of doubled D5 coordinates)"
+"SU5 16"
+branch([0,0,0,0,1],A4T1,r,D5)
+"SU5 16bar"
+branch([0,0,0,1,0],A4T1,r,D5)
+"SU5 H"
+branch([1,0,0,0,1],A4T1,r,D5)
+"SU5 Hbar"
+branch([1,0,0,1,0],A4T1,r,D5)
+"END B03 ORACLE"
+quit
