@@ -1,4 +1,4 @@
-# B03 ansatz: spinor and Rarita–Schwinger branching (pre-registered, revision 1.1)
+# B03 ansatz: spinor and Rarita–Schwinger branching (pre-registered, revision 1.2)
 
 Provenance:
 - The draft identities are `[GU-orig]`.
@@ -18,6 +18,7 @@ Provenance:
   - The adapter is defined in the Euclidean frame, as in the review's chirality probe.
   - The signatures of every split are unchanged.
   - Claude's plan smoke test ran after this revision; its outcomes are not evidence.
+- **Revision 1.2** (2026-10-15, before any production code) corrects the knowledge ledger only (plan review finding 3, `.agent-handoff/b03-plan-review/`). The §11.3 comparisons and the full test 5–8 data were first computed in Claude's plan smoke test, and then independently by the plan review (LiE output against the draft rows, without the B03 code). The ledger below now says so. No convention, test or gate changes.
 - The review's scratch scripts computed some outcomes before revision 1. These are listed under "Known before the run". This revision pre-registers what is still unknown:
   - the row-by-row comparison of the §11.3 tables;
   - every concrete-matrix result produced by tracked code;
@@ -118,7 +119,14 @@ Each claim gets its own line, and lines are never merged.
 - tr Q = 23296 / 11648 and 48 / 24.
 - J² = +1 / −1 at (7,7) / (9,5), and JQ = QJ.
 
-**Not yet computed by anyone:** the comparison of the p. 53 table, and of the two p. 52 tables, against those restrictions.
+**Computed after revision 1.1, before any production code** (Claude's smoke test, then the plan review's independent LiE-to-source comparison). All of these are known before Codex's committed run, and none is a prediction:
+- p. 52 left = 16, and p. 52 cousin = 16̄.
+- p. 53 (aggregated to 23 terms) = H̄ = 144₊, exactly, under E.
+- Every p. 51 block, (12.20), (11.2) and (11.3)/(12.22) holds under the dictionary.
+- The J partners are (a,b;λ) ↔ (b,a;λ̄) in all three 14D splits.
+- In RS₊, (R;16) and (R;H̄) each contain one complete generation pattern; RS₋ is the mirror.
+
+The committed run's role is to reproduce these with tracked, fault-tested code and an exact external fixture. Its tests take their expected values from the LiE fixture and the draft rows directly (the `*_lie_directly` tests), not from the smoke snapshot.
 
 ## Inputs fixed now
 
