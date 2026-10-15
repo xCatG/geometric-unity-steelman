@@ -14,7 +14,7 @@ from fractions import Fraction
 
 import numpy as np
 
-from gu.cliffform import (GQ, I, bracket, chirality_phase, clean, exact, plus, reorder_sign,
+from gu.cliffform import (GQ, I, blade_mul, bracket, chirality_phase, clean, exact, plus, reorder_sign,
                           right_mul_volume, scale, star)
 
 
@@ -100,3 +100,52 @@ def embed_tensor(H: np.ndarray, alpha, beta, p: int, q: int) -> dict:
     base = clean({(1 << a, 1 << b): GQ(exact(H[a, b]) * eta[b])
                   for a in range(n) for b in range(n) if exact(H[a, b])})
     return plus(scale(base, alpha), scale(right_mul_volume(base, chirality_phase(p, q), eta), beta))
+
+
+# ---- dressing (GU 8.1: epsilon acts on the bundle factor by conjugation) ----
+
+def left(u: dict, x: dict, eta: list[int]) -> dict:
+    """u * x, where u is a 0-form Clifford element {(0, blade): GQ}."""
+    out: dict = {}
+    for (f0, b), uv in u.items():
+        if f0:
+            raise ValueError("left factor must be a 0-form")
+        for (f, a), xv in x.items():
+            c, s = blade_mul(b, a, eta)
+            out = plus(out, {(f, c): uv * xv * s})
+    return out
+
+
+def right(x: dict, u: dict, eta: list[int]) -> dict:
+    """x * u, where u is a 0-form Clifford element."""
+    out: dict = {}
+    for (f0, b), uv in u.items():
+        if f0:
+            raise ValueError("right factor must be a 0-form")
+        for (f, a), xv in x.items():
+            c, s = blade_mul(a, b, eta)
+            out = plus(out, {(f, c): uv * xv * s})
+    return out
+
+
+def cayley_blade(blade: int, t: GQ, eta: list[int]) -> tuple[dict, dict]:
+    """(h, h^-1) for h = (1 - X)(1 + X)^-1 with X = t * G_blade.
+
+    X^2 = t^2 * sq is a scalar, so (1 + X)^-1 = (1 - X) / (1 - t^2 sq) and
+    h = (1 - X)^2 / (1 - t^2 sq), h^-1 = (1 + X)^2 / (1 - t^2 sq).
+    """
+    _, sq = blade_mul(blade, blade, eta)
+    d = GQ(1) - t * t * sq
+    if not d:
+        raise ZeroDivisionError("1 + X is singular")
+    one, X = {(0, 0): GQ(1)}, {(0, blade): t}
+    sq_minus = left(plus(one, scale(X, -1)), plus(one, scale(X, -1)), eta)
+    sq_plus = left(plus(one, X), plus(one, X), eta)
+    return scale(sq_minus, GQ(1) / d), scale(sq_plus, GQ(1) / d)
+
+
+def shiab_dressed(phi1, phi2, x, modes, eta, eps, eps_inv):
+    """(9.3) with Phi^i replaced by eps^-1 Phi^i eps."""
+    c1 = left(eps_inv, right(phi1, eps, eta), eta)
+    c2 = left(eps_inv, right(phi2, eps, eta), eta)
+    return shiab(c1, c2, x, modes, eta)
