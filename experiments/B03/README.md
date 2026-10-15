@@ -10,7 +10,12 @@ Inputs:
 - `lie/oracle.out` (LiE 2.2.2 fixture, SHA-256 `576888f2…`)
 - plan `docs/superpowers/plans/2026-10-15-b03-branching.md` (revision 1.2)
 
-**Provenance.** Every result below was known before the committed run: from the LiE oracle, Claude's plan smoke test and the plan review (ansatz, "Known before the run"). None is a prediction. The committed run reproduces them with tracked code. That code is checked against an exact external fixture (LiE) and fault-tested: 297 tests pass, and 13 seeded faults each fail an assertion. Its `result.json` was regenerated identically from a clean clone at `895fc08` (Claude, P7).
+**Provenance.** Every result below was known before the committed run: from the LiE oracle, Claude's plan smoke test and the plan review (ansatz, "Known before the run"). None is a prediction. The committed run reproduces them with tracked code. That code is checked against an exact external fixture (LiE) and fault-tested: 297 tests passed at the producing commit, and 13 seeded faults each fail an assertion.
+
+- **Exactness fix.** `835d7c8` hardened the public numeric entries of `gu/reps.py` (P4), after the run. The suite is now 310 tests, and the 13 faults are still RED.
+- **Clean-clone reruns.** Run in clean clones, the runner reproduces the committed `result.json` in every field except `source_commit`. Claude ran it at `895fc08` and again at `835d7c8` (log: `.agent-handoff/b03-task5/claude-p7.log`). Codex ran it independently at `835d7c8`.
+
+**Independent re-derivation** (Codex, [`rederivation.md`](rederivation.md)). It uses fresh LiE input and separately built Pauli/Kronecker gamma matrices, with no imports from `gu` or `experiments`. All 44 table and comparison entries agree, as do J² and C = ±Π in every split. Codex also audited every number in this README: three wording corrections, now applied, and no numerical disagreement.
 
 ## What is being compared
 
@@ -48,14 +53,14 @@ One line per draft claim, under the ansatz's verdict rules. "Under dictionary" m
 | **(11.2)** chiral refinement, i.e. **(12.20)** | **holds (identity, under dictionary)**, both halves | S₊ → (L,16) + (R,16̄) ("Luminous"); S₋ → (L,16̄) + (R,16) ("Dark Decoupled Looking Glass"). |
 | **(11.3)/(12.22)**, full modules | **holds (identity, convention-free)** | RS(TX ⊕ N) = RS(TX) ⊗ S(N) ⊕ S(TX) ⊗ RS(N) ⊕ S(TX) ⊗ S(N): 1664 = 384 + 1152 + 128. The S(TX) ⊗ S(N) term is contained in the full RS module. |
 | **(11.3)** chiral refinement, i.e. 832_± = 𝒵 ⊕ 𝒬 ⊕ ℱ | **holds (identity, under dictionary)** | The RS₊ line above. |
-| **(11.6)** and the p. 51 diagram: all 10 printed rows (ζ±, ν± and each whole fibre) | **holds (identity, under dictionary)**, 10/10 | ℱ = Lorentz spinor × 16/16̄; 𝒬 = Lorentz vector-spinor × 16/16̄; 𝒵 = Lorentz spinor × H/H̄. |
+| **(11.6)** and the p. 51 diagram: all ten comparisons (six printed module entries for ζ± and ν±, plus four whole-fibre checks) | **holds (identity, under dictionary)**, 10/10 | ℱ = Lorentz spinor × 16/16̄; 𝒬 = Lorentz vector-spinor × 16/16̄; 𝒵 = Lorentz spinor × H/H̄. |
 | §11.3 table 1, p. 52 ("Left Quarks …") | **equals 16 under E** | 6 aggregated terms, with no missing and no extra terms. |
 | §11.3 table 2, p. 52 (the 𝒬⁺ "cousin") | **equals 16̄ under E** | 6 aggregated terms, exact. |
 | §11.3 table 3, p. 53 (unlabelled 144) | **equals H̄ under E** (= 144₊) | 25 printed rows sum to **23** aggregated terms (rows 20 and 21 repeat), with no missing and no extra terms. |
 | Reality, per 14D row | **holds**, 3/3 rows (see "Reality") | J² = +1 at (7,7), −1 at (9,5). |
 | "a third family is merely effectively identical"; "above the dashed line is our world"; VEV decoupling; (12.21); which states are "imposters" | **unresolved (needs dynamics)** | B03 contributes data only (below). |
 
-**The embedding E** is fixed from root data before any comparison, never fitted to the tables. SU(5) ⊂ SO(10) with SU(3) on y₁…y₃ and SU(2) on y₄, y₅, and n = 6Y. The LiE matrix for E is the images of the five D5 fundamental weights (Grok's review confirmed it is root-derived). The wrong-hypercharge impostor n = X fails the 16 fixture (fault F4). The flipped-charge control E′, n′ = (−n + 6X)/5, gives identical characters on every complete D5 module tested (`e_equals_e_prime`). So E versus E′ is not a discriminator, and the table matches do not depend on choosing between them.
+**The embedding E** is fixed from root data before any comparison, never fitted to the tables. SU(5) ⊂ SO(10) with SU(3) on y₁…y₃ and SU(2) on y₄, y₅, and n = 6Y. The LiE matrix for E is the images of the five D5 fundamental weights (Grok's review confirmed it is root-derived). The wrong-hypercharge impostor n = X fails the 16 fixture (`test_wrong_hypercharge_with_right_quark_doublet_is_rejected`). Separately, seeded fault F4 perturbs n to n + X and turns the LiE comparisons red. The flipped-charge control E′, n′ = (−n + 6X)/5, gives identical characters on every complete D5 module tested (`e_equals_e_prime`). So E versus E′ is not a discriminator, and the table matches do not depend on choosing between them.
 
 SU(5) × U(1)_X parents, from `result.json` (`su5_x_parent_labels`) and checked against LiE: 16 = 10₁ + 5̄₋₃ + 1₅, and 16̄ = 1₋₅ + 5₃ + 10̄₋₁. In A4 Dynkin labels with X, H = [0001]₇ + [1000]₃ + [0010]₋₁ + [0002]₋₁ + [1001]₋₅ + [1100]₋₁ + [0101]₃, of dimensions 5, 5, 10, 15, 24, 40 and 45 (sum 144). H̄ is its conjugate.
 
@@ -81,7 +86,7 @@ The J² signs match the literature (Figueroa-O'Farrill, *Majorana spinors*, Tabl
 - Q² = dQ;
 - γ·Q = 0;
 - tr Q = 23296, split evenly between the chiralities;
-- Q fixes a hand-built gamma-traceless map and kills a gamma-inserted map;
+- QT = dT on a hand-built gamma-traceless map T (so P = Q/d fixes it), and Q kills a gamma-inserted map;
 - covariance under every generator.
 
 ## The "imposter generation": data, no location verdict
