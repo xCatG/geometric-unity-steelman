@@ -1,17 +1,17 @@
 # B02 transcription: the Shiab operator, GU (8.1)–(8.7) and (9.2)–(9.3)
 
-Transcriber: Claude (Opus 5.5), 2026-10-15. Plan Task 9, step 1. Reviewer: Codex (step 3).
+Transcriber: Claude (Opus 5.5), 2026-10-15. Plan Task 9, step 1. Reviewer: Codex (step 3), verdict *revise*. Revision 2 (this file) applies every review finding; the review's decisive claims (grade-1 real form in both signatures; the appendix bracket definitions) were re-checked by Claude independently.
 
 ## Source
 
-- Same PDF as `experiments/B01/transcription.md`: SHA-256 `3f28d742234a9841fc8e51ff172053200aa3eddf3ece38154a3328b9ebd186d4`.
-- Pages read as rendered images: 23–24 (§3.5–3.6), 32–33 (§5.2–5.3), 41–43 (§8–9.1). Eqs. (8.1) and (9.3) were also read at 300 dpi.
+- Same PDF as `experiments/B01/transcription.md`: SHA-256 `3f28d742234a9841fc8e51ff172053200aa3eddf3ece38154a3328b9ebd186d4`, 69 pages.
+- Pages read as rendered images: 23–24 (§3.5–3.6), 32–33 (§5.2–5.3), 41–43 (§8–9.1), and the end matter 64–69 (read by Codex's independent second reader; p. 66 re-read by Claude). Eqs. (8.1) and (9.3) were also read at 300 dpi.
 
 ## Verbatim
 
 **p. 23, (3.27)** (text extraction checked against the page):
 $$\mathfrak u(64,64)\ \text{“=”}\ \bigoplus_{i=0}^{3}\Lambda^{4i+2}\ \oplus\ \bigoplus_{i=0}^{3} i\Lambda^{4i}\ \oplus\ \bigoplus_{i=0}^{3}\Lambda^{4i+1}\ \oplus\ \bigoplus_{i=0}^{2} i\Lambda^{4i+3}\ \subset\ \mathrm{Cl}_\mathbb{R}(7,7)\otimes\mathbb C$$
-"corresponding to the Lie Group H = U(64,64), where the 'adjoint' operation in the Clifford Algebra is given by the operation of composing the canonical automorphism with the reversal of order of all basis vectors." Footnote 3: "This decomposition was taken from a decades old file and should be checked by s[omeone]…"
+"corresponding to the Lie Group H = U(64,64), where the 'adjoint' operation in the Clifford Algebra is given by the operation of composing the canonical automorphism with the reversal of order of all basis vectors." Footnote 3: "This decomposition was taken from a decades old file and should be checked by someone…" (The three ⊕ separators between the big sums above are editorial; the print sets the sums adjacent.)
 
 **p. 24, (3.31)–(3.35).** ϱ_D: Spin(7,7) → U(64,64) "on complex Dirac Spinors using the notation H = U(64,64)". The main bundle is P_H = P_{F̃r(C^{7,7})} ×_{ϱ_D} H, with ad = P_H ×_ad 𝔲(64,64) (3.34) and Ad = P_H ×_Ad U(64,64) (3.35).
 
@@ -37,6 +37,14 @@ $$\circledcirc_\varepsilon:\ \Omega^2(Y^{7,7},\mathrm{ad})\longrightarrow\Omega^
 $$\circledcirc_\varepsilon\xi=\underbrace{\big[(\varepsilon^{-1}\Phi^1\varepsilon)\wedge(*\xi)\big]}_{\text{Ricci Like}}-\frac{*}{2}\big[\underbrace{(\varepsilon^{-1}\Phi^1\varepsilon)}_{g_{\mu\nu}\text{-like}}\wedge *\underbrace{\big[(\varepsilon^{-1}\Phi^2\varepsilon)\wedge(*\xi)\big]}_{\text{Ricci Scalar Like}}\big] \tag{9.3}$$
 "for a gauge covariant ad-valued 2-form ξ ∈ Ω²(Y, ad). Here, as in Einstein's case, the Weyl curvature tensor is annihilated by the contraction operator above so the operator preserves and mixes only the analogues of the Ricci and Scalar curvature components." Footnote 10: "The Shiab operator that he settled on (but cannot yet now locate) was chosen for its properties relative to the Bianchi identity."
 
+**pp. 65–66, appendix "Other Elements of Shiab Constructions"** (missed in revision 1; found by Codex's second reader):
+- Contraction: "Various forms of contraction can be defined either with co-variant against contravariant tensors in the obvious way or via the wedge and star operations between forms as in: φ ∨ μ = ∗(φ ∧ ∗μ)" (12.25).
+- Bracket: "As with any Lie Group, U(64,64) carries a Lie Bracket structure. Given that it lives embedded within the Clifford Algebra Cl_ℂ(7,7) = ℂ(128), it can be constructed from the matrix algebra product in the usual fashion: [a,b] = a·b − b·a" (12.26).
+- Symmetric product: "Unlike most Lie Algebras, there is a second symmetric product on 𝔲(n) gotten from taking: {a,b} = i(a·b + b·a)" (12.27).
+- Volume form: "The analog of the Hodge Star operator is multiplication with the Clifford Volume form λ."
+
+The appendix does not select Φ, its norm, its relative scale, or the lost preferred operator. pp. 66–69 contain no further such definitions.
+
 ## Symbol table
 
 | Symbol | Type | Source |
@@ -46,7 +54,7 @@ $$\circledcirc_\varepsilon\xi=\underbrace{\big[(\varepsilon^{-1}\Phi^1\varepsilo
 | ε | section of P_H ×_Ad H, i.e. pointwise an element of U(64,64) | (5.3), §8.2 |
 | Φ¹, Φ² | Spin(7,7)-invariant elements of Λ^i ⊗ 𝔲(64,64) for i = 1, 2: a "basis" element per degree | (8.7) |
 | ε⁻¹Φ^iε | conjugation acting on the 𝔲 factor only | (8.1) text |
-| [α ∧ β] | wedge on form parts with a bracket on the 𝔲 parts: commutator or i·anticommutator | (8.1) text |
+| [α ∧ β] | wedge on form parts with the commutator on the 𝔲 parts, per the appendix notation (12.26); the braces {·,·} = i·anticommutator (12.27) do not appear in (9.3) | (8.1) text, (12.26)–(12.27) |
 
 **Degree check** (n = 14):
 - Ricci-like term: Φ¹ is a 1-form and ∗ξ a 12-form, so [Φ¹ ∧ ∗ξ] is a 13-form ✓.
@@ -56,32 +64,29 @@ So (9.3) is consistent with (9.2) under the reading "−½ ∗[…]".
 
 ## `[GU-recon]` branches
 
-1. **The bracket in (9.3).** It is unsubscripted, and (8.1) allows either:
-   - (b−) a commutator [·,·] (factor i⁰);
-   - (b+) i × anticommutator (factor i¹).
-
-   The two brackets in (9.3) may differ, which gives 4 combinations. The graded sign is also unstated: for ad-valued forms α ∈ Ω^p, β ∈ Ω^q the natural graded commutator is α∧β − (−1)^{pq} β∧α. In the Ricci-like term pq = 12 (even). In the inner bracket of the second term pq = 24 (even); in the outer one pq = 0. So graded and ungraded agree for every bracket in (9.3).
-2. **Φ¹ and Φ² are not unique** `[GU-recon]`, a claim we must check.
-   - Under SO, Λ¹ ≅ Λ¹³ and Λ² ≅ Λ¹², and both of each pair sit in 𝔲(64,64) ≅ ⊕Λᵏ. So the invariant spaces [Λ¹ ⊗ 𝔲]^{Spin} and [Λ² ⊗ 𝔲]^{Spin} are expected to be **2-dimensional each** over the complex span. Candidates:
-     - Φ¹ ∈ span{e^a ⊗ Γ_a, e^a ⊗ Γ_aΓ_*}
-     - Φ² ∈ span{e^{ab} ⊗ Γ_{ab}, e^{ab} ⊗ Γ_{ab}Γ_*}
-
-     with i-phases needed to land in 𝔲(64,64).
-   - The draft's "{Φ_i}_{i=0}^{14}" indexing suggests one per degree, which contradicts this count. Which element (or combination) is meant is unresolved.
-   - The real dimension of the invariant subspace inside 𝔲(64,64), as opposed to its complexification, must be computed per signature.
-   - Branch set Φ¹ ∈ {Γ-type, Γ·Γ_*-type, general combination}, likewise for Φ².
+1. **The brackets in (9.3).** (9.3) contains **three** square-bracket operations: the Ricci-like term, the inner bracket of the second term, and its outer bracket. That gives 2³ = 8 assignments, written as strings such as CAA for (Ricci term, inner, outer), with C = commutator and A = i·anticommutator.
+   - **Literal reading (ranked first):** all three are commutators (CCC). The appendix defines square brackets as the commutator (12.26) and reserves braces for i·anticommutator (12.27), and (9.3) prints only square brackets. Notation is evidence of intent, not proof of it.
+   - **Reconstructed readings** `[GU-recon]`: the other seven assignments, licensed by (8.1)'s "either a commutator or an anti-commutator with a factor of i".
+   - The graded sign is moot: for ad-valued forms α ∈ Ω^p, β ∈ Ω^q the graded commutator is α∧β − (−1)^{pq} β∧α, and pq is even for every bracket in (9.3) (12, 24, 0). So graded and ungraded agree.
+2. **Φ¹ and Φ² are not unique** — confirmed by Codex's review, scope `identity` (representation-theoretic argument plus exact all-entry commutant ranks, both signatures):
+   - dim_ℝ [Λ¹ ⊗ 𝔲(A)]^{Spin} = dim_ℝ [Λ² ⊗ 𝔲(A)]^{Spin} = **2** in both (7,7) and (9,5). Only Clifford grades 1/13 (resp. 2/12) can contain Λ¹ (resp. Λ²), each once.
+   - Real bases, with C = Γ_* the chirality and real coefficients α, β, γ, δ:
+     - Φ¹ = αF + βF′, with F = Σ_a e^a ⊗ Γ_a and F′ = Σ_a e^a ⊗ Γ_aC;
+     - Φ² = γB + δB′, with B = Σ_{a<b} e^{ab} ⊗ Γ_aΓ_b and B′ = Σ_{a<b} e^{ab} ⊗ iΓ_aΓ_bC (B·C without the i is outside 𝔲(A)).
+   - The draft's "{Φ_i}_{i=0}^{14}" indexing suggests one per degree, which contradicts this count. Which element or combination is meant is unresolved. "Normed" names no norm, and some combinations (e.g. F + F′) are null for the natural trace form, so admissibility depends on that unstated norm.
 3. **Normalization.** The draft says "normed" but gives no norm. The relative coefficient −½ in (9.3) assumes a normalization of Φ¹ and Φ² (as with g and Einstein's ½). Branch: each Φ normalized so that its contraction reproduces Riemannian Ric and S in the Levi-Civita case (the reading that makes "Einstein-like" literal), or unresolved.
 4. **Hodge-star convention.** Unstated. Use the spec's pinned convention (α∧∗β = ⟨α,β⟩vol). Under another convention the result can differ by signs per degree; record that as a branch if it matters.
-5. **The real form (3.27) is signature-dependent.** In our Mono model with A = phase·(product of timelike gammas):
-   - AΓ_aA⁻¹ = (−1)^q Γ_a†. So the grade-1 elements Γ_a are A-skew (real coefficient) for q = 7 but need a factor i for q = 5.
-   - (3.27) (q = 7) puts Λ¹ at real coefficient, consistent with our A for (7,7). For (9,5) the i-pattern of (3.27) must be recomputed, not copied.
-   - The draft's footnote 3 itself asks for (3.27) to be checked. Test candidate: a direct membership check of each grade in our `adjoint.is_in_algebra`, for both signatures.
+5. **The real form (3.27) is the same in both signatures** (revision 1 claimed otherwise; that was wrong, since 5 and 7 are both odd). With X^♯ = A⁻¹X†A, every Clifford blade of degree k satisfies Γ_I^♯ = (−1)^{qk + k(k−1)/2} Γ_I. For odd q this depends only on k, so in both (7,7) and (9,5):
+   - real coefficients in 𝔲(A): grades 1, 2, 5, 6, 9, 10, 13, 14;
+   - imaginary coefficients: grades 0, 3, 4, 7, 8, 11, 12.
+
+   This matches (3.27) exactly, so the draft's footnote-3 request to check it is answered: correct for both pairings. The phase that makes A Hermitian cancels under conjugation; it should not be confused with the phase of an element of 𝔲(A). Evidence: Codex's sharp-identity proof plus `adjoint.is_in_algebra` on one blade per grade; Claude re-checked grade 1 independently (Γ_a ∈ 𝔲(A), iΓ_a ∉ 𝔲(A), both signatures).
 6. **The domain of ε.** Pointwise ε ∈ U(64,64) (from ℋ). Our tests use h with h†Ah = A (spec §4). The draft never uses geometric Spin elements as dressings, which is consistent with the spec's separation.
 
 ## The draft's stated properties (to test)
 
 - (P1) **Degree:** Ω² → Ω¹³ `[GU-orig]` (9.2).
-- (P2) **Real form:** the values stay in ad, i.e. 𝔲(64,64) `[GU-orig]` (9.2). Depends on branches 1 and 5.
+- (P2) **Real form:** the values stay in ad, i.e. 𝔲(64,64) `[GU-orig]` (9.2). Both brackets preserve 𝔲(A) (if X, Y are ♯-skew, so are [X,Y] and i(XY+YX)), so this reduces to Φ ∈ 𝔲(A)-valued forms and real Hodge coefficients.
 - (P3) **Gauge covariance via dressing:** "rotates only the bundle valued portion … exactly compensates" (p. 41) `[GU-orig]`, stated qualitatively. Spec §5 test 3 makes it precise.
 - (P4) **Weyl annihilation:** "the Weyl curvature tensor is annihilated" (p. 43) `[GU-orig]`. For undressed equivariant maps this holds automatically (spec §5).
 - (P5) **The response is Einstein-like:** "preserves and mixes only the analogues of the Ricci and Scalar curvature components" (p. 43), with Ricci-like and Ricci-scalar-like labels and a −½ coefficient `[GU-orig]`. **No explicit numerical response is given.** The expected scalar and traceless-Ricci outputs are therefore `[GU-recon]` (branch 3): the "Einstein-like" reading is G_ab = Ric_ab − ½ S g_ab, with relative coefficient −½.
