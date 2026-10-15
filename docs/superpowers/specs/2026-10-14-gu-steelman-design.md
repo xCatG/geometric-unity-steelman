@@ -1,98 +1,144 @@
 # GU Steelman: Design Spec
 
-Date: 2026-10-14 · Status: draft for user review
+Date: 2026-10-14 · Revision 2, after adversarial review · Status: draft for user review
 
 ## 1. Purpose
 
-A personal deep-dive into Eric Weinstein's Geometric Unity, using the April 2021 draft. We give the theory the benefit of the doubt: find its gaps, propose the most charitable repairs, and test each repair with computation (and with Lean where that adds real confidence). Exploring is the goal; polish isn't. The deliverable is a living **gap register** whose entries end in a verdict backed by code.
+A personal deep-dive into Eric Weinstein's Geometric Unity, using the April 2021 draft. We give the theory the benefit of the doubt: find its gaps, propose the most charitable repairs, and test each repair with computation (and with Lean where that adds real confidence). Exploring is the goal; polish isn't. The deliverable is the gap register `docs/gaps/register.md`, whose entries end in verdicts backed by code.
 
-**Non-goals:** validating GU as physics, quantization, publication-grade rigor. A passing algebraic check is reported as exactly that.
+**Non-goals:** validating GU as physics, quantization, deciding dynamical questions (unitarity, positivity of energy) by algebra alone. A passing algebraic check is reported as exactly that.
 
-## 2. Claim discipline
+## 2. Claim discipline (two axes)
 
-Every claim in the register, the notes and the write-ups carries exactly one tag:
+Every claim carries **one provenance tag and one evidence status**. This matches register §"Sources".
 
-| Tag | Meaning |
+| Provenance | Meaning |
 |---|---|
-| `[GU-orig]` | Stated in the draft, with page or section |
+| `[GU-orig]` | Stated in the draft, with page or equation |
 | `[GU-recon]` | Our reading of an ambiguous passage, with the alternatives listed |
-| `[ext]` | Our proposed repair or extension of GU |
-| `[verified]` | Backed by a script, test or proof in the repo, with its path |
-| `[lit]` | External source, cited by S-id from `docs/gaps/sources/INDEX.md` |
+| `[ext]` | Our repair or new assumption |
+| `[lit]` | External source: S-id from `docs/gaps/sources/INDEX.md`, or until that exists the register's labels (NP, T, W, O) with page |
 
-Rules:
-- Steelmanning may change GU's assumptions, but only under `[ext]`.
-- An obstruction is always stated as "within ansatz X". X is fixed before the search runs.
+| Evidence status | Meaning |
+|---|---|
+| `verified:<path>` | Backed by a tracked script, test or proof under `experiments/`, `tests/` or `lean/`. Never under `.agent-handoff/`, which git ignores. |
+| `unverified` | Everything else |
+
+A verified `[ext]` stays `[ext]`. Rules:
+- Obstructions are stated "within ansatz X".
+- X is committed to git before the run that tests it.
 - Agreement between agents is not evidence.
 
 ## 3. Agents and roles
 
 | Agent | Where | Owns |
 |---|---|---|
-| Claude (Opus 5.5) | pane 0:2 | Direction, this spec and the plans, repair design, review and cross-checks, write-ups. Orchestrates every task. |
-| Codex (GPT-6-Astra) | pane 0:3 | Gap register, exact computations, implementation, Lean |
-| agy (Gemini 3.8 Flash) | pane 0:4 | Literature: source collection, `docs/gaps/sources/`, citation lookups. No claims. |
-| Fable 5.1 | Claude subagent | Sharply framed theory bottlenecks only. **$20 cap**, about 8 calls. Each call is announced to the user first and logged in `docs/fable-ledger.md`. |
+| Claude (Opus 5.5) | pane 0:2 | Direction, spec and plans, repair design, review, independent transcriptions, write-ups. Orchestrates every task. |
+| Codex (GPT-6-Astra) | pane 0:3 | Gap register, library, experiments, Lean |
+| agy (Gemini 3.8 Flash) | pane 0:4 | Literature: `docs/gaps/sources/`. No claims. Its hook errors are known and ignored. |
+| Fable 5.1 | Claude subagent | Theory bottlenecks only, under the rules in §8 |
 
-Handoffs follow tmux-agent-orchestration: `.agent-handoff/<task>/` with task.md, status, result.md and evidence/; the directory is git-excluded. One writer per file. For a decisive result (signature, Shiab typing, branching), the agent that didn't produce it re-derives it independently.
+Handoffs follow tmux-agent-orchestration: `.agent-handoff/<task>/`, one writer per file.
 
-## 4. Repository layout
+### Verification protocol: replication, not reproduction
+
+Rerunning the same code catches nothing, and the weakest link is turning the PDF into code. So:
+
+1. **Independent transcription.** Before any code exists for a GU formula, the agent *not* writing the code produces `experiments/<id>/transcription.md`, typed directly from the PDF with page and equation numbers. It covers every symbol's type, the conventions, and the alternatives tagged `[GU-recon]`. The implementer codes from the transcription. Any disagreement with their own reading is resolved in that file first.
+2. **Positive controls.** Every search or "nonexistence" engine must first recover a known nonzero answer, e.g. the Riemann→Ricci contraction in the Riemannian analog, or the known Spin(10) 16 branching. Only then does a zero result count.
+3. **External oracle** for representation theory: published tables (Slansky 1981; Yamatsu's tables) or LiE run under WSL if it installs cleanly. The `gu` library's branching code must agree with the oracle on its test cases.
+4. **Pre-registration.** Commit the ansatz and the expected-outcome criteria first. Commit the results in a later commit.
+
+## 4. Repository layout (minimal; grows per experiment)
 
 ```
-docs/
-  gaps/register.md            gap register (Codex)
-  gaps/notes/<id>.md          per-entry working notes
-  gaps/sources/               PDFs and INDEX.md (agy)
-  superpowers/specs|plans/    design and plans (Claude)
-  fable-ledger.md             Fable calls: framing, tokens, cost, outcome
-gu/                           reusable library (Python 3.12, uv)
-  clifford.py    gamma matrices for any (p,q); chirality; charge conjugation and Dirac conjugation; reality and Majorana tests
-  forms.py       exterior algebra on R^{p,q}: wedge, contraction, Hodge star with the correct sign of ★²
-  dewitt.py      DeWitt supermetric family G_λ on Sym²(R^{p,q}); signature as a function of λ
-  lie.py         so(p,q) generators in the vector, adjoint, Λ^k, spinor and tensor-product representations
-  equivariant.py dimension of Hom_G(V, W) via weights/characters; explicit intertwiners via nullspace solves on decomposed blocks
-experiments/<gap-id>/         one script per check, writing result.json and a README with the verdict
-tests/                        pytest; the library is tested against textbook facts
-lean/                         added only when a Lean task is scheduled
+docs/gaps/                  register.md (Codex); sources/ (agy); notes/
+docs/superpowers/           specs and plans (Claude)
+docs/fable-ledger.md
+gu/
+  inertia.py    exact inertia of symmetric forms (Sylvester / LDLᵀ over ℚ). No floating-point signature claims.
+  clifford.py   gamma matrices for any (p,q), exact Gaussian integers (seeded from argon.md Agent 1); chirality; charge and Dirac conjugation; reality and Majorana tests; Rarita–Schwinger (gamma-traceless) projector
+  forms.py      exterior algebra on R^{p,q}; Hodge star with the ★² sign; the explicit Λ^{n-1} ≅ Λ¹ identification
+  adjoint.py    ad P = u(64,64): ℂl ≅ End(ℂ¹²⁸) ≅ ⊕Λᵏ, the (64,64) Hermitian form, the real structure; generators of u(64,64) and of Spin(p,q); one representative per non-identity component
+  reps.py       only when B03 needs it: weights and branching for D_n (Freudenthal), checked against the oracle
+experiments/<gap-id>/       transcription.md, ansatz.md (pre-registered), run script, result.json, README with the verdict
+tests/                      pytest: textbook facts, positive controls, oracle agreement
+lean/                       only when a Lean task is scheduled
 ```
 
-Library first: the experiments import `gu`. Nothing in `gu/` is specific to GU. It is standard linear algebra and representation theory and can be tested on its own.
+Dropped from revision 1 as YAGNI: a general `dewitt.py`, since GU's base is a fixed 4D X, so B01 lives in `experiments/B01/`. Also dropped: a generic `equivariant.py`; the intertwiner search is now a fallback (§5).
 
-## 5. Core technical approach
+Exact arithmetic means sympy and integer matrices for small objects. For exact rank and nullspace at size 10³ or more, use `python-flint`, or modular rank at several random primes followed by rational reconstruction.
 
-- **Exact over numeric.** Gamma matrices are built as tensor products of Pauli matrices, so every entry is in {0, ±1, ±i}. Use integer and Gaussian-integer arithmetic where possible. Floating point is allowed only for eigenvalue-sign checks that have a stated margin.
-- **Equivariance engine.** Nonzero Spin-equivariant maps V → W exist exactly when V and W share an irreducible representation. Count them with weight multisets first, which is cheap. Construct them explicitly only on the shared irreducible blocks, so we never solve over the full space. For example, Λ²⊗ad into Λ¹³⊗ad would otherwise be a matrix with about 10⁷ unknowns.
-- **Signature lives in the real form.** The complexified so(p+q) is the same for every signature. So the signature question becomes concrete in three places:
-  - the sign of ★² and the reality of Hodge duality,
-  - reality and Majorana conditions on spinors,
-  - whether the map we find commutes with the real structure.
-  
-  This is where we expect the Shiab and complexification gaps to be decided, and where the main `[ext]` repairs will be tried.
+## 5. Technical approach
+
+Each question splits into three layers:
+1. **Complex-algebraic data.** This is the same for every signature (weights, characters, complex Hom counts).
+2. **Real-form data**, which depends on the signature:
+   - whether each real irrep is of real, complex or quaternionic type (Frobenius–Schur; p−q mod 8). This multiplies dim Hom over ℝ by 1, 2 or 4.
+   - Spin(p,q) for p,q ≥ 1 is disconnected, so Lie-algebra equivariance covers only the identity component. Test component representatives separately.
+   - ★ is SO-equivariant, not O-equivariant.
+   - whether Λ⁷ splits into self-dual and anti-self-dual parts over ℝ depends on the signature.
+3. **Dynamical residue:** kinetic signs, unitarity (B04). Out of scope for algebraic verdicts; recorded as open.
+
+B01 (the inertia of a quadratic form on T⊕Sym²) is none of these layers. It is plain exact linear algebra.
+
+**B02 is a direct check, not a search.**
+- Transcribe (9.3) independently. Implement it on u(64,64)-valued forms; everything is a 128×128 matrix, so it's cheap.
+- Test, in order:
+  1. form degree
+  2. that the image stays in the real form u(64,64)
+  3. the dressed covariance identity `Shiab_(εh)(h⁻¹ηh) = h⁻¹ Shiab_ε(η) h` (register B02), on Lie-algebra generators of u(64,64) and Spin(7,7), plus component representatives
+  4. separately, the claimed kernel on Weyl-type curvature, restricted to the Levi-Civita-induced subspace and with a cited page
+- Only if (9.3) fails do we search for alternatives. That search counts Hom with characters first, uses ★ to turn Λ¹³ into Λ¹, splits ad as ⊕Λᵏ, and applies the pre-registered constraints (degree, dressing, Weyl-kernel target) before solving anything. The full space is about 3×10¹¹ entries, so we never solve it unreduced.
 
 ## 6. Gap lifecycle
 
-`open → check-designed → checked → {holds | obstructed-within-X | repaired [ext] | unresolved}`. Each verdict links its experiment and test. Obstructed entries may go to Fable if a cheap ansatz change doesn't resolve them.
+`open → transcribed → ansatz-registered → checked → {holds | obstructed-within-X | repaired [ext] | unresolved}`. Each verdict links its experiment directory.
 
 ## 7. Phases
 
 | Phase | Content | Exit criterion |
 |---|---|---|
-| P0 (running) | Source collection (agy) and gap register (Codex) | Register reviewed by Claude; top-3 checks agreed |
-| P1 | `gu/` library and tests: clifford, forms, dewitt, lie, equivariant | Tests pass against known facts: Cl(p,q) table, Majorana-Weyl existence for p−q mod 8, ★² sign, DeWitt signature for Riemannian metrics, dim so(n), spinor branching of Spin(10) |
-| P2 | Experiments for priorities 1–3: signature, Shiab typing and real form, fermion branching and generations | Each has a verdict in the register, cross-checked by the other agent |
-| P3 | Repairs: `[ext]` attempts on obstructed entries; Fable where reasoning is the bottleneck | Ledger ≤ $20; each attempt has a verdict |
-| P4 (optional) | Lean for one or two crisp finite facts, e.g. the signature and the Clifford relations, if worth it | `lake build` passes |
-| P5 | Write-up of findings for the user | Claims tagged, links to experiments |
+| P0 ✅ | Gap register (Codex); sources (agy, best effort) | Done; register committed |
+| P1 | **B01 now.** Claude independently transcribes GU (3.8)–(3.10) and §3.5. Codex moves the probe into `experiments/B01/` and switches to exact inertia. Reconcile the λ family with the transcription. | Convention map or exact mismatch, `verified:experiments/B01/…`; register links repointed |
+| P2 | Library for B02 (inertia, clifford, forms, adjoint) with tests and positive controls; then the B02 direct check | (9.3) verdict on each test 1–4, within the transcribed conventions |
+| P3 | B03: branching of the chiral spinor and of the gamma-traceless vector-spinor under Spin(7,7) → Spin(1,3)×Spin(6,4) (and the (9,5) analog), tracking chirality and reality, with a mirror-sector inventory | **Branching table only, within ansatz X.** No claim about light generations. |
+| P4 | Repairs: `[ext]` on obstructed entries; Fable under the §8 rules | Time box: at most 2 repair attempts per entry before marking it unresolved |
+| P5 (optional) | Lean for 1–2 statements that their definitions don't directly encode, e.g. the Clifford relations of the explicit matrices | `lake build` |
+| P6 | Write-up | Both axes tagged |
 
-Later candidates, picked from the register: anomalies (cubic traces, global SU(2), 14D chiral anomaly), Higgs from Gauss–Codazzi, invariance of the inhomogeneous gauge group's action.
+Later, picked from the register: B05 anomalies (14D and 4D), B07 variational equations, B09 observation and closure.
 
-## 8. Environment
+## 8. Fable rules ($20 cap)
 
-Windows host, psmux tmux, uv project with numpy, scipy, sympy and pytest. Codex's default shell is broken: it runs in Full Access mode, and Claude may approve its commands. Work is committed directly on `master`. Lean (elan) is installed only when P4 is scheduled.
+- **Escalation trigger:** an entry is obstructed or unresolved after the pre-registered ansatz, plus one cheap variant by Claude or Codex, *and* the bottleneck is a derivation or construction, not a computation.
+- **Fixed context pack per call:** the transcription, the ansatz, the result.json, and the relevant register entry. The PDF and the whole register are not included. Input cap about 40k tokens. Effort `high`; ask for a bounded answer.
+- **Estimate:** about $10/MTok × 40k = $0.40 in, plus $50/MTok × ≤30k = $1.50 out, so ≤ $2 per call. Record actual usage in `docs/fable-ledger.md`. Announce each call to the user before making it. Stop at $20.
 
-## 9. Risks
+## 9. Known traps (forbidden in briefs)
 
-- **Source ambiguity.** The draft may underdetermine a definition. Mitigation: `[GU-recon]` with all alternatives tried.
-- **Combinatorial size.** Mitigation: irreducible-block decomposition before solving.
-- **Agents' claims drifting from evidence.** Mitigation: the claim tags, cross-checks, and Claude rerunning decisive checks.
-- **Fable spend.** Mitigation: the ledger and announcing each call first.
+These come from the review of `argon.md`, LLM-generated scaffolding that looks like computation:
+- **Uncited filter directions.** Example: GU's Shiab is claimed (register B02) to annihilate Weyl-type curvature, so a filter that *rejects* Weyl-annihilating candidates, as argon.md has, inverts it. Every filter direction cites a draft page.
+- **Invented background objects** (e.g. a "canonical 3-form T"). Each input is `[GU-orig]` with a page, or `[ext]` with a reason.
+- **Postulated conclusions.** Writing the target term, e.g. a Higgs potential, as a symbol and then "deriving" from it.
+- **Lean theorems true by definition.**
+- **Unused machinery reported as a search.** Every listed candidate is evaluated; every claimed filter is computed.
+- **Riemann symmetries imposed on gauge curvature.** A gauge field strength is only a 2-form obeying the differential Bianchi identity. Weyl-type tests use the Levi-Civita-induced subspace only.
+- **Chirality bookkeeping.** In 4D, rewriting a right-handed 16̄ as a left-handed 16 does *not* let it cancel against another left-handed 16. Anomalies cancel only across species whose contributions genuinely have opposite signs.
+
+`argon.md` Agent 1 (the Clifford (9,5) construction, checked exact) seeds `gu/clifford.py`. Its Weyl/Ricci/scalar split seeds a test helper.
+
+## 10. Environment and process
+
+- Windows host, psmux. uv project with numpy, scipy, sympy and pytest; `python-flint` will be added when P2 needs it.
+- Codex runs with Full Access, and Claude approves its commands.
+- Commits go directly on `master` (user decision). Each experiment uses a pre-registration commit followed by a results commit, so a bad result reverts cleanly.
+- Lean (elan) is installed only if P5 is scheduled.
+
+## 11. Risks
+
+- **Draft underdetermines a definition.** Mitigation: `[GU-recon]` with every alternative tested.
+- **Common-mode library bugs.** Mitigation: positive controls and the oracle.
+- **Exact linear algebra too slow.** Mitigation: flint or modular rank; reduce before solving.
+- **Fable spend.** Mitigation: the §8 rules.
