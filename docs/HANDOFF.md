@@ -106,7 +106,21 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
     - the location of the "imposter" generation: ℱ ⊂ 832 in (12.22), vs the p. 53 names on rows of a 144;
     - the U(1) embedding (n = 6Y fits all 25 rows of the p. 53 table).
   - Codex: `.agent-handoff/b03-oracle/`. It installs LiE in WSL (or a fallback), runs the positive controls (Spin(10) 16 → SU(5)) and the D7 ⊃ D2 × D5 tables for S±, RS± and V⊗S±, gives an independent second reading of the pages, and proposes a `reps.py` interface. It must not commit.
-  - Next: compare the second reading with the transcription (rev 1), write the ansatz (pre-registered), run the plan's two-subagent Codex review, then ask the user to approve.
+  - **Codex oracle: DONE** (`.agent-handoff/b03-oracle/result.md`).
+    - LiE 2.2.2 is installed in WSL Ubuntu-24.04 (apt).
+    - The Spin(10) 16 → 10₁ + 5̄₋₃ + 1₅ control passes.
+    - The full D7 → D2 × D5 tables cover S±, RS± and V⊗S±. The gamma trace has the **opposite** chirality. RS keeps its own spinor-shaped 64: 832 = 576 + 192 + 64.
+    - ν ⊕ ζ inventory: each (2,1)/(1,2) × 16/16̄ block appears 3 times, and each RS-type block once.
+    - Spinors are Majorana–Weyl in (7,7) and quaternionic in (9,5).
+  - **Claude verified (P7).**
+    - Reran LiE: byte-identical output.
+    - Independent route by explicit weight multisets: `.agent-handoff/b03-transcription/weights_check.py`, all True.
+  - **Transcription rev 1** (`58e275d`) applies Codex's 5 corrections, including a declared chirality dictionary (144₊ = H̄, mixed relative to 16₊ = 16).
+  - **Still open for the ansatz:**
+    - where the "imposter" generation sits: ℱ ⊂ 832 per (12.22) and pp. 65 and 68, vs the p. 53 names on rows of a 144;
+    - the SM embedding for the §11.3 tables;
+    - J for RS, to be checked with explicit matrices.
+  - **Next:** write `experiments/B03/ansatz.md` (pre-registered), then the plan, the two-subagent Codex review, and the user's approval.
 - **Agents:** Codex is in pane 0:3. A second GPT-6-Astra (the Lean worker) is in pane 0:5. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
 
 **Next**
