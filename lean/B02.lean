@@ -13,3 +13,5 @@ import B02.ConcreteHodge
 import B02.Structural
 import B02.TensorDerivation
 import B02.TensorCovariance
+import B02.ConcreteLinear
+import B02.Extension
