@@ -57,7 +57,7 @@ One line per draft claim, under the ansatz's verdict rules. "Under dictionary" m
 
 **The embedding E** is fixed from root data before any comparison, never fitted to the tables. SU(5) ⊂ SO(10) with SU(3) on y₁…y₃ and SU(2) on y₄, y₅, and n = 6Y. The LiE matrix for E is the images of the five D5 fundamental weights (Grok's review confirmed it is root-derived). The wrong-hypercharge impostor n = X fails the 16 fixture (fault F4). The flipped-charge control E′, n′ = (−n + 6X)/5, gives identical characters on every complete D5 module tested (`e_equals_e_prime`). So E versus E′ is not a discriminator, and the table matches do not depend on choosing between them.
 
-SU(5) × U(1)_X parents, from `result.json` (`su5_x_parent_labels`) and checked against LiE: 16 = 10₁ + 5̄₋₃ + 1₅, and 16̄ = 1₋₅ + 5₃ + 10̄₋₁. H = 5̄₇ + 5₃ + 10̄₋₁ + 15̄₋₁ + 24₋₅ + 40₋₁ + 45₃ (dimensions sum to 144), and H̄ is its conjugate.
+SU(5) × U(1)_X parents, from `result.json` (`su5_x_parent_labels`) and checked against LiE: 16 = 10₁ + 5̄₋₃ + 1₅, and 16̄ = 1₋₅ + 5₃ + 10̄₋₁. In A4 Dynkin labels with X, H = [0001]₇ + [1000]₃ + [0010]₋₁ + [0002]₋₁ + [1001]₋₅ + [1100]₋₁ + [0101]₃, of dimensions 5, 5, 10, 15, 24, 40 and 45 (sum 144). H̄ is its conjugate.
 
 ## Reality (explicit matrices)
 
