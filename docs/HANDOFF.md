@@ -98,6 +98,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - The user started a second GPT-6-Astra in **pane 0:5** to formalize all of `proofs.md` in Lean 4 + Mathlib.
   - It works in the worktree `C:\work\src\GU-b02-lean`, branch `b02-lean`, created from 36add8f. Brief and status are in `.agent-handoff/b02-lean/`. `progress.md` gets `FINDING:` lines.
   - Extra dependencies (elan, Mathlib) are approved by the user.
+  - **On Lean DONE, the user asked for a Grok review (pi, 0:4).** The brief is ready at `.agent-handoff/b02-lean-review-grok/task.md`. It covers definition fidelity against the Python, statement fidelity, the hypotheses and axioms audit, and reproducing the build and bridge. A background waiter auto-sends the pointer to pi on `DONE`. If the waiter is gone after a reset, send it by hand.
   - **Unify at the end of Task 6:** review its `result.md`, covering the claim-to-theorem fidelity table, `#print axioms` and the Python bridge cross-check. Fold any FINDING into proofs.md and the README, merge `b02-lean`, then update the register's "no Lean proof claimed" line.
 - **B03 (P3) started 2026-10-15 (the user's request, while the Lean worker runs).**
   - Claude: transcription rev 0 at `experiments/B03/transcription.md` (`8c83fc5`). It covers pp. 50–53 and 61–62, with 7 `[GU-recon]` branches and properties B1–B6. Key open items:
