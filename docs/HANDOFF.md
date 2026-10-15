@@ -120,7 +120,18 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
     - where the "imposter" generation sits: ℱ ⊂ 832 per (12.22) and pp. 65 and 68, vs the p. 53 names on rows of a 144;
     - the SM embedding for the §11.3 tables;
     - J for RS, to be checked with explicit matrices.
-  - **Next:** write `experiments/B03/ansatz.md` (pre-registered), then the plan, the two-subagent Codex review, and the user's approval.
+  - **Ansatz.**
+    - rev 0: `a0bc8e0`.
+    - Codex two-subagent review: *revise*, R1–R5, in `.agent-handoff/b03-ansatz-review/`.
+    - rev 1 applies it:
+      - pinned real-axis splits plus a Cartan adapter (test 0); library C vs S± flips with signature;
+      - tr Q = d·tr P targets;
+      - E pinned by explicit maps, with E′ as a conjugacy control (identical on complete characters);
+      - p. 53 aggregated to 23 terms;
+      - test 7 is data only.
+    - Outcomes the review already computed are declared as known.
+  - **Claude's scratch `reps.py`** (`scratchpad/b03/reps.py`, exact Freudenthal for A_n/D_n) reproduces every LiE output in 0.6 s.
+  - **Next:** write the B03 plan (writing-plans) and smoke-test it, then a Codex two-subagent plan review, then the user's approval.
 - **Agents:** Codex is in pane 0:3. A second GPT-6-Astra (the Lean worker) is in pane 0:5. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
 
 **Next**
