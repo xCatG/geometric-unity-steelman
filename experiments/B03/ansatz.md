@@ -19,6 +19,7 @@ Provenance:
   - The signatures of every split are unchanged.
   - Claude's plan smoke test ran after this revision; its outcomes are not evidence.
 - **Revision 1.2** (2026-10-15, before any production code) corrects the knowledge ledger only (plan review finding 3, `.agent-handoff/b03-plan-review/`). The §11.3 comparisons and the full test 5–8 data were first computed in Claude's plan smoke test, and then independently by the plan review (LiE output against the draft rows, without the B03 code). The ledger below now says so. No convention, test or gate changes.
+- **Revision 1.3** (2026-10-15, before any production code) corrects one sentence (Grok plan review finding 3, `.agent-handoff/b03-plan-review-grok/`). E′ is the charge formula n′ = (−n₅ + 6X)/5, not the pointwise y₄, y₅ flip. It remains a character-equality control. No convention, test or gate changes. In the same review, test 3's "P fixes a vector" control became a hand-built traceless map (plan rev 1.2).
 - The review's scratch scripts computed some outcomes before revision 1. These are listed under "Known before the run". This revision pre-registers what is still unknown:
   - the row-by-row comparison of the §11.3 tables;
   - every concrete-matrix result produced by tracked code;
@@ -68,7 +69,7 @@ The complex data are the same for all three 14-dimensional rows. Real-structure 
   - n = n₅ = (2y₁ + 2y₂ + 2y₃ − 3y₄ − 3y₅)/2, i.e. n = 6Y.
 
   The parent charge X = y₁ + … + y₅ is reported alongside (SU(5) × U(1)_X labels).
-- **E′ (flipped), a control only.** n′ = (−n₅ + 6X)/5. It is conjugate to E inside Spin(10) by the y₄, y₅ flip, so **every complete D5 character must give identical SM characters under E and E′**. Test 6 asserts this equality. It is not a discriminator.
+- **E′ (flipped), a control only.** n′ = (−n₅ + 6X)/5. It is the charge formula only: it is *not* the pointwise y₄, y₅ flip, which differs from it on every weight of both 16s (Grok review, rev 1.3). Grok found E, E′ and that flip give equal characters on both 16s. The registered claim is about E and E′ only: **every complete D5 character tested must give identical SM characters under E and E′**. Test 6 asserts this equality. It is not a discriminator.
 
 ## Tests and gates
 
