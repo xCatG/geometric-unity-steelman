@@ -39,6 +39,15 @@ Codex owns code, tests and the register. Claude owns transcriptions, reconciliat
 - The worker writes `result.md` with the commands run and their output, the seeded-fault table, any deviations from the plan, and retro notes.
 - The orchestrator reruns the decisive checks itself before accepting the work.
 
+### P9. Reconciliations separate formula, normalization and consequence
+
+A reconciliation of a source formula with our code states three things separately:
+1. the literal source formula;
+2. the normalization we chose where the source is silent;
+3. the consequence that holds independently of that choice (e.g. signature only).
+
+A match of invariants such as inertia does not show that the source chose our representative.
+
 ### P8. Commits mirror the evidence
 
 Commit the pre-registration first and the results second. One task produces one or more commits, and a commit never mixes authors' files.
@@ -65,3 +74,7 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
   - *Didn't:* the plan's basis shorthand `{E_ij+E_ji}` was ambiguous on the diagonal. The generic skill's worktree/wrapper assumptions clashed with the shared-master setup.
   - *Changes:* P8 now requires pathspec commits and code-before-result for `source_commit` (both promoted immediately, because each fixes a provenance hazard rather than a style choice). Plans must define bases explicitly.
 - **2026-10-15 · Tasks 3–4 · Claude.** Transcribing from rendered page images (pymupdf at 110 dpi) worked well; text extraction alone would have lost the fractions in (3.9). The reconciliation produced a finding the plan didn't anticipate (B01 F1, the base mirror). *Change:* reconciliation READMEs end with a "What this does not establish" section.
+- **2026-10-15 · Task 4 · Codex (worker) and Claude (review).**
+  - *Worked:* the adversarial re-derivation earned its keep. It confirmed all the arithmetic, and it found two errors in Claude's README that a passing signature table could not detect: an exact-form overclaim (λ = 1/2 "no rescaling") and a false repair (tie the trace sign to the base, which gives (4,10), not (7,7)). Claude reproduced the counterexample exactly. Codex's second subagent read the PDF independently.
+  - *Didn't:* Claude's brief asked for `git grep agent-handoff` over all of `docs/`, which legitimately matches the methods and spec text. Codex recorded the exception rather than editing protected files, which was the right call.
+  - *Changes:* new P9 (proposed by Codex). Acceptance checks in briefs must be scoped to exactly the files they police.
