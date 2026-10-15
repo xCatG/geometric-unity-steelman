@@ -1,6 +1,6 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-15 (B03 Tasks 1–4 done by Codex and verified by Claude; Task 5 next), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
+Last updated: 2026-10-15 (B03 Task 5: README committed; Codex doing reps.py P4 fix + re-derivation + audit + register), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
 
 ## What this project is
 
@@ -167,7 +167,9 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - **Tasks 1–4 DONE** (user approved dispatch; Codex, `.agent-handoff/b03-impl/result.md`). Commits `5b85fd9`, `ee6c59f`, `71409f3`, `895fc08` (code, = `source_commit`), `2cf2c71` (result.json).
     - **Claude P7:** all 9 committed code files equal the plan's blocks (newline-normalized); fixture SHA `576888f2…`; `result.json` regenerated from a clone at `895fc08` is identical; full suite at `2cf2c71` = 297 passed.
     - Results: p51 10/10 blocks hold, (12.20) both hold, full Dirac holds, p52 = 16 / 16̄, p53 = H̄ (23 terms); fibre 1920; J² = +1 (7,7), −1 (9,5); 8 imposter records, 6 J-partner pairs.
-    - **Open (Codex P6, reproduced by Claude):** two P4 holes in the frozen `gu/reps.py`, neither touching the pinned run: `sm_weight_flipped` sums the raw argument (NumPy int64 overflow → spurious ValueError); `Simple.to_dynkin_root`/`ip` skip `weight()` coercion (overflow; float accepted). Fix = coerce via `weight(...)` at each public entry, add controls. Needs user OK (frozen code).
+    - **Open (Codex P6, reproduced by Claude):** two P4 holes in the frozen `gu/reps.py`, neither touching the pinned run: `sm_weight_flipped` sums the raw argument (NumPy int64 overflow → spurious ValueError); `Simple.to_dynkin_root`/`ip` skip `weight()` coercion (overflow; float accepted). Fix = coerce via `weight(...)` at each public entry, add controls. User approved bundling it with Codex's Task 5.
+  - **Task 5 in flight.** Claude README: `d91fa21`, `de24f31`; signal file `.agent-handoff/b03-task5/readme-ready` exists. Codex brief `.agent-handoff/b03-task5/task.md`: Part A reps.py P4 fix (one commit; result.json must regenerate equal except source_commit; not recommitted), Part B `experiments/B03/rederivation.md` (fresh LiE input, own gammas, no gu.reps/gu.rarita/branching imports), Part C `readme-audit.md` + register (B03 entry, "No Lean proof" lines). Watcher on its status.
+  - **Then (Claude, Task 5 step 3):** verify Part A (suite, faults, result.json equality), resolve audit findings in the README (add the re-derivation line and the reps.py fix note), retro entry in `docs/methods.md`, HANDOFF.
   - **Next:**
     4. Claude: P7 verification, then Task 5.
   - **Smoke-copy caveat:** files in `b03smoke/` are CRLF. Python edits there must keep newlines (read and write bytes); `faults.py` matches either newline style.
