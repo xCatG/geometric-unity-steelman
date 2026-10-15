@@ -49,6 +49,13 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - Sampled 5′ observation: odd dressings do **not** annihilate Weyl.
   - Predicted classification (README task): κ = γ/2 for CAA. So κ = ½ is exactly the unit normalization of B (N-a), while CCC gives κ = 0 for every Φ.
 
+- **Plan review in flight:** Codex is reviewing the plan with two subagents, adversarial and practical (`.agent-handoff/b02-plan-review/`). Argon also reviewed it. Accepted from argon and verified in Claude's scratch copy (`scratchpad/smoke/tests/test_argon_additions.py`), to be merged into the plan together with Codex's findings:
+  - a mixed-Φ formula test (2F − 3F′, 5B + 7B′);
+  - an end-to-end Spin₀ equivariance test of `shiab` (all 8 modes, including a non-Levi-Civita term);
+  - a general `in_u_A` (rejects mixed-phase coefficients), with Test 2(a) asserted on `shiab` outputs plus two impostors.
+  - Claude also found that `_xi_samples`' curvature input KN(E₀₁+E₁₀, diag(1,2,0,…)) is identically zero, so one dressing sample was vacuous. Fix: t = diag(1,2,3,…) with t₀₂ = 1, plus `test_xi_samples_are_nonzero`.
+  - Argon's CAC "chiral Weyl projector" framing goes in the README, toned down: F ± F′ = Σeᵃ⊗Γₐ(1 ± C) is chirally projected and is null for the trace norm (Codex F4). It is a legitimate observation, not a "remarkable finding".
+
 **Next**
 1. ~~Resolve Codex's review~~ (done, `f75bb66`). ~~Retro~~ (done). ~~Write the B02 plan~~ (done).
 2. **Wait for the user's approval of the B02 plan.** Then dispatch Tasks 1–4 to Codex (one brief; the plan is self-contained). Claude does Task 5 (`proofs.md`) in parallel.
