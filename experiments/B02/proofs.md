@@ -1,0 +1,132 @@
+# B02 proofs (Task 5)
+
+Author: Claude. Status: written in parallel with Tasks 1–4; for Codex's adversarial check.
+
+These are the hand arguments that carry tests 1, 2(a), 3(a) and 4(iii), together with the extension from the checked spanning set to all parameters and all algebraic curvature. Executed tests cite them by name. Every claim below is `identity` scope unless it is marked `sampled`.
+
+Notation follows `experiments/B02/ansatz.md` (amendment 1) and `gu/shiab.py`:
+- An element of Λ(V\*) ⊗ Cl(V) is Σ e^f ⊗ X_f, with real form basis e^f and complex Clifford coefficients X_f.
+- For mode C, [x ∧ y] = Σ (e^f ∧ e^g) ⊗ (X_f Y_g − Y_g X_f) (GU 12.26). For mode A it is Σ (e^f ∧ e^g) ⊗ i(X_f Y_g + Y_g X_f) (GU 12.27).
+- Both brackets act componentwise and are ungraded in the form factor. Ungraded is harmless here: every form product in (9.3) has even total degree at n = 4 and n = 14 (Grok review, answer 2).
+- (9.3) with ε = 1 is
+  Shiab(x) = [Φ¹ ∧ ∗x]_{m₀} − ½ ∗[Φ¹ ∧ ∗[Φ² ∧ ∗x]_{m₁}]_{m₂}.
+
+## Test 1: degree
+
+The Clifford coefficients do not affect form degrees. Let x ∈ Ω² and n = dim V. Then:
+- ∗x ∈ Ω^{n−2}, so the first term [Φ¹ ∧ ∗x] lies in Ω^{n−1}.
+- [Φ² ∧ ∗x] ∈ Ω^n, and its ∗ lies in Ω⁰.
+- [Φ¹ ∧ ·] then lies in Ω¹, and the outer ∗ lies in Ω^{n−1}.
+
+So Shiab: Ω²(ad) → Ω^{n−1}(ad) for every bracket assignment. At n = 14 that is Ω¹³, and at n = 4 it is Ω³.
+
+A wedge can vanish (an Ω^{n+1} term), but no output of the wrong degree can appear. `response.py` also asserts the degree on every assembled output in the identity check.
+
+## Test 2(a): real form (𝔲(A)-valued in, 𝔲(A)-valued out)
+
+Let X♯ = A⁻¹X†A. It is antilinear, and it is an anti-automorphism: (XY)♯ = Y♯X♯. 𝔲(A) = {X : X♯ = −X}. If X♯ = −X and Y♯ = −Y, then:
+- [X, Y]♯ = [Y♯, X♯] = [−Y, −X] = [Y, X] = −[X, Y];
+- (i(XY + YX))♯ = −i(Y♯X♯ + X♯Y♯) = −i(YX + XY).
+
+So both brackets map 𝔲(A) × 𝔲(A) → 𝔲(A).
+
+The brackets act componentwise on Clifford coefficients, and the form factor is real. The Hodge star multiplies each coefficient by a real sign (±1 in `star`). Real linear combinations preserve 𝔲(A).
+
+Φ¹ and Φ² are 𝔲(A)-valued for real (α, β, γ, δ). This is Test 2(b), identity scope (`test_phi_bases_are_u_A_valued`).
+
+Hence every term of (9.3), and therefore Shiab(x), is 𝔲(A)-valued whenever x is. This is only a closure statement. `test_outputs_stay_in_u_A` is a sampled direct check of it on actual outputs.
+
+## Test 3(a): dressed covariance
+
+Write Φ_ε = ε⁻¹Φε, where the conjugation acts on the Clifford factor only. Let Shiab_ε be (9.3) with Φ¹ and Φ² replaced by their dressed forms. For invertible h acting on the Clifford factor:
+
+- Conjugation c_h(X) = h⁻¹Xh is an algebra automorphism of Cl. So c_h[X, Y] = [c_h X, c_h Y], and c_h(i(XY + YX)) = i(c_h X c_h Y + c_h Y c_h X). Both brackets commute with c_h componentwise.
+- ∗ and the wedge act on the form factor only, so they commute with c_h.
+- (εh)⁻¹Φ(εh) = c_h(ε⁻¹Φε) = c_h(Φ_ε).
+
+Therefore:
+
+Shiab_{εh}(c_h x) = [c_h Φ¹_ε ∧ ∗c_h x] − ½ ∗[c_h Φ¹_ε ∧ ∗[c_h Φ²_ε ∧ ∗c_h x]] = c_h Shiab_ε(x).
+
+This holds for every bracket assignment, every Φ and every x. It does **not** say Shiab_ε = Shiab: dressing is not a symmetry (see 5′ in `result.json`; odd ε do not annihilate Weyl curvature, `sampled`).
+
+## Test 4(iii): Spin₀ equivariance by composition
+
+Let X = ½Γ_aΓ_b (a < b) act on Λ ⊗ Cl by ρ(X) = (derivation on forms induced by the dual vector action) ⊗ 1 + 1 ⊗ ad_X. This is `generator_action`. The argument has four steps:
+
+1. **ρ(X) is a derivation of both brackets.** It is a derivation of the wedge on the form factor. ad_X is a derivation of the Clifford product. For a tensor product of algebras, D ⊗ 1 + 1 ⊗ D′ is a derivation of the product, so ρ(X) is a derivation of (e^f ∧ e^g) ⊗ X_f Y_g. The same holds for the reversed product (e^f ∧ e^g) ⊗ Y_g X_f, so it is a derivation of their difference and of i times their sum. Hence ρ(X)[x ∧ y]_m = [ρ(X)x ∧ y]_m + [x ∧ ρ(X)y]_m for m ∈ {C, A}.
+2. **∗ is equivariant: ρ(X)∗ = ∗ρ(X).** This is test 4(ii), `test_star_is_equivariant`. It is identity scope on full bases of the degrees (9.3) uses: 2, n−2, n, 0, 1, n−1.
+3. **Φ is invariant: ρ(X)Φ¹ = ρ(X)Φ² = 0.** This is test 4(i), `test_phi_bases_are_spin_invariant`, identity scope on the adjacent generators.
+4. **Composition.** By steps 1–3,
+   ρ(X)[Φ¹ ∧ ∗x] = [ρ(X)Φ¹ ∧ ∗x] + [Φ¹ ∧ ∗ρ(X)x] = [Φ¹ ∧ ∗ρ(X)x].
+   Applying the same step twice to the nested term gives ρ(X)Shiab(x) = Shiab(ρ(X)x) for every bracket assignment.
+
+**From the generators to the group.** The set of X for which a linear map is ρ-equivariant (resp. annihilates Φ) is a Lie subalgebra, because ρ is a representation. The adjacent generators ½Γ_aΓ_{a+1} generate 𝔰𝔭𝔦𝔫(p,q) under brackets. So equivariance holds on the whole Lie algebra. For g_t = exp(tX), we have d/dt [ρ(g_t)⁻¹ Shiab(ρ(g_t)x)] = 0, so equivariance holds on the identity component Spin₀(p,q).
+
+**Scope.** This covers Spin₀ only; there is no Pin/O claim. Test 4(iii) is identity scope by this argument. `test_shiab_is_equivariant_end_to_end` is a sampled direct check of it.
+
+## Parameter extension (affine, not jointly bilinear)
+
+Write U(Φ¹, Φ²) = ∗Shiab(ξ). The first term is linear in Φ¹ and independent of Φ². The second term is bilinear in (Φ¹, Φ²). So U is linear in Φ¹ and affine in Φ², and for fixed Φ¹:
+
+U(Φ¹, γB + δB′) = (1 − γ − δ)·U(Φ¹, 0) + γ·U(Φ¹, B) + δ·U(Φ¹, B′),
+
+because the affine map is determined by its values at the affinely independent points 0, B and B′. Then use linearity in Φ¹ = αF + βF′.
+
+The claimed closed form
+
+∗Shiab(ξ) = −[m₀=C]·E_T(Ric) + (S/2)·([m₁m₂=AA]·γ·E_T(g) + [m₁m₂=AC]·δ·E_{T′}(g)), with T = (α, β) and T′ = (β, α),
+
+has the same structure: it is linear in (α, β) through E_T and E_{T′}, and affine in (γ, δ) with constant term −[m₀=C]E_T(Ric). Task 4 checks both sides on F and F′ × {B, B′, 0}. Hence they agree for all real (α, β, γ, δ). `test_mixed_phi_matches_formula` is a sampled direct check.
+
+## Extension to all algebraic curvature
+
+Both sides are linear in R:
+- ξ is linear;
+- Ric and S are linear;
+- the brackets and ∗ are linear in x.
+
+Task 4 verifies the identity on every KN(s, t) for unordered pairs (s, t) of the symmetric basis. `spanning_rank` gives the bound
+
+rank_{F_p}(rows) ≤ rank_Q(rows) ≤ dim 𝒜,
+
+where 𝒜 is the space of algebraic curvature tensors. The second inequality holds because each row lies in 𝒜; `spanning_rank` asserts this with `is_algebraic_curvature`, since the coordinate chart Sym²(Λ²) has C(n,4) more coordinates than dim 𝒜. Equality of the outer terms gives rank_Q = dim 𝒜, so the KN products span 𝒜 over Q, hence over R. The identity therefore holds on all of 𝒜. Dimensions: 20 at n = 4 and 3185 at n = 14.
+
+## Literal CCC has no scalar term, under any convention (README headline)
+
+Take the inner bracket to be C. Let x = ξ(R), with R_abcd = R_cdab. In the inner term [Φ² ∧ ∗ξ]_C, the Φ² components are e^{ef} ⊗ Y_{ef}, where Y_{ef} = Γ_eΓ_f for B and Γ_eΓ_f·iC for B′. The wedge e^{ef} ∧ ∗e^{ab} is w_{ab}·vol if {e,f} = {a,b}, and 0 otherwise. Here w_{ab} = ±1 depends only on the pair (a,b) and the star convention.
+
+So the inner bracket is vol ⊗ ½ Σ_{ab,cd} R_abcd w_{ab} η_cη_d [Y_{ab}, Γ_cΓ_d].
+
+For B, Y_{ab} = Γ_aΓ_b. The weight w_{ab} η_cη_d is not symmetric in (ab) ↔ (cd) on its face. But a Hodge star satisfies e^{ab} ∧ ∗e^{ab} = ε⟨e^{ab}, e^{ab}⟩vol = ε·η_aη_b·vol, where ε = ±1 is one global sign set by the convention. Under the pinned star, ε = +1; Claude checked this for every pair in (3,1), (2,2), (7,7) and (9,5). So w_{ab} = ε·η_aη_b, and the summand becomes ε·R_abcd·(η_aη_bη_cη_d)·[Γ_aΓ_b, Γ_cΓ_d]. Its coefficient is symmetric under (ab) ↔ (cd), and the commutator is antisymmetric, so the sum vanishes.
+
+For B′, C commutes with every even element, so [Γ_aΓ_b iC, Γ_cΓ_d] = iC[Γ_aΓ_b, Γ_cΓ_d], and the same cancellation applies.
+
+So [Φ² ∧ ∗ξ]_C = 0 for every Φ² in the invariant span. The −½ term is identically zero whenever m₁ = C, whatever Φ¹, the outer bracket, the scale of ξ, Φ¹ and Φ², or the star convention. In particular CCC gives κ = 0 (with m₀ = C, the Ricci term is −E_T(Ric) ≠ 0 for T ≠ 0).
+
+This uses pair symmetry R_abcd = R_cdab. It holds for Levi-Civita (algebraic) curvature, but not for a general gauge curvature. That limit belongs in the README's "What this does not establish".
+
+## Hodge convention is a reparametrization of Φ² (review G1)
+
+Let ∗′ = (−1)^{k(n−k)}∗ on k-forms; this is the convention ∗β ∧ α = ⟨α,β⟩vol. For even n, k(n−k) ≡ k (mod 2), so ∗′ = (−1)^k ∗.
+
+In (9.3) the stars act on:
+- ∗ξ, degree 2: unchanged;
+- the inner ∗, degree n: unchanged;
+- the second term's middle ∗, which acts on [Φ¹ ∧ (0-form)], degree 1: it flips sign.
+
+The first term contains no star other than ∗ξ. Hence
+
+Shiab′(Φ¹, Φ²) = Shiab(Φ¹, −Φ²) exactly, for every bracket assignment.
+
+The final ∗ applied to read off the (n−1)-form (degree n−1, odd) flips the whole response, which changes the overall sign c but not κ. So the star convention is the reparametrization (γ, δ) → (−γ, −δ) of the classification, and the CAA Einstein point moves from γ = 1 to γ = −1. Claude checked this exactly on all 8 modes × {F, F′} × {B, B′} in (3,1) and (2,2); see the plan, revision 3.
+
+## Signature parity (sampled; recorded, not proved here)
+
+The closed form above is verified at identity scope only in (3,1), (7,7) and (9,5), which all have odd q. Two samples, at (2,2) and (4,0), give the opposite relative sign between the two terms, so κ → −κ for even q (plan rev 3). Every signature this project considers has odd q: (3,1), (1,3), (7,7), (9,5) and (5,9). No claim is made for even q.
+
+## Recorded substitutions
+
+- **Test 4.** The composition proof replaces the ansatz's literal operator-basis execution for test 4. It covers Spin₀ only.
+- **Test 5.** The full response identity (Task 4) replaces separate pure-sector executions for test 5. Pure sectors are special cases of it.
+- **Adapters.** The `exact()` adapters (no bare `int()`) let the executable code accept rational curvature. The formal identity does not depend on them.
