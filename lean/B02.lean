@@ -15,3 +15,4 @@ import B02.TensorDerivation
 import B02.TensorCovariance
 import B02.ConcreteLinear
 import B02.Extension
+import B02.Spin
