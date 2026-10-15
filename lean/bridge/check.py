@@ -95,8 +95,11 @@ def main():
     executable = ROOT / "lean/.lake/build/bin/bridge.exe"
     if not executable.exists():
         executable = executable.with_suffix("")
+    lake = shutil.which("lake") or str(Path.home() / ".elan/bin/lake.exe")
+    # Rebuild imports too: lean --run alone can load a stale Concrete.olean.
+    target = "B02.Concrete" if "--lean-run" in sys.argv else "bridge"
+    subprocess.run([lake, "build", target], check=True, cwd=ROOT / "lean")
     if "--lean-run" in sys.argv:
-        lake = shutil.which("lake") or str(Path.home() / ".elan/bin/lake.exe")
         command = [lake, "env", "lean", "--run", "Bridge.lean"]
     elif executable.exists():
         command = [str(executable)]
@@ -117,5 +120,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 

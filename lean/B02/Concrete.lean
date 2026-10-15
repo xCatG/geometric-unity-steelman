@@ -145,6 +145,14 @@ section ConcreteWitnesses
 set_option maxRecDepth 10000
 set_option maxHeartbeats 8000000
 
+/-- Antisymmetry in the first curvature index pair. -/
+theorem witness_first_antisymmetric : ∀ a b c d : Fin 4,
+    witnessR a b c d = -witnessR b a c d := by decide +kernel
+
+/-- Antisymmetry in the second curvature index pair. -/
+theorem witness_second_antisymmetric : ∀ a b c d : Fin 4,
+    witnessR a b c d = -witnessR a b d c := by decide +kernel
+
 /-- Full first Bianchi identity: the counterexample is algebraic curvature. -/
 theorem witness_bianchi : ∀ a b c d : Fin 4,
     witnessR a b c d + witnessR a c d b + witnessR a d b c = 0 := by decide +kernel
@@ -167,6 +175,7 @@ theorem dropped_witness_inner_BPrime :
 end ConcreteWitnesses
 
 end B02.Concrete
+
 
 
 
