@@ -16,3 +16,5 @@ import B02.TensorCovariance
 import B02.ConcreteLinear
 import B02.Extension
 import B02.Spin
+import B02.Samples
+import B02.DimensionTwo
