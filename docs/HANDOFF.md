@@ -57,11 +57,18 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - runner guards plus a hand control;
   - a nonzero dressing sample.
   It was smoke-tested by rebuilding from the plan text: 222 tests pass, and the full run passes. **Awaiting the user's re-review and approval.**
-- **Agents:** the pi coding agent is now in pane 0:4 (GPT-6-Astra medium, web access) and available for lookups and side checks. agy is retired.
+- **Rev 2.1** (`70fa6ce`): Task 6 now names the trace norm, answering argon's clarification request. Both formulas were verified exactly in all three signatures:
+  - N(X) = Σ_I η_I Tr(X_I X_I)/dim S (complex-bilinear, Ad-invariant, indefinite);
+  - N(αF + βF′) = n(α² − β²) and N(γB + δB′) = C(n,2)(δ² − γ²).
+
+  Argon reviewed rev 2: zero blockers.
+- **In flight: the Grok review.** pi (pane 0:4, now **Grok** `x-ai/grok-4.7` via openrouter) is doing an independent adversarial review of rev 2.1. Brief and results: `.agent-handoff/b02-plan-review-grok/` (`status`, `result.md`). Watcher `bhq4zvi09`. If the watcher is lost, check `status` directly. pi writes its own findings first, then marks each NEW or DUPLICATE against Codex's review.
+- **The user is also reviewing rev 2.1.** When both are in: verify each NEW Grok finding yourself, then fold the accepted ones into the plan. Edit `scratchpad/plan-skeleton.md` and rebuild with `scratchpad/build_plan.py`, which inlines the tested scratch files from `scratchpad/smoke/`. Re-run the rebuild-from-plan smoke test (`scratchpad/extract.py`, stages 1 and 2), commit, and ask the user for approval.
+- **Agents:** Codex is in pane 0:3. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
 
 **Next**
 1. ~~Resolve Codex's review~~ (done, `f75bb66`). ~~Retro~~ (done). ~~Write the B02 plan~~ (done).
-2. **Wait for the user's approval of B02 plan revision 2.** Then dispatch Tasks 1–4 to Codex (one brief; the plan is self-contained). Claude does Task 5 (`proofs.md`) in parallel.
+2. **Wait for the Grok review and the user's approval of B02 plan rev 2.x.** Then dispatch Tasks 1–4 to Codex (one brief; the plan is self-contained). Claude does Task 5 (`proofs.md`) in parallel.
 3. (Superseded; kept for the record.) Write the follow-up plan `docs/superpowers/plans/<date>-b02-direct-check.md` (writing-plans skill), from the reviewed transcription. Include the symbolic covariance derivation (Claude), the branch enumeration (brackets 2³ × Φ choices × signatures), tests 1–5 and 5′, and the H0 line item. Smoke-test the plan's code, and list the ambient impostors (P2b).
 4. Get the user's approval of that plan, then dispatch it to Codex.
 5. Later: P3 (B03 branching), P4 repairs, the write-up.
