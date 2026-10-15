@@ -41,9 +41,18 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - Real-form grade pattern of (3.27) is identical in (7,7) and (9,5). Invariant Φ spaces are real-2-dimensional each: Φ¹ = αF + βF′, Φ² = γB + δB′.
 - Retro and new practices P10, P11 in `docs/methods.md`.
 
+- **B02 plan written:** `docs/superpowers/plans/2026-10-15-b02-direct-check.md`, **awaiting the user's approval** (not yet dispatched).
+  - Every code block was smoke-tested in scratch: 209 tests pass, the full 14D identity response check passes (~4 min per signature), and a rebuild from the plan text alone passes.
+  - The smoke test found two issues, both fixed in the plan:
+    - The checker had bypassed `shiab` (a −½ fault stayed green); it is now routed through `assemble`.
+    - A wrong control assumed a Spin-image dressing is a no-op; replaced by a central dressing.
+  - Sampled 5′ observation: odd dressings do **not** annihilate Weyl.
+  - Predicted classification (README task): κ = γ/2 for CAA. So κ = ½ is exactly the unit normalization of B (N-a), while CCC gives κ = 0 for every Φ.
+
 **Next**
-1. ~~Resolve Codex's review~~ (done, `f75bb66`). ~~Retro~~ (done).
-3. Write the follow-up plan `docs/superpowers/plans/<date>-b02-direct-check.md` (writing-plans skill), from the reviewed transcription. Include the symbolic covariance derivation (Claude), the branch enumeration (brackets 2³ × Φ choices × signatures), tests 1–5 and 5′, and the H0 line item. Smoke-test the plan's code, and list the ambient impostors (P2b).
+1. ~~Resolve Codex's review~~ (done, `f75bb66`). ~~Retro~~ (done). ~~Write the B02 plan~~ (done).
+2. **Wait for the user's approval of the B02 plan.** Then dispatch Tasks 1–4 to Codex (one brief; the plan is self-contained). Claude does Task 5 (`proofs.md`) in parallel.
+3. (Superseded; kept for the record.) Write the follow-up plan `docs/superpowers/plans/<date>-b02-direct-check.md` (writing-plans skill), from the reviewed transcription. Include the symbolic covariance derivation (Claude), the branch enumeration (brackets 2³ × Φ choices × signatures), tests 1–5 and 5′, and the H0 line item. Smoke-test the plan's code, and list the ambient impostors (P2b).
 4. Get the user's approval of that plan, then dispatch it to Codex.
 5. Later: P3 (B03 branching), P4 repairs, the write-up.
 
