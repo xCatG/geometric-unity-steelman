@@ -26,6 +26,8 @@ def exact_int(x, what: str = "value") -> int:
 
 
 def weight(w, width: int | None = None, what: str = "weight") -> tuple[int, ...]:
+    if width is not None:
+        width = exact_int(width, "width")
     w = tuple(exact_int(x, what) for x in w)
     if width is not None and len(w) != width:
         raise ValueError(f"{what} has width {len(w)}, expected {width}")
@@ -34,6 +36,8 @@ def weight(w, width: int | None = None, what: str = "weight") -> tuple[int, ...]
 
 def character(ch, width: int | None = None) -> Counter:
     """Validate an ordinary character; returns a Counter of int tuples -> positive ints."""
+    if width is not None:
+        width = exact_int(width, "width")
     out, widths = Counter(), set()
     for w, m in dict(ch).items():
         w = weight(w, width)
@@ -49,6 +53,7 @@ def character(ch, width: int | None = None) -> Counter:
 
 
 def cartan(family: str, rank: int) -> tuple[tuple[int, ...], ...]:
+    rank = exact_int(rank, "rank")
     if family == "A" and rank >= 1:
         return tuple(tuple(2 if i == j else -1 if abs(i - j) == 1 else 0 for j in range(rank))
                      for i in range(rank))
@@ -78,6 +83,7 @@ class Simple:
     """A simply-laced simple Lie algebra; (alpha_i, alpha_i) = 2."""
 
     def __init__(self, family: str, rank: int):
+        rank = exact_int(rank, "rank")
         self.name = f"{family}{rank}"
         self.A = cartan(family, rank)
         self.rank = rank
@@ -106,13 +112,15 @@ class Simple:
         return [self.to_dynkin_root(r) for r in sorted(roots)]
 
     def to_dynkin_root(self, coeffs):
+        coeffs = weight(coeffs, self.rank, "root coefficients")
         return tuple(sum(c * self.A[i][j] for i, c in enumerate(coeffs)) for j in range(self.rank))
 
     def ip(self, x, y) -> Fraction:
+        x, y = weight(x, self.rank), weight(y, self.rank)
         return sum(x[i] * self.Ainv[i][j] * y[j] for i in range(self.rank) for j in range(self.rank))
 
     def dominant(self, w):
-        w = list(w)
+        w = list(weight(w, self.rank))
         while True:
             i = next((i for i, x in enumerate(w) if x < 0), None)
             if i is None:
@@ -121,6 +129,7 @@ class Simple:
             w = [x - c * self.A[i][j] for j, x in enumerate(w)]
 
     def orbit(self, w):
+        w = weight(w, self.rank)
         seen, frontier = {tuple(w)}, [tuple(w)]
         while frontier:
             nxt = []
@@ -217,6 +226,7 @@ class Product:
     """Product of simple factors and u1 U(1) charges; weights are concatenated tuples."""
 
     def __init__(self, factors: list[Simple], u1: int = 0):
+        u1 = exact_int(u1, "number of U(1) factors")
         self.factors, self.u1 = factors, u1
         self.slices = []
         o = 0
@@ -226,6 +236,7 @@ class Product:
         self.width = o + u1
 
     def split(self, w):
+        w = weight(w, self.width)
         return [tuple(w[s]) for s in self.slices], tuple(w[self.width - self.u1:])
 
     def character(self, hws, charges=()):
@@ -339,6 +350,7 @@ def sm_weight(y5) -> tuple[int, int, int, int]:
 
 def sm_weight_flipped(y5) -> tuple[int, int, int, int]:
     """Control E' (ansatz rev 1): n' = (-n5 + 6X)/5, X = sum y."""
+    y5 = weight(y5, 5)
     a, b, k, n5 = sm_weight(y5)
     num = -n5 + 6 * sum(y5)
     if num % 5:

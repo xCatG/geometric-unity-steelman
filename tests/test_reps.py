@@ -145,3 +145,63 @@ def test_rejects_bad_input():
         D5.dimension((0.0, 0, 0, 0, 1))
     with pytest.raises(ValueError):
         Product([A1]).decompose(Counter({(1,): 1}))
+
+
+def test_flipped_embedding_large_exact_integers():
+    """P4 control: n5=0 and X=5t give n'=6t, without int64 overflow."""
+    import numpy as np
+    expected = (0, 0, 0, 6 * 2**60)
+    assert sm_weight_flipped((2**60,) * 5) == expected
+    got = sm_weight_flipped((np.int64(2**60),) * 5)
+    assert got == expected and all(type(x) is int for x in got)
+
+
+@pytest.mark.parametrize("method", ["to_dynkin_root", "ip_left", "ip_right", "dominant", "orbit", "split"])
+def test_public_coordinate_methods_reject_inexact(method):
+    """P4 control: every coordinate operand rejects floats and nonintegral rationals."""
+    from fractions import Fraction
+    from gu.reps import weight
+    calls = {
+        "to_dynkin_root": A1.to_dynkin_root,
+        "ip_left": lambda w: A1.ip(w, (1,)),
+        "ip_right": lambda w: A1.ip((1,), w),
+        "dominant": A1.dominant, "orbit": A1.orbit,
+        "split": Product([A1]).split,
+    }
+    for bad in (1.0, Fraction(1, 2), True):
+        with pytest.raises(ValueError) as expected:
+            weight((bad,))
+        with pytest.raises(type(expected.value)):
+            calls[method]((bad,))
+    with pytest.raises(ValueError):
+        calls[method]((1, 2))
+
+
+def test_public_coordinate_methods_normalize_large_numpy_integers():
+    """P4 control: A1 Cartan=[2], inverse=[1/2]; convert before multiplication."""
+    from fractions import Fraction
+    import numpy as np
+    for t in (2**62, np.int64(2**62)):
+        got = A1.to_dynkin_root((t,))
+        assert got == (2**63,) and type(got[0]) is int
+        got_ip = A1.ip((t,), (t,))
+        assert got_ip == Fraction(2**124, 2) and isinstance(got_ip, Fraction)
+        assert A1.dominant((-t,)) == (2**62,)
+        assert A1.orbit((t,)) == {(2**62,), (-2**62,)}
+        parts, charges = Product([A1], u1=1).split((t, t))
+        assert parts == [(2**62,)] and charges == (2**62,)
+        assert type(parts[0][0]) is int and type(charges[0]) is int
+
+
+@pytest.mark.parametrize("entry", ["cartan", "simple", "u1", "width", "empty_character_width"])
+def test_public_numeric_sizes_use_exact_integer_contract(entry):
+    """P4 control: numeric sizes reject inexact values and accept integral Fractions."""
+    from fractions import Fraction
+    from gu.reps import cartan, character, weight
+    calls = {"cartan": lambda n: cartan("A", n), "simple": lambda n: Simple("A", n),
+             "u1": lambda n: Product([A1], u1=n), "width": lambda n: weight((1,), n),
+             "empty_character_width": lambda n: character({}, n)}
+    for bad in (1.0, Fraction(1, 2), True):
+        with pytest.raises(ValueError):
+            calls[entry](bad)
+    calls[entry](Fraction(1))
