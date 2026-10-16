@@ -1,8 +1,8 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-16 13:05 before compaction, by Claude (orchestrator, pane 0:2). **B01–B03 and B05-specification complete; B05 sign-conflict Lean check merged (a134286); B07 Phase 2 plan rev 0 committed (d7f8b6b), in review** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
+Last updated: 2026-10-16 13:05 before compaction, by Claude (orchestrator, pane 0:2). **B01–B03 and B05-specification complete; B05 sign-conflict Lean check merged (a134286); B07 Phase 2 plan rev 2 committed (6bc202d), awaiting user approval** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
 
-## Current work (resume here) — B07 Phase 2 plan rev 0 IN REVIEW (Codex done, Grok working)
+## Current work (resume here) — B07 Phase 2 plan rev 2 AWAITING USER FINAL APPROVAL
 
 **B07 Phase 1 is COMPLETE** (README `experiments/B07/README.md`; result c7229e9; re-derivation dccc0a4; audit fixes 01c328c; register cf90b4c + P7 flip 93a595a; P7 0f965ca: 365 passed, payload identical, 8 faults RED). Evidence `.agent-handoff/b07-{impl,rederivation,audit,p7,impl-review-grok}/`.
 
@@ -11,30 +11,35 @@ Last updated: 2026-10-16 13:05 before compaction, by Claude (orchestrator, pane 
 2. "read @argon_b7.md and share with codex/grok" — DONE. Reviews `.agent-handoff/argon-b7-review/{codex,grok}.md`: both "partly sound". Argon's no-go (interior-star Shiab can't be self-adjoint with Ricci) REFUTED in 4D; its totally-antisymmetric-symbol criterion misses internal-index symmetry; grade-weighted pairings are Spin- not ad-invariant (B07-Q); Paradigm II (vary one leg / ε) is an `[ext]` model change; Paradigm III half right (term-3 sign missed; mass sign (−1)^q); C_Bianchi undefined; 14D universal ≈ 3.4e11 entries.
 3. **"Approved. Proceed with drafting Phase 2, but include the unreduced 4D Spin-equivariant basis search"**; ensure (1) N0, N1, N2 fully computed at T²; (2) search parameterizes the generalized multi-bracket span; (3) P4 exactness strictly enforced. Send to Codex + Grok under the usual protocol; bring the reviewed plan back for final approval. (Supersedes Phase 1's record-only N0 decision.)
 
-**Plan rev 0 committed: d7f8b6b** (`docs/superpowers/plans/2026-10-16-b07-phase2.md`). Smoke run complete (durable copy `.agent-handoff/b07p2-smoke/`: code/, result.json, run2.log, suite.log):
-- **Unreduced 4D space:** dim **40** at (3,1) and (1,3), equal blockwise to the sl₂×sl₂ character count. The 20 blocks have rank 16 (4 zero relations) and lie in the span.
-- **C1 kernel:** universal 8 (Einstein dim 2: (½,0,−¼,0) and (0,±½,0,∓¼); the other six have zero response); blocks 2 (both Einstein, e.g. E_OP → 2E_F(Ric) − S E_F(g)).
-- **SO kernel:** universal 16, blocks 4. The named CAA/CAC branches have SO ≠ 0 at (3,1), (1,3), (7,7) and (9,5).
-- **Joint C1+C2 kernel = 0 under N0, N1 and N2**, for both the universal space and the blocks, at both signatures. The order-T² term is the obstruction in 4D.
-- **14D E_OP, (7,7) and (9,5):** C1 none in 19,200 entries (inconclusive). C2 exact witnesses: N0 8, N1 −16/3, N2 −8.
-- **Item 2,** checked at (3,1), (1,3), (2,2), (4,0) × both conventions × 4 maps:
-  - κ⁰ matches;
-  - term 2 needs the missing ∗;
-  - printed term 3 has the wrong sign everywhere;
+**Plan rev 2 committed: 6bc202d** (`docs/superpowers/plans/2026-10-16-b07-phase2.md`). Revision history:
+- **rev 0** (d7f8b6b): Codex said revise (7 findings), Grok said accept with fixes (4).
+- **rev 1** (834f0dd): Grok accepted; Codex said accept with fixes (2 math, 2 code, 1 scope string).
+- **rev 2** (6bc202d): folds that confirmation round.
+
+Reviews: `.agent-handoff/b07p2-plan-review{,-grok}{,-r1}/result.md`.
+
+**Smoke results (final):**
+- **Rev 1 runner** (4959 s): payload identical to rev 0 in every section, plus `ym_symbol` rows. Rev 2 code: 22 tests, suite 387, 13 faults RED.
+- **4D**, at (3,1) and (1,3):
+  - unreduced space dim 40 (characters blockwise);
+  - C1 kernel 8, Einstein rank 2;
+  - **joint C1+C2 = 0 under N0, N1 and N2** for both the universal space and the 16-dim block span.
+- **14D, E_OP:** C1 none found in 19,200 entries; C2 witnesses N0 8, N1 −16/3, N2 −8.
+- **(9.11):**
+  - term 2 is missing a ∗;
+  - term 3 has the wrong sign;
   - κ²T is right iff q is even;
-  - ∗† = (−1)^{n−1}∗ and ∗†∗ = (−1)^q, true for all 40 cases;
-  - X*X is never ∝ Id.
-- **Tests and runtime:** 19 new tests; suite 384 passed; 9 faults RED; runner 4491 s on 32 cores. The first run crashed at the JSON dump (Fraction from the sign helpers), fixed by returning int (scratch commit 92aca1a).
+  - X*X is not ∝ Id;
+  - the principal symbol is not proportional to YM for any map (CCC, CAA, CAC, E_OP); the 3D control passes.
 
-**Reviews of rev 0 dispatched (~12:40):** Codex (pane 0:3, `.agent-handoff/b07p2-plan-review/`) is DONE. Grok (pane 0:4, `.agent-handoff/b07p2-plan-review-grok/`) is working.
+**Next:** the user's final approval of rev 2 and their choice of execution method. Then:
+- Task 1: Claude's derivations.md.
+- Task 2: Codex writes the code verbatim.
+- Task 3: runner.
+- Task 4: rederive.
+- Task 5: README, audit, register, P7.
 
-**Next steps:**
-1. Read both `result.md` files and verify every finding.
-2. Fold the verified findings into rev 1 (plan + `b07p2-smoke/code/`), re-running the affected tests and faults in the scratch clone.
-3. Commit rev 1, with a confirmation round if the changes are substantive.
-4. Bring the plan to the user for final approval.
-
-**tmux from Git Bash:** `export MSYS_NO_PATHCONV=1` first, or `/new` becomes a Windows path. After `/new`, the Grok pane falls back to gpt-6.1-sol, so re-run `/model grok-4.7` and press Enter twice.
+**tmux from Git Bash:** `export MSYS_NO_PATHCONV=1`. After `/new`, the Grok pane reverts to gpt-6.1-sol: run `/model grok-4.7`, then Enter twice.
 
 **Retro note for later:** Claude counted coefficient-kernel dims as operator dims (missed the 4 zero relations); a background script imported another script's top-level code and clobbered a shared log (kill stray processes by command line; one log per process).
 
