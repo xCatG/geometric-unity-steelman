@@ -1,6 +1,16 @@
 # B07 transcription: the first-order bosonic action (9.4), its claimed variation (9.7), and the surrounding §9 equations
 
-Transcriber: Claude (Opus 5.5), 2026-10-16. **Revision 0.**
+Transcriber: Claude (Opus 5.5), 2026-10-16. **Revision 1.**
+
+- **Revision 0** (`0912d4c`) was written before the blind second reading.
+- **Revision 1** applies Codex's comparison (`.agent-handoff/b07-transcription/transcription-comparison.md`; the blind reading by a fresh subagent is `second-reader.md` in the same directory). All coefficients, algebraic signs, matrix entries and star placements in (9.1)–(9.22) agree between the two readings. The corrections:
+  1. **H8 term 3 has a definite wrong sign in (9.13).** Under the pinned convention ∗† = −∗ between Ω¹ and Ω^{d−1}, so the derived term is −κ₁∗⊚F_A, not "±". Claude re-derived this (⟨∗a, u⟩ = −⟨a, ∗u⟩ from the anti-isometry and ∗∗ = +1 on Ω¹).
+  2. **Conflict 8 is withdrawn as stated.** It identified (9.20)'s 𝒟 with (9.6)'s 𝔇 without support; the remaining issue is the undefined operator and embedding. Its quotation of the right side is corrected to Υ^F_ω.
+  3. **Verbatim details:** the second colon in (9.1); no parentheses around the space stack in (9.5); the "Displaced Torsion" brace in (9.8) is an underbrace; item 3 of (9.4)'s "where" list is written out (it has ⊚_ε and omits the g_{μν} annotation); footnote 10 is on p. 43.
+  4. **p. 47 does not select N2**: F_A has degree 2, so its bracket's grading sign is always +1. N0 is marked as an extension of the coefficient commutator (12.26), not forced by it.
+  5. **H2:** for L = ⊚∘d_B the transpose differentiates ⊚'s coefficients and the density, not the connection. **H5:** conjugation in the full matrix algebra suffices; no Spin(7,7) restriction on ε is needed. **H6:** K½ and K1 give different field equations at a fixed numerical κ₁; they agree after reparametrizing κ₁, and C1/C2 are unaffected.
+  6. **New register rows:** G (bracketed products read as ordinary matrix products, which mix bracket modes), D (d_B on T as the adjoint derivative or as left multiplication), F (which fields vary), S0 (evaluation at s = 0), E (equality as definition of Υᴮ or as a variational claim), Q (trace/reality/pairing convention), and Bd (boundary and analytic setting).
+  7. **New contextual conflict 9:** (8.3) on p. 42 writes Cl(T\*X) where the surrounding text uses Y.
 
 Plan: `docs/superpowers/plans/2026-10-16-b07-variation.md`, rev 1.1 (`be2ae34`), Task 1.
 
@@ -35,7 +45,7 @@ $$\circledcirc_\varepsilon\eta=*^n\, i^{\frac{1\pm1}{2}}\big[(\varepsilon^{-1}\P
 
 "The purely Bosonic portion of the action is a real valued function:"
 
-$$\mathcal I_1^{\mathrm B}:\mathcal G\times\mathcal{MET}(X^{1,3})\longrightarrow\mathbb R\tag{9.1}$$
+$$\mathcal I_1^{\mathrm B}:\mathcal G\times\mathcal{MET}(X^{1,3}):\longrightarrow\mathbb R\tag{9.1}$$
 
 "While there are other possibilities to explore for the choice of the Shiab operator, Let"
 
@@ -45,7 +55,7 @@ $$\circledcirc_\varepsilon:\Omega^2(Y^{7,7},\mathrm{ad})\longrightarrow\Omega^{d
 
 $$\circledcirc_\varepsilon\xi=\underbrace{\big[(\varepsilon^{-1}\Phi^1\varepsilon)\wedge(*\xi)\big]}_{\text{Ricci Like}}-\frac{*}{2}\big[\underbrace{(\varepsilon^{-1}\Phi^1\varepsilon)}_{g_{\mu\nu}\text{- like.}}\wedge*\underbrace{\big[(\varepsilon^{-1}\Phi^2\varepsilon)\wedge(*\xi)\big]}_{\text{Ricci Scalar Like}}\big]\tag{9.3}$$
 
-"for a gauge covariant ad-valued 2-form ξ ∈ Ω²(Y, ad)." Footnote 10: "The Shiab operator that he settled on (but cannot yet now locate) was chosen for its properties relative to the Bianchi identity."
+"for a gauge covariant ad-valued 2-form ξ ∈ Ω²(Y, ad)." Footnote 10 (p. 43): "The Shiab operator that he settled on (but cannot yet now locate) was chosen for its properties relative to the Bianchi identity."
 
 p. 44: "… an action I₁ᴮ which for only the Bosonic fields of integral spin (ε, ϖ on Y and ℷ on X) looks like:"
 
@@ -64,12 +74,14 @@ $$+\kappa_1\int_Y\mathrm{Tr}\big((\varpi-\varepsilon^{-1}d_0\varepsilon)\wedge*(
 "where:
 1. R̃^θ_{ijσ} is the Spinor bundle's Riemannian curvature induced from the Levi-Civita connection.
 2. T_ω = ϖ − ε⁻¹d₀ε ∈ Ω¹(Y, ad) is the augmented torsion tensor.
-3. The Shiab Operator ⊚_ω on an ad-valued 2-form ξ ∈ Ω²(Y, ad) is given in accordance with the Einsteinian contraction [(9.3) repeated].
+3. The Shiab Operator ⊚_ω on an ad-valued 2-form ξ ∈ Ω²(Y, ad)is given in accordance with the Einsteinian contraction
+
+   ⊚_εξ = [(ε⁻¹Φ¹ε) ∧ (∗ξ)] (underbrace "Ricci Like") − (∗/2)[(ε⁻¹Φ¹ε) ∧ ∗[(ε⁻¹Φ²ε) ∧ (∗ξ)]] (underbrace "Ricci Scalar Like"; the g_{μν}-like annotation of (9.3) is absent here)
 4. The B_ω connection is the gauge rotation of the Levi-Civita Spin Connection: B_ω = ∇⁰ + ε⁻¹d₀ε"
 
 "By the calculus of variations we obtain Euler-Lagrange Equations of the form:"
 
-$$d\mathcal I_1^B(ℷ,\omega)|_{Y^{14}}=\begin{pmatrix}\Upsilon_\omega\\ \oplus\\ \Xi_\omega\end{pmatrix}\in\begin{pmatrix}\Omega^{d-1}(\mathrm{ad})\\ \oplus\\ \Omega^{d}(\mathrm{ad})\end{pmatrix}\tag{9.5}$$
+$$d\mathcal I_1^B(ℷ,\omega)|_{Y^{14}}=\begin{pmatrix}\Upsilon_\omega\\ \oplus\\ \Xi_\omega\end{pmatrix}\in\begin{matrix}\Omega^{d-1}(\mathrm{ad})\\ \oplus\\ \Omega^{d}(\mathrm{ad})\end{matrix}\tag{9.5}$$
 
 "where generally"
 
@@ -81,7 +93,7 @@ p. 45: "And by gathering up terms we can express them in a fashion that is close
 
 $$\frac{\partial\mathcal I_1^{\mathrm B}((\varepsilon_Y,\varpi_Y+s\alpha),ℷ_X)}{\partial s}=\langle\alpha,\circledcirc_\omega F_{A_\omega}+*\kappa_1T_\omega\rangle=\langle\alpha,\Upsilon^B_\omega\rangle\tag{9.7}$$
 
-$$\underbrace{\circledcirc F_\omega}_{\substack{\text{Swerved Curvature}\\=\ \text{Swervature}=\mathcal S_\omega}}=\underbrace{-*\kappa_1\overbrace{T_\omega}^{\text{Displaced Torsion}}}_{\text{Displasion}=\mathcal T_\omega}\tag{9.8}$$
+$$\underbrace{\circledcirc F_\omega}_{\substack{\text{Swerved Curvature}\\=\ \text{Swervature}=\mathcal S_\omega}}=\underbrace{-*\kappa_1\underbrace{T_\omega}_{\text{Displaced Torsion}}}_{\text{Displasion}=\mathcal T_\omega}\tag{9.8}$$
 
 $$\Upsilon_\omega=\mathcal S_\omega-\mathcal T_\omega=0\tag{9.9}$$
 
@@ -153,7 +165,7 @@ $$\Upsilon_\omega=(\delta^\omega)^2=\delta^\omega_2\circ\delta^\omega_1=0\tag{9.
 | F_A | F_{B+T} = F_B + d_BT + T∧T (matrix product in the Clifford factor, wedge in the form factor) | standard curvature of a connection shifted by an ad-valued 1-form; not printed in the draft `[std]` |
 | F_B | B is the ε-gauge rotation of ∇⁰, so F_B = ε⁻¹F_{∇⁰}ε; line 2's ε⁻¹R̃ε is this | (9.4) item 4 and line 2 `[GU-orig]` |
 | d_B in line 2 | printed (d₀ + ε⁻¹d₀ε)(ϖ − ε⁻¹d₀ε), i.e. d_B with ∇⁰ written d₀ | (9.4) line 2; "A₀ ≈ ∇⁰ ≈ d₀" p. 36 `[GU-orig]` |
-| [T, T] | **not defined for ad-valued 1-forms.** Three readings: **N0** the appendix commutator (12.26) [a,b] = ab − ba applied with wedge and no grading sign, giving [T,T] = T∧T − T∧T = 0; **N1** b(x,y) = ½[x∧y]\_graded, so b(T,T) = T∧T (the Chern–Simons-consistent reading); **N2** the graded commutator [x∧y] = x∧y + y∧x on 1-forms, so [T,T] = 2T∧T, which matches p. 47's notation [F_A∧φ] | (12.26), p. 47; branch, see register |
+| [T, T] | **not defined for ad-valued 1-forms.** Three readings: **N0** the coefficient commutator (12.26) [a,b] = ab − ba **extended** to form products with wedge and no grading sign, giving [T,T] = T∧T − T∧T = 0 (an extension: (12.26) defines the bracket on coefficients only); **N1** b(x,y) = ½[x∧y]\_graded, so b(T,T) = T∧T (the Chern–Simons-consistent reading); **N2** the graded commutator [x∧y] = x∧y + y∧x on 1-forms, so [T,T] = 2T∧T. p. 47's d_A∘d_Aφ = [F_A∧φ] does not decide between them: F_A has degree 2, so the grading sign is +1 for every φ | (12.26) p. 66; branch, see register |
 | ⊚_ω | a member of B02's Shiab family (9.3), with the dressing ε⁻¹Φε; ⊚_ε = Ad(ε⁻¹)∘⊚∘Ad(ε) (H5) | (9.3), B02 `[GU-orig]` / `[GU-recon]` for the family |
 | ⟨·,·⟩ in (9.4) | the metric trace pairing ⟨a, b⟩ = ∫Tr(a∧∗b) of same-degree forms, metric g_ℷ | "Zorro Metric" label `[GU-recon]` |
 | ⟨·,·⟩ in (9.7) | pairs a 1-form α with an (d−1)-form: ∫Tr(α∧·) | (9.7) degrees `[GU-recon]` |
@@ -174,7 +186,8 @@ $$\Upsilon_\omega=(\delta^\omega)^2=\delta^\omega_2\circ\delta^\omega_1=0\tag{9.
 5. **(9.18) third component, degree.** ν̄ζ and ζ̄ν are spinor bilinears of a 0-form and a 1-form (degree 1); ⊚ζ̄ζ applies ⊚ (Ω² → Ω^{d−1} on ad-valued forms) to a degree-2 bilinear (degree d−1). They cannot be summed, and after the outer ∗ only the first two land in Ω^{d−1}(ad) as (9.19) claims. This is B05-Y's per-occurrence degree conflict seen in (9.18).
 6. **(9.18) has three components; there are four independent fermion fields.** p. 46 calls ν̄, ζ̄, ν, ζ "four distinct fields". Varying a Lagrangian bilinear in (barred, unbarred) gives one equation per field: four spinor equations. (9.18) lists two spinor components, which are (at most) the ζ̄- and ν̄-variations. The ν- and ζ-variations (equations for the barred fields) are absent (H7).
 7. **The fermionic Lagrangian is not written.** §9.3 prints operators "like" (9.16) and the compiled variation (9.18), but no action integral, pairing or measure. Every fermionic variation in H7 is therefore relative to a reconstructed action.
-8. **(9.20) second alternative.** "𝒟ω\*Υᴮ_ω = Υᴮ_ω^F" equates 𝒟\*Υᴮ (degree d by (9.5)–(9.6) if 𝒟 is the operator of (9.6)) with Υ^F, whose components are in degrees d−1, d and d−1 (9.19). The degrees match only in the second component.
+8. **(9.20) second alternative** (rev 1, restated). "𝒟ω\*Υᴮ_ω = Υ^F_ω" applies an operator 𝒟ω\* that is not defined in §9 to Υᴮ ∈ Ω^{d−1}(ad) and equates the result with Υ^F, an element of the mixed direct sum (9.19). The glyph resembles (9.15)'s 𝒟\*_ω, not (9.6)'s 𝔇_ω, and nothing identifies it with either. The open issue is the undefined operator and the embedding of a bosonic quantity into the bosonic–fermionic sum, not a specific degree mismatch. (Rev 0's degree-d claim relied on an unsupported identification with (9.6) and is withdrawn.)
+9. **(8.3), p. 42 (context).** ϑ : Λ\*(T\*Y) → Cl(T\*X) = ℝ(128) writes X in the target where the surrounding discussion and (8.4) use Y. No effect on B07.
 
 ## Readings register
 
@@ -188,10 +201,18 @@ $$\Upsilon_\omega=(\delta^\omega)^2=\delta^\omega_2\circ\delta^\omega_1=0\tag{9.
 | B07-T | "⊚ᵀ in place of ⊚" | ill-typed | — | no: the wedge transpose of ⊚ : Λ² → Λ^{n−1} is Λ¹ → Λ^{n−2} |
 | B07-Y | A ⊚ that differs per occurrence (in the quadratic term, the cubic term, and the target) | different model (B05-Y analogue) | C1, C2 | no |
 | B07-R | Variations restricted to a subspace of Ω¹(Y, ad) (e.g. a Spin-invariant subspace, or the (12.21) mass block) | different model; the source's translation space is all of Ω¹(Y, ad) (p. 44 item 2) | C1, C2 | no |
-| B07-O | The author's lost preferred operator (fn. 10, p. 42) instead of (9.3) | untested, unavailable | C1, C2 | no |
+| B07-O | The author's lost preferred operator (fn. 10, p. 43) instead of (9.3) | untested, unavailable | C1, C2 | no |
 | B07-M | Sums mixing bracket modes, allowed by (8.1)'s "or perhaps a sum of such terms" but outside B02's fixed-mode family | untested | C1, C2 | no (family is per mode) |
 | B07-N0 / N1 / N2 | The [T, T] normalization (Conventions) | source ambiguity | C2 only | N1 and N2 yes; **N0 no** (see note) |
 | B07-K½ / K1 | κ₁/2 (line 1) or κ₁ (line 4) | source conflict 1 | κ normalization only | by hand (H6) |
+| B07-G | Bracketed products in (9.3) read as **ordinary** matrix products (grouping), not as a commutator or i·anticommutator. With C(a,b) = ab − ba and A(a,b) = i(ab + ba), ab = (C − iA)/2, so nested ordinary products expand into a combination of bracket modes; it also needs a reality/ad-closure convention, since a product of two Lie-algebra elements need not lie in the Lie algebra | different completion, within M | C1, C2 | no: the eight fixed-mode surveys do **not** cover it; it would need a combined-mode adapter |
+| B07-D | In lines 2–4, (d₀ + ε⁻¹d₀ε)T read as the induced adjoint covariant derivative (d_B) or as left multiplication | notation ambiguity; the compact d_B and T ∈ Ω¹(ad) favour the adjoint derivative | zeroth-order part of R₁ only | adjoint derivative assumed; C1 is the same for both (same principal symbol), so C1 witnesses reject either |
+| B07-F | Which fields vary: ϖ only (this plan) or the full system with ε and the metric | scope | additional equations | ϖ only; (9.6)'s redundancy assertion supplies no metric equation |
+| B07-S0 | (9.7)'s derivative evaluated at s = 0 (not printed); alternatives: at every s along the line, or (literal) equality for all s with a fixed right side | convention | nothing at s = 0; the literal all-s reading is a stronger, generally false claim for a nonlinear action | s = 0 (equivalently, the identity at every base point) |
+| B07-E | (9.7)'s last equality defines Υᴮ; its first equality is still an asserted variational identity ("By the calculus of variations", "gathering up terms") | reading of the claim | what may be concluded | the first equality is what is tested |
+| B07-Q | The trace/reality/pairing convention: bilinear trace (assumed), its real part, a Hermitian pairing, or changed degree-dependent signs | convention | C1, C2 (other than a common nonzero scale), H8 signs | bilinear trace only; a different convention must be specified, with consistent adjoints, before claiming coverage |
+| B07-Bd | Boundary terms and the analytic setting (not given in the source) | scope | nothing for C1: interior compactly supported variations already expose a bulk principal-symbol defect | compact support |
+| B07-X | A Shiab operator whose Φ depends on ϖ or other fields | different model (related to Y, O) | adds δ⊚ terms | no: (9.3) with fixed invariant Φ and fixed metric is independent of ϖ |
 
 **Note on N0.** Under N0 the cubic term vanishes identically, so the "C-S like terms" are not Chern–Simons-like, and C2 reduces to −Tr(α∧⊚(T∧T)). N0 cannot rescue (9.7): C1 does not involve the bracket, so any C1 failure stands under N0. The code does not execute N0; adding it would only fill in C2's value under a reading in which C2 is not needed for the verdict. This is reported to the user per the plan's Task 2 Step 3 rule.
 
@@ -201,7 +222,7 @@ Throughout: fix ε and the metric. Then B = B_ω, F_B, the Hodge star, Φ¹, Φ�
 
 $$I_1=\int\mathrm{Tr}\big(T\wedge\circledcirc F_B\big)+\tfrac12\int\mathrm{Tr}\big(T\wedge LT\big)+\tfrac13\int\mathrm{Tr}\big(T\wedge\circledcirc b(T,T)\big)+\tfrac{\kappa_1}{2}\langle T,T\rangle,\qquad L:=\circledcirc\circ d_B .$$
 
-The target (9.7) is ∫Tr(α∧⊚F_A) + κ₁⟨α, T⟩ = ∫Tr(α∧⊚F_B) + ∫Tr(α∧LT) + ∫Tr(α∧⊚(T∧T)) + κ₁⟨α,T⟩. Both sides are polynomials in T; compare them order by order.
+The target (9.7), evaluated at s = 0 (B07-S0), is ∫Tr(α∧⊚F_A) + κ₁⟨α, T⟩ = ∫Tr(α∧⊚F_B) + ∫Tr(α∧LT) + ∫Tr(α∧⊚(T∧T)) + κ₁⟨α,T⟩. Both sides are polynomials in T; compare them order by order.
 
 ### H1, order T⁰
 
@@ -213,7 +234,7 @@ The target (9.7) is ∫Tr(α∧⊚F_A) + κ₁⟨α, T⟩ = ∫Tr(α∧⊚F_B) +
 
 $$R_1(\alpha,T)=\tfrac12\int\mathrm{Tr}\big(\alpha\wedge(L^\dagger-L)T\big).$$
 
-This holds with variable coefficients: derivatives of ⊚'s coefficients and of the connection are part of L†.
+This holds with variable coefficients: derivatives of ⊚'s coefficients and of the density are part of L†. (The connection term in d_B is zeroth order and is transposed algebraically; no derivative of B arises.)
 
 **Principal symbol.** In a local frame, d_Bα = Σ_k e^k∧∂_kα + (zeroth order). Put M^k(t, a) := Tr(t∧⊚(e^k∧a)), a pointwise bilinear form on ad-valued 1-forms. Then ∫Tr(T∧Lα) = Σ_k∫M^k(T, ∂_kα) + (zeroth order in α). Integrating by parts **at the level of coefficient functions** (∫f∂_kg = −∫(∂_kf)g, with derivatives of M^k and of the density being zeroth order), this is −Σ_k∫M^k(∂_kT, α) + (zeroth order in T). No sign from moving d across forms arises, because d is never moved across a form: only scalar coefficient functions are differentiated. So in the residual, the coefficient of ∂_kT is
 
@@ -260,13 +281,15 @@ For each bracket mode, conjugation by ε is an algebra automorphism of the Cliff
 
 $$\circledcirc_\varepsilon=\mathrm{Ad}(\varepsilon^{-1})\circ\circledcirc\circ\mathrm{Ad}(\varepsilon)$$
 
-pointwise. With the trace's conjugation invariance, C1 for ⊚_ε at (t, a) equals C1 for ⊚ at (Ad(ε)t, Ad(ε)a), and the same holds for C2. Ad(ε) is invertible, so the vanishing of C1 and C2 does not depend on ε. Nothing here uses constancy of ε, and the (6.4)/(6.13) sign does not enter: the variation is in ϖ at fixed ε, and B = ∇⁰ + ε⁻¹d₀ε is fixed whichever sign the tilted map carries. *Assumption:* ε acts on the Clifford factor by conjugation (ε ∈ ℋ ⊂ 𝒢 through its Spin(7,7) ⊂ Cl image) `[GU-recon]`.
+pointwise. With the trace's conjugation invariance, C1 for ⊚_ε at (t, a) equals C1 for ⊚ at (Ad(ε)t, Ad(ε)a), and the same holds for C2. Ad(ε) is invertible, so the vanishing of C1 and C2 does not depend on ε. Nothing here uses constancy of ε, and the (6.4)/(6.13) sign does not enter: the variation is in ϖ at fixed ε, and B = ∇⁰ + ε⁻¹d₀ε is fixed whichever sign the tilted map carries. *Assumption:* ε acts on the Clifford coefficients by conjugation in the full matrix algebra, preserving the chosen real adjoint space `[GU-recon]`; ε ∈ ℋ (p. 42), and no restriction to the Spin(7,7) image is needed.
 
 ### H6, the κ term
 
-The pairing ⟨a, b⟩ = ∫Tr(a∧∗b) is symmetric on same-degree forms. So δ[(κ₁/2)⟨T,T⟩] = κ₁⟨α, T⟩ = κ₁∫Tr(α∧∗T), which is (9.7)'s torsion term. **Matches under K½.** Under K1 (line 4's κ₁⟨T,T⟩) the variation is 2κ₁⟨α,T⟩: the κ coefficient in (9.7) is off by a factor 2. This changes only the normalization of κ₁ and no vanishing condition.
+The pairing ⟨a, b⟩ = ∫Tr(a∧∗b) is symmetric on same-degree forms. So δ[(κ₁/2)⟨T,T⟩] = κ₁⟨α, T⟩ = κ₁∫Tr(α∧∗T), which is (9.7)'s torsion term. **Matches under K½.** Under K1 (line 4's κ₁⟨T,T⟩) the variation is 2κ₁⟨α,T⟩: the κ coefficient in (9.7) is off by a factor 2. At a fixed numerical κ₁ the two field equations ⊚F + κ₁∗T = 0 and ⊚F + 2κ₁∗T = 0 differ; they agree after reparametrizing κ₁. C1 and C2 are unaffected.
 
 ### H7, the fermionic conditional ledger
+
+*Rev 1 note.* The omitted barred-field equations are a completeness concern, not evidence that the two displayed spinor equations are false. The relative minus sign of rows 3–4 matters for a packaged variational one-form even though it changes no solutions of a standalone equation.
 
 **Not a computation.** The fermionic action is not printed (conflict 7). Take the reconstruction S_F = ∫⟨Ψ̄, 𝒟̸_ω Ψ⟩ with Ψ = (ζ₊, ζ₋, ν₊, ν₋)_{ρ(ε⁻¹)} and Ψ̄ = (ζ̄₋, ζ̄₊, ν̄₋, ν̄₊)_{ρ(ε)} as four independent fields `[GU-recon]`. Every entry below is conditional on the listed B05-Q inputs. A spinor-valued ⊚ is a different map from the ad-valued ⊚ that C1 tests, so no C1 or C2 result transfers to this ledger.
 
@@ -280,7 +303,7 @@ The pairing ⟨a, b⟩ = ∫Tr(a∧∗b) is symmetric on same-degree forms. So �
 | ε (not varied here) | the ρ(ε), ρ(ε⁻¹) decorations and the dressing | the ℋ-action on $ | B05 (6.13) sign; Lean `lean/B05Sign/` | out of scope (ϖ direction only) |
 
 - **(9.18) by component:** component 1 follows conditionally; component 2 follows conditionally, up to sign; component 3 follows conditionally for two of its three terms, and its ⊚ζ̄ζ term does not follow as printed.
-- **(9.20)** is a conditional assembly: Υᴮ + Υ^F = 0 adds (9.7)'s ad component to (9.18)'s third component, which is well typed only for the ζ̄ν, ν̄ζ terms; its second alternative has the degree problem of conflict 8.
+- **(9.20)** is a conditional assembly: Υᴮ + Υ^F = 0 adds (9.7)'s ad component to (9.18)'s third component, which is well typed only for the ζ̄ν, ν̄ζ terms; its second alternative uses an undefined operator (conflict 8).
 - **(9.21)–(9.22)** are unproved square-root/complex obligations (δ^ω with (δ^ω)² = Υ_ω); they are B08's subject and are not touched here.
 
 **Summary for the README:** the fermionic variation (9.16)–(9.22) was not computed; it is blocked on B05-Q's open pairing and adjoint conventions, and the ledger above records what each component would need.
@@ -301,6 +324,6 @@ $$(d_A^*\circledcirc^*+\kappa_1*^*)(\circledcirc F_A+\kappa_1*T)=d_A^*\circledci
 - **Against (9.13), term by term:**
   1. d\*_A⊚\*⊚F_A: **matches**.
   2. κ₁d\*_A⊚\*∗T derived; (9.13) prints κ₁d\*_A⊚\*T. ⊚\* maps Ω^{d−1} → Ω², so ⊚\*T with T ∈ Ω¹ is ill-typed: (9.13) **drops a ∗**.
-  3. κ₁∗\*⊚F_A derived; (9.13) prints κ₁∗⊚F_A. With the pinned convention ∗\* = ±∗ on Ω^{d−1}; **matches up to that sign** (not (9.12)'s Id).
-  4. κ₁²∗\*∗T derived. ∗ is an anti-isometry on 1-forms at all four signatures (Conventions): ⟨∗a, ∗b⟩ = −⟨a, b⟩, so ∗\*∗ = −Id and the term is **−κ₁²T**; (9.13) prints **+κ₁²T**. The sign flips if the metric pairing is taken with the opposite sign on one of the two spaces, so this is convention-sensitive, but under the pinned convention (9.13)'s sign is wrong.
-- **Conclusion.** (9.13) is consistent with the correct variation of (9.11) up to one dropped ∗ (term 2) and a convention-dependent sign (term 4); (9.12) is not, because of Id. These are bookkeeping findings about the printed displays, recorded for the README; B07 does not compute the second-order Lagrangian.
+  3. Under the pinned convention ∗\* = **−∗** between Ω¹ and Ω^{d−1} (rev 1): for a ∈ Ω¹, u ∈ Ω^{d−1}, ⟨∗a, u⟩ = ⟨∗a, ∗(∗u)⟩ = −⟨a, ∗u⟩, using the anti-isometry and ∗∗ = +1 on Ω^{d−1}. So the derived term is **−κ₁∗⊚F_A**; (9.13) prints **+κ₁∗⊚F_A**. A definite sign disagreement (and not (9.12)'s Id).
+  4. κ₁²∗\*∗T = −κ₁²∗∗T = **−κ₁²T** (∗∗ = +1 on Ω¹); (9.13) prints **+κ₁²T**.
+- **Conclusion.** Under the pinned pairings the metric gradient of I₂/2 is d\*_A⊚\*⊚F_A + κ₁d\*_A⊚\*(∗T) − κ₁∗⊚F_A − κ₁²T. (9.13) drops a ∗ in term 2 and has the wrong sign in terms 3 and 4; (9.12)'s Id cannot stand for ∗\* = −∗. A different pairing convention changes adjoints, but must change them consistently for every operator and degree; it cannot justify only the last two terms. These are bookkeeping findings about the printed displays, recorded for the README; B07 does not compute the second-order Lagrangian.
