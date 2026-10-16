@@ -1,5 +1,6 @@
 import B02
 import B03
+import B05Sign
 
 #print axioms B02.Concrete.bracketContribution_kernel_factor
 #print axioms B02.Concrete.weighted_sum_coefficients
@@ -261,3 +262,51 @@ import B03
 #print axioms B03.j_weight77
 #print axioms B03.j_weight95a
 #print axioms B03.j_weight95b
+#print axioms B05Sign.Diff.one
+#print axioms B05Sign.Diff.zero
+#print axioms B05Sign.Diff.inverse
+#print axioms B05Sign.conj_one
+#print axioms B05Sign.conj_zero
+#print axioms B05Sign.conj_add
+#print axioms B05Sign.conj_neg
+#print axioms B05Sign.conj_sub
+#print axioms B05Sign.conj_comp
+#print axioms B05Sign.conj_cancel
+#print axioms B05Sign.logD_one
+#print axioms B05Sign.logD_mul
+#print axioms B05Sign.Gauge.ext
+#print axioms B05Sign.mul_unit
+#print axioms B05Sign.mul_shift
+#print axioms B05Sign.tauLit_mul
+#print axioms B05Sign.tauRec_mul
+#print axioms B05Sign.tauLit_injective
+#print axioms B05Sign.tauRec_injective
+#print axioms B05Sign.tilted_action_lit
+#print axioms B05Sign.tilted_action_rec
+#print axioms B05Sign.act62_mul
+#print axioms B05Sign.act62_one
+#print axioms B05Sign.torsion_lit
+#print axioms B05Sign.torsion_rec
+#print axioms B05Sign.connection_lit
+#print axioms B05Sign.connection_rec
+#print axioms B05Sign.second_connection
+#print axioms B05Sign.biConnection_rec
+#print axioms B05Sign.conj_mul_inv
+#print axioms B05Sign.leftAct_formula
+#print axioms B05Sign.leftAct_mul
+#print axioms B05Sign.leftAct_one
+#print axioms B05Sign.projection_formula
+#print axioms B05Sign.projection_lit
+#print axioms B05Sign.projection_rec
+#print axioms B05Sign.stabilizer_lit
+#print axioms B05Sign.stabilizer_rec
+#print axioms B05Sign.Witness.swap_squared
+#print axioms B05Sign.Witness.logarithm
+#print axioms B05Sign.Witness.residual_nonzero
+#print axioms B05Sign.Witness.torsion_not_covariant
+#print axioms B05Sign.Witness.connection_not_covariant
+#print axioms B05Sign.Witness.reconstructed_projection_not_invariant
+#print axioms B05Sign.gaugeGroup
+#print axioms B05Sign.tauLitHom
+#print axioms B05Sign.tauRecHom
+#print axioms B05Sign.innerDiff
