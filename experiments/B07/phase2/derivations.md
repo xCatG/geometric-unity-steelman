@@ -27,7 +27,7 @@ Next, d(XᵗT∧α) = d(XᵗT)∧α + (−1)^{n−2} XᵗT∧dα. Integrating an
 
 $$\int\mathrm{Tr}(T\wedge X d\alpha)=\int\mathrm{Tr}\big(\alpha\wedge d(X^{t}T)\big).$$
 
-Phase 1 H2 defines L† by ∫Tr(T∧Lα) = ∫Tr(α∧L†T), so L† = d∘Xᵗ on the flat model. With B present, L† = d_B∘Xᵗ, by the same steps with Tr∘d_B = d∘Tr on the scalar top form.
+Phase 1 H2 defines L† by ∫Tr(T∧Lα) = ∫Tr(α∧L†T), so L† = d∘Xᵗ on the flat model. With B present, L† = d_B∘Xᵗ follows by the same steps under H11 hypotheses 3–4: the trace is compatible (Tr∘d_B = d∘Tr on the scalar top form), and boundary terms vanish. The graded Leibniz rule for the exterior covariant derivative d_B on ad-valued forms holds for any connection, so torsion is not used here. Torsion-freeness enters only in H11, where d_B is written as Σ_k e^k∧∇_k.
 
 **The symbol of L† − L is −C1.** Let ω be an (n−2)-form. Then
 
@@ -187,7 +187,7 @@ The middle step drops ∫Tr(d(v∧∗u)) = 0 and uses d(v∧∗u) = dv∧∗u + 
 
 B(a, t) = 2⟨X(−iK∧a) + κ₁∗a, X(iK∧t) + κ₁∗t⟩.
 
-It is compared, order by order in κ₁, with ⟨a, P t⟩ for explicit operators P assembled from:
+It is compared, order by order in κ₁, with ⟨a, 2P t⟩, where P is the half-gradient operator above. The 2 is the one in δ⟨Υ, Υ⟩ = 2⟨δΥ, Υ⟩, and `fourier_terms` puts it on both sides. P is assembled from:
 - the codifferential symbol;
 - X^*, built from the diagonal ±1 Gram matrix of basis forms, which `second_order.adjoint` asserts is diagonal;
 - ∗^{−1}, from the computed square of ∗ on each basis element;
