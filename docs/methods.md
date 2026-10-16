@@ -178,3 +178,19 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
     - One degree chain per occurrence: never reuse a degree map across two occurrences of an overloaded operator without re-deriving each.
     - The orchestrator does not write under a producing directory while a worker's runner is pending. Drafts go to the scratchpad until the result is committed.
     - Claude-authored derivations used as evidence get an independent check before they constrain a spec. This is the third experiment in a row where Claude's own prose carried the residual errors; reviewers found them every time.
+- **2026-10-16 · B07 one-direction variation (plan rev 1.1 → Tasks 1–5) · Claude (plan, transcription, README, P7: payload identical, 365 passed, 8 faults RED), Codex (blind second reading, code, runner, independent re-derivation, audit, register), Grok via pi (plan and implementation reviews).**
+  - *Worked:*
+    - The orchestrator ran the plan's code in a scratch smoke clone before the plan was reviewed. That fixed the expected numbers ahead of time (all 4D kernels trivial; twelve 14D witnesses with their signs), and the committed `result.json` matched the smoke payload byte for byte, minus `seconds` and `source_commit`.
+    - Reducing (9.7) to a necessary pointwise condition (C1, the principal symbol of ½(L†−L)T) turned "does the variation match?" into a finite exact-kernel question with a one-entry counterexample form for 14D.
+    - The family adapter was tested against B02's `shiab` on all 96 basis 2-forms for all eight modes, with two seeded faults (F6, F6b) keyed to that test. The survey therefore ran on the same operator B02 validated.
+    - Codex's independent re-derivation shared only `gu.clifford`'s gamma matrices, used the actual matrix trace and its own Hodge star, and agreed on all 13 results.
+    - Grok's review, asked a direct question the user posed (N0), found that the transcription's stated mechanism for N0 was wrong: the coefficient-wise extension of (12.26) is N2, not 0. The conclusion was unaffected, but the stated derivation was false.
+    - Codex's README audit found four wording/hypothesis errors and no numerical disagreement.
+  - *Didn't:*
+    - Claude's N0 mechanism ("(12.26) extended with wedge and no grading sign") was asserted, not computed; one line of index relabelling or a call to `gu.cliffform.bracket` would have shown [T,T] = 2T∧T. The rev 1 comparison caught that N0 is not forced but not that the stated extension gives N2.
+    - Claude then overstated Grok's N0 finding in two places ("the braced C-S terms vanish"; the brace includes ½d_BT). The audit caught it. This is again Claude's prose carrying the residual errors (fourth experiment in a row).
+    - Claude's README wrote a C2 shortcut valid only for symmetric b without restricting it, used the metric pairing for a complementary-degree identity, and shortened H7's hypothesis lists. Each was right in substance and wrong in its stated domain.
+  - *Changes:*
+    - A registered reading that claims to come from a printed definition must be evaluated against the code's existing implementation of that definition (here `gu.cliffform.bracket`) before it is written down.
+    - When summarizing a reviewer's or a ledger's conditions, copy the full hypothesis list or link the row; never abbreviate a hypothesis list.
+    - Formulas specialized under an assumption (symmetric b, N1/N2) carry that assumption in the same sentence.

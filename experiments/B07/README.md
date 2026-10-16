@@ -1,6 +1,6 @@
 # B07, one-direction variation: does (9.4) vary to (9.7)?
 
-**Status:** survey and re-derivation complete, pending the Task 5 audit. **Result:** under reading V, the printed (9.7) is **not** the Euler–Lagrange equation of (9.4) in the ϖ direction for any nonzero member of B02's Shiab family in 4D, nor for the named branches in 14D. This is a finding about reading V. It is not a claim that no reading of (9.4) works.
+**Status:** complete. The survey, the independent re-derivation, the README audit (four wording findings, all resolved) and the P7 clean-clone re-run are done. **Result:** under reading V, the printed (9.7) is **not** the Euler–Lagrange equation of (9.4) in the ϖ direction for any nonzero member of B02's Shiab family in 4D, nor for the named branches in 14D. This is a finding about reading V. It is not a claim that no reading of (9.4) works.
 
 ## The question
 
@@ -133,7 +133,11 @@ Source PDF SHA-256 `3f28d742234a9841fc8e51ff172053200aa3eddf3ece38154a3328b9ebd1
 Test results:
 - 12 B07 tests pass, and the full suite has 365 passed.
 - Eight seeded faults (F1–F6, F1b and F6b, defined in the plan's Task 3 Step 5) each fail on the named assertion, with byte-verified restores.
-- Claude compared `result.json` with the plan's smoke run, minus `seconds` and `source_commit`: they are identical. Grok replayed the 12 tests and 8 faults in a scratch clone, and recomputed the 12 witnesses with `c1_witness`. The P7 clean-clone re-run comes after the audit.
+- Claude compared `result.json` with the plan's smoke run, minus `seconds` and `source_commit`: they are identical. Grok replayed the 12 tests and 8 faults in a scratch clone, and recomputed the 12 witnesses with `c1_witness`. 
+- **P7** (Claude, clean clones at `b60bbfc`):
+  - the full suite: 365 passed;
+  - the runner: exit 0. Its `result.json` payload, minus `seconds` and `source_commit`, is identical to `c7229e9`. Metadata: `source_commit` `b60bbfc` in both; `seconds` 5322.6 here against 5293.6 committed;
+  - the eight faults, regenerated from the plan's Task 3 Step 5 block at `be2ae34`: all RED, each on its named test.
 
 ## Scope
 
