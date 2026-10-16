@@ -2,34 +2,30 @@
 
 Last updated: 2026-10-16 before compaction, by Claude (orchestrator, pane 0:2). **B01–B03 and B05-specification complete; B05 sign-conflict Lean check merged (a134286); B07 plan rev 0 drafted + smoke-tested, NOT yet committed** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
 
-## Current work (resume here) — B07 one-direction variation, COMPLETE
+## Current work (resume here) — B07 Phase 2 plan, DRAFTING (smoke nearly done; reviews not yet sent)
 
-**Plan:** `docs/superpowers/plans/2026-10-16-b07-variation.md` **rev 1.1 be2ae34, APPROVED by user 2026-10-16** ("approved, please continue"). History: rev 0 7b07e50 → Codex `revise` (7) + Grok `accept with fixes` (2) → rev 1 7d89105 → confirmation round (Grok accept; Codex 2 text items) → rev 1.1. Reviews: `.agent-handoff/b07-plan-review{,-grok}/` (+ `rev1/`).
+**B07 Phase 1 is COMPLETE** (README `experiments/B07/README.md`; result c7229e9; re-derivation dccc0a4; audit fixes 01c328c; register cf90b4c + P7 flip 93a595a; P7 0f965ca: 365 passed, payload identical, 8 faults RED). Evidence `.agent-handoff/b07-{impl,rederivation,audit,p7,impl-review-grok}/`.
 
-**Task status:**
-1. **Task 1 DONE** — `experiments/B07/transcription.md` rev 0 0912d4c (+ empty `__init__.py`).
-2. **Task 2 DONE** — Codex blind reader + comparison `.agent-handoff/b07-transcription/{second-reader,transcription-comparison}.md`; **transcription rev 1 564ed4a** folds it.
-3. **Task 3 DONE** — code b60bbfc (variation.py, run.py, tests/test_b07.py), result.json c7229e9 (runner 5293.6 s). 12 passed / suite 365; 8 faults RED. All 4D kernels 0 (C1, C2 N1/N2, joint; 8 modes × (3,1),(1,3)); 12 C1 witnesses as smoke. Orchestrator check: result.json minus seconds/source_commit **identical** to smoke clone. Worker report `.agent-handoff/b07-impl/result.md`.
-4. **Task 4 DONE** — Codex `rederive.py` de8ab67, `rederivation.md` dccc0a4: 13/13 results agree with result.json (8 C1 kernels, 2 C2/N1, 3 14D witnesses). Claude re-checked the 10 kernel rows.
-5. **Grok review DONE** (`.agent-handoff/b07-impl-review-grok/result.md`): Task 3 accepted, no defect; N0: rescue claim and H3's N0 C2 correct, ranking N1 > N2 ≫ N0, record-only adequate if no N0 number is stated. One finding: N0 is **not** the wedge extension of (12.26) (that is N2 = `gu.cliffform.bracket` C); verified and fixed in transcription rev 1.1 (4994078).
-6. **Task 5 DONE** — README 4994078; Codex audit `.agent-handoff/b07-audit/readme-audit.md` (revise, 4 wording findings, no numeric disagreement) all fixed 01c328c (+ same fixes in transcription N0 note and B07-S row); Codex register cf90b4c (B07 entry + B05 Lean citation; says "P7 re-run pending"); **P7 DONE** (evidence `.agent-handoff/b07-p7/`): 365 passed, runner payload identical to c7229e9 (seconds 5322.6 vs 5293.6, source_commit b60bbfc both), 8 faults RED from plan block at be2ae34. README status + P7 lines and `methods.md` B07 retro committed with this HANDOFF. Register P7 flip 93a595a (Codex). **Next decision for user:** the plan's "After this plan" — `[ext]` constructive search (symmetrized ⊚ or different Φ), the second-order Lagrangian (9.11)–(9.15), metric/ε directions, or another register item.
+**User requests since Phase 1 (2026-10-16), in order:**
+1. "combined B07 Phase 2 plan": (1) `[ext]` repair test — the actual variational operator ½(L+L†) of (9.4), is L† algebraic on curvature, any (Φ¹,Φ²)/symmetrized ⊚ with L = L† and B02 κ = ½; 4D then 14D on CAA/CAC; (2) exact variation of (9.11) vs (9.12)–(9.15), literal `[GU-orig]` mismatches + `[GU-recon]` repaired. Draft → Codex + Grok review → user approval.
+2. "read @argon_b7.md and share with codex/grok" — DONE. Reviews `.agent-handoff/argon-b7-review/{codex,grok}.md`: both "partly sound". Argon's no-go (interior-star Shiab can't be self-adjoint with Ricci) REFUTED in 4D; its totally-antisymmetric-symbol criterion misses internal-index symmetry; grade-weighted pairings are Spin- not ad-invariant (B07-Q); Paradigm II (vary one leg / ε) is an `[ext]` model change; Paradigm III half right (term-3 sign missed; mass sign (−1)^q); C_Bianchi undefined; 14D universal ≈ 3.4e11 entries.
+3. **"Approved. Proceed with drafting Phase 2, but include the unreduced 4D Spin-equivariant basis search"**; ensure (1) N0, N1, N2 fully computed at T²; (2) search parameterizes the generalized multi-bracket span; (3) P4 exactness strictly enforced. Send to Codex + Grok under the usual protocol; bring the reviewed plan back for final approval. (Supersedes Phase 1's record-only N0 decision.)
 
-**Key findings so far (transcription rev 1):**
-- (9.4) is degree-inconsistent as printed in both line 1 (∗ over ⊚(…) + κT) and lines 2–4 (2-form integrand); V repairs line 1.
-- [T,T] readings: **N0** (appendix (12.26) commutator extended to forms ungraded ⇒ [T,T] = 0; extension, not forced; C2 = −Tr(α∧⊚(T∧T)); cannot rescue (9.7) since C1 is bracket-free), **N1** (CS-consistent), **N2** (graded). p. 47's [F_A∧φ] does not select any (F has even degree). Codex's matrix check: N0/N1/N2 residuals 4, 0, −4 on one example.
-- H8: under pinned convention ∗ is an anti-isometry on 1-forms (q odd), ∗† = −∗ between Ω¹ and Ω^{d−1}; correct gradient of I₂/2 is d\*⊚\*⊚F + κ₁d\*⊚\*(∗T) − κ₁∗⊚F − κ₁²T. (9.13) drops a ∗ in term 2 and has wrong signs in terms 3, 4; (9.12)'s Id should be ∗\* = −∗.
-- H7 ledger: (9.18) lacks the barred-field (ν-, ζ-variation) equations; ⊚ζ̄ζ does not follow as printed (variation gives a transpose of ⊚; degree conflict); other components conditional on B05-Q.
-- Register rows: V, L1, L2, P, S, T, Y, R, O, M, N0/N1/N2, K½/K1, G (ordinary products = mixed modes; unexecuted, outside approved scope — told user), D, F, S0, E, Q, Bd, X.
+**Smoke findings (scratch, uncommitted; durable copy `.agent-handoff/b07p2-smoke/`):**
+- 20 Shiab building blocks across modes (first[m₀](Φ¹), second[m₁m₂](Φ¹,Φ²)) have operator rank **16** (4 exact zero relations — Codex caught this; verified). C1 operator kernel dim 2, both Einstein (κ = ½), e.g. E_OP = −2·first[C](F) − second[CC](F,B) + second[AA](F,B) → response 2E_F(Ric) − S E_F(g). SO (L† = X♯∘d) per fixed mode trivial (CAA/CAC: L† not algebraic on curvature).
+- **Unreduced space** (real phased basis e^I⊗i^{ph(c)}G_c, exact equivariance nullspace via flint fmpq_mat, per Clifford-grade block): dim **40**, equal blockwise to sl₂×sl₂ character count; contains all 20 blocks. At (3,1): C1 kernel dim 8 (Einstein dim 1-2: two Einstein vectors (½,0,−¼,0),(0,½,0,−¼), six zero-response), SO kernel 16, **joint C1+C2 kernel = 0 under N1 and N0** (N2 lost to a clobbered log; the runner recomputes all three).
+- 14D bounded: E_OP C1 — none in 19,200 entries at (7,7) (inconclusive); diagonal C2(N1) none in 324.
+- Item 2 (Fourier exact variation, 4D, both Hodge conventions ∗ and ∗′=(−1)^deg∗): κ⁰ YM term matches; term 2 needs the missing ∗; **term 3 sign wrong at every signature/convention** (∗† = (−1)^{n−1}∗); term 4 right iff q even ((−1)^q); ⊚*⊚ not ∝ Id for any branch ((9.14) not literal YM).
+- Tests: 19 passed (`b07p2-smoke/tests-19passed.log`; then n=14 sign helpers sped up from ~12 min to 1.5 s via `forms(..., scalar_only=True)`). Faults P1–P9 all RED (P3 retargeted to the u(A)/commutation test; dimension test is phase-independent by design).
+- Smoke runner (scratch clone `…/scratchpad/p2smoke/repo` at local commit 95a68ee, log `…/p2smoke/run.log`): item 1 4D done at 1626 s, 14D witnesses at 1646 s, item 2 in progress → `experiments/B07/phase2/result.json` in that clone.
 
-**Smoke expectations (for comparing Task 3 output):** C1, C2 (N1, N2) and joint kernels [] for all 8 modes at (3,1), (1,3); all six columns nonzero; 12 witnesses: CCC t=[0,1], a=[1,3], −2 at all four signatures; CAA and CAC t=[0,4], a=[1,6], value 2 at (3,1), (7,7), (9,5) and −2 at (1,3). Smoke runtime 7460 s.
+**Next steps:**
+1. When the smoke runner finishes: read its result.json (both 4D signatures; joint dims N0/N1/N2 for blocks and universal; Einstein dims; SO witnesses; E_OP 14D witnesses; item 2 tables). Copy it to `.agent-handoff/b07p2-smoke/`.
+2. Assemble the plan: `.agent-handoff/b07p2-smoke/plan-skeleton.md` → `docs/superpowers/plans/2026-10-16-b07-phase2.md`, substituting ⟦FILE:path⟧ with the code files from `b07p2-smoke/code/` (current smoke versions incl. the `scalar_only` speedup, the 40-basis non-vacuity assert, P3 retarget), ⟦SMOKE⟧ with the findings, ⟦TESTS⟧ (19 passed), ⟦SUITE⟧ (365 + 19 = 384 expected; verify), ⟦RUNTIME⟧ (from run.log). Commit the plan (rev 0).
+3. Dispatch reviews: Codex pane 0:3 fresh session (`/new`, Enter, Enter; check model GPT-6-Astra high) with `.agent-handoff/b07p2-plan-review/task.md`; Grok pane 0:4 (`/new`, `/model grok-4.7` + Enter twice) with `.agent-handoff/b07p2-plan-review-grok/task.md`. Both briefs are written.
+4. Fold findings → rev 1 → (confirmation round if substantive) → bring to user for final approval.
 
-**Lean sign check — DONE, merged a134286** (`lean/B05Sign/`): no single sign of (6.4)/(6.13) repairs §6. TODO (Codex, with B07 register task): cite it in the register B05 entry.
-
-**tmux notes:** from Git Bash, `export MSYS_NO_PATHCONV=1` before `tmux send-keys ... "/new"`. Codex `/new` asks worktree (Enter = current) and resets model to GPT-6-Luna medium: `/model` → 2 → 3 for GPT-6-Astra high. Wait with a background `until grep -qE '^(DONE|BLOCKED|FAILED)' <dir>/status; do sleep 60; done`.
-
-**Rules learned (B05 retro):** don't write under `experiments/B07/` while a worker's runner is pending; compose/differentiate printed formulas before citing; one degree chain per occurrence; Claude-authored derivations get an independent check.
-
-**Scratch (session-local, may be gone):** `…/scratchpad/b07smoke/` (plan skeleton, rev scripts, smoke clone `repo/` with result.json), `…/scratchpad/b07pages/` (pp. 41–47 PNG).
+**Retro note for later:** Claude counted coefficient-kernel dims as operator dims (missed the 4 zero relations); a background script imported another script's top-level code and clobbered a shared log (kill stray processes by command line; one log per process).
 
 ## What this project is
 
