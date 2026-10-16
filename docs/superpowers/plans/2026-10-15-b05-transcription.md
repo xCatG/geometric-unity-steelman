@@ -1,4 +1,4 @@
-# B05 Fermionic-Sector Transcription and Specification Plan (rev 1.1)
+# B05 Fermionic-Sector Transcription and Specification Plan (rev 1.2)
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task by task. Steps use checkbox (`- [ ]`) syntax for tracking. In this project Claude owns transcriptions, specifications and plans; Codex (pane 0:3) owns code, tests and the register (P6). Read `docs/methods.md` (P1–P11) first.
 
@@ -31,6 +31,12 @@
 - **C:** the degree denominator is 360, not 90.
 - **Task 6:** the register is committed only after the audit findings are resolved.
 - **Wording:** the stale "survivor list" language in the Global Constraints is replaced.
+
+**Revision 1.2 (2026-10-15).** This revision folds in argon's audit of rev 1.1, which the user relayed. Claude verified each point against the code before adopting it.
+- **Bar-label convention.** If ζ̄₋ denotes the Dirac adjoint labelled by its own right C-eigenvalue, ζ̄₋ := (ζ₊)†A, then it pairs equal labels. That matches the row order (ζ̄₋, ζ̄₊, …) against the column order (ζ₊, ζ₋, …) in (9.16). Combinatorially it is the `dual_field` branch, so the code is unchanged apart from the docstring and comment. Branch B05-B must record both conventions.
+- **The (ζ̄₋, ζ₋) cell collision becomes a required hand derivation.** ∗⊚(d₀ζ₋ + ϖ₊₋ζ₋) adds two summands. Under every enumerated chirality reading with exterior d₀, they have different target labels or one is outside its domain, so at most one pairs nonzero (Claude's check: `(zb-, z-)` statuses are `[pairs_to_zero, nonzero]`, `[nonzero, pairs_to_zero]`, or one `domain_mismatch`). This is stated as a property of the enumerated readings, not of the draft.
+- **R1 with A fixed.** In R1, A is a fixed algebraic matrix (δA = 0) for internal and axial transformations. If A were instead transformed by congruence to stay invariant, δA = −(S†A + AS), and the law reverts to the contragredient S̄ = −S. That is its own named branch, not R1.
+- **README framing.** The README must use argon's diagnostic wording for `all_nonzero_under_model = 0` (Task 5, Step 5).
 
 **Why this comes first.** Codex and Grok reviewed independently which register item should come next (`.agent-handoff/next-item-{codex,grok}/result.md`). Both agreed on these points:
 - A covariance or rejection test has nothing to fail against until the kinetic operator is pinned. No B01–B03 output pins one.
@@ -141,6 +147,10 @@ Render the pages below at 150 dpi into the scratchpad (not the repo) with PyMuPD
     3. (iC)†A + A(iC) = i(AC − CA), and C†A + AC = CA + AC;
     4. on a 14-dimensional 1-form, ∗(⊚_{m=1,n=0,r=1}(ϖ ∧ ζ)) has degree 1;
     5. the three textbook controls: ψ̄₋ ∂̸ψ₋ is consistent, ψ̄₋ψ₋ vanishes, and ψ̄₋ m ψ₊ is the mass coupling.
+  - **The cell collision (hand derivation 6):** derive by hand, for cell (ζ̄₋, ζ₋) = ∗⊚(d₀ζ₋ + ϖ₊₋ζ₋), the target label and form degree of each summand under every enumerated chirality reading, for both bar conventions (B05-B: the label of the unbarred field, or the barred field's own right C-eigenvalue). Show that, with exterior d₀ and a label-preserving ⊚, the two summands cannot both pair nonzero. List which unenumerated readings could reconcile them, without choosing one:
+    - ⊚ acting on spinor labels;
+    - a frame or Clifford piece in d₀;
+    - ϖ labels in a different system from the field labels.
   - **Hand verdicts:** at least four summands of (9.16) under two named branches, derived by hand **before** Task 4 runs. They are pre-registered predictions; the runner's table is compared with them in Task 4, Step 6.
 
 - [ ] **Step 3: Write `source_operator.py`** exactly as below. The entries are read off the p. 46 image. The operator has 12 nonzero entries containing 18 summands, each with its printed sign: + in the upper rows and − in the lower rows. Its lower-right 2×2 is zero. The ρ(ε)/ρ(ε⁻¹) decorations are carried only by `transcription.md`; a covariance plan must read them from there.
@@ -628,7 +638,7 @@ from gu.cliffform import exact
 
 LABEL = ("chirality", "signature")          # +/- = eigenvalue of C, or of a candidate U(64,64) form A
 ORDER = ("target_source", "source_target")  # varpi_{ab}: a is the target label, or the source label
-BAR = ("dirac_adjoint", "dual_field")       # psibar_s = psi_s^dagger A, or an independent field in S_s^*
+BAR = ("dirac_adjoint", "dual_field")       # pairs opposite labels, or equal labels (see pairs_with)
 ADJ = ("a_adjoint", "subscript_swap")       # varpibar*_{ab}: A-adjoint of varpi_{ab}, or varpi with a, b swapped
 HOM = ("strict", "extend_by_zero")          # a block outside its domain is a type error, or the zero map there
 PAIR = ("wedge", "metric")                  # <psibar, X>: psibar ^ X is top degree, or deg psibar == deg X
@@ -657,8 +667,11 @@ def flip(s: str) -> str:
 def pairs_with(row_label: str, label: str, bar: str) -> str:
     """Label of the vectors a row field pairs nontrivially with.
 
-    Both candidate forms A anticommute with C at (7,7) and (9,5) (`pairing.py`), so under the chirality reading a
-    Dirac adjoint pairs opposite labels. A preserves its own eigenspaces, and a dual field pairs its own label.
+    Both candidate forms A anticommute with C at (7,7) and (9,5) (`pairing.py`), so under the chirality reading the
+    Dirac adjoint of psi_s, labelled by s ("dirac_adjoint"), pairs opposite labels. "dual_field" pairs equal labels;
+    combinatorially this also covers the Dirac adjoint labelled by its OWN right C-eigenvalue, zetabar_- :=
+    (zeta_+)^dagger A (then zetabar_- C = -zetabar_-), which matches the row/column order of (9.16). A preserves its
+    own eigenspaces, so under the signature reading both conventions pair equal labels.
     """
     if bar == "dirac_adjoint" and label == "chirality":
         return flip(row_label)
@@ -1024,6 +1037,7 @@ Whether this tension is the draft's or the model's is decided by Task 1's hand v
   - Spin(7,7) frame rotations, if the draft lets them act separately.
 
   For each family, state its action on ε, ϖ, A₀/d₀, ζ, ζ̄, ν and ν̄, and on the coefficients ϖ_{±±} and ϖ̄*. Cite the page where the draft states the action. Where it does not, list the branches: the bar transforms by δψ̄ = ψ̄S♯ (R1, with A fixed; if A transforms, add A⁻¹δA), by the contragredient law δψ̄ = −ψ̄S, or independently, as for "four distinct fields". Use `pairing.u1_membership` to state which U(1)s lie in 𝔲(A) for each **candidate** form. Do not conclude anything about whether GU gauges them.
+- [ ] **Step 1b: A is fixed in R1.** State that in R1 the form A is a fixed algebraic matrix (δA = 0) under internal and axial transformations, and changes only through a connection or frame variation when the geometry on Y is varied. If A is instead transformed by congruence so that it stays invariant, then δA = −(S†A + AS) and δ(ψ†Aψ) = 0 forces the contragredient law S̄ = −S. Record that as its own named branch, not as R1.
 - [ ] **Step 2: Reality branches.**
   - R0: none (four independent fields; Berezinian; complex action).
   - R1: ψ̄ = ψ†A, with A either invariant form.
@@ -1047,6 +1061,7 @@ Whether this tension is the draft's or the model's is decided by Task 1's hand v
 - [ ] **Step 4: Status table.** For every item, mark it `specified (page)`, `branched (IDs)` or `unspecified (looked: pages)`. The items are: field types, operator entries, pairing, the meaning of ±, d₀, ⊚ on spinors, the bar, the reality condition, and each family's transformation law. Add the lower-right "non-trivial map" alternative as `unspecified`.
 - [ ] **Step 5: README.**
   - The question.
+  - **Framing of `all_nonzero_under_model = 0`** (argon's wording, adopted). Write it diagnostically, never as "(9.16) has no consistent reading". The wording: "Within the 11,520 branches of the minimal decoupled model (`operator_check.py`, where d₀ is either purely exterior and chirality-preserving or purely Clifford and degree-preserving, and ⊚ acts only on form degree), the degree-consistent branches require exterior d₀. Meanwhile, matching the spinor target labels of d₀ζ₋ and ϖ₊₋ζ₋ inside the same cell requires a chirality-flipping action. Reconciling those two summands therefore needs a reading outside this model (for example B05-Q, or a frame/connection term in d₀)."
   - What this stage established: the pairing facts (labelled with the candidate forms) and the survey. Give the survey numbers from `result.json` **only** with the model caveat, never as a property of GU. Do not state any survivor count as a finding until Task 2's added readings have been either enumerated or recorded as unenumerated.
   - What remains open.
   - Exactly what the covariance test needs as input: the full branch table with statuses, not a filtered survivor list. Say which combinations it can run on now, and which need data the draft does not give, and why.
