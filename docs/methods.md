@@ -159,3 +159,22 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
     - A seeded fault's description must name the assertion it is expected to trip, and the fault run checks that assertion's message.
     - Before a README is committed, every gate or fault it cites is checked against the code's exact expression, normalization included.
     - P4 reviews cover every public entry, not only the functions the plan exercises.
+- **2026-10-15 · B05 transcription/specification stage (plan rev 1.2 → Tasks 1–6) · Claude (plan, transcription, spec, README), Codex (blind second reading via a fresh subagent, NP map, code, audits, register), Grok via pi and argon (plan reviews).**
+  - *Worked:*
+    - Asking Codex and Grok *before* planning which item comes next changed the plan from a rejection test into a specification stage. Both said a covariance test has nothing to fail against until the operator is pinned.
+    - A fresh, blind subagent reproduced every entry of (9.16) independently. Its comparison caught an arithmetic error in Claude's source cross-check (an outer ∗ dropped in (9.18)), which had been used to claim the source fixes the pairing.
+    - Pre-registered controls as executable tests (R1/R0/Rc variations) plus a fault reinstating the old error (F8) made the corrected criterion durable.
+    - Differentiating the printed transformation formulas, rather than citing them, exposed a sign conflict *in the source*: (6.13) against (6.2)/(6.20)/(7.4). Codex's audit found it; Claude re-derived it.
+  - *Didn't:*
+    - Claude's criterion had S̄ = −S♯. Two reviewers caught it, and the "pre-registered control" had passed only because of the error.
+    - Claude's spec also contained three more local errors, all found by audit:
+      - "frozen commutator wrongly accepts C" (it rejects both C and iC);
+      - a T1 dressing cancellation that fails for noncommuting factors;
+      - the (2,2) "flips each" claim.
+    - Claude's untracked `spec.md` draft under `experiments/B05/` tripped the runner's clean-tree guard and blocked Codex's result generation. The guard worked as designed.
+    - The hand verdicts were not blind, because their author wrote the smoke code. This was disclosed, and the blind reading was supplied separately.
+  - *Changes:*
+    - Before citing a printed transformation law, compose and differentiate it against the neighbouring definitions. Record conflicts as branches (first occurrence; promote if repeated).
+    - One degree chain per occurrence: never reuse a degree map across two occurrences of an overloaded operator without re-deriving each.
+    - The orchestrator does not write under a producing directory while a worker's runner is pending. Drafts go to the scratchpad until the result is committed.
+    - Claude-authored derivations used as evidence get an independent check before they constrain a spec. This is the third experiment in a row where Claude's own prose carried the residual errors; reviewers found them every time.
