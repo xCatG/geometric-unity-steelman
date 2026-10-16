@@ -36,7 +36,7 @@ Both sides of the comparison are polynomials in T. They are compared order by or
   C1(k; t, a) = Tr(t∧⊚(eᵏ∧a)) + Tr(a∧⊚(eᵏ∧t)).
 
   C1 = 0 is **necessary** for (9.7) under V (H2). A single nonzero C1 entry therefore rejects (9.7) under V, whatever the curvature, coefficient derivatives or ε. C1 does not involve the bracket.
-- **Order T² leaves the pointwise test** C2 = ⅓Tr(α∧⊚b(T,T)) + ⅔Tr(T∧⊚b(α,T)) − Tr(α∧⊚(T∧T)) (H3). C2 depends on the normalization of [T,T], which the draft does not define for ad-valued 1-forms:
+- **Order T² leaves a pointwise test** (H3). In general it is C2 = ⅓Tr(α∧⊚b(T,T)) + ⅓Tr(T∧⊚(b(α,T) + b(T,α))) − Tr(α∧⊚(T∧T)). For N1 and N2, b is symmetric on 1-forms and the cross term becomes ⅔Tr(T∧⊚b(α,T)). For N0 the cubic variation is zero and C2 = −Tr(α∧⊚(T∧T)). C2 depends on the normalization of [T,T], which the draft does not define for ad-valued 1-forms:
   - **N1**: b(T,T) = T∧T. This is the Chern–Simons-consistent reading.
   - **N2**: the graded commutator, so b(T,T) = 2T∧T.
   - **N0**: an ungraded commutator of the whole form-valued product, [x,y] = x∧y − y∧x, so [T,T] = 0. This is **not** the coefficient-wise extension of (12.26): wedging the forms and taking ab − ba of the coefficients gives [T,T] = 2T∧T, which is N2 (and is `gu.cliffform.bracket`'s mode C).
@@ -80,11 +80,11 @@ Claude re-checked the ten kernel rows against `result.json`. The re-derivation's
 ## What this means
 
 - Under V, the printed (9.7) omits the term ½(L†−L)T. It is the Euler–Lagrange equation of (9.4) only if L = ⊚∘d_B is formally self-adjoint at the principal-symbol level. No nonzero member of B02's fixed-mode Shiab family is, in 4D. The three named 14D branches are not either.
-- Symmetrizing the action does not help (B07-S): ½⟨T, LT⟩ already equals ½⟨T, ½(L+L†)T⟩ up to boundary terms. Making (9.7) follow under V requires changing the **target** to ½(L+L†)T, or changing ⊚.
+- Symmetrizing the action does not help (B07-S): ½∫Tr(T∧LT) already equals ½∫Tr(T∧½(L+L†)T) up to boundary terms, with L† defined through the wedge integral (H2). Making (9.7) follow under V requires changing the **target** to ½(L+L†)T, or changing ⊚.
 - **Not shown:** that no reading works. Unexecuted readings that could change C1 include per-occurrence ⊚ (B07-Y), restricted variations (B07-R), the author's lost operator (B07-O, fn. 10), mixed bracket modes (B07-M), ordinary products (B07-G), ϖ-dependent Φ (B07-X), and a different trace/pairing convention (B07-Q).
 - **N0** was recorded but not executed (user decision). Under N0 the cubic term vanishes, so the "C-S like" terms are not Chern–Simons-like, and C2 reduces to −Tr(α∧⊚(T∧T)). N0 cannot rescue (9.7), because C1 does not involve the bracket.
 
-  Grok's independent review (requested by the user) agrees with the rescue claim and with H3's N0 residual. It ranks the readings N1 > N2 ≫ N0. N0 makes the braced "C-S Like Terms" vanish identically, against the printed label, and is best kept as a degenerate literalization. Its N0 residual was **not** surveyed, so this README states no N0 kernel dimension and does not claim C2 ≠ 0 under N0 for the Shiab family. The nonzero N1/N2 columns mix −Tr(α∧⊚(T∧T)) with the cubic variation, so they do not settle it.
+  Grok's independent review (requested by the user) agrees with the rescue claim and with H3's N0 residual. It ranks the readings N1 > N2 ≫ N0. N0 makes the cubic summand ⅓[T,T] of the braced "C-S Like Terms" vanish identically (the derivative summand ½d_BT remains), against the printed label, and is best kept as a degenerate literalization. Its N0 residual was **not** surveyed, so this README states no N0 kernel dimension and does not claim C2 ≠ 0 under N0 for the Shiab family. The nonzero N1/N2 columns mix −Tr(α∧⊚(T∧T)) with the cubic variation, so they do not settle it.
 
 ## Conflicts in the printed displays (`transcription.md`)
 
@@ -102,7 +102,7 @@ The fermionic variation (9.16)–(9.22) was not computed; it is blocked on B05-Q
 
 The draft prints no fermionic action, only operators "like" (9.16) and the compiled variation (9.18) (conflict 7). H7 is a conditional ledger relative to a reconstructed action S_F = ∫⟨Ψ̄, 𝒟̸_ω Ψ⟩. Its findings:
 - (9.18) lists equations for the unbarred fields only. The ν- and ζ-variations (equations for the barred fields) are absent, although p. 46 calls the four fields distinct (conflict 6). This is a completeness concern, not evidence that the printed equations are false.
-- Components 1 and 2 follow under the B05-Q, B05-Y, B05-A and B05-V hypotheses, component 2 only up to an overall sign.
+- Component 1 follows conditionally under B05-Q, B05-Y, B05-A and B05-T′. Component 2 follows conditionally, up to an overall sign, under B05-Q, B05-V and B05-K.
 - In component 3, the ζ̄ν and ν̄ζ terms follow conditionally. The ⊚ζ̄ζ term does **not** follow as printed: varying ζ̄∗⊚(αζ) gives a transpose of ⊚, not ⊚, and its degree conflicts with the other two terms (conflict 5).
 
 No C1 or C2 result transfers to this ledger: a spinor-valued ⊚ is a different map from the ad-valued ⊚ tested here. See `experiments/B05/README.md` for the open B05 inputs.
