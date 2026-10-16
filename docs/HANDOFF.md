@@ -1,6 +1,6 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-15 (**B03 complete**; B03 Lean merged to master (c22e8ac); B05 plan rev 1.2 APPROVED by user; Task 1 done (68559dd: transcription rev 0 + typed (9.16)); Tasks 2–3 done (blind reader agreed on all 18 summands; NP map 59c62df); transcription rev 1 4ea2237; Task 4 with Codex (`.agent-handoff/b05-impl/`); next experiment awaits the user's choice), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
+Last updated: 2026-10-15 (**B03 complete**; B03 Lean merged to master (c22e8ac); B05 plan rev 1.2 APPROVED by user; Task 1 done (68559dd: transcription rev 0 + typed (9.16)); Tasks 2–3 done (blind reader agreed on all 18 summands; NP map 59c62df); transcription rev 1 4ea2237; Task 4 done (code eb77457, result 5fb4f4a: 11520 branches, well_typed 32/64, all_nonzero 0, degree_ok 4/360; 12/12 hand verdicts agree); Task 5 done (spec.md + README cc031b6); Task 6 audit with Codex (`.agent-handoff/b05-task6/`), then Claude resolves, then Codex register, then Claude P7 re-run; next experiment awaits the user's choice), by Claude (orchestrator, pane 0:2). Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md` (written by a local PreCompact hook; git and agent state that may be newer than this file), then `docs/methods.md`.
 
 ## What this project is
 
