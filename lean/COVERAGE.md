@@ -117,3 +117,57 @@ J-square and C/Pi facts. The complete public axiom output is retained in
 `AxiomAuditB03.txt` and the combined `AxiomAudit.txt`. See `ValidationB03.md` for
 fresh build, bridge and seeded-fault evidence; every B03 theorem is mapped in
 the appended section of `THEOREMS.md`.
+
+## B05 tilted-action sign check
+
+`B05Sign` checks the algebra behind GU (5.9), (6.2), (6.4)-(6.5),
+(6.11)-(6.16), (6.19)-(6.22), and (7.3)-(7.4). It keeps the printed
+minus sign (`tauLit`) and the proposed plus sign (`tauRec`) separate.
+
+The model assumes an arbitrary possibly noncommutative ring, units, and an
+additive endoderivation satisfying Leibniz. It replaces the module of
+one-forms by the same coefficient algebra, as when taking one directional
+component of a covariant derivative. All coefficient order is retained.
+This is a **modelling choice**, not a formalization of smooth bundles,
+exterior calculus, or the specific U(64,64) gauge group. General-ring
+identities are exact in that model and algebraically stronger than a
+matrix-only identity; no Lie-group smoothness is proved.
+
+The affine-coordinate distinction matters: (6.2) acts on `alpha=A-A0`.
+`connectionAct D A0 A h` is defined as
+`A0 + act62 D (A-A0) (h,0)`, with `D` representing `d_A0`.
+This does not assume that the base connection is invariant under gauge
+transformations. The pair `biConnection` is exactly the affine-coordinate
+reading `(A0+varpi, A0+epsilon^-1 D epsilon)` of (6.19)/(6.22).
+
+| Claim | Literal minus | Reconstructed plus |
+|---|---|---|
+| (6.4)/(6.5) is an injective algebraic group homomorphism into (5.9) | yes | yes |
+| (6.20), first connection | residual `-2 h^-1 D h` | covariant |
+| (6.20), second connection | covariant | covariant |
+| (7.4), torsion defined by (7.3) | residual `-2 h^-1 D h` | covariant |
+| (6.14), projection defined by (6.11) | invariant | residual `2 epsilon (D h) h^-1 epsilon^-1` |
+| (6.6)-(6.9), stabilizes affine origin | yes | origin maps to `2 h^-1 D h` |
+| (6.15)-(6.16) defines a left action of (5.9) | yes; independent of the tilted-map choice | same formula is still a left action; its printed projection no longer descends along this tilted action |
+
+The matrix witness takes `R=Matrix (Fin 2) (Fin 2) Int`,
+`z=diag(1,0)`, `D x=z*x-x*z`, and the swap matrix as the unit `h`.
+Its logarithmic derivative is `diag(-1,1)` and the literal residual is
+`diag(2,-2)`, provably nonzero. With `epsilon=1`, `varpi=0`, the literal
+connection/torsion covariance claims fail, and the reconstructed projection
+invariance claim fails. This is a concrete countermodel to the general
+ring identities, not an assertion that these integer matrices realize the
+source's gauge subgroup or the audit's central U(1) jet.
+
+The audit's `h=1` means `h(p)=1`, with a nonzero derivative at that point.
+Our endoderivation necessarily kills the constant ring identity; this is a
+representation limitation, **not a correction to that local-jet example**.
+No sign choice alone preserves all the listed printed formulas. In
+characteristic two or when `2 h^-1 D h=0`, the displayed residual may
+vanish; the structural theorem retains this possibility.
+
+Every B05 theorem is inventoried in `THEOREMS.md`. `AxiomAuditB05Sign.txt`
+contains the actual axiom output, including the group instance and both
+homomorphism structures. Validation and source provenance are recorded in
+`ValidationB05Sign.md`. No fermionic covariance, anomaly, physical gauge
+symmetry, or global geometric claim is proved; B02/B03 scope is unchanged.

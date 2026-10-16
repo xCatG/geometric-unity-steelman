@@ -280,3 +280,64 @@ B02: 188 theorem declarations (179 public). Private helpers are included as supp
 | `B03.j_weight77` | [B03/Weights.lean:35](B03/Weights.lean#L35) | README Reality / result.json J_weight_signs | exact fixed split, every column and coordinate |
 | `B03.j_weight95a` | [B03/Weights.lean:37](B03/Weights.lean#L37) | README Reality / result.json J_weight_signs | exact fixed split, every column and coordinate |
 | `B03.j_weight95b` | [B03/Weights.lean:39](B03/Weights.lean#L39) | README Reality / result.json J_weight_signs | exact fixed split, every column and coordinate |
+
+## B05 sign check: full theorem inventory
+
+All fidelity labels are relative to the explicit directional-algebra model in
+`COVERAGE.md`. "Exact" does not assert a global smooth-bundle realization.
+
+| Theorem | Source | Claim / source equation | Fidelity |
+|---|---|---|---|
+| `B05Sign.Diff.one` | [B05Sign/Algebra.lean:23](B05Sign/Algebra.lean#L23) | Leibniz prerequisite for (6.5), (7.4) | stronger: every unital ring endoderivation kills 1 |
+| `B05Sign.Diff.zero` | [B05Sign/Algebra.lean:28](B05Sign/Algebra.lean#L28) | Additivity prerequisite for (6.2) | exact: zero rule of the declared model |
+| `B05Sign.Diff.inverse` | [B05Sign/Algebra.lean:30](B05Sign/Algebra.lean#L30) | Inverse differentiation used by (6.5)/(6.14) | stronger: derived from Leibniz in any noncommutative ring |
+| `B05Sign.conj_one` | [B05Sign/Algebra.lean:41](B05Sign/Algebra.lean#L41) | (5.9), identity conjugation | exact supporting identity in the directional model |
+| `B05Sign.conj_zero` | [B05Sign/Algebra.lean:42](B05Sign/Algebra.lean#L42) | (5.9), zero conjugation | exact supporting identity in the directional model |
+| `B05Sign.conj_add` | [B05Sign/Algebra.lean:43](B05Sign/Algebra.lean#L43) | (5.9), additive conjugation | exact supporting identity in the directional model |
+| `B05Sign.conj_neg` | [B05Sign/Algebra.lean:45](B05Sign/Algebra.lean#L45) | (5.9)/(6.5), negative conjugation | exact supporting identity in the directional model |
+| `B05Sign.conj_sub` | [B05Sign/Algebra.lean:46](B05Sign/Algebra.lean#L46) | (7.4), difference conjugation | exact supporting identity in the directional model |
+| `B05Sign.conj_comp` | [B05Sign/Algebra.lean:49](B05Sign/Algebra.lean#L49) | (5.9), right order of conjugation composition | exact supporting identity in the directional model |
+| `B05Sign.conj_cancel` | [B05Sign/Algebra.lean:52](B05Sign/Algebra.lean#L52) | (6.14), inverse conjugation cancellation | exact supporting identity in the directional model |
+| `B05Sign.logD_one` | [B05Sign/Algebra.lean:58](B05Sign/Algebra.lean#L58) | (6.4), value at the identity | exact supporting identity in the directional model |
+| `B05Sign.logD_mul` | [B05Sign/Algebra.lean:60](B05Sign/Algebra.lean#L60) | (6.5)/(7.4), product derivative cocycle | stronger: every noncommutative ring with the declared derivation |
+| `B05Sign.Gauge.ext` | [B05Sign/Algebra.lean:70](B05Sign/Algebra.lean#L70) | (5.9), equality of group coordinates | modelling choice: pair of a unit and a ring element |
+| `B05Sign.mul_unit` | [B05Sign/Algebra.lean:99](B05Sign/Algebra.lean#L99) | (5.9), first multiplication coordinate | exact in the directional model |
+| `B05Sign.mul_shift` | [B05Sign/Algebra.lean:100](B05Sign/Algebra.lean#L100) | (5.9), second multiplication coordinate | exact in the directional model |
+| `B05Sign.tauLit_mul` | [B05Sign/Algebra.lean:106](B05Sign/Algebra.lean#L106) | (6.4)/(6.5), literal map respects multiplication | exact algebraic content; weaker than Lie homomorphism: smoothness not modeled |
+| `B05Sign.tauRec_mul` | [B05Sign/Algebra.lean:111](B05Sign/Algebra.lean#L111) | Plus reconstruction of (6.4)/(6.5) | modelling choice: positive cocycle also respects multiplication |
+| `B05Sign.tauLit_injective` | [B05Sign/Algebra.lean:134](B05Sign/Algebra.lean#L134) | Lemma 6.1, injectivity | exact algebraic content; weaker than Lie embedding: no topology |
+| `B05Sign.tauRec_injective` | [B05Sign/Algebra.lean:137](B05Sign/Algebra.lean#L137) | Reconstructed Lemma 6.1, injectivity | modelling choice: plus map is also injective |
+| `B05Sign.tilted_action_lit` | [B05Sign/Algebra.lean:141](B05Sign/Algebra.lean#L141) | (6.13), literal right multiplication | exact in the directional model |
+| `B05Sign.tilted_action_rec` | [B05Sign/Algebra.lean:148](B05Sign/Algebra.lean#L148) | Plus reconstruction of (6.13) | modelling choice: explicitly changed sign |
+| `B05Sign.act62_mul` | [B05Sign/Algebra.lean:155](B05Sign/Algebra.lean#L155) | (6.2) and (5.9), right action composition | exact algebraic action law on affine coordinate alpha=A-A0 |
+| `B05Sign.act62_one` | [B05Sign/Algebra.lean:160](B05Sign/Algebra.lean#L160) | (6.2), identity right action | exact algebraic action law on affine coordinate alpha=A-A0 |
+| `B05Sign.torsion_lit` | [B05Sign/Algebra.lean:167](B05Sign/Algebra.lean#L167) | (6.13-lit)+(7.3), checking (7.4) | exact residual -2 h^-1 D h; refutes unrestricted printed covariance |
+| `B05Sign.torsion_rec` | [B05Sign/Algebra.lean:172](B05Sign/Algebra.lean#L172) | (6.13-rec)+(7.3), reconstructed (7.4) | modelling choice: exact covariance after the explicit sign change |
+| `B05Sign.connection_lit` | [B05Sign/Algebra.lean:184](B05Sign/Algebra.lean#L184) | (6.13-lit)+(6.19)/(6.22), checking (6.20) first coordinate | exact residual -2 h^-1 D h with affine origin retained |
+| `B05Sign.connection_rec` | [B05Sign/Algebra.lean:190](B05Sign/Algebra.lean#L190) | Reconstructed (6.20), first coordinate | modelling choice: exact covariance after the explicit sign change |
+| `B05Sign.second_connection` | [B05Sign/Algebra.lean:195](B05Sign/Algebra.lean#L195) | (6.20), second coordinate | stronger: holds for multiplication by any Gauge element, independently of its shift |
+| `B05Sign.biConnection_rec` | [B05Sign/Algebra.lean:200](B05Sign/Algebra.lean#L200) | Reconstructed (6.20), both coordinates | modelling choice: exact pair equivariance after the explicit sign change |
+| `B05Sign.conj_mul_inv` | [B05Sign/Surrounding.lean:7](B05Sign/Surrounding.lean#L7) | (6.14)-(6.16), inverse product order | exact supporting identity in the directional model |
+| `B05Sign.leftAct_formula` | [B05Sign/Surrounding.lean:15](B05Sign/Surrounding.lean#L15) | (6.15), displayed left action | exact rewriting, preserving multiplication order |
+| `B05Sign.leftAct_mul` | [B05Sign/Surrounding.lean:21](B05Sign/Surrounding.lean#L21) | (6.15)-(6.16), left action composition | exact algebraic law; independent of either tilted-map choice |
+| `B05Sign.leftAct_one` | [B05Sign/Surrounding.lean:26](B05Sign/Surrounding.lean#L26) | (6.15), identity left action | exact algebraic law; independent of either tilted-map choice |
+| `B05Sign.projection_formula` | [B05Sign/Surrounding.lean:33](B05Sign/Surrounding.lean#L33) | (6.11), displayed projection | exact rewriting in the directional model |
+| `B05Sign.projection_lit` | [B05Sign/Surrounding.lean:38](B05Sign/Surrounding.lean#L38) | (6.14), literal projection invariance | exact algebraic invariance; weaker than full quotient/principal bundle construction |
+| `B05Sign.projection_rec` | [B05Sign/Surrounding.lean:45](B05Sign/Surrounding.lean#L45) | Checking (6.14) after plus reconstruction | modelling choice: exact residual 2 epsilon (D h) h^-1 epsilon^-1 |
+| `B05Sign.stabilizer_lit` | [B05Sign/Surrounding.lean:53](B05Sign/Surrounding.lean#L53) | (6.6)-(6.9), literal stabilizer | exact algebraic origin-fixing identity |
+| `B05Sign.stabilizer_rec` | [B05Sign/Surrounding.lean:56](B05Sign/Surrounding.lean#L56) | Checking (6.6)-(6.9) after plus reconstruction | modelling choice: exact origin image 2 h^-1 D h |
+| `B05Sign.Witness.swap_squared` | [B05Sign/Witness.lean:23](B05Sign/Witness.lean#L23) | Concrete countermodel unit construction | modelling choice: square of the integer swap matrix is 1 |
+| `B05Sign.Witness.logarithm` | [B05Sign/Witness.lean:32](B05Sign/Witness.lean#L32) | Concrete input to the residual theorems | modelling choice: inner derivation gives diag(-1,1); not the central-phase jet |
+| `B05Sign.Witness.residual_nonzero` | [B05Sign/Witness.lean:36](B05Sign/Witness.lean#L36) | Nonvanishing of literal (6.20)/(7.4) residual | exact for the specified integer-matrix countermodel |
+| `B05Sign.Witness.torsion_not_covariant` | [B05Sign/Witness.lean:43](B05Sign/Witness.lean#L43) | Counterexample to literal (7.4) | exact in the specified ring; weaker than a U(64,64) geometric realization |
+| `B05Sign.Witness.connection_not_covariant` | [B05Sign/Witness.lean:50](B05Sign/Witness.lean#L50) | Counterexample to literal (6.20), A0=0 | exact in the specified ring; weaker than a U(64,64) geometric realization |
+| `B05Sign.Witness.reconstructed_projection_not_invariant` | [B05Sign/Witness.lean:58](B05Sign/Witness.lean#L58) | Counterexample to (6.14) after changing only the tilted sign | exact in the specified ring; no claim about repaired projection definitions |
+
+Additional proof-bearing definitions included in the axiom audit:
+
+| Definition | Source equation | Fidelity |
+|---|---|---|
+| `B05Sign.gaugeGroup` | (5.9) | exact algebraic group structure in the declared model |
+| `B05Sign.tauLitHom` | (6.4)-(6.5) | exact algebraic group homomorphism; no Lie smoothness |
+| `B05Sign.tauRecHom` | reconstructed (6.4)-(6.5) | modelling choice: the plus cocycle is also a group homomorphism |
+| `B05Sign.innerDiff` | witness prerequisite | modelling choice: commutator is additive and obeys Leibniz |

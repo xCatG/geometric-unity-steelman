@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 (ROOT / '.tools').mkdir(exist_ok=True)
 rows = []
 public = {}
-for path in sorted(path for folder in ('B02', 'B03') for path in (ROOT / folder).glob('*.lean')):
+for path in sorted(path for folder in ('B02', 'B03', 'B05Sign') for path in (ROOT / folder).glob('*.lean')):
     stack = []
     depth = 0
     for number, raw in enumerate(path.read_text(encoding='utf-8-sig').splitlines(), 1):
@@ -46,6 +46,6 @@ for path in sorted(path for folder in ('B02', 'B03') for path in (ROOT / folder)
                 raise AssertionError(f'duplicate public theorem: {name}: {public[name]} and {row}')
             public[name] = row
 (ROOT / '.tools/theorems.json').write_text(json.dumps(rows, indent=2), encoding='utf-8')
-(ROOT / 'Audit.lean').write_text('import B02\nimport B03\n\n' + '\n'.join(
-    '#print axioms ' + r['name'] for r in rows if not r['private']) + '\n', encoding='utf-8')
+(ROOT / 'Audit.lean').write_text('import B02\nimport B03\nimport B05Sign\n\n' + '\n'.join(
+    '#print axioms ' + r['name'] for r in rows if not r['private']) + '\n#print axioms B05Sign.gaugeGroup\n#print axioms B05Sign.tauLitHom\n#print axioms B05Sign.tauRecHom\n#print axioms B05Sign.innerDiff\n', encoding='utf-8')
 print(f'Inventory: {len(rows)} theorem declarations; {len(public)} public axiom audits; no duplicate public names')
