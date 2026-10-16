@@ -1,4 +1,4 @@
-# B05 Fermionic-Sector Transcription and Specification Plan (rev 1)
+# B05 Fermionic-Sector Transcription and Specification Plan (rev 1.1)
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task by task. Steps use checkbox (`- [ ]`) syntax for tracking. In this project Claude owns transcriptions, specifications and plans; Codex (pane 0:3) owns code, tests and the register (P6). Read `docs/methods.md` (P1–P11) first.
 
@@ -25,6 +25,13 @@
   - The NP ownership exception is now explicit.
   - Translations are written (1, ϖ) at group level.
 
+**Revision 1.1 (2026-10-15).** This revision folds in the confirmation reviews of rev 1 (`.agent-handoff/b05-plan-review{,-grok}/rev1/result.md`): Grok *accept*, Codex *accept with fixes*. Codex's fixes:
+- **A:** the fault anchors are translated to the file's newline convention, and the script is verified on a CRLF checkout.
+- **B:** summand signs go through `as_int` and must be ±1, with controls.
+- **C:** the degree denominator is 360, not 90.
+- **Task 6:** the register is committed only after the audit findings are resolved.
+- **Wording:** the stale "survivor list" language in the Global Constraints is replaced.
+
 **Why this comes first.** Codex and Grok reviewed independently which register item should come next (`.agent-handoff/next-item-{codex,grok}/result.md`). Both agreed on these points:
 - A covariance or rejection test has nothing to fail against until the kinetic operator is pinned. No B01–B03 output pins one.
 - A generator must be tested by transforming barred fields, unbarred fields, connection, Clifford data and dressings together. A commutator with a frozen operator measures a stabilizer, not a gauge symmetry. For example, if K anticommutes with C, the axial phase S = iC leaves ψ̄Kψ invariant under the Dirac-adjoint law even though iC ∉ 𝔲(A). Under an independent bar with S̄ = S = C, it is invariant too, even though [K,C] ≠ 0.
@@ -50,7 +57,7 @@
 ## Global Constraints
 
 - **Source.** The GU draft is the same PDF as in B01–B03: SHA-256 `3f28d742234a9841fc8e51ff172053200aa3eddf3ece38154a3328b9ebd186d4`, at `.agent-handoff/b01-task4/evidence/GU-draft.pdf`. Pages are read as rendered images. Text extraction is a cross-check only, because it drops ⊚, ϖ, the bars and the subscripts in (9.16).
-- **No verdicts.** Survivor lists from the branch survey are recorded, never asserted. An empty survivor list is a finding to be explained in `transcription.md`/`spec.md`; it is not an implementation failure.
+- **No verdicts.** The full branch table and its model-relative predicates are recorded, never asserted. An empty predicate list is something to explain in `transcription.md`/`spec.md`; it is neither an implementation failure nor a finding about GU.
 - **Exactness (P4).** No floats anywhere. `pairing.py` uses only `gu.clifford.Mono` algebra.
 - **Expected values come from outside the code under test (P3).** Every asserted value is either a textbook control (the Weyl kinetic term, a vanishing same-chirality bilinear, the Dirac mass coupling) or a hand derivation written in the test docstring and in `transcription.md` §Hand derivations.
 - **Small first (P5).** The pairing facts run on (3,1), (1,3) and the (2,2) control before (7,7) and (9,5).
@@ -456,13 +463,17 @@ def test_degree_bookkeeping_by_hand():
 # ---- P4 boundary ---------------------------------------------------------------------------------------------
 
 def test_p4_boundary():
-    """P4: degrees and branch numbers are exact integers; floats and non-integral rationals are rejected."""
+    """P4: degrees, branch numbers and summand signs are exact integers (signs +-1); floats and non-integral rationals are rejected."""
     with pytest.raises(TypeError):
         OC.degree(SRC.D0, 1.5, TEXTBOOK)
     with pytest.raises(ValueError):
         OC.degree(SRC.D0, Fraction(3, 2), TEXTBOOK)
     with pytest.raises(TypeError):
         OC.degree(SRC.SH, 1, dict(TEXTBOOK, r=1.0))
+    with pytest.raises(TypeError):
+        OC.check(TEXTBOOK, {("pb-", "p+"): ((1.5, (("endo", "+", "+"),)),)}, ROWS_T, COLS_T)
+    with pytest.raises(ValueError):
+        OC.check(TEXTBOOK, {("pb-", "p+"): ((2, (("endo", "+", "+"),)),)}, ROWS_T, COLS_T)
     big = OC.as_int(np.int64(2**62))
     assert type(big) is int and big * 4 == 2**64
 
@@ -768,6 +779,9 @@ def check(br: dict, entries=None, rows=None, cols=None) -> dict:
     out = []
     for (row, col), terms in entries.items():
         for sign, term in terms:
+            sign = as_int(sign)
+            if sign not in (1, -1):
+                raise ValueError(f"summand sign must be +1 or -1, got {sign}")
             st, d = summand(term, row, col, br, rows, cols)
             out.append({"row": row, "col": col, "sign": sign, "term": term, "status": st, "degree_ok": d})
     return {"branch": br, "summands": out,
@@ -794,13 +808,14 @@ Expected: `43 passed`.
 Run: `uv run pytest -q`
 Expected: `353 passed` (310 before + 43).
 
-- [ ] **Step 6: Seeded faults (P2).** Save the script below as a scratch `faults.py` in the repo root (never committed) and run `uv run python faults.py`. Expected: eight `RED` lines and exit 0. The script itself checks that each fault fails the named test on an AssertionError, with no collection error, and that the original bytes are restored. Delete `faults.py` before Step 7.
+- [ ] **Step 6: Seeded faults (P2).** Save the script below as a scratch `faults.py` in the repo root (never committed). Its anchors are newline-agnostic, so it works on LF and on CRLF (native Windows, `core.autocrlf=true`) checkouts, and run `uv run python faults.py`. Expected: eight `RED` lines and exit 0. The script itself checks that each fault fails the named test on an AssertionError, with no collection error, and that the original bytes are restored. Delete `faults.py` before Step 7.
 
 ```python
 """B05 seeded faults (P2). Scratch only: never commit. Exit status 1 unless every fault is RED for the intended reason.
 
 Each fault must (a) make pytest exit nonzero, (b) fail with an AssertionError, not a collection/import error,
 and (c) fail the named test. The original bytes are restored in `finally` and checked by SHA-256 of the bytes.
+Anchors are written with LF and translated to the file's own newline convention (LF or CRLF).
 """
 import hashlib
 import pathlib
@@ -834,6 +849,7 @@ FAULTS = [
      '    return A.dagger() @ S.dagger() @ A', '    return -(A.dagger() @ S.dagger() @ A)',
      "test_r1_dirac_adjoint_variation"),
 ]
+CRLF, LF = "\r\n", "\n"
 
 bad = 0
 for name, path, old, new, must_fail in FAULTS:
@@ -841,6 +857,8 @@ for name, path, old, new, must_fail in FAULTS:
     raw = p.read_bytes()
     h = hashlib.sha256(raw).hexdigest()
     src = raw.decode("utf-8")
+    nl = CRLF if CRLF in src else LF                 # native Windows checkouts may be CRLF
+    old, new = old.replace(LF, nl), new.replace(LF, nl)
     assert src.count(old) == 1, (name, "anchor not unique")
     try:
         p.write_bytes(src.replace(old, new).encode("utf-8"))
@@ -980,7 +998,7 @@ if __name__ == "__main__":
 - [ ] **Step 8: Compare the label table with Claude's hand verdicts.** Compare the runner's `label_table` with the hand verdicts in `transcription.md` (Task 1, Step 2). Every disagreement goes in `result.md` with both derivations. Do not edit either side (P3, P6).
 
 **Smoke-test observations (recorded so that reviewers can attack the model; these are not expectations, and not facts about GU).** These come from the rev 1 code, smoke-run at master `0f728ae`: 43/43, full suite 353, F1–F8 RED, runner `well_typed=32 all_nonzero=0 degree_ok=4`.
-- **Degree.** 4 of the 90 degree branches are consistent. All four use a metric pairing and exterior d₀:
+- **Degree.** 4 of the 360 degree branches (pair × d₀ × 90 Shiab/parse choices) are consistent. All four use a metric pairing and exterior d₀:
   - (extra_star, m=1, n=0, r=1);
   - (extra_star, m=0, n=0, r=11);
   - (outer_star, m=1, r=1);
@@ -1039,8 +1057,9 @@ Whether this tension is the draft's or the model's is decided by Task 1's hand v
 ### Task 6: Audit and register (Codex)
 
 - [ ] **Step 1:** Audit every number and claim in `README.md` and `spec.md` against `result.json`, `transcription.md`, `np_objection.md` and the rendered pages. Write `.agent-handoff/b05-task6/readme-audit.md`. Do not edit Claude's files.
-- [ ] **Step 2:** Update the B05 entry in `docs/gaps/register.md`: the status, and the next check as stated in the README, linking tracked files only. Commit it with its own pathspec.
-- [ ] **Step 3 (Claude):** Resolve the audit findings in the README/spec, then re-run the decisive checks (P7):
+- [ ] **Step 2 (Claude):** Resolve the substantive audit findings in the README/spec, and commit them.
+- [ ] **Step 3 (Codex):** Only after Step 2, update the B05 entry in `docs/gaps/register.md`: the status, and the next check as stated in the final README, linking tracked files only. Commit it with its own pathspec.
+- [ ] **Step 4 (Claude):** Re-run the decisive checks (P7):
   - `uv run pytest -q`;
   - the runner in a clean clone at the code commit, with `result.json` identical except for `source_commit`;
   - the eight faults RED (F1–F8).
