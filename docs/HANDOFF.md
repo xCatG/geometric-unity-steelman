@@ -1,8 +1,21 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-16 13:05 before compaction, by Claude (orchestrator, pane 0:2). **B01–B03 and B05-specification complete; B05 sign-conflict Lean check merged (a134286); B07 Phase 2 plan rev 2 committed (6bc202d), awaiting user approval** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
+Last updated: 2026-10-16 13:05 before compaction, by Claude (orchestrator, pane 0:2). **B01–B03 and B05-specification complete; B05 sign-conflict Lean check merged (a134286); B07 Phase 2 plan rev 2 (6bc202d) approved; executing** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
 
-## Current work (resume here) — B07 Phase 2 plan rev 2 AWAITING USER FINAL APPROVAL
+## Current work (resume here) — B07 Phase 2 EXECUTING (rev 2 approved by the user 2026-10-16)
+
+**Execution state (16:04):**
+- **Task 1 done:** e81d943 (`__init__.py`) and ed3f6d8 (`derivations.md`).
+- **Tasks 2–4 (Codex, pane 0:3):** in progress. Brief `.agent-handoff/b07p2-impl/task.md`; status and result in the same directory. Expected: 22 tests, suite 387, 13 faults RED; the runner runs in the background (~85 min) during Task 4.
+- **Grok (pane 0:4):** reviewing `derivations.md` (`.agent-handoff/b07p2-deriv-review-grok/`).
+- **Next:**
+  - verify Codex's claims;
+  - fix `derivations.md` per Grok, but not under `experiments/B07` while Codex's runner is pending;
+  - Task 5: README, Codex audit, register, P7, then HANDOFF and a methods retro.
+- **Codex weekly budget was 17% at 16:00.**
+- **Do not adopt into the README** the user's pasted gloss "obstruction lives in the cubic structure": it overclaims, since the result is model-relative.
+
+**Plan approval history (below):**
 
 **B07 Phase 1 is COMPLETE** (README `experiments/B07/README.md`; result c7229e9; re-derivation dccc0a4; audit fixes 01c328c; register cf90b4c + P7 flip 93a595a; P7 0f965ca: 365 passed, payload identical, 8 faults RED). Evidence `.agent-handoff/b07-{impl,rederivation,audit,p7,impl-review-grok}/`.
 
