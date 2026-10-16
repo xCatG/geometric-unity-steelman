@@ -2,6 +2,14 @@
 
 Author: Claude (Opus 5.5), 2026-10-15. Plan Task 5, rev 1.2 (`docs/superpowers/plans/2026-10-15-b05-transcription.md`).
 
+**Revision 1.** This revision resolves Codex's Task 6 audit (9 findings, all accepted, and the two high-severity ones re-derived by Claude):
+- **The source's own sign conflict.** (6.4)/(6.13) carry a minus sign on h⁻¹dh, while (6.2), (6.20) and (7.4) need a plus. This is now recorded as a conflict, §1.2.
+- **§5 split three ways.** "Can run now" is now: toy controls; conditional formal tests that need a full specification; and branches that return insufficient data.
+- **The frozen-commutator statement** is corrected.
+- **The T1 dressing claim** is withdrawn.
+- **The R1 preservation column** now separates three different conditions.
+- **Absence claims** are bounded to the pages that were read.
+
 **Sources:**
 - `transcription.md` rev 1 (`4ea2237`), whose branch IDs B05-* are used below;
 - `np_objection.md` (`59c62df`, Codex);
@@ -11,30 +19,35 @@ Author: Claude (Opus 5.5), 2026-10-15. Plan Task 5, rev 1.2 (`docs/superpowers/p
 
 ## 1. Generator families and their action on every field
 
-The draft states actions only on bosonic objects. **It states no transformation law for ν, ζ, ν̄, ζ̄** (looked: pp. 24, 31–47, 50–51, 58, 60–62, 65–66, 68). The only fermionic hint is the decoration ρ(ε) on the barred row and ρ(ε⁻¹) on the column in (9.16), and χ_{ε⁻¹} in (9.17).
+The draft states actions only on bosonic objects. **No transformation law for ν, ζ, ν̄, ζ̄ was located** in the pages read (pp. 24, 31–47, 50–51, 58, 60–62, 65–66, 68). That is a bounded search, not an exhaustive reread of the whole draft. The only fermionic hint is the decoration ρ(ε) on the barred row and ρ(ε⁻¹) on the column in (9.16), and χ_{ε⁻¹} in (9.17).
 
 ### 1.1 Seedhe ℋ: (h, 0) at group level
 
 - **ε.** (5.9) gives (ε, ϖ)·(h, 0) = (εh, h⁻¹ϖh). Right multiplication: ε ↦ εh.
 - **ϖ.** ϖ ↦ Aut(h⁻¹, ϖ) = h⁻¹ϖh, from (5.9), p. 33.
-- **A₀ / d₀.** The base connection A₀ is fixed (p. 36). Under the Seedhe action, d₀ itself does not transform. Any connection built as A₀·h is a different object.
+- **A₀ / d₀.** Holding A₀ as a fixed origin (p. 36) is a reconstruction choice. It is not a claim that A₀ is invariant under the natural action A₀ ↦ A₀·h on connection space.
 - **Fermions: not stated.** The branches are:
-  - **T1, the decorated reading.** The fields are dressed by ε: ψ ≡ ρ(ε⁻¹)ψ₀ and ψ̄ ≡ ψ̄₀ρ(ε), with ψ₀ transforming by h. The printed decorations would then make the bilinear's ρ-factors cancel under ε ↦ εh. This depends on B05-T′, i.e. whether d₀ acts on ψ₀ or on the dressed field.
+  - **T1, the decorated reading.** The fields are dressed by ε: ψ ≡ ρ(ε⁻¹)ψ₀ and ψ̄ ≡ ψ̄₀ρ(ε). The raw laws for ψ₀ and ψ̄₀ are **not** given, and the order of the factors matters. For example, with ψ₀ ↦ hψ₀ and ε ↦ εh, ψ′ = h⁻¹ε⁻¹hψ₀, which does not cancel for noncommuting ε and h. Codex's exact 2×2 counterexample has ε = diag(1, i) and h = K = [[0,1],[1,0]]. One reconstruction is raw fields inert under right multiplication, which gives the dressed laws ψ′ = h⁻¹ψ and ψ̄′ = ψ̄h. Invariance would then still need the matching K law. **The printed decorations alone promise no cancellation.** This also depends on B05-T′: does d₀ act on ψ₀ or on the dressed field?
   - **T2, the undecorated reading.** ψ ↦ ρ(h⁻¹)ψ and ψ̄ ↦ ψ̄ρ(h). That is consistent with the contragredient law, or with R1 when ρ(h) ∈ U(A).
 
 ### 1.2 Tedha ℋ_τ: τ_{A₀}(h) = (h, −h⁻¹(d_{A₀}h)), (6.4) p. 36
 
-- **(ε, ϖ).** By (6.13), (ε, ϖ)·τ(h) = (εh, h⁻¹ϖh − h⁻¹(d_{A₀}h)).
-- **A_ω.** (6.20)–(6.22) give A_ω = ∇⁰ + ϖ ↦ A_ω·h, the ordinary gauge transform of the connection.
-- **Augmented torsion.** T_g = ϖ − ε⁻¹d_{A₀}ε transforms covariantly, T ↦ h⁻¹Th, by (7.4).
+- **(ε, ϖ), as printed.** By (6.13), (ε, ϖ)·τ(h) = (εh, h⁻¹ϖh − h⁻¹(d_{A₀}h)).
+- **A source sign conflict (Codex audit, Finding 1; re-derived by Claude).** The ordinary right connection action (6.2) carries **+**ε⁻¹(d_{A₀}ε). With A_ω = A₀ + ϖ (6.22), the literal (6.13) gives A_ω ↦ A₀ + h⁻¹ϖh − h⁻¹dh, which has the wrong sign for A_ω·h. For the torsion T = ϖ − ε⁻¹d_{A₀}ε, the product rule gives a = ε⁻¹dε ↦ h⁻¹ah + h⁻¹dh, so the literal law yields T′ = h⁻¹Th − 2h⁻¹dh, not h⁻¹Th.
+- **The printed proofs switch sign.** The displayed calculations in (6.20) and (7.4) (pp. 39–40) change the sign of the h⁻¹dh term to plus partway through. Footnote 7 on p. 36 warns of "2 or more conflicting conventions in this section". A local central-phase jet shows the conflict: A₀ = 0, ε = h = 1, ϖ = 0 and h⁻¹dh = i give A′ = −i instead of +i, and T′ = −2i instead of 0.
+- **Status: branched.**
+  - **(6.13-lit)** is the minus sign as printed, under which the covariance identities (6.20) and (7.4) fail.
+  - **(6.13-rec)** is a plus-sign reconstruction, under which A_ω ↦ A_ω·h and T ↦ h⁻¹Th hold.
+
+  Neither replaces the printed formula. Whether one repair makes every surrounding identity consistent is not checked here.
 - **Fermions: not stated.** The same branches as 1.1.
-- **The obstacle.** (9.16) displays d₀ and ϖ in separate summands. Covariance under ℋ_τ needs the inhomogeneous term of ϖ to combine with d₀, as in d_{A_ω} = d₀ + ϖ. That works only if the summands are read as blocks of d_{A_ω} (transcription, hand derivation 6, and B05-D′).
+- **The obstacle.** (9.16) displays d₀ and ϖ in separate summands. Under (6.13-rec), covariance under ℋ_τ needs the inhomogeneous term of ϖ to combine with d₀, as in d_{A_ω} = d₀ + ϖ. That works only if the summands are read as blocks of d_{A_ω} (transcription, hand derivation 6, and B05-D′). Under (6.13-lit), even the bosonic laws are not mutually consistent.
 
 ### 1.3 Translations 𝒩: (1, ϖ′) at group level, (5.9)
 
 - **Bosons.** ε ↦ ε and ϖ ↦ ϖ + ϖ′.
 - **Lie-algebra level.** The generator is (0, ϖ′), acting by δϖ = ϖ′. Group- and algebra-level notation must not be mixed.
-- **Fermions: not stated.** p. 34 and (12.11) suggest that (ν, ζ) are "square roots" of 𝒩-translations, i.e. a superspace reading. No transformation law, such as δν ∝ ϖ′·(something), is given. Branch **T3**: the fermions are inert under 𝒩. The alternative is supersymmetry-like transformations, which are unspecified.
+- **Fermions: not located.** p. 34 and (12.11) suggest that (ν, ζ) are "square roots" of 𝒩-translations, i.e. a superspace reading. No transformation law, such as δν ∝ ϖ′·(something), was located in the pages read. Branch **T3**: the fermions are inert under 𝒩. The alternative is supersymmetry-like transformations, which are unspecified.
 
 ### 1.4 Constant U(1)-type and chiral generators
 
@@ -50,7 +63,7 @@ Membership in 𝔲(A) says only that the transformation preserves A. It is **not
 
 ### 1.5 Spin(7,7) frame rotations
 
-- **Where they sit.** They lie inside H = U(64,64) via ϱ_D (3.31). The draft does not let them act separately from ℋ.
+- **Where they sit.** They lie inside H = U(64,64) via ϱ_D (3.31). No separate frame-action law was located.
 - **What changes for the fermions.** For local frame changes, the fields of form degree k transform both on the spinor index and on the form index. Because ∗, d₀ and ⊚ (through Φ_r, Definition 8.1) are metric-dependent, the covariance test must vary them too. ⊚ is built from Spin(7,7)-invariant Φ_r, so it is Spin(7,7)-equivariant on ad-valued forms. Its spinor extension is open (B05-Q).
 
 ## 1b. A is fixed in R1
@@ -64,9 +77,9 @@ If A is instead transformed by congruence so that it stays invariant, then δA =
 | Branch | Statement | Status in the draft | Which §1 families preserve it |
 |---|---|---|---|
 | R0 | none: ν, ν̄, ζ, ζ̄ are four independent fields; a complex action; Berezinian integration | the closest to p. 46's "four distinct fields" | everything, since there is no constraint; but the barred law S̄ must then be **specified** separately |
-| R1 | ψ̄ = ψ†A, with A one of the two candidate forms (`pairing.forms`; not printed, p. 24) | consistent with U(64,64) = U(A) (3.31) under the candidate identification | S with S♯ = −S, i.e. S ∈ 𝔲(A). For other S the barred field moves by S♯ ≠ −S; §3 decides invariance, not membership |
+| R1 | ψ̄ = ψ†A, with A one of the two candidate forms (`pairing.forms`; not printed, p. 24) | consistent with U(64,64) = U(A) (3.31) under the candidate identification | Three distinct conditions apply. (a) **Every** S preserves the R1 relation, provided A is fixed and the induced barred law δψ̄ = ψ̄S♯ is used. (b) Those S with S ∈ 𝔲(A) additionally have S♯ = −S, so the induced law equals the contragredient one. (c) Invariance of the kinetic bilinear is a separate test (§3). Under R1 the toy iC passes (c) without satisfying (b) |
 | Rc | the contragredient law S̄ = −S (an independent bar transforming dually, or a congruence-transformed A, §1b) | not stated | all S, by construction of the pairing. The kinetic operator must still be covariant |
-| R2 | Majorana at (7,7): ψ = Jψ with J = B∘conj, J² = +1 (B03, Lean-verified) | not stated | S commuting with J. An explicit fixed-subspace choice is required. The central phase e^{iθ} does **not** preserve Jψ = ψ (J is antilinear: J(e^{iθ}ψ) = e^{−iθ}Jψ), so R2 removes the central U(1) from the symmetry candidates |
+| R2 | Majorana at (7,7): ψ = Jψ with J = B∘conj, J² = +1 (B03, Lean-verified) | not stated | With J fixed, real-linear S commuting with J. An explicit choice of fixed subspace is required. J commutes with C and with the spin generators, so the real C and Spin(7,7) preserve it. The axial iC and the central phase do not: J(e^{iθ}ψ) = e^{−iθ}Jψ, so only θ ∈ πℤ (the ±1 subgroup) survives. Under R2 the continuous central U(1) is not a symmetry candidate. This is a conditional branch statement, not a claim about what GU removes |
 | R2′ | (9,5): J² = −1, so Jψ = ψ has no nonzero solution. A reality condition needs a doubled (symplectic Majorana) space | not stated | requires new fields (a new proposal) |
 
 ## 3. The invariance criterion (pre-registered; executable controls in `tests/test_b05.py`)
@@ -91,8 +104,8 @@ $$\delta(\bar\psi K\psi)=\bar\psi\,(\bar S K + K S + \delta K)\,\psi .$$
 | (2,2) control, AC = CA | — | the R1 C and iC cases flip | — | `test_r1_variation_flips_at_2_2` |
 
 **Two consequences for the later covariance plan.** Neither is about GU's K.
-- Membership in 𝔲(A) is neither necessary nor sufficient for a symmetry of a chirality-flipping kinetic bilinear.
-- A test that checks [K, S] = 0 with K frozen would wrongly reject iC under R1, and wrongly accept C.
+- In the fixed-A R1 toy setup, membership in 𝔲(A) is neither necessary nor sufficient for a symmetry of a chirality-flipping kinetic bilinear: iC lies outside 𝔲(A) and is invariant, while C lies inside and is not. Membership gets both toy cases wrong.
+- A frozen commutator test, [K, S] = 0, rejects **both**. It incorrectly rejects iC and correctly rejects C. Neither membership nor the frozen commutator substitutes for the full variation. A frozen-K test is a **stabilizer** test. It is a necessary covariance condition only under an explicit hypothesis that the background is invariant, i.e. δK = 0. For example, in Rc a frozen variation −SK + KS is cancelled identically by δK = SK − KS.
 
 **GU's actual K.** It is 𝒟̸_ω of (9.16), with its dressings ρ(ε), ρ(ε⁻¹), the metric-dependent ∗ and ⊚, and ϖ itself transforming (δK ≠ 0 under ℋ_τ and 𝒩). The later plan implements this criterion on that K, branch by branch.
 
@@ -116,20 +129,27 @@ $$\delta(\bar\psi K\psi)=\bar\psi\,(\bar S K + K S + \delta K)\,\psi .$$
 | Domain convention for blocks | branched (B05-H) | — |
 | Whole-block adjoint relation | **unspecified** (B05-K) | p. 46 |
 | Reality condition | branched (R0, R1, Rc, R2, R2′; §2) | p. 46 |
-| Seedhe / Tedha / 𝒩 action on bosons | specified | (5.9), (6.4), (6.13), (7.4) |
-| Any family's action on the fermions | **unspecified** (B05-T, T′; branches T1–T3 above) | looked: pp. 24, 31–47, 50–51, 58, 60–62, 65–66, 68 |
+| Seedhe and 𝒩 action on bosons | specified | (5.9) |
+| Tedha (ℋ_τ) action on bosons | **conflicting as printed.** (6.13-lit) and (6.13-rec) are branched; §1.2 | (6.2), (6.4), (6.13), (6.20), (7.3), (7.4); footnote 7, p. 36 |
+| Any family's action on the fermions | **not located** (B05-T, T′; branches T1–T3 above, none of which yields cancellation without further laws) | looked: pp. 24, 31–47, 50–51, 58, 60–62, 65–66, 68 |
 | Normalization and the physical assignment of entries | **unspecified** (B05-N) | p. 46 |
 | NP §3.2 objects → April counterparts | mapped; transfer assumptions listed | `np_objection.md` |
 
 ## 5. What the covariance test can run on now, and what it cannot
 
-**Can run now.** The algebraic, constant-parameter part:
-- the R1, Rc and R0 laws with the iI, iC and C generators;
-- any K assembled from the typed (9.16), under each enumerated label/degree branch, with ⊚ treated as a label-preserving black box of known degree.
+**(a) Already executable: the toy controls (§3).** These are exact and tested. They test the criterion, not GU.
 
-That decides which constant generators preserve each branch's printed bilinear. It is a **necessary** condition only.
+**(b) Conditional formal tests.** These need a full specification per branch first. A binary symmetry verdict for one printed bilinear of (9.16) needs all of the following. The typed (9.16) records only primitive names, signs, degrees and label support. It does not supply matrices.
+- one choice from each enumerated axis, with a status other than `domain_mismatch` or `undetermined` for every summand that is to be tested;
+- the barred law S̄: R1, Rc or a specified R0 law;
+- the coefficient and dressing variations δϖ, δε, δρ(ε^{±1}) and δΦ. Even for constant parameters, conjugation moves noncommuting coefficients, so δK = 0 is a stated background hypothesis, not a default;
+- a definite spinor-valued ⊚ (B05-Q, S′, Y): the code's "label-preserving black box of known degree" is not enough to compute S̄K + KS + δK;
+- the target: a local bilinear, a density or an action (B05-M);
+- under signature labels, the explicit action of C on the coefficient maps, because A-signature support is not a C-eigenvalue.
 
-**Cannot run yet:**
-- **Local (gauge) covariance under ℋ_τ.** It needs the fermion transformation law (B05-T, T′) and the spinor action of ⊚ (B05-Q, Y).
-- **Covariance under 𝒩.** It needs the fermion law (T3 or a supersymmetry-like law).
-- **Any anomaly computation.** It needs a chosen R branch, the physical fermion content after constraints, and the quantum measure. None is in the draft.
+Only with all of these can the test return invariant or not invariant for that branch. A frozen-K result is reported as a stabilizer result.
+
+**(c) Returns "insufficient data" today:**
+- local covariance under ℋ_τ: the fermion laws (B05-T, T′), the spinor action of ⊚ (B05-Q, Y), and the resolution of the (6.13) sign conflict (§1.2);
+- covariance under 𝒩: a fermion law, inert or supersymmetry-like, plus the items in (b);
+- any anomaly computation: a chosen reality branch, the constrained fermion content, and a quantum measure. The draft supplies partial fermion content (pp. 31, 46, 50–51, 60–62) but no measure.
