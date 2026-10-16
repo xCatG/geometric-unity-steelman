@@ -1,6 +1,6 @@
 # B07 transcription: the first-order bosonic action (9.4), its claimed variation (9.7), and the surrounding §9 equations
 
-Transcriber: Claude (Opus 5.5), 2026-10-16. **Revision 1.**
+Transcriber: Claude (Opus 5.5), 2026-10-16. **Revision 1.1** (rev 1 plus Grok's correction of N0's mechanism in the [T, T] row; see the N0 note).
 
 - **Revision 0** (`0912d4c`) was written before the blind second reading.
 - **Revision 1** applies Codex's comparison (`.agent-handoff/b07-transcription/transcription-comparison.md`; the blind reading by a fresh subagent is `second-reader.md` in the same directory). All coefficients, algebraic signs, matrix entries and star placements in (9.1)–(9.22) agree between the two readings. The corrections:
@@ -165,7 +165,7 @@ $$\Upsilon_\omega=(\delta^\omega)^2=\delta^\omega_2\circ\delta^\omega_1=0\tag{9.
 | F_A | F_{B+T} = F_B + d_BT + T∧T (matrix product in the Clifford factor, wedge in the form factor) | standard curvature of a connection shifted by an ad-valued 1-form; not printed in the draft `[std]` |
 | F_B | B is the ε-gauge rotation of ∇⁰, so F_B = ε⁻¹F_{∇⁰}ε; line 2's ε⁻¹R̃ε is this | (9.4) item 4 and line 2 `[GU-orig]` |
 | d_B in line 2 | printed (d₀ + ε⁻¹d₀ε)(ϖ − ε⁻¹d₀ε), i.e. d_B with ∇⁰ written d₀ | (9.4) line 2; "A₀ ≈ ∇⁰ ≈ d₀" p. 36 `[GU-orig]` |
-| [T, T] | **not defined for ad-valued 1-forms.** Three readings: **N0** the coefficient commutator (12.26) [a,b] = ab − ba **extended** to form products with wedge and no grading sign, giving [T,T] = T∧T − T∧T = 0 (an extension: (12.26) defines the bracket on coefficients only); **N1** b(x,y) = ½[x∧y]\_graded, so b(T,T) = T∧T (the Chern–Simons-consistent reading); **N2** the graded commutator [x∧y] = x∧y + y∧x on 1-forms, so [T,T] = 2T∧T. p. 47's d_A∘d_Aφ = [F_A∧φ] does not decide between them: F_A has degree 2, so the grading sign is +1 for every φ | (12.26) p. 66; branch, see register |
+| [T, T] | **not defined for ad-valued 1-forms.** Three readings: **N0** an ungraded commutator of the whole form-valued product, [x,y] = x∧y − y∧x, giving [T,T] = T∧T − T∧T = 0 (rev 1.1, per Grok's review: this is **not** the coefficient-wise extension of (12.26), which wedges the forms and takes ab − ba of the coefficients and gives [T,T] = 2T∧T, i.e. N2 and `gu.cliffform.bracket` mode C; (12.26) defines the bracket on coefficients only, so neither extension is forced); **N1** b(x,y) = ½[x∧y]\_graded, so b(T,T) = T∧T (the Chern–Simons-consistent reading); **N2** the graded commutator [x∧y] = x∧y + y∧x on 1-forms, so [T,T] = 2T∧T. p. 47's d_A∘d_Aφ = [F_A∧φ] does not decide between them: F_A has degree 2, so the grading sign is +1 for every φ | (12.26) p. 66; branch, see register |
 | ⊚_ω | a member of B02's Shiab family (9.3), with the dressing ε⁻¹Φε; ⊚_ε = Ad(ε⁻¹)∘⊚∘Ad(ε) (H5) | (9.3), B02 `[GU-orig]` / `[GU-recon]` for the family |
 | ⟨·,·⟩ in (9.4) | the metric trace pairing ⟨a, b⟩ = ∫Tr(a∧∗b) of same-degree forms, metric g_ℷ | "Zorro Metric" label `[GU-recon]` |
 | ⟨·,·⟩ in (9.7) | pairs a 1-form α with an (d−1)-form: ∫Tr(α∧·) | (9.7) degrees `[GU-recon]` |
@@ -214,7 +214,7 @@ $$\Upsilon_\omega=(\delta^\omega)^2=\delta^\omega_2\circ\delta^\omega_1=0\tag{9.
 | B07-Bd | Boundary terms and the analytic setting (not given in the source) | scope | nothing for C1: interior compactly supported variations already expose a bulk principal-symbol defect | compact support |
 | B07-X | A Shiab operator whose Φ depends on ϖ or other fields | different model (related to Y, O) | adds δ⊚ terms | no: (9.3) with fixed invariant Φ and fixed metric is independent of ϖ |
 
-**Note on N0.** Under N0 the cubic term vanishes identically, so the "C-S like terms" are not Chern–Simons-like, and C2 reduces to −Tr(α∧⊚(T∧T)). N0 cannot rescue (9.7): C1 does not involve the bracket, so any C1 failure stands under N0. The code does not execute N0; adding it would only fill in C2's value under a reading in which C2 is not needed for the verdict. This is reported to the user per the plan's Task 2 Step 3 rule.
+**Note on N0.** Under N0 the cubic term vanishes identically, so the "C-S like terms" are not Chern–Simons-like, and C2 reduces to −Tr(α∧⊚(T∧T)). N0 cannot rescue (9.7): C1 does not involve the bracket, so any C1 failure stands under N0. The code does not execute N0; adding it would only fill in C2's value under a reading in which C2 is not needed for the verdict. This is reported to the user per the plan's Task 2 Step 3 rule. Grok's review of Task 3 (rev 1.1) agrees with the rescue claim and with H3's N0 residual, ranks the readings N1 > N2 ≫ N0, and notes that N0 makes the braced "C-S Like Terms" vanish identically, against the printed label: a degenerate literalization.
 
 ## Hand derivations
 
