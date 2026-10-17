@@ -244,3 +244,17 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
     - For each comparison row, check that both sides compute the same predicate, and mark rows that are entailed by other rows or zero by construction; do not count them as independent.
     - Pin observed counts (not just `> 0`) and every branch the prose mentions as rows.
     - Build a re-derivation brief's allowed-source list from where each object the worker must rebuild is defined (grep its name), not from memory.
+- **2026-10-17 · B07 escape 14D E2 witnesses · Claude (plan, smoke, README, P7), Codex (Tasks 1–2 verbatim; independent matrix re-derivation in a fresh session), Grok via pi (plan review, README audit).**
+  - *Worked:*
+    - Smoke-testing the plan's code before writing it let the run be a confirmation: Codex's payload equalled the smoke payload, and P7 equalled both.
+    - Stating the ξ summation range and the Hodge-star rule in the plan's mathematics section made the independent matrix re-derivation agree on its first run (the escape re-derivations had each tripped on the ξ range).
+    - A new exact check (is the transported input ξ of a Weyl tensor?) explained an unexpected zero: two in-plane bivectors give no leak because they move W_P to another Weyl tensor.
+  - *Didn't:*
+    - Smoke development wrote `GQ(1, 2)` (= 1 + 2i) for ½; the U(A) gate caught it. `dressing` now rejects a non-Fraction t.
+    - Claude edited the smoke clone twice while its full suite was running, which invalidated those runs.
+    - Claude's plan stated a hand argument wrongly ("anticommutes" for a commuting bivector), and its README overstated two things: that the output maps are the same across signatures, and "the same leak" in 14D. Grok's reviews caught all three.
+    - A seeded fault (W-F6) was caught only by the constructor's own assert. It now removes that assert too and fails on a pinned entry.
+  - *Changes:*
+    - Never edit a checkout while a suite or runner is running in it.
+    - Every seeded fault must fail on a test assertion, not on an assert inside the code under test.
+    - When a table summarizes counts, say whether the underlying maps also agree.
