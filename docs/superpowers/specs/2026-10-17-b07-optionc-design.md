@@ -143,7 +143,7 @@ H14 already compared the quadratic action's variation with (9.12)–(9.13), reco
      - no root has ω² = 0;
      - det M is never identically zero on a ray.
    - **κ₁ = 0.** det S₀(k) ≡ 0, with nullity ≥ 16 for k ≠ 0 (the exact directions {k⊗λ}).
-   - **Q1 for E_OP.** S₁ ≢ 0 is forced: E_OP has C1 = 0 at both signatures (`phase2/result.json` `e_op_c1_nonzero`), and C1 = S₁ = 0 would force X = 0 (Q1 closed form).
+   - **Q1 for operators in the C1 kernel.** For each named operator, C1 is computed (`variation.c1_residual`). For E_OP it must agree with `phase2/result.json` `e_op_c1_nonzero` = 0 at both signatures. For every operator with C1 = 0, S₁ ≢ 0 is forced, because C1 = S₁ = 0 would force X = 0 (Q1 closed form).
 
    Any violation is a failed control.
 
@@ -160,8 +160,8 @@ No outcome of Q1–Q4 can exhibit an Einstein–Hilbert term, because the metric
 **Closed form.**
 - S₁(k)(a, t) = 2(−1)^{q+1} i [pair(t, X(K∧a)) − pair(a, X(K∧t))].
 - So S₁ ≡ 0 ⟺ L† = −L (H9).
-- Phase 2's C1 is the symmetric companion of this expression, and C1 = S₁ = 0 forces X = 0. So E_OP's S₁ ≢ 0 is a control (control 9).
-- **Q1 is open for CCC, CAA and CAC only.** These are named operators outside the C1 kernel.
+- Phase 2's C1 is the symmetric companion of this expression, and C1 = S₁ = 0 forces X = 0. So for every named operator with C1 = 0, S₁ ≢ 0 is a control rather than an outcome (control 9). E_OP is such an operator; for CCC, CAA and CAC, C1 is computed, not assumed.
+- **Q1 is open only for the named operators with C1 ≠ 0.**
 
 **Test.** S₁(e_i) = 0 for the four basis covectors?
 
@@ -285,7 +285,7 @@ Do not re-propose any of the following:
 - a Proca toy;
 - ker S₀ described as "exact part plus ker X";
 - an unspecified Einstein span, or 𝓔 called "Einstein-type";
-- outcomes that the algebra pre-decides, listed as open: (3a) identically zero and (3d) ω² = 0 at κ₁ ≠ 0, and (1a) for E_OP.
+- outcomes that the algebra pre-decides, listed as open: (3a) identically zero and (3d) ω² = 0 at κ₁ ≠ 0, and (1a) for any operator with C1 = 0, including E_OP.
 
 Sources: the Argon fact-check (Grok), Codex's rev 0 and rev 2 reviews, Grok's rev 1 co-revision and rev 2 review, and the fresh Claude rev 2 review.
 
