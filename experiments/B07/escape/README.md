@@ -1,6 +1,6 @@
 # B07 non-GR channels: the curvature-squared sector of (9.11) and the dressed Weyl response of (9.3)
 
-**Status:** results recorded and independently re-derived twice: by a fresh Claude subagent (719/719 agree after an audit revision) and by Codex (192/192 agree, exact SymPy, written without opening the Task 2 code or the first re-derivation); see below. README and first re-derivation audited by a fresh Claude subagent (11 findings) and by Grok (4 findings), all folded; register updated; P7 clean-clone reproduction at `b000c3f` passed (payload identical apart from `seconds` and `source_commit`; 401 tests passed; 8/8 seeded faults RED). **14D witnesses** at (7,7)/(9,5) (`counterexample`): recorded, re-derived independently by Codex (544/544 field comparisons), P7 passed.
+**Status:** results recorded and independently re-derived twice: by a fresh Claude subagent (719/719 agree after an audit revision) and by Codex (192/192 agree, exact SymPy, written without opening the Task 2 code or the first re-derivation); see below. README and first re-derivation audited by a fresh Claude subagent (11 findings) and by Grok (4 findings), all folded; register updated; P7 clean-clone reproduction at `b000c3f` passed (payload identical apart from `seconds` and `source_commit`; 401 tests passed; 8/8 seeded faults RED). **14D witnesses** at (7,7)/(9,5) (`counterexample`): recorded, re-derived independently by Codex (544/544 field comparisons), P7 passed; section audited by Grok (3 wording fixes, folded).
 
 **Result, in one paragraph.** Two non-GR channels were tested with exact algebra on GU's own constructions, at a 4D point, signatures (3,1) and (1,3), on Phase 2's flat model under reading V.
 - **E1.** On algebraic curvature at T = 0, the curvature sector of the second-order Lagrangian (9.11) is Ricci-squared. The W·W and W·∗W coefficients of the pointwise integrand are 0, and on B02's Einstein ratio it is (b² − a²) Ric·Ric (pinned pairing; the prime pairing flips the sign). As an equivalent action density this is (b² − a²)(½W² + ⅓R²): the Gauss–Bonnet density is a total derivative on a closed manifold or with suitable boundary terms. Read conditionally as a metric action (`[ext]`, R1, with the Levi-Civita connection of a varied metric), for b² ≠ a² that is fourth-order quadratic gravity with no Einstein–Hilbert term at this order, not GR. The independent-connection reading R2 is not established.
@@ -88,7 +88,7 @@ Leak terms are the number of nonzero entries of ∗⊚_h(ξW) in the canonical (
 | a₁a₂ | rotation / rotation | (0, 0, 0) | yes |
 | outside the plane | rotation | (0, 0, 0) | yes (h commutes with ξW) |
 
-- **Same at both signatures and on both inputs.** Example exact CCC entries: vector a₀ at (form 2, Clifford 2) is 32/9; a₀a₁ at (1, 1) is 1952/625.
+- **The table is the same at both signatures and on both inputs; the full output maps are not.** 16 of the 48 mode-rows differ between (7,7) and (9,5), in signs or support. Two example exact CCC entries that do match everywhere: vector a₀ at (form 2, Clifford 2) is 32/9, and a₀a₁ at (1, 1) is 1952/625.
 - **Already in B02.** The vector on (0,1,2,3) under CCC and CAA reproduces B02's sampled open data 5′ (F5). New here:
   - the Spin₀ bivector rows;
   - the CAC mode;
@@ -117,7 +117,7 @@ The input curvature lives on a 4-plane, so this is an existence statement about 
   - The transport check inverts ξ and verifies the Weyl-tensor equations.
   - Its own seeded faults (Hodge signs, mixed-plane signs, ξ normalization) each fail.
 - **Limits:**
-  - The 544 are field comparisons, not 544 independent tests.
+  - The 544 are field comparisons, not 544 independent tests. `leak_terms` is the length of the compared output map. Undressed zero is one computation per signature, input and mode, repeated on all eight dressings.
   - For the four vector rows, `spin0` is `None` on both sides (not classified).
   - With the ξ range and the star rule stated in the plan, every comparison agreed on the first run.
 
@@ -172,7 +172,7 @@ The input curvature lives on a 4-plane, so this is an existence statement about 
 
 ## Argon's four exits
 
-- **Exit 4 (Weyl leak through ε):** the one this run measures: on the stated finite dressing family at a 4D point, E2 shows a Weyl response for fixed dressings, including Spin₀ ones (leak rank 6 on the 10-dimensional Weyl space), with stabilizer dimensions 3/2/3/6 in spin(p,q); it is a fixed-background statement, and dynamics (D2) are open. At (7,7) and (9,5), bounded witnesses show the same leak for Spin₀ bivector dressings, boosts included ("14D witnesses").
+- **Exit 4 (Weyl leak through ε):** the one this run measures: on the stated finite dressing family at a 4D point, E2 shows a Weyl response for fixed dressings, including Spin₀ ones (leak rank 6 on the 10-dimensional Weyl space), with stabilizer dimensions 3/2/3/6 in spin(p,q); it is a fixed-background statement, and dynamics (D2) are open. At (7,7) and (9,5), bounded witnesses show a nonzero output for four of the six in-plane Spin₀ bivectors, including two Lorentzian boosts. Two in-plane bivectors (one of them a boost) and the outside bivector give 0. This is not a leak rank ("14D witnesses").
 - **Exit 3 (non-linear torsion backgrounds):** as a test of whether (9.7) is the variation, C2 is a pointwise condition that must hold for every T at order T², so restricting to special T only picks out the zero set of the residual (cut by Grok's review); Phase 2 shows that no nonzero operator in the 8-dimensional C1 kernel passes C2 on the flat model, while curved and torsionful form-connection backgrounds beyond H11 remain open; the higher-derivative channel that survived review is E1, with its metric reading R1 conditional.
 - **Exit 1 (drop the Lagrangian; algebraic constraints):** reframed as the B07-Bi compatibility gate for (9.7) as a standalone equation; a follow-up, not an escape.
 - **Exit 2 (formalize the T² no-go):** a scoped technical note with a Lean check of one C2 witness; a follow-up, not an escape.
