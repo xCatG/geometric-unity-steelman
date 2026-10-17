@@ -8,7 +8,8 @@ experiments/B07/phase2/derivations.md / README.md:
 
 * forms on R^{p,q}: dict {bitmask: 4x4 Gaussian-rational matrix}; bit a <-> e^a;
 * pinned Hodge star  alpha ^ *beta = <alpha, beta> vol,  vol = e^0 ^ e^1 ^ e^2 ^ e^3;
-* xi(R) = 1/2 sum R_abcd eta_c eta_d e^{ab} (x) G_c G_d          (B02 README, pinned);
+* xi(R) = 1/2 sum_{a<b, c<d} R_abcd eta_c eta_d e^{ab} (x) G_c G_d   (B02 README, normalization
+  pinned by B02's documented response -E_F(Ric); see fix note in xi);
 * F = sum e^a G_a, F' = sum e^a G_a C, B = sum_{a<b} e^{ab} G_a G_b, B' = ... i G_a G_b C;
 * brackets: C: X Y - Y X ; A: i (X Y + Y X), componentwise, ungraded (B02 proofs);
 * Shiab(x) = [Phi1 ^ *x]_{m0} - 1/2 * [Phi1 ^ *[Phi2 ^ *x]_{m1}]_{m2}   (9.3);
@@ -354,7 +355,10 @@ class Geometry:
                 M = GM.zero()
                 for c in range(N):
                     for d in range(c + 1, N):
-                        coef = 2 * R[a, b, c, d] * self.eta[c] * self.eta[d]
+                        # sum over a<b, c<d with weight 1/2: the normalization that reproduces
+                        # B02's documented KN(g,g) response -2(n-1)F (CCC) and *Shiab = -E_F(Ric).
+                        # (Reading the README's 1/2 sum over all a,b,c,d gives 4x this; run 1 log.)
+                        coef = Fraction(1, 2) * R[a, b, c, d] * self.eta[c] * self.eta[d]
                         if coef != 0:
                             M = M + (self.G[c] @ self.G[d]).smul(coef)
                 if not M.is_zero():
@@ -617,7 +621,7 @@ def e1(p, qq, log):
         norm_ok &= all(x == -y for x, y in zip(DD.flat, W.flat))      # ** = -1 on Lorentzian 2-forms
         norm_ok &= dot4(g, W, DD) == -dot4(g, W, W)                    # W.*(*W) = -W.W
         norm_ok &= dot4(g, W, D2) == invariants(g, W, W)[1]            # W.D = W.*W
-    nonzero_wsw = any(dot4(g, W, dual_tensor(g, W)) != 0 for W in wbasis)
+    nonzero_wsw = any(dot4(g, W1, dual_tensor(g, W2)) != 0 for W1 in wbasis for W2 in wbasis)
     out["dual_control"] = bool(norm_ok)
     out["dual_nonvacuous"] = bool(nonzero_wsw)
 
