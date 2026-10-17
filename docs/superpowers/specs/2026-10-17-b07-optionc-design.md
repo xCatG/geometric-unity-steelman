@@ -1,6 +1,6 @@
 # B07 option C: the T-sector of I₂ and the frozen-metric connection reading. Pre-registration design
 
-**Status:** rev 1. It folds in Codex's adversarial review of rev 0 (`c6564f2`), whose verdict was "revise", with 11 findings, all accepted.
+**Status:** rev 2. Rev 1 folded in Codex's adversarial review of rev 0 (`c6564f2`), whose verdict was "revise", with 11 findings, all accepted. Rev 2 folds in Grok's co-revision of rev 1 (`a85c1a4`): five corrections and one cut, and answers to the rev 1 open questions.
 
 Nothing in this design has been run. Codex's feasibility probes reported sizes, timings and block support only. They reported no Q1–Q4 ranks, roots, inertias or classifications. The outcome classes, and the reading attached to each outcome, are fixed **before** any experiment code exists. The implementation plan, with smoke-tested code, comes after this design is approved.
 
@@ -110,7 +110,7 @@ A result outside the listed outcomes is reported as "unanticipated", with no rea
 ### Q1. The κ₁¹ cross term
 S₁ is H14's **first-variation** matrix, so the test is direct: is S₁(e_i) = 0 for the four basis covectors?
 
-- **(1a) S₁ ≡ 0.** The cross term 2κ₁⟨X(dT), ∗T⟩ contributes nothing to the quadratic field equation, so in this model it is a boundary term. (9.13)'s κ₁ terms 2 (repaired) and 3 (derived) are each nonzero (H14), and they cancel.
+- **(1a) S₁ ≡ 0.** The cross term 2κ₁⟨X(dT), ∗T⟩ contributes nothing to the quadratic field equation, so in this model it is a boundary term. If the repaired κ₁ term 2 and the derived term 3 are each nonzero for this operator, S₁ ≡ 0 means they cancel in the sum. That both are nonzero for every operator is not assumed before the run.
 - **(1b) S₁ ≢ 0.** Record the following:
   - its rank at each e_i, for M (not P);
   - its support on the safe grade blocks (see Q3);
@@ -122,7 +122,7 @@ S₁ is H14's **first-variation** matrix, so the test is direct: is S₁(e_i) = 
 - **Sign** (pinned, fixed-X):
   - The cross density is 2κ₁ Tr_norm(X(dT)∧∗∗T), with ∗∗ = (−1)^{q+1} on Ω¹.
   - Graded cyclicity, with degrees 3 and 1, gives Tr_norm(X(dT)∧T) = −Tr_norm(T∧X(dT)).
-  - So the reordered coefficient is 2κ₁(−1)^q/2^{n/2}.
+  - So 2κ₁⟨X(dT), ∗T⟩ = [2κ₁(−1)^q/2^{n/2}] Tr(T∧X(dT)), where Tr is the un-normalized matrix trace. Tr_norm already divides by 2^{n/2}, so the factor is not applied twice.
 
 ### Q2. Pointwise Lorentz-valued curvature that is not algebraic
 **Domain**
@@ -156,15 +156,14 @@ S₁ is H14's **first-variation** matrix, so the test is direct: is S₁(e_i) = 
 
 **Directions**
 - With control 5 passed, det M(k) = F(k²), so the following rays decide F:
-  - a timelike unit ray (both signs of k²);
-  - a spacelike unit ray;
+  - a timelike unit ray and a spacelike unit ray (these two probe the two signs of k² = η^{μν}k_μk_ν);
   - one nonzero null ray, which probes **F(0) only** and not the massive frequencies;
   - k = 0 separately.
 - On (3,1) the timelike axis is index 3 (η₃₃ = −1). On (1,3) it is index 0.
 - If control 5 fails, the rays are reported as ray data, with no orbit claims.
 
 **Algebra**
-- In the phased basis, M(ω) = Aω² + iCω + D, with A, C, D rational.
+- In the phased basis, M(ω) = Aω² + Bω + C, with B = iC_rat, where A, C_rat and C are rational matrices and C = M(0).
 - The substitution ω = −iz gives a rational polynomial matrix, so no realification is needed. The roots are mapped back before any real or imaginary label is attached.
 - Computation is on the **native 64 × 64** matrix, or on Codex's safe grade-support blocks:
   - CCC {0}, {1,2}, {3,4};
@@ -173,7 +172,7 @@ S₁ is H14's **first-variation** matrix, so the test is direct: is S₁(e_i) = 
   - E_OP {0,3}, {1,2}, {4}.
   These are support blocks, not Spin modules, and the plan re-checks the support.
 - **Primary algorithm:** an exact polynomial determinant over Q[z], by fraction-free elimination, or by interpolation at more exact points than the degree bound with verification at extra points.
-- **Fallback:** the reversed companion L = [[0, I], [−C₀⁻¹A₀, −C₀⁻¹B₀]] after checking that C₀ = M(0) is invertible. Then det M(ω) = det C₀ · ω^{2N} · χ_L(1/ω). Zero eigenvalues of L account for the degree deficit. They are not modes.
+- **Fallback:** the reversed companion L = [[0, I], [−C⁻¹A, −C⁻¹B]] after checking that C = M(0) is invertible. With χ_L(μ) = det(μI − L) and N = 64, det M(ω) = det(C) · ω^{2N} · χ_L(1/ω). Zero eigenvalues of L account for the degree deficit. They are not modes.
 - A singular leading coefficient is expected, since d(k)(k⊗λ) = 0 makes S₀ singular for every k. The degree deficit is recorded exactly.
 - Runtime limit: 2 h per signature. If it is exceeded, the result is reported as **partial**, never as a numerical fallback.
 
@@ -186,7 +185,7 @@ S₁ is H14's **first-variation** matrix, so the test is direct: is S₁(e_i) = 
 **Outcomes, each with its reading.** Nullity is called a **polarization-space dimension**, not a physical degree-of-freedom count, because constraint and gauge analysis is not part of option C.
 - **(3a) det M ≡ 0 on every ray.** This is a polynomial degeneracy, with its generic nullity recorded. It may be a redundancy or an undetermined direction. That is not decided here, and "ill-posed" is not concluded.
 - **(3b) det M is a nonzero constant on every ray.** There are no finite dispersion roots, so M(k) is polynomially invertible. This does not mean the equations contain no derivatives, and "no propagating modes" is not concluded.
-- **(3c) Real roots with ω² > 0 on the timelike ray**, consistent with F(k²). Record each k²-root, its multiplicity and its nullity. The reading is "massive-type dispersion root", with m² = −k² in the stated signature convention. No stability claim is made.
+- **(3c) Real roots with ω² > 0 on the timelike ray**, consistent with F(k²). Record each k²-root, its multiplicity and its nullity. The reading is "massive-type dispersion root". With k² = η^{μν}k_μk_ν and η = diag(+1 × p, −1 × q), record m² = −k² on (3,1) and m² = +k² on (1,3). Do not use m² = −k² on both, since on (1,3) it would label a rest root tachyonic. No stability claim is made.
 - **(3d) A root with ω² = 0.** This is a massless-type root, cross-checked against F(0) from the null ray.
 - **(3e) Some ω² < 0 on the timelike ray, or complex ω².** Record it. The reading is "a non-real or tachyonic-type root of this frozen-metric reading". No instability claim is made without a stated time-evolution setup, and nothing is concluded about GU.
 - **(3f) A repeated root whose nullity is less than its multiplicity (non-semisimple).** Record the Jordan data. No reading is attached.
@@ -208,24 +207,24 @@ S₁ is H14's **first-variation** matrix, so the test is direct: is S₁(e_i) = 
 
 ## 6. Rejected inputs (so they are not re-proposed)
 
-From the Argon fact-check (Grok, with Claude spot-checks):
-- **"The u(A) trace pairing has neutral signature in 4D."** Unsupported. B05's (64,64) is a 14D spinor Hermitian form, not this pairing.
-- **"The cross term is ±2κ₁∫Tr(T∧⊚F)" with a free sign.** The sign is fixed (§4, Q1).
-- **"Einstein–Palatini recovery via the cross term, without the obstructed cubic [T,T]."** Covered by O0. It also misstates Phase 2.
-- **"Propagator", "which grades propagate", "ghost".** Q3 and Q4 use dispersion zero set, polarization space and inertia instead.
-- **"⊚_h(x)=0 ⟺ c_h⁻¹x ∈ ker ⊚" as a new theorem.** It is the covariance identity.
-
-From Codex's review of rev 0 (folded):
-- the anti-Hermitian "boundary" subcase;
+Do not re-propose any of the following:
+- a neutral 4D u(A) trace pairing;
+- a free ± on the cross term;
+- Palatini recovery, or an EH term, from this quadratic model;
+- "propagator" or "ghost";
+- the covariance identity presented as a new theorem;
+- an anti-Hermitian boundary subcase;
 - realification without a multiplicity correction;
 - S₂ without its factor 2;
 - the unphased basis;
-- "ill-posed" and "no propagating modes" read from ray determinants;
-- restricted Gram used as a residue form;
-- the "Proca" toy;
+- "ill-posed" or "no propagating modes" read from a ray determinant;
+- a restricted Gram used as a residue form;
+- a Proca toy;
 - ker S₀ described as "exact part plus ker X";
-- non-exhaustive Q2 classes;
-- an unspecified "Einstein span".
+- a non-exhaustive Q2 list;
+- an unspecified Einstein span.
+
+Sources: the Argon fact-check (Grok) and Codex's review of rev 0.
 
 ## 7. Deliverables (for the implementation plan)
 
@@ -245,8 +244,8 @@ From Codex's review of rev 0 (folded):
 3. Grok audits the README.
 4. Claude runs P7 on a clean clone.
 
-## 8. Remaining open questions for reviewers
+## 8. Decisions on the rev 1 open questions (Grok co-revision)
 
-1. Is the Q4 derivative form the right sign datum to pre-register? Or should Q4 be limited to fiber-pairing inertia on the ker S₀ blocks, which is more modest?
-2. For Q3, is a 2 h per-signature limit with "partial" status acceptable? Should the plan cap root-field degree at 2 up front?
-3. Is control 5 (covariance) cheap enough to be mandatory? Or should Q3 report ray data only and leave orbit reduction as a stated assumption?
+1. **Q4.** The derivative form V^†(∂_ωM)(ω₀)V is the primary datum, for rational and quadratic semisimple roots. G₁ inertia is a separately named datum on the ker S₀ blocks. Sign isolation does not go beyond quadratic fields in this plan.
+2. **Runtime.** The limit is 2 h per signature, with status `partial` if it is reached. `partial` is not an outcome class and not a negative result. The determinant's degree is not capped: a 64 × 64 quadratic matrix polynomial has degree up to 128. Only the Q4 sign work is capped, as in item 1.
+3. **Control 5.** It is mandatory for any orbit claim. It checks the polynomial coefficients under the 6 generators of spin(p,q); it is not a second spectral run. If it fails, the result falls back to ray data only. Orbit reduction is never assumed.
