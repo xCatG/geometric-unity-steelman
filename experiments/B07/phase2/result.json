@@ -1,0 +1,1906 @@
+{
+ "e_op_14d": [
+  {
+   "c1_entries_checked": 19200,
+   "c1_witness": null,
+   "c2_witness": {
+    "N0": {
+     "alpha": 1,
+     "s": 35,
+     "t": 18,
+     "value": [
+      "8",
+      "0"
+     ]
+    },
+    "N1": {
+     "alpha": 1,
+     "s": 45,
+     "t": 27,
+     "value": [
+      "-16/3",
+      "0"
+     ]
+    },
+    "N2": {
+     "alpha": 1,
+     "s": 35,
+     "t": 18,
+     "value": [
+      "-8",
+      "0"
+     ]
+    }
+   },
+   "signature": [
+    7,
+    7
+   ]
+  },
+  {
+   "c1_entries_checked": 19200,
+   "c1_witness": null,
+   "c2_witness": {
+    "N0": {
+     "alpha": 1,
+     "s": 35,
+     "t": 18,
+     "value": [
+      "8",
+      "0"
+     ]
+    },
+    "N1": {
+     "alpha": 1,
+     "s": 45,
+     "t": 27,
+     "value": [
+      "-16/3",
+      "0"
+     ]
+    },
+    "N2": {
+     "alpha": 1,
+     "s": 35,
+     "t": 18,
+     "value": [
+      "-8",
+      "0"
+     ]
+    }
+   },
+   "signature": [
+    9,
+    5
+   ]
+  }
+ ],
+ "item1_4d": [
+  {
+   "block_zero_relations": 4,
+   "blocks": {
+    "c1_kernel_dim": 2,
+    "c1_kernel_einstein_dim": 2,
+    "c1_kernel_responses": [
+     [
+      "0",
+      "2",
+      "0",
+      "-1"
+     ],
+     [
+      "2",
+      "0",
+      "-1",
+      "0"
+     ]
+    ],
+    "dim": 16,
+    "joint": {
+     "N0": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     },
+     "N1": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     },
+     "N2": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     }
+    },
+    "names": [
+     "first[C](F)",
+     "first[C](F')",
+     "first[A](F)",
+     "first[A](F')",
+     "second[CC](F,B)",
+     "second[CC](F,B')",
+     "second[CC](F',B)",
+     "second[CC](F',B')",
+     "second[CA](F,B)",
+     "second[CA](F,B')",
+     "second[CA](F',B)",
+     "second[CA](F',B')",
+     "second[AC](F,B)",
+     "second[AC](F,B')",
+     "second[AC](F',B)",
+     "second[AC](F',B')"
+    ],
+    "so_kernel_dim": 4
+   },
+   "blocks_in_universal_span": true,
+   "blocks_rank": 16,
+   "e_op_c1_nonzero": 0,
+   "e_op_response": [
+    "2",
+    "0",
+    "-1",
+    "0"
+   ],
+   "signature": [
+    3,
+    1
+   ],
+   "universal": {
+    "c1_kernel_dim": 8,
+    "c1_kernel_einstein_dim": 2,
+    "c1_kernel_responses": [
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "1/2",
+      "0",
+      "-1/4",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "1/2",
+      "0",
+      "-1/4"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ]
+    ],
+    "dim": 40,
+    "joint": {
+     "N0": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     },
+     "N1": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     },
+     "N2": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     }
+    },
+    "so_kernel_dim": 16
+   },
+   "universal_block_dims": {
+    "0,1": 2,
+    "0,3": 2,
+    "1,0": 2,
+    "1,2": 6,
+    "1,4": 2,
+    "2,1": 6,
+    "2,3": 6,
+    "3,0": 2,
+    "3,2": 6,
+    "3,4": 2,
+    "4,1": 2,
+    "4,3": 2
+   },
+   "universal_dim": 40
+  },
+  {
+   "block_zero_relations": 4,
+   "blocks": {
+    "c1_kernel_dim": 2,
+    "c1_kernel_einstein_dim": 2,
+    "c1_kernel_responses": [
+     [
+      "0",
+      "2",
+      "0",
+      "-1"
+     ],
+     [
+      "2",
+      "0",
+      "-1",
+      "0"
+     ]
+    ],
+    "dim": 16,
+    "joint": {
+     "N0": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     },
+     "N1": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     },
+     "N2": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     }
+    },
+    "names": [
+     "first[C](F)",
+     "first[C](F')",
+     "first[A](F)",
+     "first[A](F')",
+     "second[CC](F,B)",
+     "second[CC](F,B')",
+     "second[CC](F',B)",
+     "second[CC](F',B')",
+     "second[CA](F,B)",
+     "second[CA](F,B')",
+     "second[CA](F',B)",
+     "second[CA](F',B')",
+     "second[AC](F,B)",
+     "second[AC](F,B')",
+     "second[AC](F',B)",
+     "second[AC](F',B')"
+    ],
+    "so_kernel_dim": 4
+   },
+   "blocks_in_universal_span": true,
+   "blocks_rank": 16,
+   "e_op_c1_nonzero": 0,
+   "e_op_response": [
+    "2",
+    "0",
+    "-1",
+    "0"
+   ],
+   "signature": [
+    1,
+    3
+   ],
+   "universal": {
+    "c1_kernel_dim": 8,
+    "c1_kernel_einstein_dim": 2,
+    "c1_kernel_responses": [
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "1/2",
+      "0",
+      "-1/4",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "-1/2",
+      "0",
+      "1/4"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "0",
+      "0"
+     ]
+    ],
+    "dim": 40,
+    "joint": {
+     "N0": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     },
+     "N1": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     },
+     "N2": {
+      "dim": 0,
+      "einstein_dim": 0,
+      "responses": []
+     }
+    },
+    "so_kernel_dim": 16
+   },
+   "universal_block_dims": {
+    "0,1": 2,
+    "0,3": 2,
+    "1,0": 2,
+    "1,2": 6,
+    "1,4": 2,
+    "2,1": 6,
+    "2,3": 6,
+    "3,0": 2,
+    "3,2": 6,
+    "3,4": 2,
+    "4,1": 2,
+    "4,3": 2
+   },
+   "universal_dim": 40
+  }
+ ],
+ "item2": {
+  "fourier": [
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "pinned",
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "prime",
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "pinned",
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "prime",
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "pinned",
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     2,
+     2
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "prime",
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     2,
+     2
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "pinned",
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     4,
+     0
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "prime",
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     4,
+     0
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "pinned",
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "prime",
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "pinned",
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "prime",
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "pinned",
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     2,
+     2
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "prime",
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     2,
+     2
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "pinned",
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     4,
+     0
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "prime",
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     4,
+     0
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "pinned",
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "prime",
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "pinned",
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "prime",
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "pinned",
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     2,
+     2
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "prime",
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     2,
+     2
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "pinned",
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     4,
+     0
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "prime",
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     4,
+     0
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "pinned",
+    "map": "E_OP block representative",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "prime",
+    "map": "E_OP block representative",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "pinned",
+    "map": "E_OP block representative",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": true,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": false
+    },
+    "conv": "prime",
+    "map": "E_OP block representative",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "pinned",
+    "map": "E_OP block representative",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     2,
+     2
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "prime",
+    "map": "E_OP block representative",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     2,
+     2
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "pinned",
+    "map": "E_OP block representative",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     4,
+     0
+    ]
+   },
+   {
+    "checks": {
+     "derived_3 == -printed_3": true,
+     "derived_4 == -printed_4": false,
+     "kappa0: action == printed_1": true,
+     "kappa1: action == printed_2 + derived_3": true,
+     "kappa1: action == printed_2 + printed_3": false,
+     "kappa2: action == derived_4": true,
+     "kappa2: action == printed_4": true
+    },
+    "conv": "prime",
+    "map": "E_OP block representative",
+    "nonvacuous": {
+     "printed_1": true,
+     "printed_2": true,
+     "printed_3": true,
+     "printed_4": true
+    },
+    "signature": [
+     4,
+     0
+    ]
+   }
+  ],
+  "star_signs": [
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     0,
+     4
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     0,
+     4
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": -1,
+    "signature": [
+     1,
+     3
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": -1,
+    "signature": [
+     1,
+     3
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     2,
+     2
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     2,
+     2
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": -1,
+    "signature": [
+     3,
+     1
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": -1,
+    "signature": [
+     3,
+     1
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     4,
+     0
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     4,
+     0
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     0,
+     14
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     0,
+     14
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": -1,
+    "signature": [
+     1,
+     13
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": -1,
+    "signature": [
+     1,
+     13
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     2,
+     12
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     2,
+     12
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": -1,
+    "signature": [
+     3,
+     11
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": -1,
+    "signature": [
+     3,
+     11
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     4,
+     10
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     4,
+     10
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": -1,
+    "signature": [
+     5,
+     9
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": -1,
+    "signature": [
+     5,
+     9
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     6,
+     8
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     6,
+     8
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": -1,
+    "signature": [
+     7,
+     7
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": -1,
+    "signature": [
+     7,
+     7
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     8,
+     6
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     8,
+     6
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": -1,
+    "signature": [
+     9,
+     5
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": -1,
+    "signature": [
+     9,
+     5
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     10,
+     4
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     10,
+     4
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": -1,
+    "signature": [
+     11,
+     3
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": -1,
+    "signature": [
+     11,
+     3
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     12,
+     2
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     12,
+     2
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": -1,
+    "signature": [
+     13,
+     1
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": -1,
+    "signature": [
+     13,
+     1
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "pinned",
+    "mass_sign": 1,
+    "signature": [
+     14,
+     0
+    ],
+    "star_dag_sign_1form": -1
+   },
+   {
+    "conv": "prime",
+    "mass_sign": 1,
+    "signature": [
+     14,
+     0
+    ],
+    "star_dag_sign_1form": -1
+   }
+  ],
+  "xstar_x": [
+   {
+    "diagonal_values": [
+     "GQ(0, 0)",
+     "GQ(16, 0)",
+     "GQ(20, 0)",
+     "GQ(24, 0)",
+     "GQ(8, 0)"
+    ],
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "multiple_of_identity": false,
+    "offdiagonal_rows": 66,
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "diagonal_values": [
+     "GQ(0, 0)",
+     "GQ(16, 0)",
+     "GQ(20, 0)",
+     "GQ(24, 0)",
+     "GQ(8, 0)"
+    ],
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "multiple_of_identity": false,
+    "offdiagonal_rows": 66,
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "diagonal_values": [
+     "GQ(0, 0)",
+     "GQ(4, 0)",
+     "GQ(8, 0)"
+    ],
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "multiple_of_identity": false,
+    "offdiagonal_rows": 54,
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "diagonal_values": [
+     "GQ(0, 0)",
+     "GQ(4, 0)",
+     "GQ(8, 0)"
+    ],
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "multiple_of_identity": false,
+    "offdiagonal_rows": 54,
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "diagonal_values": [
+     "GQ(-8, 0)",
+     "GQ(0, 0)",
+     "GQ(8, 0)"
+    ],
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "multiple_of_identity": false,
+    "offdiagonal_rows": 48,
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "diagonal_values": [
+     "GQ(-8, 0)",
+     "GQ(0, 0)",
+     "GQ(8, 0)"
+    ],
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "multiple_of_identity": false,
+    "offdiagonal_rows": 48,
+    "signature": [
+     1,
+     3
+    ]
+   },
+   {
+    "diagonal_values": [
+     "GQ(0, 0)",
+     "GQ(16, 0)",
+     "GQ(32, 0)"
+    ],
+    "map": "E_OP block representative",
+    "multiple_of_identity": false,
+    "offdiagonal_rows": 54,
+    "signature": [
+     3,
+     1
+    ]
+   },
+   {
+    "diagonal_values": [
+     "GQ(0, 0)",
+     "GQ(16, 0)",
+     "GQ(32, 0)"
+    ],
+    "map": "E_OP block representative",
+    "multiple_of_identity": false,
+    "offdiagonal_rows": 54,
+    "signature": [
+     1,
+     3
+    ]
+   }
+  ],
+  "ym_symbol": [
+   {
+    "conv": "pinned",
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "mismatches": 978,
+    "ratios": [
+     "GQ(0, 0)",
+     "GQ(10, 0)",
+     "GQ(14, 0)",
+     "GQ(16, 0)",
+     "GQ(20, 0)",
+     "GQ(24, 0)",
+     "GQ(8, 0)"
+    ],
+    "signature": [
+     3,
+     1
+    ],
+    "ym_proportional": false
+   },
+   {
+    "conv": "pinned",
+    "map": "CCC literal, Phi1=F, Phi2=B",
+    "mismatches": 978,
+    "ratios": [
+     "GQ(0, 0)",
+     "GQ(10, 0)",
+     "GQ(14, 0)",
+     "GQ(16, 0)",
+     "GQ(20, 0)",
+     "GQ(24, 0)",
+     "GQ(8, 0)"
+    ],
+    "signature": [
+     1,
+     3
+    ],
+    "ym_proportional": false
+   },
+   {
+    "conv": "pinned",
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "mismatches": 576,
+    "ratios": [
+     "GQ(0, 0)",
+     "GQ(2, 0)",
+     "GQ(4, 0)",
+     "GQ(6, 0)",
+     "GQ(8, 0)"
+    ],
+    "signature": [
+     3,
+     1
+    ],
+    "ym_proportional": false
+   },
+   {
+    "conv": "pinned",
+    "map": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+    "mismatches": 576,
+    "ratios": [
+     "GQ(0, 0)",
+     "GQ(2, 0)",
+     "GQ(4, 0)",
+     "GQ(6, 0)",
+     "GQ(8, 0)"
+    ],
+    "signature": [
+     1,
+     3
+    ],
+    "ym_proportional": false
+   },
+   {
+    "conv": "pinned",
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "mismatches": 1344,
+    "ratios": [
+     "GQ(-8, 0)",
+     "GQ(0, 0)",
+     "GQ(8, 0)"
+    ],
+    "signature": [
+     3,
+     1
+    ],
+    "ym_proportional": false
+   },
+   {
+    "conv": "pinned",
+    "map": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+    "mismatches": 1344,
+    "ratios": [
+     "GQ(-8, 0)",
+     "GQ(0, 0)",
+     "GQ(8, 0)"
+    ],
+    "signature": [
+     1,
+     3
+    ],
+    "ym_proportional": false
+   },
+   {
+    "conv": "pinned",
+    "map": "E_OP block representative",
+    "mismatches": 648,
+    "ratios": [
+     "GQ(0, 0)",
+     "GQ(16, 0)",
+     "GQ(24, 0)",
+     "GQ(32, 0)",
+     "GQ(8, 0)"
+    ],
+    "signature": [
+     3,
+     1
+    ],
+    "ym_proportional": false
+   },
+   {
+    "conv": "pinned",
+    "map": "E_OP block representative",
+    "mismatches": 648,
+    "ratios": [
+     "GQ(0, 0)",
+     "GQ(16, 0)",
+     "GQ(24, 0)",
+     "GQ(32, 0)",
+     "GQ(8, 0)"
+    ],
+    "signature": [
+     1,
+     3
+    ],
+    "ym_proportional": false
+   }
+  ]
+ },
+ "reading": "V (experiments/B07/transcription.md), varpi direction, flat model; Phase 2 derivations in experiments/B07/phase2/derivations.md",
+ "scope": "identity (4D: exact kernels over the quotiented block span and the unreduced Spin-equivariant u(A)-preserving algebraic maps; exact Fourier variation over wavevectors determining each homogeneous kappa coefficient (degrees 2, 1, 0)); counterexample (14D: bounded witnesses; 'None' means none found in the bounded search, not a proof)",
+ "seconds": 4206.4,
+ "so_witnesses": [
+  {
+   "a": [
+    1,
+    6
+   ],
+   "branch": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+   "c": 4,
+   "j": 0,
+   "k": 0,
+   "signature": [
+    3,
+    1
+   ],
+   "value": [
+    "4",
+    "0"
+   ]
+  },
+  {
+   "a": [
+    1,
+    6
+   ],
+   "branch": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+   "c": 4,
+   "j": 0,
+   "k": 0,
+   "signature": [
+    1,
+    3
+   ],
+   "value": [
+    "-4",
+    "0"
+   ]
+  },
+  {
+   "a": [
+    1,
+    6
+   ],
+   "branch": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+   "c": 4,
+   "j": 0,
+   "k": 0,
+   "signature": [
+    7,
+    7
+   ],
+   "value": [
+    "4",
+    "0"
+   ]
+  },
+  {
+   "a": [
+    1,
+    6
+   ],
+   "branch": "CAA Einstein, Phi1=F, gamma=1, delta=0",
+   "c": 4,
+   "j": 0,
+   "k": 0,
+   "signature": [
+    9,
+    5
+   ],
+   "value": [
+    "4",
+    "0"
+   ]
+  },
+  {
+   "a": [
+    1,
+    6
+   ],
+   "branch": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+   "c": 4,
+   "j": 0,
+   "k": 0,
+   "signature": [
+    3,
+    1
+   ],
+   "value": [
+    "4",
+    "0"
+   ]
+  },
+  {
+   "a": [
+    1,
+    6
+   ],
+   "branch": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+   "c": 4,
+   "j": 0,
+   "k": 0,
+   "signature": [
+    1,
+    3
+   ],
+   "value": [
+    "-4",
+    "0"
+   ]
+  },
+  {
+   "a": [
+    1,
+    6
+   ],
+   "branch": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+   "c": 4,
+   "j": 0,
+   "k": 0,
+   "signature": [
+    7,
+    7
+   ],
+   "value": [
+    "4",
+    "0"
+   ]
+  },
+  {
+   "a": [
+    1,
+    6
+   ],
+   "branch": "CAC chiral, Phi1=F+F', delta=1, gamma=0",
+   "c": 4,
+   "j": 0,
+   "k": 0,
+   "signature": [
+    9,
+    5
+   ],
+   "value": [
+    "4",
+    "0"
+   ]
+  }
+ ],
+ "source_commit": "8a44e8ced16d091d67200ea4b4c5858c364a19ba"
+}
