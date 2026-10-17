@@ -2,7 +2,13 @@
 
 Last updated: 2026-10-16 (after P7), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe done (3e1894c, 748ef7c, ac5f4f8)** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
 
-## Current work (resume here) — B07 Phase 2 COMPLETE incl. grade-split probe; awaiting the user's next direction
+## Current work (resume here) — B07 Phase 2 COMPLETE incl. grade-split probe; non-GR channels plan rev 1.1 awaiting user approval
+
+**Non-GR channels plan (2026-10-16):** the user asked "What can we do to escape? Outside of Einstein GR", then shared Argon's four exits. Grok reviewed Claude's and Argon's directions (cut the pullback and the C2 zero set). Plan `docs/superpowers/plans/2026-10-16-b07-escape.md`:
+- rev 0 5b10d12; rev 1 2eb4257 (Codex: revise with 2 blockers; Grok: accept with fixes); rev 1.1 2593adf (Grok accept, Codex accept with fixes, folded).
+- E1: the curvature sector of (9.11) at T = 0 on algebraic curvature is Ric² (no W² in the integrand; equivalent to ½W² + ⅓R² modulo Gauss–Bonnet).
+- E2: the dressed Shiab leaks Weyl curvature even under Spin-image bivector dressings (rank 6); P4 holds only under a sufficient transported-Weyl condition.
+- Smoke clone in the scratchpad (`escape/repo`, 169.8 s, 9 tests). Next: the user's approval and execution method, then Task 1 (Claude derivations).
 
 **Execution state (2026-10-16 19:02):**
 - **Done:**
