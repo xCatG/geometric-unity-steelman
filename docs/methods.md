@@ -194,3 +194,24 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
     - A registered reading that claims to come from a printed definition must be evaluated against the code's existing implementation of that definition (here `gu.cliffform.bracket`) before it is written down.
     - When summarizing a reviewer's or a ledger's conditions, copy the full hypothesis list or link the row; never abbreviate a hypothesis list.
     - Formulas specialized under an assumption (symmetric b, N1/N2) carry that assumption in the same sentence.
+- **2026-10-16 · B07 Phase 2: actual ½(L+L†) and the second-order Lagrangian (plan rev 2 → Tasks 1–5) · Claude (plan, derivations H9–H14, README, P7: payload identical, 387 passed, 13 faults RED), Codex (code, runner, independent re-derivation, README audit, register), Grok via pi (derivation review, Argon discussion), GPT-6-Astra (Lean formalization of Argon's generous readings, squash-merged as a1c5701).**
+  - *Worked:*
+    - The smoke clone fixed every expected number before execution again: 40/8/2/16/0/0/0 at both signatures, three 14D C2 witnesses. The committed `result.json` equalled the smoke payload apart from `scope`, and the P7 clean-clone run equalled master apart from `seconds` and `source_commit`.
+    - Codex's independent re-derivation imported only `gu.clifford` and agreed on all 18 comparisons.
+    - Checking a reviewer's objection before adopting it paid off. Grok's H9 torsion objection was wrong on the maths (the graded Leibniz rule for d_B holds for any connection), but checking it improved the wording and placed torsion where it actually enters (H11).
+    - The Lean pass on the most generous reading of Argon's notes produced a real finding: a trace-free torsion counterexample showing that H11's torsion-free hypothesis cannot be weakened to trace-free. Two reviewers checked it independently.
+    - Codex's README audit found six wording errors and no numerical disagreement.
+  - *Didn't:*
+    - Coefficient-kernel dimensions were first counted as operator dimensions.
+    - A background import clobbered a log.
+    - The JSON dump crashed on `Fraction` after the full computation and cost 75 minutes.
+    - Reviewer maths was adopted unchecked once (Grok's H10 point) before the H9 lesson above.
+    - Claude misread Hom-space dimensions (up to 6) as isotypic multiplicities (at most 2). Grok caught it.
+    - Claude's README dropped "nonzero" twice ("no operator" where X = 0 passes both gates); the audit caught it. This is Claude's prose carrying the residual errors for the fifth experiment in a row.
+    - Claude reported b05-sign-lean as "awaiting merge" without checking ancestry; it was already on master.
+  - *Changes:*
+    - Smoke the result serializer on a tiny payload before any long run.
+    - Kernel dimensions are reported with their space named (coefficient space, Hom space or operator space). Multiplicities come from an isotypic decomposition, never from a Hom dimension.
+    - Every negative existence claim keeps its trivial-solution caveat ("no nonzero …").
+    - Before reporting branch status, run `git merge-base --is-ancestor`.
+    - Background jobs write to their own log files; never share a log with another process.

@@ -1,8 +1,8 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-16 13:05 before compaction, by Claude (orchestrator, pane 0:2). **B01–B03 and B05-specification complete; B05 sign-conflict Lean check merged (a134286); B07 Phase 2 plan rev 2 (6bc202d) approved; executing** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
+Last updated: 2026-10-16 (after P7), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe running** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
 
-## Current work (resume here) — B07 Phase 2 EXECUTING (rev 2 approved by the user 2026-10-16)
+## Current work (resume here) — B07 Phase 2 COMPLETE; grade-split probe (user-approved) in progress
 
 **Execution state (2026-10-16 19:02):**
 - **Done:**
@@ -10,11 +10,11 @@ Last updated: 2026-10-16 13:05 before compaction, by Claude (orchestrator, pane 
   - Tasks 2–4 (Codex): 8a44e8c code, be91369 rederive, a16ad79 result.json (4206.4 s), 98bb832 rederivation. Claude verified the code equals the plan's and result.json equals the smoke payload.
   - README: 6e63318, with Codex's 6 audit findings folded.
   - Register: a677edb.
-- **P7 running:** a clean clone at 8a44e8c in the scratchpad (`p7/`). The runner exited 0; the suite and faults follow. Then compare result.json, update the README status, write the HANDOFF and the methods.md retro.
+- **P7 passed:** clean clone at 8a44e8c: RUN_EXIT 0, 387 passed, 13/13 faults RED, result.json equal to master apart from `seconds` and `source_commit`. README status updated; methods.md retro entry written.
 - **Argon "outside GR" discussion:** Claude and Grok, `.agent-handoff/b07p2-argon-discuss/`. Its README section is in the Phase 2 README.
 - **Lean b07-argon-lean:** squash-merged to master as a1c5701 (user OK). The generous readings are T1–T5. FINDING 1 is a trace-free-torsion counterexample to weakening H11 hypothesis 2.
 - **b05-sign-lean** (4c4d88c) was already on master.
-- **Next after Phase 2:** the grade-split probe (user-approved). C1 kernel per grade pair at (3,1): small pairs first ({0↔1, 0↔3, 1↔4, 3↔4}), then {1↔2, 2↔3} if needed. Optionally, the X*X isotypic decomposition.
+- **Now:** the grade-split probe (user-approved; Claude scratch probe first, then a Codex brief to record it in the repo). C1 kernel per grade pair at (3,1): small pairs first ({0↔1, 0↔3, 1↔4, 3↔4}), then {1↔2, 2↔3} if needed. Optionally, the X*X isotypic decomposition.
 - **Do not adopt into the README** the user's pasted gloss "obstruction lives in the cubic structure".
 
 **Plan approval history (below):**

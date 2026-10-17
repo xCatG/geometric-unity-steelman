@@ -1,6 +1,6 @@
 # B07 Phase 2: the operator (9.4) actually varies to, and the second-order Lagrangian (9.11)–(9.15)
 
-**Status:** results recorded and independently re-derived; README audited by Codex (6 findings, all resolved). Register and P7 pending.
+**Status:** results recorded and independently re-derived; README audited by Codex (6 findings, all resolved); register updated; P7 clean-clone reproduction passed (payload identical apart from `seconds` and `source_commit`; 387 tests passed; 13/13 seeded faults RED).
 
 **Result, in one paragraph.** Under reading V, on the flat model, every real Spin-equivariant u(A)-preserving algebraic ⊚ was searched at the Lorentzian signatures (3,1) and (1,3). Within that space:
 - there **are** operators with L = L† (C1 = 0) and B02's Einstein ratio κ = ½;
