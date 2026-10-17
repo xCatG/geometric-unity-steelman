@@ -1,8 +1,17 @@
 # B07 escape, Task 4: independent re-derivation of E1 and E2
 
-Re-deriver: a fresh Claude subagent, 2026-10-17. The plan names Codex; Codex and Grok were unavailable. Code: `rederive.py`, committed before its first run (`25d50b3`), with one fix committed before the second run (`a41f016`). Command: `uv run python -m experiments.B07.escape.rederive`. The decisive run took 141.6 s and exited 0.
+Re-deriver: a fresh Claude subagent, 2026-10-17. The plan names Codex; Codex and Grok were unavailable. Code: `rederive.py`, committed before its first run (`25d50b3`), with one fix committed before the second run (`a41f016`). Command: `uv run python -m experiments.B07.escape.rederive`. The decisive run took 141.6 s and exited 0. After a non-Claude audit (Grok), a revision `0e389ea` (committed before its run) changed three comparisons and added ten; that run took 124.1 s and exited 0.
 
-**Verdict: 709 comparisons, 709 agree, 0 disagree.** Nothing disagrees with `result.json` (source `b000c3f`) or with the plan's controls.
+**Verdict: 719 comparisons, 719 agree, 0 disagree** (709 before the audit revision). Nothing disagrees with `result.json` (source `b000c3f`) or with the plan's controls. Not every row is an independent check; see the audit revision below.
+
+## Audit revision (`0e389ea`)
+
+A Grok audit of this re-derivation found that some agree rows do not check what their labels say.
+- **Covariance defect (90 rows).** Run 2 counted Weyl inputs with ⊚_h(c_h x) ≠ 0, a different predicate from Task 2's `cov_defect` (inputs with ⊚_h(c_h x) ≠ c_h ⊚(x)), and zero by construction here. The revision compares Task 2's predicate. It follows from the covariance identity ⊚_h = c_h ∘ ⊚ ∘ c_h⁻¹, which the identity-route rows check on ξ(Weyl) inputs (here it is applied to c_h ξ(Weyl)), so these rows are a consistency check of Task 2's recorded field, not a separate derivation.
+- **`basis_dim` (2 rows).** Run 2 compared the literal 20; the revision compares the size of the built basis (its rank 20 is asserted by the builder).
+- **P4 counterexample (10 new rows).** Run 2 locked only "at least one grade-3 coefficient" and only the `phase` branch. The revision locks, for both u_I signs, the grade-3 coefficient count 2 (pinned from the inspected run 2), the Clifford grades {2, 3}, the zero dressed output, c_h⁻¹x ∈ ker ⊚ and c_h⁻¹x ∉ ξ(Weyl).
+- **Entailed, not independent.** Grade-4 leak ranks follow from the pseudoscalar's Cayley dressing commuting with every bivector (so the leak equals the undressed leak 0, derivations E2.6). The prime Q rows are the pinned rows with the 3-form sign flip of the same Hodge star, not a second Hodge computation. Both still catch a `result.json` that got them wrong.
+- The identity-route rows, U(A) checks, centralizer-versus-`residual` rows, the ∗W non-vacuity row and the direct KN(g, g) Q(E_OP) = −576 are real comparisons.
 
 ## Independence
 
@@ -90,7 +99,7 @@ Re-deriver: a fresh Claude subagent, 2026-10-17. The plan names Codex; Codex and
 | E1 Q pinned, CCC literal and CAA Einstein | (0, 0, −1, −¼), im 0 | (0, 0, −1, −¼), im 0 | agree |
 | E1 Q pinned, CAC chiral | 0 | 0 | agree |
 | E1 Q prime, every operator | the pinned values with sign flipped | the same | agree |
-| E1 response Gram, 16 entries × 2 signatures | G₁₁ = (0,0,−1,−¼), G₂₂ = (0,0,1,¼), G₁₃ = (0,0,0,−1), G₂₄ = (0,0,0,1), G₃₃ = (0,0,0,−4), G₄₄ = (0,0,0,4), others 0 | the same | agree |
+| E1 response Gram, 16 entries × 2 signatures | G₁₁ = (0,0,−1,−¼), G₂₂ = (0,0,1,¼), G₁₃ = (0,0,0,−1), G₂₄ = (0,0,0,1), G₃₃ = (0,0,0,−4), G₄₄ = (0,0,0,4), the symmetric transposes G₃₁ = G₁₃ and G₄₂ = G₂₄, every other entry 0 | the same | agree |
 | E1 KN(g,g): Ric, Ric·Ric, W, Q(E_OP) | 6g, 144, 0, −576 (direct and via the fit) | plan: 6g, 144, 0, −576 | agree |
 | E1 ∗W normalization control | passes; non-vacuous | plan; derivations E1.2 | agree |
 | E1 documented responses (4 operators × 2 signatures) | match | B02 README; phase2 README | agree |
@@ -100,10 +109,10 @@ Re-deriver: a fresh Claude subagent, 2026-10-17. The plan names Codex; Codex and
 | E2 undressed leak rank, 3 modes × 2 | 0 | 0 | agree |
 | E2 leak rank, 15 blades × 3 modes × 2 | grade 1: 10; grade 2: 6; grade 3: 5 (CCC, CAA), 10 (CAC); grade 4: 0 | the same | agree |
 | E2 identity route = direct dressed operator | every case | (control) | agree |
-| E2 covariance defect | 0 everywhere | 0 everywhere | agree |
+| E2 covariance defect (Task 2's predicate since `0e389ea`; follows from the covariance identity) | 0 everywhere | 0 everywhere | agree |
 | E2 dressed Q | `None`, except the pseudoscalar (= the undressed Q) and CAC under grade 2 (≡ 0) | the same | agree |
 | E2 CCC leak rank with the opposite u_I sign, blades 0001/0011/0111/1111 | 10/6/5/0 | 10/6/5/0 | agree |
-| P4 counterexample: x ∈ ξ(Weyl); ⊚_h(x) = 0; grade-3 parts in c_h⁻¹x; c_h⁻¹x ∉ ξ(Weyl) | true; true; 2 nonzero; true | plan Task 4; derivations E2.5 | agree |
+| P4 counterexample, both u_I signs: x ∈ ξ(Weyl); ⊚_h(x) = 0; grade-3 coefficient count; grades; c_h⁻¹x ∈ ker ⊚; c_h⁻¹x ∉ ξ(Weyl) | true; true; 2; {2, 3}; true; true | plan Task 4; derivations E2.5 | agree |
 
 There are no `FINDING:` lines, because nothing disagrees.
 
@@ -113,9 +122,10 @@ There are no `FINDING:` lines, because nothing disagrees.
 - **The C1-kernel statements of E1.5** were not rebuilt: the radical, the null lines and the 6-dimensional zero-response directions. That would need the 40-dimensional equivariant space.
 - **The singular-skip count at t = 1** was not re-run.
 
-## Full comparison table (run 2 output)
+## Full comparison table (revision `0e389ea` output)
 
 | quantity | rederived | Task 2/3 or plan value | agree |
+|---|---|---|---|
 | E1 (3, 1) Q[pinned] E_OP re | ["0", "0", "-4", "-1"] | ["0", "0", "-4", "-1"] | agree |
 | E1 (3, 1) Q[pinned] E_OP im | ["0", "0", "0", "0"] | ["0", "0", "0", "0"] | agree |
 | E1 (3, 1) Q[pinned] CCC literal re | ["0", "0", "-1", "-1/4"] | ["0", "0", "-1", "-1/4"] | agree |
@@ -823,7 +833,17 @@ There are no `FINDING:` lines, because nothing disagrees.
 | P4 counterexample: x in xi(Weyl) | true | true | agree |
 | P4 counterexample: dressed CCC output zero (blade 0111, (3,1)) | true | true | agree |
 | P4 counterexample: c_h^-1 x has grade-3 parts | true | true | agree |
+| P4 counterexample [phase]: grade-3 coefficient count (pinned from the inspected run) | 2 | 2 | agree |
+| P4 counterexample [phase]: Clifford grades of c_h^-1 x | [2, 3] | [2, 3] | agree |
+| P4 counterexample [phase]: dressed CCC output zero | true | true | agree |
+| P4 counterexample [phase]: c_h^-1 x in ker CCC | true | true | agree |
+| P4 counterexample [phase]: c_h^-1 x not in xi(Weyl) | false | false | agree |
+| P4 counterexample [opposite_phase]: grade-3 coefficient count (pinned from the inspected run) | 2 | 2 | agree |
+| P4 counterexample [opposite_phase]: Clifford grades of c_h^-1 x | [2, 3] | [2, 3] | agree |
+| P4 counterexample [opposite_phase]: dressed CCC output zero | true | true | agree |
+| P4 counterexample [opposite_phase]: c_h^-1 x in ker CCC | true | true | agree |
+| P4 counterexample [opposite_phase]: c_h^-1 x not in xi(Weyl) | false | false | agree |
 | P4 counterexample: c_h^-1 x not in xi(Weyl) | false | false | agree |
 | P4 counterexample: undressed CCC kills x (P4) | true | true | agree |
 
-comparisons: 709, disagreements: 0
+comparisons: 719, disagreements: 0
