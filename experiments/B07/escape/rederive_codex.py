@@ -6,8 +6,9 @@ Forms carry actual 4 by 4 SymPy matrices, including in the trace pairing.
 
 The B02 README's xi sum is interpreted as a<b and c<d, with coefficient 1/2.
 That interpretation is pinned by its independent KN(g,g) response control.
-E_OP is deliberately not synthesized from its claimed quadratic form: its
-three block coefficients are absent from the permitted formula documents.
+E_OP uses the three-block formula in B07/phase2/README.md, newly allowed by
+the addendum. The raw second block excludes (9.3)'s external -1/2 coefficient;
+its convention is checked against that README's linear response, not fitted Q.
 
 Run normally with no arguments. --fault selects a precommitted seeded fault;
 each such run must fail a mathematical comparison, not an import or syntax gate.
@@ -147,6 +148,32 @@ class Model:
         second = self.star(self.bracket(f, inner, mode[2]))
         coefficient = HALF if self.fault == 'scalar-sign' else -HALF
         return add(first, second, coefficient)
+
+    def first(self, x, phi, mode):
+        """Raw first block of (9.3): [phi wedge *x]."""
+        return self.bracket(phi, self.star(x), mode)
+
+    def second(self, x, phi1, phi2, modes):
+        """Raw nested block: *[phi1 wedge *[phi2 wedge *x]], inner then outer.
+
+        The external -1/2 belongs to shiab, not to this building block.
+        """
+        inner = self.star(self.bracket(phi2, self.star(x), modes[0]))
+        return self.star(self.bracket(phi1, inner, modes[1]))
+
+    def e_op(self, x):
+        """Phase 2 README: -2 first[C](F) - second[CC](F,B) + second[AA](F,B)."""
+        first_coefficient = 2 if self.fault == 'eop-first-sign' else -2
+        second_coefficient = HALF if self.fault == 'eop-second-scale' else 1
+        result = add({}, self.first(x, self.F, 'C'), first_coefficient)
+        result = add(result, self.second(x, self.F, self.B, 'CC'), -1)
+        return add(result, self.second(x, self.F, self.B, 'AA'), second_coefficient)
+
+    def embed_tensor(self, tensor):
+        """E_F(H) = sum e^a H_a^b Gamma_b, with its second index raised."""
+        tensor = clean(tensor)
+        return tidy({1 << a: sum((tensor[a, b] * self.metric[b] * self.gamma[b]
+                                  for b in range(4)), ZERO) for a in range(4)})
 
     def pairing(self, x, y):
         # Exactly Tr(x wedge *y)/4; no scalar-blade shortcut.
@@ -317,12 +344,14 @@ def controls(model, report, label):
         response = model.star(model.shiab(model.xi(gg), mode))
         report.compare(f'{label} KN(g,g) *{mode}(xi)=({coefficient})F',
                        response == tidy({f: coefficient * m for f, m in model.F.items()}), True)
-    report.missing(f'{label} KN(g,g) Q(E_OP)', -576)
+    e_output = model.e_op(model.xi(gg))
+    report.compare(f'{label} KN(g,g) Q(E_OP)', model.pairing(e_output, e_output), -576)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--fault', choices=('xi-scale', 'dual-half', 'scalar-sign'))
+    parser.add_argument('--fault', choices=('xi-scale', 'dual-half', 'scalar-sign',
+                                           'eop-first-sign', 'eop-second-scale'))
     args = parser.parse_args()
     start = perf_counter_ns()
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
@@ -371,8 +400,16 @@ def main():
                            s.Matrix.hstack(*(components(model.shiab(model.xi(t), mode), 3)
                                              for t in weyl)).rank(),
                            original2['modes'][mode]['undressed_leak_rank'])
-        report.missing(f'{label} Q(E_OP) re/im fits',
-                       [original1['Q']['pinned']['E_OP'][part] for part in ('re', 'im')])
+        e_outputs = [model.e_op(x) for x in inputs]
+        report.compare(f'{label} E_OP linear response 2E_F(Ric)-S E_F(g) (20 inputs)',
+                       all(model.star(output) == model.embed_tensor(
+                           2 * model.ricci(t) - model.scalar(model.ricci(t)) * model.g)
+                           for t, output in zip(basis, e_outputs)), True)
+        e_coefficients = fit(design, [model.pairing(e_outputs[i], e_outputs[j]) for i, j in pairs])
+        report.compare(f'{label} Q(E_OP) re/im fits',
+                       [[selector(z) for z in e_coefficients] for selector in (s.re, s.im)],
+                       [[s.Rational(z) for z in original1['Q']['pinned']['E_OP'][part]]
+                        for part in ('re', 'im')])
         controls(model, report, label)
         # Direct matrix centralizer in the six real bivector spin directions.
         for blade in range(1, 16):
@@ -417,8 +454,8 @@ def main():
             print('P4 transported grade-3 coefficients: ' + show(sorted(grade3.items())), flush=True)
             report.compare('P4 witness transported grade-3 is nonzero', bool(grade3), True)
             report.compare('P4 witness dressed CCC output zero', model.dressed(x, h, inverse) == {}, True)
-    print('FINDING: E_OP three-block coefficients are not specified in the permitted formula documents; '
-          'its fits and KN(g,g) output are not independently reconstructible. No response inferred from the expected Q.', flush=True)
+    print('E_OP SOURCE: phase2/README.md supplies -2 first[C] - second[CC] + second[AA]; '
+          'raw blocks follow (9.3), with their normalization checked against the documented linear response.', flush=True)
     print('CONVENTION: xi uses 1/2 sum over a<b, c<d; B02 README omits those summation ranges, '
           'but its KN(g,g) response pins this normalization.', flush=True)
     assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip() == commit, 'HEAD changed during run'
