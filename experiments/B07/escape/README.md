@@ -1,6 +1,6 @@
 # B07 non-GR channels: the curvature-squared sector of (9.11) and the dressed Weyl response of (9.3)
 
-**Status:** results recorded and independently re-derived twice: by a fresh Claude subagent (719/719 agree after an audit revision) and by Codex (192/192 agree, exact SymPy, written without opening the Task 2 code or the first re-derivation); see below. README and first re-derivation audited by a fresh Claude subagent (11 findings) and by Grok (4 findings), all folded; register updated; P7 clean-clone reproduction at `b000c3f` passed (payload identical apart from `seconds` and `source_commit`; 401 tests passed; 8/8 seeded faults RED).
+**Status:** results recorded and independently re-derived twice: by a fresh Claude subagent (719/719 agree after an audit revision) and by Codex (192/192 agree, exact SymPy, written without opening the Task 2 code or the first re-derivation); see below. README and first re-derivation audited by a fresh Claude subagent (11 findings) and by Grok (4 findings), all folded; register updated; P7 clean-clone reproduction at `b000c3f` passed (payload identical apart from `seconds` and `source_commit`; 401 tests passed; 8/8 seeded faults RED). **14D witnesses** at (7,7)/(9,5) (`counterexample`): recorded, re-derived independently by Codex (544/544 field comparisons), P7 passed.
 
 **Result, in one paragraph.** Two non-GR channels were tested with exact algebra on GU's own constructions, at a 4D point, signatures (3,1) and (1,3), on Phase 2's flat model under reading V.
 - **E1.** On algebraic curvature at T = 0, the curvature sector of the second-order Lagrangian (9.11) is Ricci-squared. The W·W and W·∗W coefficients of the pointwise integrand are 0, and on B02's Einstein ratio it is (b² − a²) Ric·Ric (pinned pairing; the prime pairing flips the sign). As an equivalent action density this is (b² − a²)(½W² + ⅓R²): the Gauss–Bonnet density is a total derivative on a closed manifold or with suitable boundary terms. Read conditionally as a metric action (`[ext]`, R1, with the Levi-Civita connection of a varied metric), for b² ≠ a² that is fourth-order quadratic gravity with no Einstein–Hilbert term at this order, not GR. The independent-connection reading R2 is not established.
@@ -21,7 +21,7 @@ The user asked: "What can we do to escape? Outside of Einstein GR".
 - 4D point, (3,1) and (1,3), flat model, reading V (ε and the metric fixed, δT = δA). Exact rationals and Gaussian rationals only (P4).
 - **Conventions** (every sign below rests on these): η = diag(+1 × p, −1 × q); ⟨x, y⟩ = Tr(x∧∗y)/2^{n/2} with the pinned ∗ (`second_order.mpair`); Ric_bd = η^{ac}R_abcd; (∗W)_abcd = ½ε_cd^{fg}W_abfg with ε₀₁₂₃ = +1; B02's response r = (a, b, c, d) in the basis (E_F(Ric), E_F′(Ric), S E_F(g), S E_F′(g)), with the Einstein ratio c = −a/2, d = −b/2.
 - **E1:** `identity` on a 20-element basis of algebraic curvature 𝓡 (all 210 basis pairs), at T = 0, F = ξ(R) only. The four invariants W·W, W·∗W, Ric₀·Ric₀, S² span every Spin-invariant quadratic form on 𝓡 (`derivations.md` E1.2).
-- **E2:** `identity` on the stated finite family: the Cayley transforms h = (1 − X)(1 + X)⁻¹ of X = ½u_I for all 15 nonzero blades I, each checked to lie in U(A). Not a search over U(A); not 14D.
+- **E2:** `identity` on the stated finite family: the Cayley transforms h = (1 − X)(1 + X)⁻¹ of X = ½u_I for all 15 nonzero blades I, each checked to lie in U(A). Not a search over U(A). 14D is covered only by the bounded witnesses in "14D witnesses" below (scope `counterexample`).
 
 ## E1 results (`result.json` → `E1`)
 
@@ -53,6 +53,79 @@ Undressed, the Weyl response is 0 for CCC, CAA and CAC. Leak rank = rank of W �
 - **Dressed Q:** consistent for the pseudoscalar dressing (equal to the undressed Q) and for CAC under grade-2 dressings (identically 0); `None` (not Spin-invariant) for every other mode/dressing pair.
 - **Family:** at t = ½ all 15 blades are nonsingular and in U(A); at t = 1, 8 of 15 are singular and recorded as skipped (`test_dressing_family_records_skips_and_lies_in_u_a`, (3,1) only; not in `result.json`).
 - (3,1) and (1,3) agree row by row.
+
+## 14D witnesses (`witness14.py`, `result14.json`)
+
+Plan `docs/superpowers/plans/2026-10-17-b07-escape-14d.md` (rev 1). Scope: `counterexample`.
+
+**What was run.**
+- **Signatures:** (7,7) and (9,5).
+- **Inputs:** two Ricci-flat algebraic-curvature tensors W_P, B02's `weyl_control` construction placed on a 4-plane P.
+  - P = (0, 1, 2, 3) is B02's own input, of signature (4,0).
+  - P = (0, 1, 2, p) is Lorentzian, of signature (3,1).
+  - On P, the sectional curvature is +1 on a₀a₁ and a₂a₃, −1 on a₀a₂ and a₁a₃, and 0 on a₀a₃ and a₁a₂.
+- **Dressings:** h = Cayley(½u_I), for eight blades per input:
+  - the vector a₀;
+  - the six in-plane bivectors (on the Lorentzian plane, those through a₃ = p are boosts);
+  - one bivector outside the plane.
+- **Modes:** CCC, CAA and CAC.
+- **Source and runtime:** `105a742`, 116.4 s.
+
+**On every row:**
+- h ∈ U(A).
+- Each bivector Cayley element has the form h = a + bΓ_I with a > 0 and a² − s b² = 1, s = Γ_I² (`derivations.md` E2.3, which holds for a simple bivector in any dimension). So h ∈ Spin₀(p,q).
+- The undressed output is 0 (P4).
+- The covariance control ⊚_h(c_h ξW) is 0.
+
+Leak terms are the number of nonzero entries of ∗⊚_h(ξW) in the canonical (form mask, Clifford mask) basis. They are not ranks.
+
+| Blade | On (0,1,2,3) / on (0,1,2,p) | Leak terms (CCC, CAA, CAC) | c_h⁻¹ξW ∈ ξ(Weyl) |
+|---|---|---|---|
+| vector a₀ | odd (not in the Spin image) | (4, 4, 6) | no |
+| a₀a₁, a₀a₂ | rotation / rotation | (6, 16, 32) | no |
+| a₁a₃, a₂a₃ | rotation / boost | (6, 16, 32) | no |
+| a₀a₃ | rotation / boost | (0, 0, 0) | yes |
+| a₁a₂ | rotation / rotation | (0, 0, 0) | yes |
+| outside the plane | rotation | (0, 0, 0) | yes (h commutes with ξW) |
+
+- **Same at both signatures and on both inputs.** Example exact CCC entries: vector a₀ at (form 2, Clifford 2) is 32/9; a₀a₁ at (1, 1) is 1952/625.
+- **Already in B02.** The vector on (0,1,2,3) under CCC and CAA reproduces B02's sampled open data 5′ (F5). New here:
+  - the Spin₀ bivector rows;
+  - the CAC mode;
+  - the Lorentzian plane;
+  - the U(A), covariance and transport checks.
+- **The outside bivector's zero is proved by hand.** It commutes with each Γ_c of the plane, so c_h⁻¹ξW = ξW and ⊚_h(ξW) = c_h ⊚(ξW) = 0.
+- **The zeros for a₀a₃ and a₁a₂ are observed.** These are the two zero-curvature planes of W_P. For them, the transported input c_h⁻¹ξW is again ξ of a Weyl tensor. `transport_in_weyl` checks this exactly, and it agrees with rank membership on all 15 blades at (3,1). The zero then follows from the sufficient direction of E2.5.
+- **Zero output iff transport into ξ(Weyl), on these rows only.** That is an observation, not a theorem: E2.5's 4D counterexample has zero output without it.
+
+**Consequence (stated exactly).**
+
+> At (7,7) and (9,5), on two Ricci-flat algebraic-curvature inputs (Euclidean and Lorentzian 4-planes), the dressed operator ⊚_h is nonzero, in each of CCC, CAA and CAC, for h = Cayley(½Γ_aΓ_b) ∈ Spin₀ on four of the six in-plane bivectors, including two boosts on the Lorentzian plane. The undressed output is 0 and the covariance control is 0. So the 4D finding that P4 fails under Spin₀ dressing on a fixed Weyl input is not specific to dimension 4 (scope: counterexample). The other two in-plane bivectors, and a bivector outside the plane, give 0, and for them the transported input lies in ξ(Weyl). **Not shown:** a leak rank on the 3080-dimensional 14D Weyl space, dressings other than these blades, generic Weyl inputs, and any ε dynamics (D2 open).
+
+The input curvature lives on a 4-plane, so this is an existence statement about the 14D operator. It is not a claim that the curvature uses all 14 directions.
+
+**Independent re-derivation** (`rederive14_codex.py`, `rederivation14_codex.md`; Codex, fresh session).
+- **Commits:** code `ec30748`, committed before its run; report `9ac9e5b`.
+- **Independence:**
+  - It imports only `gammas` and `dirac_pairing` from `gu.clifford`, plus the standard library and python-flint.
+  - It works with exact sparse gamma matrices over Q(i), not the Clifford-mask code.
+  - It rebuilds the inputs, ξ, the Hodge star, Φ (CAC: F + F′, B′), the brackets including (9.3)'s −½ term, the u(A) phase and the Cayley dressings from the documented formulas. It extracts coordinates by trace.
+  - It never opened the producing code.
+- **Result:** **544 field comparisons over the 32 rows, 0 disagreements**, including all 96 complete output maps entry by entry, plus the two hand Cayley values (77 s; Claude re-ran it: same, exit 0).
+- **Checks that are computed, not assumed:**
+  - The covariance control is evaluated directly, not set to zero from the theorem.
+  - The transport check inverts ξ and verifies the Weyl-tensor equations.
+  - Its own seeded faults (Hodge signs, mixed-plane signs, ξ normalization) each fail.
+- **Limits:**
+  - The 544 are field comparisons, not 544 independent tests.
+  - For the four vector rows, `spin0` is `None` on both sides (not classified).
+  - With the ξ range and the star rule stated in the plan, every comparison agreed on the first run.
+
+**Tests and faults.**
+- Tests: `tests/test_b07_escape14.py` (6).
+- Seeded faults: W-F1..W-F8, all RED, each on its intended assertion.
+- Full suite: 407 passed.
+- **P7:** in a clean clone at `105a742`, the runner exits 0 and its payload is identical apart from `seconds` and `source_commit`. The full suite passes (407), and all 8 seeded faults are RED.
 
 ## Independent re-derivation (`rederivation.md`)
 
@@ -92,14 +165,14 @@ Undressed, the Weyl response is 0 for CCC, CAA and CAC. Leak rank = rank of W �
 - The T-sector of I₂ (κ₁ cross terms, κ₁²|T|²) and whether an Einstein–Hilbert-like term is induced.
 - Curvature outside ξ(𝓡): an independent connection's non-algebraic curvature (reading R2).
 - Any field equation, linearized spectrum, ghost analysis or low-energy limit.
-- 14D (bounded witnesses at (7,7)/(9,5) are a follow-up).
+- 14D beyond the bounded witnesses: a leak rank on the 3080-dimensional 14D Weyl space, generic Weyl inputs, and other dressings.
 - The 14D→4D pullback and the zero set of the C2 residual (both cut by Grok's review).
 - The B07-Bi compatibility gate for (9.7).
 - Dynamics of ε (D2): no ε action, vacuum or observable is specified.
 
 ## Argon's four exits
 
-- **Exit 4 (Weyl leak through ε):** the one this run measures: on the stated finite dressing family at a 4D point, E2 shows a Weyl response for fixed dressings, including Spin₀ ones (leak rank 6 on the 10-dimensional Weyl space), with stabilizer dimensions 3/2/3/6 in spin(p,q); it is a fixed-background statement, and dynamics (D2) are open.
+- **Exit 4 (Weyl leak through ε):** the one this run measures: on the stated finite dressing family at a 4D point, E2 shows a Weyl response for fixed dressings, including Spin₀ ones (leak rank 6 on the 10-dimensional Weyl space), with stabilizer dimensions 3/2/3/6 in spin(p,q); it is a fixed-background statement, and dynamics (D2) are open. At (7,7) and (9,5), bounded witnesses show the same leak for Spin₀ bivector dressings, boosts included ("14D witnesses").
 - **Exit 3 (non-linear torsion backgrounds):** as a test of whether (9.7) is the variation, C2 is a pointwise condition that must hold for every T at order T², so restricting to special T only picks out the zero set of the residual (cut by Grok's review); Phase 2 shows that no nonzero operator in the 8-dimensional C1 kernel passes C2 on the flat model, while curved and torsionful form-connection backgrounds beyond H11 remain open; the higher-derivative channel that survived review is E1, with its metric reading R1 conditional.
 - **Exit 1 (drop the Lagrangian; algebraic constraints):** reframed as the B07-Bi compatibility gate for (9.7) as a standalone equation; a follow-up, not an escape.
 - **Exit 2 (formalize the T² no-go):** a scoped technical note with a Lean check of one C2 witness; a follow-up, not an escape.
@@ -110,3 +183,4 @@ Undressed, the Weyl response is 0 for CCC, CAA and CAC. Leak rank = rank of W �
 - `quadratic.py`: E1 (invariant fit, response Gram). `weyl_dressing.py`: E2 (family, leak, covariance, stabilizer). `run.py`: runner. Tests: `tests/test_b07_escape.py` (9).
 - `result.json`: the run (scope, source commit, E1, E2, seconds).
 - `rederive.py`, `rederivation.md`: independent re-derivation (gamma matrices only).
+- `witness14.py`, `run14.py`, `result14.json`: 14D witnesses; tests `tests/test_b07_escape14.py` (6). `rederive14_codex.py`, `rederivation14_codex.md`: their independent re-derivation.
