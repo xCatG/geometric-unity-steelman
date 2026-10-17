@@ -171,3 +171,131 @@ contains the actual axiom output, including the group instance and both
 homomorphism structures. Validation and source provenance are recorded in
 `ValidationB05Sign.md`. No fermionic covariance, anomaly, physical gauge
 symmetry, or global geometric claim is proved; B02/B03 scope is unchanged.
+
+## B07 Argon: generous readings, five targets
+
+`B07Argon` is a default Lake target. It adds 57 theorems and three audited
+proof-bearing definitions. All five requested targets were run. These are
+pointwise algebraic results, not a new gravitational theory or a verification of
+an embedding, the GU action as printed, or the numerical B07 classification.
+
+**T1 (Gauss).** With positive unit normal convention,
+`R(a,b,c,d)=h(a,c)h(b,d)-h(a,d)h(b,c)=(h ⊙ h)/2` and
+`Ric(i,j)=sum_a eta(a) R(a,i,a,j)`, the actual contractions give
+`Ric=tr_g(h)h-h g^-1 h` and
+`S=tr_g(h)^2-sum_(i,a) eta(i)eta(a)h(i,a)h(a,i)`.
+For `h=lam*g`, `Ric=(n-1)lam^2*g`, `S=n(n-1)lam^2`, and
+`G=-(n-1)(n-2)lam^2*g/2`. The Einstein tensor is proportional to g iff
+`h g^-1 h-tr_g(h)h` is proportional to g, in every dimension, including four.
+The symmetric Euclidean witness `diag(1,2,0,0)` is non-umbilic and has
+`G=diag(0,0,-2,-2)` by hand. Lean certifies G00=0 and G22=-2, which suffice to prove it is not proportional to g; it does not certify the full diagonal. Coefficients are an
+arbitrary characteristic-zero field; characteristic two is excluded by the
+half, and fields of odd positive characteristic are not covered by this module.
+The contraction identities themselves need neither symmetry nor a lower bound
+on dimension. Symmetry is needed to interpret the input as a second fundamental
+form. A timelike normal changes the overall Gauss sign; no ambient geometry,
+Clifford Shiab, dynamics, or cosmological evolution is constructed.
+
+**T2 (Cartan torsion).** This is Cartan torsion of the form connection, not GU's
+augmented torsion. `K(a,b,c)=g((nabla-LC)_a e_b,e_c)`, with K antisymmetric in
+the last two indices. Define `tau(a,b,c)=K(a,b,c)-K(b,a,c)` and
+`t(b)=sum_a eta(a)tau(a,b,a)`. The proved divergence difference is `t(b)V(b)`.
+Over the rational pointwise model, trace torsion is
+`(g(a,c)t(b)-g(b,c)t(a))/(n-1)`, axial torsion is the cyclic average of tau,
+and the tensor part is the remainder. The axial part is totally alternating;
+the tensor part is antisymmetric in the first pair, has zero trace and zero
+cyclic sum. Their divergence contributions vanish. The proof requires `n-1`
+nonzero for the decomposition, and `eta(a)^2=1` for its trace normalization.
+This is an algebraic decomposition, not a formal theorem about integrals.
+The one-form formula `d w=Alt(nabla w)+tau contracted with w` is proved in
+coordinates. A rational 3D axial example has zero trace and nonzero exterior
+correction. Thus a trace-only divergence theorem does not make the entire H11
+adjoint defect trace-only. See the hand-derived counterexample below.
+
+**T3 (epsilon).** Reuse the B05Sign `Diff` model already present on master;
+no pending branch was merged. Extend the derivation coefficientwise to actual
+Mathlib central dual numbers over an arbitrary noncommutative ring. For
+`epsilon(s)=epsilon(1+s beta)`, the coefficient of s in `epsilon^-1 D epsilon`
+is `D beta+[epsilon^-1 D epsilon,beta]`; the augmented torsion variation at
+fixed varpi is its negative. H5 C1 and weighted cubic residuals are invariant
+when all arguments and operator slots are conjugated together and the supplied
+pairing is invariant. The directional derivative identity undresses `D_B` to D;
+the full action-shaped algebraic expression undresses along with it.
+For `U=Ad(epsilon)T`, the actual dual-number calculation gives
+`delta U=-Ad(epsilon)(D beta+[varpi,beta])`. The hypothesis of
+`epsilon_no_independent_equation` is `forall a, E(Ad(epsilon) a)=0`.
+Because Ad(epsilon) is bijective, this is E=0 on the whole ring; the epsilon
+direction is one element of that ring. The spanning interpretation is that
+the varpi directions already fill U-space. The theorem specializes the proved
+dual-number direction under this assumption; it constructs neither varpi
+variations nor a chain rule and is **not a Noether certificate**. The analytic
+chain rule, integration by parts, spacetime forms and a local Euler-Lagrange
+distribution are not formalized. Redundancy for an entire action is conditional
+on factorization through U and that spanning interpretation, with the A
+connection rather than just B in the induced direction. Extra epsilon
+dependence, a variable metric, or a different completion can change the action
+and its varpi equation; none is silently included.
+
+**T4 (grades).** The scalar-support proof uses `B02.Concrete.bladeMul`, not a
+replacement Clifford product. Its output blade is empty iff the two blades
+are equal; if all metric entries are nonzero, its coefficient is nonzero too.
+The bilinear scalar pairing of homogeneous unequal grades vanishes. In an
+abstract full basis (which may include all form and internal indices), the
+paired symbol matrix has `C1=M+transpose(M)`. Projecting to an unordered grade
+pair commutes with C1, and C1 vanishes iff it vanishes on every pair. This is a
+kernel splitting criterion; a bundled Lean direct-sum equivalence with the
+Python gate matrices is not constructed. `diagonal_block_zero` proves only the
+last arithmetic sign step in dimension 1: a rational scalar x satisfying the
+assumed equality `(-1)^(2+j) x = (-1)^(3+j) x` is zero. Intertwining is assumed,
+not constructed. This is not a block theorem and is **not citable as H12 parity**.
+Applying the sign step to j=l blocks requires establishing the total-parity
+intertwiner and its relevant central Spin action separately; the blade model
+does not supply them. No theorem attributes the six response-zero directions
+to particular grade pairs.
+
+**T5 (Schur).** Mathlib's actual `FDRep` category over the complex numbers gives
+scalar endomorphisms of simple objects. In a chosen finite semisimple biproduct,
+inequivalent simple components have zero off-diagonal entries, and a
+multiplicity-one simple summand is preserved and acted on by a scalar. On m
+copies of one simple representation, every endomorphism is a scalar-entry
+biproduct matrix and the matrix assignment is injective: all m-by-m matrices
+are available, with unique coefficients. This certifies the matrix description
+of the commutant on chosen isotypic components; a bundled algebra isomorphism
+to a direct sum of matrix algebras is not separately constructed. There is no
+concrete Spin representation, no grade-to-isotypic identification, and no
+interpretation of `ym_symbol` entry ratios as eigenvalues or couplings.
+
+### B07 findings and boundaries
+
+1. **FINDING: trace-only is a divergence statement.** The optional extension to
+   the full `L†-L` remainder is false without extra hypotheses on X. An explicit
+   hand counterexample in four dimensions is the coframe
+   `e0=dx, e1=dy, e2=dz-x dy, e3=dw`. Declare the frame parallel and orthonormal.
+   This gives a metric connection with torsion `tau^2=de2=-e0 wedge e1` and
+   zero torsion trace. Set `theta=e2` and `X(beta)=theta wedge beta`. X is parallel
+   and its first-order C1 symbol vanishes by exterior antisymmetry. Its wedge
+   transpose is `X^t(t)=t wedge theta`; hence
+   `L†t-Lt=-t wedge dtheta`, nonzero at `t=e3`. This full geometric example is
+   a hand derivation, not a Lean manifold certificate. The Lean axial witness
+   separately certifies the failure of trace-only dependence for d itself.
+   This X is not asserted to be one of the universal Spin intertwiners.
+2. **FINDING: full epsilon dressing matters.** The bare delta-T formula uses B,
+   but the variation of the entire undressed field uses A. For an action
+   factorized through U, with varpi directions spanning U-space and E vanishing
+   on all those directions, the epsilon direction supplies no additional
+   stationarity condition. The formal result is not a Noether certificate or
+   a demonstrated independent epsilon equation lifting C2.
+   This sharpens the discussion's proposed extension; it does not rule out a
+   genuinely different action with independent epsilon or metric dependence.
+3. **FINDING: a pure Gauss term is not generic bending.** The umbilic case gives
+   a Lambda-type algebraic tensor; the non-umbilic witness fails. There is no
+   deduction of dynamic dark energy, a shifted Shiab kappa, or a Higgs field.
+4. **FINDING: the field scope needs a half.** The task's unrestricted “field”
+   wording needs characteristic not two. The formal file uses characteristic
+   zero; extending to odd positive characteristic is not claimed.
+
+`B07Audit.lean` prints every new theorem and the three proof-bearing dual-number
+definitions. `Audit.lean` includes the same checks with all previous audits.
+The new sources contain no sorry, admit, native_decide or custom axioms.
+Existing B02 native-computation dependencies remain as documented above and
+are not used by the new main theorems.

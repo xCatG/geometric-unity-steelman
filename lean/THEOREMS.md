@@ -341,3 +341,41 @@ Additional proof-bearing definitions included in the axiom audit:
 | `B05Sign.tauLitHom` | (6.4)-(6.5) | exact algebraic group homomorphism; no Lie smoothness |
 | `B05Sign.tauRecHom` | reconstructed (6.4)-(6.5) | modelling choice: the plus cocycle is also a group homomorphism |
 | `B05Sign.innerDiff` | witness prerequisite | modelling choice: commutator is additive and obeys Leibniz |
+
+## B07 Argon theorem inventory
+
+All names below have prefix `B07Argon.`. The scope discussion in COVERAGE.md
+is part of each fidelity statement. There are 57 theorems and 3 additional
+proof-bearing definitions, all listed in B07Audit.lean.
+
+| Target / claim | Theorems | Fidelity |
+|---|---|---|
+| T1 Gauss convention | `Gauss.gauss_half_KN` | modelling choice: positive unit normal, characteristic-zero field; exact KN normalization |
+| T1 actual Ricci and scalar contractions | `Gauss.ricci_formula`, `Gauss.scalar_formula` | stronger: contractions hold without symmetry and in any finite dimension; characteristic-zero field scope for the module |
+| T1 umbilic contractions | `Gauss.trace_umbilic`, `Gauss.square_umbilic`, `Gauss.ricci_umbilic`, `Gauss.scalar_umbilic`, `Gauss.einstein_umbilic` | exact in the characteristic-zero signed-diagonal model; stronger dimension scope, including n=0,1 |
+| T1 Einstein iff quadratic shape polynomial is metric | `Gauss.einstein_pure_iff` | stronger: every dimension, not only four; h² means h g^-1 h before raising an index |
+| T1 non-umbilic failure witness | `Gauss.witness_symmetric`, `Gauss.witness_not_umbilic`, `Gauss.witness_not_pure` | exact: rational Euclidean 4D diag(1,2,0,0) |
+| T2 metric contorsion diagonal | `Cartan.metric_diagonal_zero` | exact in rational component model |
+| T2 divergence depends only on trace | `Cartan.contorsion_trace`, `Cartan.divergence_difference` | exact component identity; modelling choice: rational coefficients, explicit lowered-index convention |
+| T2 normalized trace component | `Cartan.trace_tracePart`, `Cartan.g_symmetric`, `Cartan.tracePart_antisymm`, `Cartan.tracePart_cyclic_zero` | exact rational decomposition, eta²=1 and n-1 nonzero for normalization |
+| T2 axial component | `Cartan.axial_antisymm_first`, `Cartan.axial_antisymm_last`, `Cartan.axial_trace_zero` | exact: totally alternating and zero trace |
+| T2 tensor component | `Cartan.tensor_trace_zero`, `Cartan.tensor_cyclic_zero`, `Cartan.tensor_antisymm`, `Cartan.decomposition` | exact: first-pair antisymmetry, vanishing trace and cyclic sum, and reconstruction |
+| T2 exterior derivative | `Cartan.exterior_one_form` | weaker: one-forms in coordinates; general p-form formula and integration theory not formalized |
+| T2 trace-free axial counterexample | `Cartan.epsilon3_metric`, `Cartan.epsilon3_axial`, `Cartan.epsilon3_trace_zero`, `Cartan.axial_exterior_nonzero` | exact: 3D rational Cartan torsion, trace zero, exterior correction 2 |
+| T3 dual-number logarithmic derivative and delta-T | `Variation.logD_variation`, `Variation.augmentedT_variation` | exact in B05's arbitrary noncommutative directional ring model; genuine central dual numbers |
+| T3 H5 algebraic prerequisites | `Variation.dress_apply`, `Variation.conj_mul` | exact fixed-unit conjugation laws |
+| T3 H5 C1 and cubic residual | `Variation.c1_conjugation`, `Variation.cubic_conjugation` | exact with supplied invariant pairing and simultaneous conjugation; cubic weights cover the N0/N1/N2 product normalizations; spacetime wedge model not constructed |
+| T3 entire action undresses | `Variation.derivative_undress`, `Variation.action_conjugation` | weaker: directional D_B identity and algebraic action-shaped expression; manifold action/functional not constructed |
+| T3 full epsilon-induced direction | `Variation.undressed_variation`, `Variation.full_undressed_variation` | exact: first is the ring simplification; second computes the coefficient in the actual varied dual-number U |
+| T3 epsilon direction under the spanning hypothesis | `Variation.epsilon_no_independent_equation` | weaker: the hypothesis `∀ a, E(Ad ε a)=0` is E=0 on the ring because Ad ε is bijective; the epsilon direction is one element of it. Spanning reading: varpi directions already fill U-space. Neither those variations nor a chain rule are constructed; not a Noether certificate |
+| T4 actual blade scalar support | `Grades.blade_scalar_support`, `Grades.blade_coefficient_ne_zero`, `Grades.scalarBlade_ne_zero_iff` | exact B02 blade multiplication; stronger metric scope: any nonzero integer entries, not just signs |
+| T4 grade pairing | `Grades.different_grade_scalar_zero`, `Grades.scalarPair_different_grades` | exact rational bilinear extension of the actual integer blade scalar product |
+| T4 unordered C1 split | `Grades.C1_pairBlock`, `Grades.C1_splits`, `Grades.pairBlock_unordered` | modelling choice: full-basis paired-symbol matrix; exact independent projection criterion; no bundled direct-sum equivalence or Python gate identification |
+| T4 sign step under an assumed parity intertwiner | `Grades.diagonal_block_zero` | weaker: last arithmetic step in dimension 1 for a rational scalar; intertwining equality assumed. Not a block theorem and not citable as H12 parity; no concrete Spin central action constructed |
+| T5 Schur | `Schur.irreducible_scalar`, `Schur.inequivalent_zero` | exact Mathlib FDRep over complex numbers; monoids allowed, hence groups included |
+| T5 multiplicity matrices | `Schur.isotypic_matrix`, `Schur.multiplicity_matrix_injective` | exact matrix parametrization on m copies of an irrep; weaker than a separately bundled commutant algebra isomorphism |
+| T5 semisimple and multiplicity one | `Schur.semisimple_off_isotypic_zero`, `Schur.multiplicity_one_summand` | exact on a chosen finite semisimple biproduct; no construction of a Spin decomposition |
+
+Additional audited definitions: `Variation.dualD`, `Variation.constantUnit`,
+`Variation.infinitesimalUnit`. Their Leibniz and inverse laws are proved rather
+than assumed.

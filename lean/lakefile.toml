@@ -1,6 +1,6 @@
 name = "b02"
 version = "0.1.0"
-defaultTargets = ["B02", "B03", "B05Sign", "bridge"]
+defaultTargets = ["B02", "B03", "B05Sign", "B07Argon", "bridge"]
 
 [[require]]
 name = "mathlib"
@@ -19,3 +19,6 @@ name = "B03"
 
 [[lean_lib]]
 name = "B05Sign"
+
+[[lean_lib]]
+name = "B07Argon"
