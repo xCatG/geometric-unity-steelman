@@ -215,3 +215,20 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
     - Every negative existence claim keeps its trivial-solution caveat ("no nonzero …").
     - Before reporting branch status, run `git merge-base --is-ancestor`.
     - Background jobs write to their own log files; never share a log with another process.
+- **2026-10-17 · B07 non-GR channels (escape plan rev 1.1 → Tasks 1–5) · Claude (plan, derivations, Tasks 2–3 verbatim from the plan, README, register, P7: payload identical, 401 passed, 8 faults RED), Grok via pi (plan and derivation reviews), fresh Claude subagents (independent re-derivation, README audit). Codex out of quota and Grok out of OpenRouter credits for Tasks 4–5.**
+  - *Worked:*
+    - Embedding smoke-tested code verbatim in the plan let the orchestrator execute Tasks 2–3 mechanically (byte-compared against the smoke clone) and kept worker quota for the independent check. `result.json` equalled the smoke payload.
+    - The re-derivation (gamma matrices only) agreed on 709/709 comparisons. Its first run disagreed by a uniform factor 16, which exposed an unstated summation range in B02's documented ξ formula; scale-free results agreed from the start.
+    - The adversarial README audit found 11 wording/scope issues and no numerical disagreement.
+  - *Didn't:*
+    - Claude's README prose again carried the residual errors: R1 shortened (its hypothesis b² ≠ a² dropped), a Lovelock sentence that misattributed what representation theory forces, an Argon-exit sentence citing an argument Phase 2 does not contain. Sixth experiment in a row.
+    - The register paragraph was first inserted mid-explanation; caught by re-reading the context.
+    - Line endings: the smoke clone checked out CRLF, which silently broke multi-line fault patterns; the harness had to be made line-ending-aware.
+    - From Git Bash, a pi slash command was path-converted (`/new` → `C:/Program Files/Git/new`) and sent as a prompt.
+    - A watcher keyed on the status file's existence fired on a worker's `WORKING` marker.
+  - *Changes:*
+    - Name the documented normalization (summation ranges, ½ factors) for every formula a re-deriver must rebuild; record a scale disagreement as a documentation note in the README even when resolved.
+    - Before the README is drafted, list each hypothesis of every consequence and check the summary paragraph keeps all of them.
+    - Fault harnesses normalize line endings; watchers wait for the `DONE` token, not the file.
+    - Send pi slash commands with `MSYS_NO_PATHCONV=1`; pi's `/new` resets the model, so re-set it.
+    - When no non-Claude reviewer is available, say so in the README status line.

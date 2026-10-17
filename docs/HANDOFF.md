@@ -1,8 +1,8 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-16 (after P7), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe done (3e1894c, 748ef7c, ac5f4f8)** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
+Last updated: 2026-10-17 (escape plan complete), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe done (3e1894c, 748ef7c, ac5f4f8)** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
 
-## Current work (resume here) — B07 Phase 2 COMPLETE; non-GR channels (escape) plan EXECUTING: Tasks 1–3 done, Task 4 with Grok
+## Current work (resume here) — non-GR channels (escape plan) COMPLETE; next is the user's choice of follow-up
 
 **Non-GR channels plan (2026-10-16):** the user asked "What can we do to escape? Outside of Einstein GR", then shared Argon's four exits. Grok reviewed Claude's and Argon's directions (cut the pullback and the C2 zero set). Plan `docs/superpowers/plans/2026-10-16-b07-escape.md`:
 - rev 0 5b10d12; rev 1 2eb4257 (Codex: revise with 2 blockers; Grok: accept with fixes); rev 1.1 2593adf (Grok accept, Codex accept with fixes, folded).
@@ -14,7 +14,10 @@ Last updated: 2026-10-16 (after P7), by Claude (orchestrator, pane 0:2). **B01�
 - Task 1: 8c3592e `experiments/B07/escape/derivations.md` (Grok: accept with 4 fixes, folded).
 - Task 2: b000c3f code + 9 tests, verbatim from the plan. 9 passed (45 s); full suite 401 passed (14:28); seeded faults E-F1..E-F8 all RED. E-F6's first failing assertion is the skip count (9 ≠ 8), not membership.
 - Task 3: 2b75c7e `result.json` (234.6 s, exit 0). 0 differences from the smoke payload apart from `seconds`/`source_commit`.
-- Next: Grok's `rederive.py` + `rederivation.md`; then Task 5 (Claude README; audit by Grok; register; P7).
+- Task 4: Grok hit an OpenRouter 402 (credits) before writing anything, so per the user's fallback a fresh Claude subagent did it: 25d50b3 rederive.py (pre-run), a41f016 fix (ξ summation range a<b, c<d; run 1 had 30/709 uniform ×16 E1 disagreements), 5d12afb rederivation.md: 709/709 agree. Claude re-ran it: same.
+- Task 5: README eebe86c; audit by a fresh Claude subagent (accept, 11 fixes) folded in cc67bb1; register 2824591 (B07-E1 bullet, B02-P4d paragraph); P7 at b000c3f: RUN_EXIT 0, 401 passed, 8/8 faults RED, payload identical apart from seconds/source_commit. README status + methods.md retro committed after P7.
+- **No non-Claude model checked Tasks 4–5** (Codex weekly 0% on panes 0:3 and 0:5; Grok out of OpenRouter credits). If the user tops up either, a Grok/Codex re-audit of README + rederivation is the obvious cheap check.
+- Next (user's choice; each needs its own plan): the plan's 'After this plan' list — T-sector of I₂, 14D E2 witnesses, D2 as a model, B07-Bi gate, scoped T² note.
 - Gotcha: from Git Bash, send pi slash commands with `MSYS_NO_PATHCONV=1`, or `/new` becomes `C:/Program Files/Git/new`. pi's `/new` resets the model to openai gpt-6.1-sol.
 
 **Execution state (2026-10-16 19:02):**
