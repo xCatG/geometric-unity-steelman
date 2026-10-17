@@ -113,6 +113,28 @@ The variation was computed from the action alone with exact Fourier modes. It wa
 - it is not an equivalence between (9.15) and Υ = 0, or between (9.15) and (9.7);
 - the pairing is indefinite, so it says nothing about minima or stability.
 
+## Grade split of the C1 kernel
+
+The exact [grade-pair survey](grade_split.py) and [recorded output](grade_split.json) locate the six zero-response directions in the flat algebraic model, at both (3,1) and (1,3). Each pair spans both directed blocks j→l and l→j. C1 splits over these unordered grade pairs because the scalar top-form pairing pairs equal Clifford grades; the equivariant space has no nonzero diagonal blocks.
+
+| Grade pair | Span dim | C1 dim | SO dim | Einstein response dim | C1-kernel responses (a,b,c,d) | Joint N0/N1/N2 |
+|---|---:|---:|---:|---:|---|---|
+| 0↔1, 0↔3, 1↔4, 3↔4 (each) | 4 | 1 | 2 | 0 | (0,0,0,0) | 0/0/0 |
+| 1↔2 | 12 | 2 | 4 | 1 | (½,0,−¼,0), (0,0,0,0) | 0/0/0 |
+| 2↔3 | 12 | 2 | 4 | 1 | (3,1): (0,½,0,−¼), (0,0,0,0); (1,3): (0,−½,0,¼), (0,0,0,0) | 0/0/0 |
+| Total | 40 | 8 | 16 | 2 | Zero-response dimension 6 | 0/0/0 |
+
+For K = ker C1 and Z = {v ∈ K : response(v) = 0}, the canonical support data are:
+
+| Grade pair | (dim K, dim(K ∩ block j→l), dim(K ∩ block l→j)) | (dim Z, dim(Z ∩ block j→l), dim(Z ∩ block l→j)) |
+|---|---|---|
+| 0↔1, 0↔3, 1↔4, 3↔4 (each) | (1,0,0) | (1,0,0) |
+| 1↔2, 2↔3 (each) | (2,0,0) | (1,0,0) |
+
+These numbers are identical at both signatures. Thus there is one zero-response line in each of the six unordered pairs, and every nonzero vector in each line uses both directed blocks. These are subspace intersections, invariant under a change of kernel basis; the displayed response representatives depend on the basis. The totals check against the universal entries of [result.json](result.json) passes for dim, C1, SO, Einstein response dimension and each joint norm. No nonzero operator in any pair passes joint C1+C2. These flat-model directions are not established operators of a non-gravitational sector.
+
+The grade-split run took 1007.3 s at `source_commit` `3e1894cfa703f0a61401e88c9c34e170de447a90`.
+
 ## Independent re-derivation
 
 `rederive.py` (committed `be91369` before its first run) and `rederivation.md` (`98bb832`).
@@ -128,7 +150,7 @@ The variation was computed from the action alone with exact Fourier modes. It wa
 - The order-T² obstruction is an algebraic identity on the flat model, not a torsion term dropped by H9. Cartan torsion of the form connection appears only in H11's curved lift of C1; the augmented torsion T is the varied field.
 - Weakening H11 hypothesis 2 to "torsion trace-free" is not enough. On the parallel coframe e⁰ = dx, e¹ = dy, e² = dz − x dy, e³ = dw, the torsion is trace-free and X(β) = e²∧β is parallel with C1 = 0. Yet L†t − Lt = −t∧de², which is nonzero at t = e³. This is a hand derivation, checked by two reviewers; X is not claimed to be a Spin intertwiner.
 - Varying ε, so that δT ≠ δA, is one registered `[ext]` model (B07-P2), not a demonstrated lift of the ϖ equation. At fixed ε that equation's order-T² piece is still C2 (H5).
-- The six zero-response C1 directions are undecided as to grade support. They are not yet shown to be operators of a non-gravitational sector. A per-grade-pair probe is queued.
+- In the flat algebraic model at (3,1)/(1,3), the six zero-response C1 directions split as one line in each of 0↔1, 0↔3, 1↔4, 3↔4, 1↔2 and 2↔3. Every line requires both directed blocks (see [grade split](#grade-split-of-the-c1-kernel)); these are not established operators of a non-gravitational sector.
 
 ## Not covered
 
@@ -153,4 +175,5 @@ Its conjecture that no Shiab-type operator can make L self-adjoint with a Ricci 
 | `symmetric.py`, `universal.py`, `gates.py`, `second_order.py`, `run.py` | Production code, verbatim from the plan (`8a44e8c`) |
 | `result.json` | Runner output (`a16ad79`) |
 | `rederive.py`, `rederivation.md` | Independent re-derivation |
-| `../../../tests/test_b07_phase2.py` | 22 tests; suite 387 passed; 13 seeded faults RED |
+| `grade_split.py`, `grade_split.json` | Exact grade-pair survey and canonical sub-block intersections |
+| `../../../tests/test_b07_phase2.py` | 27 tests; suite 392 passed; new grade-split fault P14 RED (P1–P13 RED in the earlier Phase 2 verification) |
