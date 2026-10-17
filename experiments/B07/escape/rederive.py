@@ -606,7 +606,7 @@ def e1(p, qq, log):
     g = Geometry(p, qq)
     basis = curvature_basis()
     inv = inv_table(g, basis)
-    out = {"signature": [p, qq]}
+    out = {"signature": [p, qq], "basis_dim": len(basis)}
 
     # sanity of invariants: 4 columns independent on the basis
     assert rref_rank(list(inv.values())) == 4
@@ -806,7 +806,8 @@ def e2(g, basis, log, task_rows):
             direct_op = mode_op(g, mode, h, hinv)
             direct = [direct_op(x) for x in xiW]
             same = all(feq(a, b) for a, b in zip(ident, direct))
-            cov = sum(0 if fzero(direct_op(c_h(x))) else 1 for x in xiW)
+            # same predicate as Task 2: count Weyl inputs with dressed(c_h x) != c_h undressed(x)
+            cov = sum(0 if feq(direct_op(c_h(x)), c_h(und(x))) else 1 for x in xiW)
             leak = rref_rank([fflat(y, N - 1) for y in ident])
             f = q_fit(g, basis, inv, direct_op)
             rows.append({"blade": m, "grade": popcount(m), "leak_rank": leak,
@@ -878,7 +879,7 @@ def compare(e1s, e2s, cex):
             for j in range(4):
                 add(f"E1 {sig} response_gram[{i}][{j}]", e["response_gram"][i][j],
                     {"re": te["response_gram"][i][j]["re"], "im": te["response_gram"][i][j]["im"]})
-        add(f"E1 {sig} basis_dim", 20, te["basis_dim"])
+        add(f"E1 {sig} basis_dim", e["basis_dim"], te["basis_dim"])
         add(f"E1 {sig} KN(g,g) Q(E_OP) (plan: -576)", e["KN_gg"]["Q_EOP"], ["-576", "0"])
         add(f"E1 {sig} KN(g,g) Ric.Ric (plan: 144)", e["KN_gg"]["RicRic"], "144")
         add(f"E1 {sig} KN(g,g) Ric=6g (plan)", e["KN_gg"]["Ric_is_6g"], True)
@@ -922,6 +923,13 @@ def compare(e1s, e2s, cex):
     c = cex["phase"]
     add("P4 counterexample: dressed CCC output zero (blade 0111, (3,1))", c["dressed_output_zero"], True)
     add("P4 counterexample: c_h^-1 x has grade-3 parts", c["grade3_terms"] > 0, True)
+    for label in ("phase", "opposite_phase"):
+        c2 = cex[label]
+        add(f"P4 counterexample [{label}]: grade-3 coefficient count (pinned from the inspected run)", c2["grade3_terms"], 2)
+        add(f"P4 counterexample [{label}]: Clifford grades of c_h^-1 x", c2["grades_present"], [2, 3])
+        add(f"P4 counterexample [{label}]: dressed CCC output zero", c2["dressed_output_zero"], True)
+        add(f"P4 counterexample [{label}]: c_h^-1 x in ker CCC", c2["c_inv_x_in_ker"], True)
+        add(f"P4 counterexample [{label}]: c_h^-1 x not in xi(Weyl)", c2["c_inv_x_in_xi_Weyl"], False)
     add("P4 counterexample: c_h^-1 x not in xi(Weyl)", c["c_inv_x_in_xi_Weyl"], False)
     add("P4 counterexample: undressed CCC kills x (P4)", c["undressed_output_zero"], True)
     return rows
