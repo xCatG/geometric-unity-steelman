@@ -2,7 +2,31 @@
 
 Last updated: 2026-10-17 (escape plan complete, non-Claude retry folded, 14D E2 witnesses complete), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe done (3e1894c, 748ef7c, ac5f4f8)** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
 
-## Current work (resume here) — non-GR channels (escape plan) COMPLETE; next is the user's choice of follow-up
+## Current work (resume here) — option C pre-registration design at rev 3.1; next: implementation plan
+
+**Option C (T-sector of I₂ + frozen-metric R2 reading), 2026-10-17.** The user chose option C with several pre-registered outcome classes instead of one success criterion. Argon's proposal was fact-checked by Grok: neutral 4D pairing wrong; free ± on the cross term unsupported; "Palatini recovery without the obstructed cubic" rejected. Design `docs/superpowers/specs/2026-10-17-b07-optionc-design.md`:
+- **Revisions and reviews.**
+  - rev 0 c6564f2 → Codex: revise, 11 findings.
+  - rev 1 a85c1a4 → Grok co-revision: 5 fixes, incl. m² = +k² on (1,3).
+  - rev 2 7be737c → three-way review:
+    - Codex: accept with fixes, 3 blocking;
+    - Grok: accept with fixes, 1 blocking;
+    - fresh Claude: revise, 2 blocking.
+  - rev 3 db5b7e3/707ed6d → confirmation pass:
+    - Codex: revise, 3 blocking;
+    - Grok: ready with fixes.
+  - rev 3.1 562370e.
+- **Key structure** (found in the fresh Claude review): M = 2U(−k)ᵀG₃U(k), with U = X∘(iK∧·) + κ₁∗ = ∗(iN + κ₁) the square 64×64 symbol of the draft's linear Υ. Q3 = the exact charpoly of the rational N(u); roots ω = iκ₁/ν.
+- **Outcomes already decided, now controls:**
+  - no ω² = 0 root at κ₁ ≠ 0;
+  - (1a) excluded for any operator with C1 = 0;
+  - Q2's 1-part bounds come from Schur.
+- **Q4 data:** the derivative form on ker M; Q_U = ¼V†M″V on ker U; restricted forms on ker S₀. Over Q(√−d).
+- **Nothing run** on named operators: probes used toys, sizes and block support only.
+- **Argon copy:** in the scratchpad, `optionc/for_argon.md`.
+- **Next:** the implementation plan, with smoke-tested code, then user approval.
+
+## Previous: non-GR channels (escape plan) COMPLETE
 
 **Non-GR channels plan (2026-10-16):** the user asked "What can we do to escape? Outside of Einstein GR", then shared Argon's four exits. Grok reviewed Claude's and Argon's directions (cut the pullback and the C2 zero set). Plan `docs/superpowers/plans/2026-10-16-b07-escape.md`:
 - rev 0 5b10d12; rev 1 2eb4257 (Codex: revise with 2 blockers; Grok: accept with fixes); rev 1.1 2593adf (Grok accept, Codex accept with fixes, folded).
