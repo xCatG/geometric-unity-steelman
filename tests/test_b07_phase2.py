@@ -248,3 +248,62 @@ def test_xstar_x_control_and_branches():
     assert SO2.xstar_x(lambda x: x, 3, 0)["multiple_of_identity"]
     for name in V.BRANCHES:
         assert not SO2.xstar_x(V.branch_map(name, 3, 1), 3, 1)["multiple_of_identity"], name
+
+
+def test_grade_split_pairs_cover_nonzero_blocks():
+    """Omitting or duplicating a pair must not silently shrink the universal survey."""
+    from experiments.B07.phase2.grade_split import PAIRS
+    directed = [(j, l) for a, b in PAIRS for j, l in ((a, b), (b, a))]
+    assert all(j != l for j, l in PAIRS)
+    assert len(set(directed)) == len(directed)
+    assert {f"{j},{l}" for j, l in directed} == set(U.block_dims(3, 1))
+
+
+def test_grade_split_small_pair():
+    """Dropping the reverse block loses the paired C1 direction (flat 4D control)."""
+    import json
+    from experiments.B07.phase2.grade_split import pair_survey
+    r = pair_survey(3, 1, 0, 1)
+    assert (r["dim"], r["c1_kernel_dim"], r["so_kernel_dim"], r["c1_kernel_einstein_dim"]) == (4, 1, 2, 0)
+    assert r["c1_kernel_responses"] == [["0", "0", "0", "0"]]
+    assert all(r["joint"][norm]["dim"] == 0 for norm in G.NORMS)
+    assert r["c1_support"]["dim"] == r["zero_response_support"]["dim"] == 1
+    assert json.loads(json.dumps(r)) == r
+
+
+def test_grade_split_support_is_basis_invariant():
+    """Projection ranks are not intersection dimensions; mixed basis columns can cancel."""
+    from experiments.B07.phase2.grade_split import subspace_support
+    B = sp.Matrix([[1, 0], [0, 0], [0, 1], [0, 0]])
+    expected = {"dim": 2, "forward": 1, "reverse": 1}
+    assert subspace_support(B, 2) == expected
+    assert subspace_support(B * sp.Matrix([[1, 1], [1, -1]]), 2) == expected
+    assert subspace_support(sp.Matrix([1, 0, 1, 0]), 2) == {"dim": 1, "forward": 0, "reverse": 0}
+    assert subspace_support(sp.zeros(4, 0), 2) == {"dim": 0, "forward": 0, "reverse": 0}
+    with pytest.raises(TypeError):
+        subspace_support(sp.Matrix([1.0, 0]), 1)
+
+
+def test_grade_split_provenance_parser():
+    """The universal result is an input here; only grade_split.json is exempt."""
+    from experiments.B07.phase2.grade_split import OUT_REL, dirty_paths
+    assert dirty_paths(f" M {OUT_REL}\0") == []
+    assert dirty_paths(" M experiments/B07/phase2/result.json\0") == ["experiments/B07/phase2/result.json"]
+    assert dirty_paths(f" R {OUT_REL}\0gu/cliffform.py\0") == ["gu/cliffform.py"]
+
+
+def test_grade_split_totals_reject_mismatch():
+    """Each registered dimension and normalization must be checked against the universal entry."""
+    from copy import deepcopy
+    from experiments.B07.phase2.grade_split import check_totals
+    row = {"dim": 4, "c1_kernel_dim": 1, "so_kernel_dim": 2, "c1_kernel_einstein_dim": 0,
+           "joint": {norm: {"dim": 0} for norm in G.NORMS}}
+    assert check_totals([row, row], dict(row, dim=8, c1_kernel_dim=2, so_kernel_dim=4))["dim"] == 8
+    for key in ("dim", "c1_kernel_dim", "so_kernel_dim", "c1_kernel_einstein_dim", *G.NORMS):
+        bad = deepcopy(row)
+        if key in G.NORMS:
+            bad["joint"][key]["dim"] = 1
+        else:
+            bad[key] += 1
+        with pytest.raises(AssertionError):
+            check_totals([bad], row)
