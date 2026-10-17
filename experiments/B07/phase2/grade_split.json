@@ -1,0 +1,684 @@
+{
+ "scope": "identity: exact grade-pair subspaces at (3,1)/(1,3), reading V, varpi direction, flat algebraic model",
+ "seconds": 1007.3,
+ "signatures": [
+  {
+   "pairs": [
+    {
+     "block_dims": {
+      "forward": 2,
+      "reverse": 2
+     },
+     "c1_kernel_dim": 1,
+     "c1_kernel_einstein_dim": 0,
+     "c1_kernel_responses": [
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     ],
+     "c1_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 4,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      0,
+      1
+     ],
+     "seconds": 57.8,
+     "so_kernel_dim": 2,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    },
+    {
+     "block_dims": {
+      "forward": 2,
+      "reverse": 2
+     },
+     "c1_kernel_dim": 1,
+     "c1_kernel_einstein_dim": 0,
+     "c1_kernel_responses": [
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     ],
+     "c1_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 4,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      0,
+      3
+     ],
+     "seconds": 58.0,
+     "so_kernel_dim": 2,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    },
+    {
+     "block_dims": {
+      "forward": 2,
+      "reverse": 2
+     },
+     "c1_kernel_dim": 1,
+     "c1_kernel_einstein_dim": 0,
+     "c1_kernel_responses": [
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     ],
+     "c1_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 4,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      1,
+      4
+     ],
+     "seconds": 59.5,
+     "so_kernel_dim": 2,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    },
+    {
+     "block_dims": {
+      "forward": 2,
+      "reverse": 2
+     },
+     "c1_kernel_dim": 1,
+     "c1_kernel_einstein_dim": 0,
+     "c1_kernel_responses": [
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     ],
+     "c1_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 4,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      3,
+      4
+     ],
+     "seconds": 59.7,
+     "so_kernel_dim": 2,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    },
+    {
+     "block_dims": {
+      "forward": 6,
+      "reverse": 6
+     },
+     "c1_kernel_dim": 2,
+     "c1_kernel_einstein_dim": 1,
+     "c1_kernel_responses": [
+      [
+       "1/2",
+       "0",
+       "-1/4",
+       "0"
+      ],
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     ],
+     "c1_support": {
+      "dim": 2,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 12,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      1,
+      2
+     ],
+     "seconds": 135.1,
+     "so_kernel_dim": 4,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    },
+    {
+     "block_dims": {
+      "forward": 6,
+      "reverse": 6
+     },
+     "c1_kernel_dim": 2,
+     "c1_kernel_einstein_dim": 1,
+     "c1_kernel_responses": [
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      [
+       "0",
+       "1/2",
+       "0",
+       "-1/4"
+      ]
+     ],
+     "c1_support": {
+      "dim": 2,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 12,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      2,
+      3
+     ],
+     "seconds": 135.0,
+     "so_kernel_dim": 4,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    }
+   ],
+   "signature": [
+    3,
+    1
+   ],
+   "totals": {
+    "c1_kernel_dim": 8,
+    "c1_kernel_einstein_dim": 2,
+    "dim": 40,
+    "joint": {
+     "N0": {
+      "dim": 0
+     },
+     "N1": {
+      "dim": 0
+     },
+     "N2": {
+      "dim": 0
+     }
+    },
+    "so_kernel_dim": 16,
+    "zero_response_dim": 6
+   }
+  },
+  {
+   "pairs": [
+    {
+     "block_dims": {
+      "forward": 2,
+      "reverse": 2
+     },
+     "c1_kernel_dim": 1,
+     "c1_kernel_einstein_dim": 0,
+     "c1_kernel_responses": [
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     ],
+     "c1_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 4,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      0,
+      1
+     ],
+     "seconds": 57.8,
+     "so_kernel_dim": 2,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    },
+    {
+     "block_dims": {
+      "forward": 2,
+      "reverse": 2
+     },
+     "c1_kernel_dim": 1,
+     "c1_kernel_einstein_dim": 0,
+     "c1_kernel_responses": [
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     ],
+     "c1_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 4,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      0,
+      3
+     ],
+     "seconds": 57.7,
+     "so_kernel_dim": 2,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    },
+    {
+     "block_dims": {
+      "forward": 2,
+      "reverse": 2
+     },
+     "c1_kernel_dim": 1,
+     "c1_kernel_einstein_dim": 0,
+     "c1_kernel_responses": [
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     ],
+     "c1_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 4,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      1,
+      4
+     ],
+     "seconds": 59.1,
+     "so_kernel_dim": 2,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    },
+    {
+     "block_dims": {
+      "forward": 2,
+      "reverse": 2
+     },
+     "c1_kernel_dim": 1,
+     "c1_kernel_einstein_dim": 0,
+     "c1_kernel_responses": [
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     ],
+     "c1_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 4,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      3,
+      4
+     ],
+     "seconds": 59.2,
+     "so_kernel_dim": 2,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    },
+    {
+     "block_dims": {
+      "forward": 6,
+      "reverse": 6
+     },
+     "c1_kernel_dim": 2,
+     "c1_kernel_einstein_dim": 1,
+     "c1_kernel_responses": [
+      [
+       "1/2",
+       "0",
+       "-1/4",
+       "0"
+      ],
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     ],
+     "c1_support": {
+      "dim": 2,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 12,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      1,
+      2
+     ],
+     "seconds": 134.2,
+     "so_kernel_dim": 4,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    },
+    {
+     "block_dims": {
+      "forward": 6,
+      "reverse": 6
+     },
+     "c1_kernel_dim": 2,
+     "c1_kernel_einstein_dim": 1,
+     "c1_kernel_responses": [
+      [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      [
+       "0",
+       "-1/2",
+       "0",
+       "1/4"
+      ]
+     ],
+     "c1_support": {
+      "dim": 2,
+      "forward": 0,
+      "reverse": 0
+     },
+     "dim": 12,
+     "joint": {
+      "N0": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N1": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      },
+      "N2": {
+       "dim": 0,
+       "einstein_dim": 0,
+       "responses": []
+      }
+     },
+     "pair": [
+      2,
+      3
+     ],
+     "seconds": 134.1,
+     "so_kernel_dim": 4,
+     "zero_response_support": {
+      "dim": 1,
+      "forward": 0,
+      "reverse": 0
+     }
+    }
+   ],
+   "signature": [
+    1,
+    3
+   ],
+   "totals": {
+    "c1_kernel_dim": 8,
+    "c1_kernel_einstein_dim": 2,
+    "dim": 40,
+    "joint": {
+     "N0": {
+      "dim": 0
+     },
+     "N1": {
+      "dim": 0
+     },
+     "N2": {
+      "dim": 0
+     }
+    },
+    "so_kernel_dim": 16,
+    "zero_response_dim": 6
+   }
+  }
+ ],
+ "source_commit": "3e1894cfa703f0a61401e88c9c34e170de447a90",
+ "support": "forward = j->l; reverse = l->j; dimensions of subspace intersections, not basis-vector support"
+}
