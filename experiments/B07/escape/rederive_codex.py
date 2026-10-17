@@ -424,7 +424,8 @@ def main():
     assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip() == commit, 'HEAD changed during run'
     elapsed_ms = (perf_counter_ns() - start) // 1_000_000
     print(f'SUMMARY: agree={report.agree}, disagree={report.disagree}, unavailable={report.unavailable}; elapsed_ms={elapsed_ms}', flush=True)
-    return 1 if report.disagree else 0
+    assert report.disagree == 0, f'{report.disagree} mathematical comparisons disagree (see FINDING rows)'
+    return 0
 
 
 if __name__ == '__main__':
