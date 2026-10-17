@@ -1,0 +1,2329 @@
+{
+ "E1": [
+  {
+   "Q": {
+    "pinned": {
+     "CAA Einstein": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "-1",
+       "-1/4"
+      ]
+     },
+     "CAC chiral": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     "CCC literal": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "-1",
+       "-1/4"
+      ]
+     },
+     "E_OP": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "-4",
+       "-1"
+      ]
+     }
+    },
+    "prime": {
+     "CAA Einstein": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "1",
+       "1/4"
+      ]
+     },
+     "CAC chiral": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     "CCC literal": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "1",
+       "1/4"
+      ]
+     },
+     "E_OP": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "4",
+       "1"
+      ]
+     }
+    }
+   },
+   "basis_dim": 20,
+   "invariants": [
+    "W.W",
+    "W.*W",
+    "Ric0.Ric0",
+    "S.S"
+   ],
+   "response_gram": [
+    [
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "-1",
+       "-1/4"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "-1"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     }
+    ],
+    [
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "1",
+       "1/4"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "1"
+      ]
+     }
+    ],
+    [
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "-1"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "-4"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     }
+    ],
+    [
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "1"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "4"
+      ]
+     }
+    ]
+   ],
+   "signature": [
+    3,
+    1
+   ]
+  },
+  {
+   "Q": {
+    "pinned": {
+     "CAA Einstein": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "-1",
+       "-1/4"
+      ]
+     },
+     "CAC chiral": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     "CCC literal": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "-1",
+       "-1/4"
+      ]
+     },
+     "E_OP": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "-4",
+       "-1"
+      ]
+     }
+    },
+    "prime": {
+     "CAA Einstein": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "1",
+       "1/4"
+      ]
+     },
+     "CAC chiral": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     "CCC literal": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "1",
+       "1/4"
+      ]
+     },
+     "E_OP": {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "4",
+       "1"
+      ]
+     }
+    }
+   },
+   "basis_dim": 20,
+   "invariants": [
+    "W.W",
+    "W.*W",
+    "Ric0.Ric0",
+    "S.S"
+   ],
+   "response_gram": [
+    [
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "-1",
+       "-1/4"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "-1"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     }
+    ],
+    [
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "1",
+       "1/4"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "1"
+      ]
+     }
+    ],
+    [
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "-1"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "-4"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     }
+    ],
+    [
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "1"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ]
+     },
+     {
+      "im": [
+       "0",
+       "0",
+       "0",
+       "0"
+      ],
+      "re": [
+       "0",
+       "0",
+       "0",
+       "4"
+      ]
+     }
+    ]
+   ],
+   "signature": [
+    1,
+    3
+   ]
+  }
+ ],
+ "E2": [
+  {
+   "family": {
+    "accepted": 15,
+    "attempted": 15,
+    "skipped": [],
+    "t": "1/2"
+   },
+   "modes": {
+    "CAA": {
+     "rows": [
+      {
+       "blade": 1,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 2,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 3,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 4,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 5,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 6,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 7,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 8,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 9,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 10,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 11,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 12,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 13,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 14,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 15,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "-1",
+         "-1/4"
+        ]
+       },
+       "grade": 4,
+       "leak_rank": 0,
+       "residual": 6
+      }
+     ],
+     "undressed_leak_rank": 0
+    },
+    "CAC": {
+     "rows": [
+      {
+       "blade": 1,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 2,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 3,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 4,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 5,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 6,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 7,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 8,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 9,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 10,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 11,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 12,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 13,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 14,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 15,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 4,
+       "leak_rank": 0,
+       "residual": 6
+      }
+     ],
+     "undressed_leak_rank": 0
+    },
+    "CCC": {
+     "rows": [
+      {
+       "blade": 1,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 2,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 3,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 4,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 5,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 6,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 7,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 8,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 9,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 10,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 11,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 12,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 13,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 14,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 15,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "-1",
+         "-1/4"
+        ]
+       },
+       "grade": 4,
+       "leak_rank": 0,
+       "residual": 6
+      }
+     ],
+     "undressed_leak_rank": 0
+    }
+   },
+   "signature": [
+    3,
+    1
+   ],
+   "weyl_dim": 10
+  },
+  {
+   "family": {
+    "accepted": 15,
+    "attempted": 15,
+    "skipped": [],
+    "t": "1/2"
+   },
+   "modes": {
+    "CAA": {
+     "rows": [
+      {
+       "blade": 1,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 2,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 3,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 4,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 5,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 6,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 7,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 8,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 9,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 10,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 11,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 12,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 13,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 14,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 15,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "-1",
+         "-1/4"
+        ]
+       },
+       "grade": 4,
+       "leak_rank": 0,
+       "residual": 6
+      }
+     ],
+     "undressed_leak_rank": 0
+    },
+    "CAC": {
+     "rows": [
+      {
+       "blade": 1,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 2,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 3,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 4,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 5,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 6,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 7,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 8,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 9,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 10,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 11,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 12,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 13,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 14,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 15,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ]
+       },
+       "grade": 4,
+       "leak_rank": 0,
+       "residual": 6
+      }
+     ],
+     "undressed_leak_rank": 0
+    },
+    "CCC": {
+     "rows": [
+      {
+       "blade": 1,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 2,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 3,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 4,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 5,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 6,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 7,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 8,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 1,
+       "leak_rank": 10,
+       "residual": 3
+      },
+      {
+       "blade": 9,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 10,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 11,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 12,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 2,
+       "leak_rank": 6,
+       "residual": 2
+      },
+      {
+       "blade": 13,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 14,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": null
+       },
+       "grade": 3,
+       "leak_rank": 5,
+       "residual": 3
+      },
+      {
+       "blade": 15,
+       "cov_defect": 0,
+       "dressed_Q": {
+        "im": [
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        "re": [
+         "0",
+         "0",
+         "-1",
+         "-1/4"
+        ]
+       },
+       "grade": 4,
+       "leak_rank": 0,
+       "residual": 6
+      }
+     ],
+     "undressed_leak_rank": 0
+    }
+   },
+   "signature": [
+    1,
+    3
+   ],
+   "weyl_dim": 10
+  }
+ ],
+ "scope": "identity: 4D point, flat model, T = 0 (E1); finite blade-Cayley dressing family (E2); reading V conventions of experiments/B07/phase2",
+ "seconds": 234.6,
+ "source_commit": "b000c3f40a5e93bc517715c1dd34649020cdc2dd"
+}
