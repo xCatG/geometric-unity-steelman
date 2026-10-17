@@ -1,6 +1,6 @@
 # B07 option C: the T-sector of I₂ and the frozen-metric connection reading. Pre-registration design
 
-**Status:** rev 3. Nothing has been run. Codex's and the reviewers' probes used sizes, timings, block support and toy maps only. No Q1–Q4 rank, root, inertia or classification of a named operator has been computed. The outcome classes and their readings are fixed **before** any experiment code exists. The implementation plan, with smoke-tested code, comes after this design is approved.
+**Status:** rev 3.1. It folds the rev 3 confirmation pass (Codex: revise, 3 blocking; Grok: ready with fixes, 1 blocking; all fixes local). Nothing has been run. Codex's and the reviewers' probes used sizes, timings, block support and toy maps only. No Q1–Q4 rank, root, inertia or classification of a named operator has been computed. The outcome classes and their readings are fixed **before** any experiment code exists. The implementation plan, with smoke-tested code, comes after this design is approved.
 
 **History:**
 - rev 0 (`c6564f2`), then Codex's review (11 findings);
@@ -58,7 +58,7 @@ H14 already compared the quadratic action's variation with (9.12)–(9.13), reco
 - **Gram structure.** M(k) = 2U(−k)ᵀG₃U(k), with G₃ the diagonal ±1 Gram matrix on 3-forms (`second_order.adjoint` asserts that it is diagonal). Consequences:
   - det M = det(2G₃)·|det U|² on real k;
   - **ker U(k) ⊆ ker M(k)**: the solutions of the linearized Υ = 0 are a subset of the field-equation solutions;
-  - the radical of G₃ on im U(k) measures the gap between ker U and ker M.
+  - dim ker M(ω) − dim ker U(ω) = dim[im U(ω) ∩ ker(U(−ω)ᵀG₃)]. At real ω only (after control 1, U(−ω) = conj U(ω)), this is the Hermitian radical of G₃ on im U(ω). The pairing is bilinear, so U(−k)ᵀ, not U(−k)^†, is the correct factor.
 
 **Prime convention.**
 - The primary model is H14's **fixed-X** policy: X is held fixed while the external star and its pairing change.
@@ -105,7 +105,7 @@ H14 already compared the quadratic action's variation with (9.12)–(9.13), reco
    - S₂ = 2(−1)^q G₁.
    - M′(k; κ₁) = −M(k; −κ₁).
    - M(k) = 2U(−k)ᵀG₃U(k), entrywise at every determining wavevector.
-   - det M on each ray equals det(2G₃)·u(ω)·conj u(ω), where u = det U is computed independently.
+   - det M(ω) = det(2G₃)·u(ω)·u(−ω) as an analytic polynomial identity on each ray, where u = det U is computed independently. Modulus notation |u|² is used for real ω only. Every real root of det M has even multiplicity. If covariance passes, u is even and every complex root's multiplicity is doubled too. If it fails, the root set of M is the union of the roots of U and their negatives, with multiplicities added.
    - On ker U(ω₀) at a real root, the derivative form V^†M′(ω₀)V restricts to 0.
 5. **Lorentz covariance.**
    - **Generators.** For each J_ab = ½Γ_aΓ_b (a < b), let ρ(J) = ⊕_grades `universal.rho(p, q, 1, g, ph)`, real on the phased one-form basis. Let ρ₃(J) be the same on 3-forms, and Λ_J the action on covectors (as in `gu.shiab.generator_action`).
@@ -139,11 +139,11 @@ H14 already compared the quadratic action's variation with (9.12)–(9.13), reco
    **Closure.** u(A)-closure is checked and reported as a fact. The grade-1 phases differ there, so F is not u(A)-valued with the documented Dirac adjoint. If closure fails (exception (b)), control 1 is reduced to M(k) = M(−k)ᵀ over Q(i). Conjugation, Hermiticity and a real-field reading are not asserted, and nothing from Q1–Q4 runs at these signatures. No mass or stability reading is attached at these signatures either way.
 9. **Pre-decided facts, recorded as controls rather than outcomes.**
    - **κ₁ ≠ 0.** det M(0) = det(2(−1)^qκ₁²G₁) ≠ 0. So:
-     - the null ray must give det M ≡ det M(0);
+     - with `covariance_verified=true` only, the null ray must give det M ≡ det M(0) (in the fallback this is a raw ray diagnostic, not a control);
      - no root has ω² = 0;
      - det M is never identically zero on a ray.
    - **κ₁ = 0.** det S₀(k) ≡ 0, with nullity ≥ 16 for k ≠ 0 (the exact directions {k⊗λ}).
-   - **Q1 for operators in the C1 kernel.** For each named operator, C1 is computed (`variation.c1_residual`). For E_OP it must agree with `phase2/result.json` `e_op_c1_nonzero` = 0 at both signatures. For every operator with C1 = 0, S₁ ≢ 0 is forced, because C1 = S₁ = 0 would force X = 0 (Q1 closed form).
+   - **Q1 for operators in the C1 kernel.** For each named operator, C1 is computed (`variation.c1_residual`). For E_OP it must agree with `phase2/result.json` `e_op_c1_nonzero` = 0 at both signatures. For every operator with C1 = 0 and X ≠ 0 (supplied by its nonzero algebraic response in control 6), S₁ ≢ 0 is forced, because C1 = S₁ = 0 would force X = 0 (Q1 closed form).
 
    Any violation is a failed control.
 
@@ -187,7 +187,7 @@ No outcome of Q1–Q4 can exhibit an Einstein–Hilbert term, because the metric
 - 𝓔ᵃ = ∗⁻¹{E_F(H) + E_F′(K) : H, K antisymmetric}.
 - By Schur, the 15-part can land only in 𝓔 ⊕ 𝓔ᵃ (control 6).
 
-**Reported per operator, on the 15-part.** The 1-part is decided by control 6 and is reported only as that control.
+**Reported per operator.** On the 1-part, the image inclusion, the rank bound ≤ 1, the zero image modulo 𝓔 and the CCC inner-term cancellation are controls (control 6). The full X∘ξ response on the 1-part is still measured: zero or rank one, with its coefficients in the pinned E_F(g), E_F′(g) basis after ∗. On the 15-part:
 - (i) Output zero or nonzero, and the rank of X∘ξ.
 - (ii) For CCC, the inner term: the inner bracket `bracket(B, ∗x, 'C')` of `gu.shiab.shiab_parts(F, B, ξ(R))`, taken before the outer bracket. Record zero or nonzero, and its rank.
 - (iii) dim(image ∩ 𝓔) and dim(image ∩ 𝓔ᵃ), checked to sum to the rank.
@@ -206,9 +206,9 @@ No outcome of Q1–Q4 can exhibit an Einstein–Hilbert term, because the metric
 - On a ray k = ωu: det U(ωu) = det(∗)·det(iωN(u) + κ₁).
 - So the dispersion roots of Υ_lin are **ω = iκ₁/ν** for the nonzero eigenvalues ν of the rational matrix N(u).
   - A real ω corresponds to a purely imaginary ν, i.e. ν² < 0, with ω² = −κ₁²/ν².
-  - ν = 0 (the nilpotent part) gives no finite root. It is the degree deficit.
+  - ν = 0 gives no finite root. The degree deficit is the algebraic multiplicity of the eigenvalue 0 of N(u), i.e. the dimension of its generalized zero eigenspace, not dim ker N. It doubles for det M.
 - The exact characteristic polynomial of N(u), a 64 × 64 rational matrix (python-flint `fmpq_mat.charpoly`), is the primary computation. It is factored over Q.
-- det M then follows as a check: det M = det(2G₃)·|det U|² (control 4). Every root of det M has even multiplicity.
+- det M then follows as a check, via the analytic identity of control 4.
 
 **Grade blocks.**
 - These are the safe support blocks from Codex's probe:
@@ -230,7 +230,7 @@ No outcome of Q1–Q4 can exhibit an Einstein–Hilbert term, because the metric
 - (i) The characteristic polynomial of N(u) and its factorization: the nilpotent dimension, and each nonzero eigenvalue factor.
 - (ii) For each root ω₀:
   - its multiplicity in det U;
-  - dim ker U(ω₀) and dim ker M(ω₀) (their difference is the radical dimension of G₃ on im U(ω₀));
+  - dim ker U(ω₀) and dim ker M(ω₀). Their difference is dim[im U(ω₀) ∩ ker(U(−ω₀)ᵀG₃)]. At real roots only, call it the Hermitian radical dimension of G₃ on im U(ω₀). At complex roots, report it as the cross-annihilator dimension, with no radical or inertia interpretation;
   - partial multiplicities wherever they are computed. Otherwise the entry reads "not computed".
 - (iii) **Nested kernels of S₀(u):** {u⊗λ} ⊆ ker(X∘(u∧·)) ⊆ ker S₀(u). Record the three dimensions and the two quotient dimensions. The second quotient is the radical of the pairing on im(X∘(u∧·)).
 - (iv) κ₁ = 0: rank of S₀ on each pinned ray.
@@ -240,23 +240,26 @@ No outcome of Q1–Q4 can exhibit an Einstein–Hilbert term, because the metric
 - **(3c) Real roots with ω² > 0 on the timelike ray** (ν² < 0). These are massive-type dispersion roots. With k² = η^{μν}k_μk_ν and η = diag(+1 × p, −1 × q), record m² = −k² on (3,1) and m² = +k² on (1,3). Also record the multiplicities and the nullities of U and of M. No stability claim is made.
 - **(3e1) ω² < 0 on the timelike ray** (ν² > 0). This is a tachyonic-type root of this frozen-metric reading, under the (3c) m² convention. No instability claim is made, because no time-evolution setup is stated.
 - **(3e2) Complex ω²** (ν² ∉ R). This is a non-real root, and it is not called tachyonic.
-- **(3f) Non-semisimple root.** Record its partial multiplicities. It is forced wherever ker M(ω₀) = ker U(ω₀) (control 4). Where forced, the reading is "a root of the first-order symbol U, doubled by I₂ = ‖Υ‖²", and nothing further. A non-semisimple root of U itself is recorded with no reading.
+- **(3f) Non-semisimple root.** Record its partial multiplicities. At real roots it is forced wherever ker M(ω₀) = ker U(ω₀), because the derivative form vanishes on ker U (control 4). At complex roots, with covariance verified, it is forced by the doubled multiplicity: dim ker U ≤ mult(det U) < 2 mult(det U) = mult(det M). Where forced, the reading is "a root of the first-order symbol U, doubled by I₂ = ‖Υ‖²", and nothing further. A non-semisimple root of U itself is recorded with no reading.
 - Mixed outcomes are recorded per root.
 
 ### Q4. Sign data on the kernels (named forms only)
 
-For each real root ω₀ of Q3 with ω₀² = d ∈ Q, take exact bases V_U of ker U(ω₀) and V_M of ker M(ω₀). Kernels and forms are computed over Q(√−d), and Hermitian elimination uses rational pivots.
+Data (i) and (ii) are computed for each real root ω₀ of Q3 with ω₀² = d ∈ Q (d > 0), including non-semisimple roots. Take exact bases V_U of ker U(ω₀) and V_M of ker M(ω₀). Kernels and forms are computed over Q(√−d), and Hermitian elimination uses rational pivots.
 
 **Data, each named and reported separately:**
 - **(i) Derivative form on ker M.** V_M^†M′(ω₀)V_M, scaled by |ω₀| so that its entries lie in Q(√−d). Record its rank and its inertia. By control 4 it vanishes on ker U, so when it is nondegenerate n₊, n₋ ≥ dim ker U.
-- **(ii) Second-order form on ker U.** (U′(ω₀)V_U)^†G₃(U′(ω₀)V_U) = ½V_U^†M″(ω₀)V_U, and its inertia. It governs the leading (ω − ω₀)⁻² coefficient of M⁻¹ on ker U.
+- **(ii) Second-order form on ker U.** Q_U = (U′(ω₀)V_U)^†G₃(U′(ω₀)V_U), with its rank and inertia. Q_U is the datum. The identity Q_U = ¼V_U^†M″(ω₀)V_U holds because U is affine in ω, and it is a check, not a second definition. Q_U is an algebraic restricted form only. No inverse-pole coefficient of M⁻¹ is inferred from it: that would need a Schur complement over the complementary space, which is outside these data.
 - **(iii) Restricted forms on ker S₀(u)** (the infinite-eigenvalue data of the M pencil). With V₀ an exact basis of ker S₀(u), record dim ker S₀(u) and the inertias of V₀^†S₁(u)V₀ and of V₀^†G₁V₀. This datum needs no dispersion root. It is not an intersection with ker M(ω₀), and it is not a residue form.
 
-**Unsupported cases.** Roots with irrational ω₀², complex roots and non-semisimple roots give `not_applicable` or `requires_algebraic_extension` for (i). No inertia is invented. An unexpected zero direction in (i) at a root certified semisimple is an internal consistency failure.
+Datum (iii) is computed on each pinned ray, whether or not a rational real root exists.
+
+**Semisimplicity and unsupported cases.** Semisimplicity is recorded separately. Non-semisimple real roots still get (i) and (ii), with rank and full inertia (n₊, n₋, n₀), and no simple-pole interpretation. Complex roots give `not_applicable` for Hermitian inertia. Real roots with irrational ω₀² give `requires_algebraic_extension`. No inertia is invented. An unexpected zero direction in (i) at a root certified semisimple is an internal consistency failure.
 
 **Implementation.** `gu.inertia` accepts Q(i) only. The Q(√−d) Hermitian elimination is new code with its own controls:
-- d = −1, where it must agree with `gu.inertia`;
-- one hand-checked d;
+- d = 1, where the field is Q(i) and it must agree with `gu.inertia`, on fixtures with nonzero imaginary off-diagonal entries;
+- zero directions;
+- one hand-checked positive non-square rational d;
 - off-diagonal pivots;
 - the conjugation convention.
 
