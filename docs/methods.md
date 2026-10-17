@@ -232,3 +232,15 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
     - Fault harnesses normalize line endings; watchers wait for the `DONE` token, not the file.
     - Send pi slash commands with `MSYS_NO_PATHCONV=1`; pi's `/new` resets the model, so re-set it.
     - When no non-Claude reviewer is available, say so in the README status line.
+- **2026-10-17 · B07 escape: non-Claude retry of Tasks 4–5 · Codex (second independent re-derivation, exact SymPy), Grok via pi (audit of the README, the Claude re-derivation and the register), Claude (verification, re-runs, rederive revision, folds).**
+  - *Worked:*
+    - A second re-derivation by a different model, under a stricter import and reading list, agreed on 192/192 and independently hit the same unstated ξ summation range.
+    - The worker refused to synthesize E_OP from its expected Q when the defining formula was outside its allowed sources, and reported the rows as unavailable rather than passed.
+    - The non-Claude audit found what the Claude audit missed: 90 agree rows that compared a different predicate, zero by construction, under the production field's name.
+  - *Didn't:*
+    - Claude's brief for the re-derivation omitted the file that defines E_OP; four rows needed an extension.
+    - The earlier Claude-only audit counted rows without checking that each compared the quantity its label names; the register again shortened README hypotheses.
+  - *Changes:*
+    - For each comparison row, check that both sides compute the same predicate, and mark rows that are entailed by other rows or zero by construction; do not count them as independent.
+    - Pin observed counts (not just `> 0`) and every branch the prose mentions as rows.
+    - Build a re-derivation brief's allowed-source list from where each object the worker must rebuild is defined (grep its name), not from memory.
