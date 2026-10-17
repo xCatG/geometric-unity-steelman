@@ -2,13 +2,20 @@
 
 Last updated: 2026-10-16 (after P7), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe done (3e1894c, 748ef7c, ac5f4f8)** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
 
-## Current work (resume here) — B07 Phase 2 COMPLETE incl. grade-split probe; non-GR channels plan rev 1.1 awaiting user approval
+## Current work (resume here) — B07 Phase 2 COMPLETE; non-GR channels (escape) plan EXECUTING: Tasks 1–3 done, Task 4 with Grok
 
 **Non-GR channels plan (2026-10-16):** the user asked "What can we do to escape? Outside of Einstein GR", then shared Argon's four exits. Grok reviewed Claude's and Argon's directions (cut the pullback and the C2 zero set). Plan `docs/superpowers/plans/2026-10-16-b07-escape.md`:
 - rev 0 5b10d12; rev 1 2eb4257 (Codex: revise with 2 blockers; Grok: accept with fixes); rev 1.1 2593adf (Grok accept, Codex accept with fixes, folded).
 - E1: the curvature sector of (9.11) at T = 0 on algebraic curvature is Ric² (no W² in the integrand; equivalent to ½W² + ⅓R² modulo Gauss–Bonnet).
 - E2: the dressed Shiab leaks Weyl curvature even under Spin-image bivector dressings (rank 6); P4 holds only under a sufficient transported-Weyl condition.
-- Smoke clone in the scratchpad (`escape/repo`, 169.8 s, 9 tests). Next: the user's approval and execution method, then Task 1 (Claude derivations).
+- Smoke clone in the scratchpad (`escape/repo`, 169.8 s, 9 tests).
+
+**Escape plan EXECUTING (approved by the user 2026-10-16, quota-conserving routing):** Claude does Tasks 1–3 and the README; Codex was reserved for Task 4, but both Codex panes (0:3, 0:5) hit weekly 0%. So, per the user's fallback, **Task 4 went to Grok** (pane 0:4, fresh `/new` session, model re-set to grok-4.7; brief `.agent-handoff/b07-escape-rederive/task.md`).
+- Task 1: 8c3592e `experiments/B07/escape/derivations.md` (Grok: accept with 4 fixes, folded).
+- Task 2: b000c3f code + 9 tests, verbatim from the plan. 9 passed (45 s); full suite 401 passed (14:28); seeded faults E-F1..E-F8 all RED. E-F6's first failing assertion is the skip count (9 ≠ 8), not membership.
+- Task 3: 2b75c7e `result.json` (234.6 s, exit 0). 0 differences from the smoke payload apart from `seconds`/`source_commit`.
+- Next: Grok's `rederive.py` + `rederivation.md`; then Task 5 (Claude README; audit by Grok; register; P7).
+- Gotcha: from Git Bash, send pi slash commands with `MSYS_NO_PATHCONV=1`, or `/new` becomes `C:/Program Files/Git/new`. pi's `/new` resets the model to openai gpt-6.1-sol.
 
 **Execution state (2026-10-16 19:02):**
 - **Done:**
