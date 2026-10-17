@@ -4,20 +4,18 @@ Last updated: 2026-10-16 13:05 before compaction, by Claude (orchestrator, pane 
 
 ## Current work (resume here) — B07 Phase 2 EXECUTING (rev 2 approved by the user 2026-10-16)
 
-**Execution state (late 2026-10-16):**
-- **Task 1 done:** e81d943 (`__init__.py`), ed3f6d8 (`derivations.md`), 1d9510b (Grok review folded: Fourier factor 2 adopted; H9 torsion objection rejected on the maths, since d_B's Leibniz rule needs no torsion-freeness, but the sentence now names hypotheses 3–4).
-- **Tasks 2–4 (Codex, pane 0:3):** in progress. Brief `.agent-handoff/b07p2-impl/task.md`. Tests 22, suite 387 and 13 faults RED were seen in the pane log; verify. The runner's item 1 is done (4D 1661 s, 14D 1681 s); the independent re-derivation passed.
-- **Argon "outside GR" discussion** (user request): Claude + Grok, 2 rounds, in `.agent-handoff/b07p2-argon-discuss/`.
-  - Verdicts: claims 1, 2, 4, 5 and 6 wrong; claim 3 (Test 5′) real but sampled; claim 7 (ε-variation) is one registered [ext], not a shown lift; claim 8 undecided.
-  - The agreed 4-line README section "GU's own claims vs GR-shaped model choices" is in `result-r2.md` §5. Use it in Task 5.
-- **User-approved follow-ups after Phase 2 closes:**
-  - **Grade-split probe:** C1 kernel per grade pair {0↔1, 0↔3, 1↔4, 3↔4} first, at (3,1). If the kernel dims sum to 6, all six zero-response directions lie off grade 2. Otherwise solve {1↔2, 2↔3} (576-column blocks, minutes).
-  - Optionally, the X*X isotypic decomposition at (3,1) for E_OP and CCC.
-- **Lean (Astra, pane 0:5):** `.agent-handoff/b07-argon-lean/task.md`, branch `b07-argon-lean` in the GU-b02-lean worktree. Targets: generous readings T1 umbilic Λ-term, T2 torsion-trace divergence, T3 ε-variation, T4 grade selection, T5 Schur. The user said to ignore the weekly quota. `b05-sign-lean` (4c4d88c) is already on master: it is an ancestor of master (checked 2026-10-16), so no merge was needed.
-- **Next:**
-  - verify Codex's claims and compare `result.json` with the smoke values;
-  - Task 5: README, Codex audit, register, P7, then HANDOFF and a methods retro.
-- **Do not adopt into the README** the user's pasted gloss "obstruction lives in the cubic structure": it overclaims, since the result is model-relative.
+**Execution state (2026-10-16 19:02):**
+- **Done:**
+  - Task 1: e81d943, ed3f6d8, 1d9510b.
+  - Tasks 2–4 (Codex): 8a44e8c code, be91369 rederive, a16ad79 result.json (4206.4 s), 98bb832 rederivation. Claude verified the code equals the plan's and result.json equals the smoke payload.
+  - README: 6e63318, with Codex's 6 audit findings folded.
+  - Register: a677edb.
+- **P7 running:** a clean clone at 8a44e8c in the scratchpad (`p7/`). The runner exited 0; the suite and faults follow. Then compare result.json, update the README status, write the HANDOFF and the methods.md retro.
+- **Argon "outside GR" discussion:** Claude and Grok, `.agent-handoff/b07p2-argon-discuss/`. Its README section is in the Phase 2 README.
+- **Lean b07-argon-lean:** squash-merged to master as a1c5701 (user OK). The generous readings are T1–T5. FINDING 1 is a trace-free-torsion counterexample to weakening H11 hypothesis 2.
+- **b05-sign-lean** (4c4d88c) was already on master.
+- **Next after Phase 2:** the grade-split probe (user-approved). C1 kernel per grade pair at (3,1): small pairs first ({0↔1, 0↔3, 1↔4, 3↔4}), then {1↔2, 2↔3} if needed. Optionally, the X*X isotypic decomposition.
+- **Do not adopt into the README** the user's pasted gloss "obstruction lives in the cubic structure".
 
 **Plan approval history (below):**
 
