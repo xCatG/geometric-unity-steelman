@@ -3,8 +3,8 @@
 **Status:** results recorded and independently re-derived (709/709 agree); README audit pending; register pending; P7 pending.
 
 **Result, in one paragraph.** Two non-GR channels were tested with exact algebra on GU's own constructions, at a 4D point, signatures (3,1) and (1,3), on Phase 2's flat model under reading V.
-- **E1.** On algebraic curvature at T = 0, the curvature sector of the second-order Lagrangian (9.11) is Ricci-squared. The pointwise integrand has no nonzero W·W or W·∗W coefficient, and on B02's Einstein ratio it is (b² − a²) Ric·Ric. Modulo the Gauss–Bonnet density this is (b² − a²)(½W² + ⅓R²). Read as a metric action (`[ext]`, R1), that is fourth-order quadratic gravity, not GR.
-- **E2.** The dressed operator ⊚_ε responds to Weyl curvature, even for dressings inside Spin₀ (leak rank 6 on the 10-dimensional Weyl space). Whether the output is zero is gauge-invariant. The draft's P4 ("the Weyl curvature tensor is annihilated", p. 43) holds for the undressed operator. Under dressing, the exact condition is c_h⁻¹x ∈ ker ⊚, with transport into ξ(Weyl) only sufficient.
+- **E1.** On algebraic curvature at T = 0, the curvature sector of the second-order Lagrangian (9.11) is Ricci-squared. The W·W and W·∗W coefficients of the pointwise integrand are 0, and on B02's Einstein ratio it is (b² − a²) Ric·Ric (pinned pairing; the prime pairing flips the sign). As an equivalent action density this is (b² − a²)(½W² + ⅓R²): the Gauss–Bonnet density is a total derivative on a closed manifold or with suitable boundary terms. Read conditionally as a metric action (`[ext]`, R1, with the Levi-Civita connection of a varied metric), for b² ≠ a² that is fourth-order quadratic gravity with no Einstein–Hilbert term at this order, not GR. The independent-connection reading R2 is not established.
+- **E2.** The dressed operator ⊚_ε responds to Weyl curvature, even for dressings inside Spin₀ (leak rank 6 on the 10-dimensional Weyl space). Whether the output is zero is gauge-invariant. The draft's P4 ("the Weyl curvature tensor is annihilated", p. 43) holds for the undressed operator (measured for CCC, CAA and CAC; argued for every equivariant X in 4D by Phase 2 H13). Under dressing, the exact condition is c_h⁻¹x ∈ ker ⊚, with transport into ξ(Weyl) only sufficient.
 
 Neither is a 4D field equation, a spectrum, or an observational claim.
 
@@ -13,12 +13,13 @@ Plan: `docs/superpowers/plans/2026-10-16-b07-escape.md`, rev 1.1 (`2593adf`), ap
 ## The question
 
 The user asked: "What can we do to escape? Outside of Einstein GR".
-- **Lovelock.** In 4D, the only symmetric, divergence-free tensor built from a metric and at most its second derivatives is a combination of the Einstein tensor and Λg. A non-GR answer therefore needs an extra field, higher derivatives, D > 4, or torsion/a non-metric connection. Only the Ricci/scalar span is forced by this; Phase 2's rank 2 and κ = ½ are measured, not forced.
+- **Lovelock.** In 4D, the only symmetric, divergence-free tensor built from a metric and at most its second derivatives is a combination of the Einstein tensor and Λg. A non-GR answer therefore needs an extra field, higher derivatives, D > 4, or torsion/a non-metric connection. Lovelock constrains which metric field equations are possible; it does not say that GU's operators realize one. That the response lies in the four-dimensional Ricci/scalar span is forced by representation theory (Phase 2 H13). That the response image of the 8-dimensional C1 kernel has rank 2 with κ = ½ is measured (Phase 2).
 - Grok's adversarial review (2026-10-16) of Claude's proposal and of Argon's four exits kept two channels on GU's own constructions. **E1** is the higher-derivative exit: which curvature-squared invariants does I₂ = ⟨Υ, Υ⟩ contain? **E2** is the extra-field exit (Argon exit 4; GU's P3/P4): with ε as the field, does ⊚_ε respond to Weyl curvature, what does the covariance identity say about it, and what Lorentz symmetry does each dressing leave?
 
 ## Scope
 
 - 4D point, (3,1) and (1,3), flat model, reading V (ε and the metric fixed, δT = δA). Exact rationals and Gaussian rationals only (P4).
+- **Conventions** (every sign below rests on these): η = diag(+1 × p, −1 × q); ⟨x, y⟩ = Tr(x∧∗y)/2^{n/2} with the pinned ∗ (`second_order.mpair`); Ric_bd = η^{ac}R_abcd; (∗W)_abcd = ½ε_cd^{fg}W_abfg with ε₀₁₂₃ = +1; B02's response r = (a, b, c, d) in the basis (E_F(Ric), E_F′(Ric), S E_F(g), S E_F′(g)), with the Einstein ratio c = −a/2, d = −b/2.
 - **E1:** `identity` on a 20-element basis of algebraic curvature 𝓡 (all 210 basis pairs), at T = 0, F = ξ(R) only. The four invariants W·W, W·∗W, Ric₀·Ric₀, S² span every Spin-invariant quadratic form on 𝓡 (`derivations.md` E1.2).
 - **E2:** `identity` on the stated finite family: the Cayley transforms h = (1 − X)(1 + X)⁻¹ of X = ½u_I for all 15 nonzero blades I, each checked to lie in U(A). Not a search over U(A); not 14D.
 
@@ -32,14 +33,14 @@ Q_X(R) = ⟨X(ξR), X(ξR)⟩, fitted to (W·W, W·∗W, Ric₀·Ric₀, S²). B
 | CCC literal; CAA Einstein | (0, 0, −1, −¼) = −Ric·Ric | (0, 0, 1, ¼) |
 | CAC chiral | 0 | 0 |
 
-- The prime column is ⟨x, y⟩′ = (−1)^{deg y}⟨x, y⟩ with y a 3-form, so Q′ = −Q. It is **not** the full Hodge-convention switch inside (9.3), which reparametrizes Φ² (for CAA with fixed (F, B) that switch fits (0, 0, 1, 9/4)).
+- The prime column is ⟨x, y⟩′ = (−1)^{deg y}⟨x, y⟩ with y a 3-form, so Q′ = −Q. It is **not** the full Hodge-convention switch inside (9.3), which reparametrizes Φ² (for CAA with fixed (F, B) that switch fits (0, 0, 1, 9/4); from the plan's rev 1 review, not computed here).
 - **Response Gram (pinned).** With B02's response r = (a, b, c, d): Q = (b² − a²) Ric·Ric + (−2ac + 2bd − 4c² + 4d²) S². On the Einstein ratio (c = −a/2, d = −b/2) the S² coefficient cancels exactly: Q = (b² − a²) Ric·Ric.
-- **The C1 kernel.** The six zero-response directions of the 8-dimensional C1 kernel are its radical (contribution 0, cross terms included). On the 2-dimensional response image, Q is indefinite with null lines b = ±a. Each null line pulls back to a 7-dimensional null subspace of the 8-dimensional kernel. CAC lies on one.
-- **Controls.** KN(g, g): Ric = 6g, S = 24, W = 0, so Q(E_OP) = −576. Hand-built Weyl dual D = ∗W: W·∗D = −W·W and W·D = W·∗W (`test_weyl_dual_normalization`).
+- **The C1 kernel** (hand, from the Gram and Phase 2; not independently rebuilt). The six zero-response directions of the 8-dimensional C1 kernel (operator space, in the 40-dimensional B07-U) are its radical (contribution 0, cross terms included). On the 2-dimensional response image, Q is indefinite with null lines b = ±a. Each null line pulls back to a 7-dimensional null subspace of the 8-dimensional kernel. CAC lies on one.
+- **Controls.** KN(g, g): Ric = 6g, S = 24, W = 0, so Q(E_OP) = −576 (pinned pairing; hand from the fit, re-derived directly; the test checks S·S = 576). Hand-built Weyl dual D = ∗W: W·∗D = −W·W and W·D = W·∗W (`test_weyl_dual_normalization`).
 
 ## E2 results (`result.json` → `E2`)
 
-Undressed, the Weyl response is 0 for CCC, CAA and CAC. Leak rank = rank of W ↦ ∗⊚_h(ξW) on the 10-dimensional Weyl space; stabilizer = dimension of {L ∈ spin(p,q) : ρ(L)⊚_h = ⊚_h ρ(L) on ξ(𝓡)}, out of 6.
+Undressed, the Weyl response is 0 for CCC, CAA and CAC. Leak rank = rank of W ↦ ∗⊚_h(ξW) on the 10-dimensional Weyl space; stabilizer = dimension of {L ∈ spin(p,q) : ρ(L)⊚_h = ⊚_h ρ(L) on ξ(𝓡)}, out of 6 (`residual` in `result.json`).
 
 | Dressing | Leak rank (Weyl space, of 10) | Stabilizer dimension (spin(p,q), of 6) |
 |---|---|---|
@@ -50,16 +51,16 @@ Undressed, the Weyl response is 0 for CCC, CAA and CAC. Leak rank = rank of W �
 
 - **Covariance control:** ⊚_h(c_h ξW) = c_h ⊚(ξW) = 0, defect 0 for every mode, dressing and Weyl basis input.
 - **Dressed Q:** consistent for the pseudoscalar dressing (equal to the undressed Q) and for CAC under grade-2 dressings (identically 0); `None` (not Spin-invariant) for every other mode/dressing pair.
-- **Family:** at t = ½ all 15 blades are nonsingular and in U(A); at t = 1, 8 are singular and recorded as skipped.
+- **Family:** at t = ½ all 15 blades are nonsingular and in U(A); at t = 1, 8 of 15 are singular and recorded as skipped (`test_dressing_family_records_skips_and_lies_in_u_a`, (3,1) only; not in `result.json`).
 - (3,1) and (1,3) agree row by row.
 
 ## Independent re-derivation (`rederivation.md`)
 
-`rederive.py` (`25d50b3`, one fix `a41f016` committed before the decisive run; table `5d12afb`) was written in a fresh context. It imports only the standard library, numpy and `gu.clifford` (gamma matrices), and rebuilds algebraic curvature, ξ, the Φ bases, the bracket modes, E_OP's blocks and the pairing from the documented formulas. **709 comparisons against `result.json` and the plan's controls, 0 disagreements**, at both signatures (141.6 s; Claude re-ran it: same count, exit 0).
+`rederive.py` (`25d50b3`, one fix `a41f016` committed before the decisive run; table `5d12afb`) was written by a fresh Claude subagent. The plan names Codex, which was out of quota (Grok was out of credits); the deviation is recorded in `rederivation.md`. It imports only the standard library, numpy and `gu.clifford` (gamma matrices), and rebuilds algebraic curvature, ξ, the Φ bases, the bracket modes, E_OP's blocks and the pairing from the documented formulas. **709 comparisons against `result.json` and the plan's controls, 0 disagreements**, at both signatures (141.6 s; Claude re-ran it: same count, exit 0).
 - **E1:** every pinned fit (E_OP, CCC, CAA, CAC), the prime sign flip, all 16 response-Gram entries, the KN(g, g) control (Q(E_OP) = −576) and the ∗W normalization control.
-- **E2:** leak rank, covariance defect and dressed Q for every blade and mode, via the identity route ⊚_h(ξW) = c_h ⊚(c_h⁻¹ξW) with its own ⊚. The centralizer dimension of every member equals the recorded stabilizer dimension, so by the inclusion (`derivations.md` E2.6) **stabilizer = centralizer** on the whole family.
+- **E2:** leak rank via the identity route ⊚_h(ξW) = c_h ⊚(c_h⁻¹ξW) with its own ⊚ (checked equal to the direct dressing on every Weyl input), covariance defect and dressed Q, for every blade and mode. The centralizer dimension of every member equals the recorded stabilizer dimension, so by the inclusion (`derivations.md` E2.6) **stabilizer = centralizer** on the whole family.
 - **P4 counterexample** (CCC, (3,1), blade 0111): the input lies in ξ(Weyl), the dressed output is 0, and c_h⁻¹x has two nonzero grade-3 Clifford coefficients, so c_h⁻¹x ∈ ker ⊚ but not in ξ(Weyl).
-- **What is not independent.** The first run disagreed by a uniform factor 16 on every E1 fit. The B02 README formula for ξ does not state its summation range; summing over a < b, c < d reproduces B02's documented responses. So the *absolute scale* of Q (including −576) is pinned by B02's documented normalization, not independently of it. Every scale-free result (zero Weyl coefficients, ratios, sign flips, ranks, centralizers, the counterexample) agreed already in the first run.
+- **What is not independent.** Run 1 (`25d50b3`) disagreed on 30 of 709 comparisons, all by a uniform factor 16 in E1 scale (including Q(E_OP) = −9216). The fix `a41f016` reads ξ's sum over a < b, c < d and widens the W·∗W non-vacuity check to basis pairs. It was recorded as a documentation note, not a `FINDING:`. The B02 README formula for ξ does not state its summation range; summing over a < b, c < d reproduces B02's documented responses. So the *absolute scale* of Q (including −576) is pinned by B02's documented normalization, not independently of it. Every scale-free result (zero Weyl coefficients, ratios, sign flips, ranks, centralizers, the counterexample) agreed already in the first run.
 - **Not rebuilt:** the stabilizer itself (only the centralizer, as planned), the C1-kernel radical and null lines (they need the 40-dimensional equivariant space), and the t = 1 skip count.
 
 ## Consequences
@@ -88,8 +89,8 @@ Undressed, the Weyl response is 0 for CCC, CAA and CAC. Leak rank = rank of W �
 
 ## Argon's four exits
 
-- **Exit 4 (Weyl leak through ε):** the strongest, and now a measured channel: E2 shows a Weyl response for fixed dressings, including Spin₀ ones (rank 6), with stabilizers 3/2/3/6; it is a fixed-background statement, and dynamics (D2) are open.
-- **Exit 3 (non-linear torsion backgrounds):** the mechanism is wrong; the order-T² test C2 is pointwise and must vanish for every T, so no background removes it (Phase 2), and E1 is the higher-derivative exit that does survive.
+- **Exit 4 (Weyl leak through ε):** the one this run measures: on the stated finite dressing family at a 4D point, E2 shows a Weyl response for fixed dressings, including Spin₀ ones (leak rank 6 on the 10-dimensional Weyl space), with stabilizer dimensions 3/2/3/6 in spin(p,q); it is a fixed-background statement, and dynamics (D2) are open.
+- **Exit 3 (non-linear torsion backgrounds):** as a test of whether (9.7) is the variation, C2 is a pointwise condition that must hold for every T at order T², so restricting to special T only picks out the zero set of the residual (cut by Grok's review); Phase 2 shows that no nonzero operator in the 8-dimensional C1 kernel passes C2 on the flat model, while curved and torsionful form-connection backgrounds beyond H11 remain open; the higher-derivative channel that survived review is E1, with its metric reading R1 conditional.
 - **Exit 1 (drop the Lagrangian; algebraic constraints):** reframed as the B07-Bi compatibility gate for (9.7) as a standalone equation; a follow-up, not an escape.
 - **Exit 2 (formalize the T² no-go):** a scoped technical note with a Lean check of one C2 witness; a follow-up, not an escape.
 
