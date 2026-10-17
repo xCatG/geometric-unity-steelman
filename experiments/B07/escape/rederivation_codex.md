@@ -5,9 +5,10 @@ algebraic curvature at T = 0, and the specified finite Cayley family. This is a
 fresh implementation, not a blind prediction: the plan and derivations disclose
 the expected numbers. There is no 14D, dynamical, spectrum, or phenomenology claim.
 
-**Result: all 186 executed comparisons agree. Four E_OP comparison rows are
-unavailable, not passes.** CCC and CAA fit (0, 0, -1, -1/4); CAC fits zero, with
-all imaginary coefficients zero, at both signatures. The invariant order is
+**Result after the E_OP addendum: all 192 comparisons agree, with no unavailable
+rows.** E_OP fits (0, 0, -4, -1) and gives Q(KN(g,g))=-576 at both signatures.
+CCC and CAA fit (0, 0, -1, -1/4); CAC fits zero, with all imaginary coefficients
+zero, at both signatures. The invariant order is
 (W.W, W.*W, Ric0.Ric0, S.S). All 30 independently computed centralizer dimensions
 match each of the three modes' recorded `residual` values. The requested CCC
 leak ranks at (3,1) are 10, 6, 5, 0 for blades 0001, 0011, 0111, 1111.
@@ -23,7 +24,8 @@ to the independent calculations.
 
 Formula sources are `escape/derivations.md`, `B02/transcription.md`,
 `B02/proofs.md`, `B02/README.md`, `B07/phase2/derivations.md`, and
-`gu/clifford.py`. Repository `docs/methods.md` and the plan's mathematical and
+`gu/clifford.py`. The addendum additionally permits `B07/phase2/README.md`,
+which supplies E_OP's three-block definition. Repository `docs/methods.md` and the plan's mathematical and
 Task 4 instructions supply the procedure. Expected values were known before
 execution. In particular, the methods retrospective already mentions the
 earlier worker's normalization ambiguity; no discovery priority is claimed here.
@@ -38,6 +40,9 @@ earlier worker's normalization ambiguity; no discovery priority is claimed here.
    the pinned star from wedge orientation and the metric; construct both
    brackets by matrix multiplication; assemble (9.3) directly, including its
    nested term. Use Phi=(F,B) for CCC/CAA and (F+Fprime,Bprime) for CAC.
+   For E_OP, independently build the raw first and nested second blocks, with
+   the latter excluding (9.3)'s external -1/2. Apply the newly permitted
+   formula -2 first[C](F) - second[CC](F,B) + second[AA](F,B).
 4. Pair outputs using Tr(x wedge *y)/4, with the actual matrix trace. Fit all
    210 polarized basis pairs to the four invariants, checking exact consistency
    and rank 4. The nonzero output check includes CAC, whose quadratic form is
@@ -57,14 +62,26 @@ no modular ranks. Runtime measurement uses integer nanoseconds.
 
 ## Findings and their disposition
 
-**FINDING: E_OP is not independently reconstructible from the permitted
-formula documents.** Those documents name it, state its expected Q and control,
-and describe the general block family, but do not specify its three block
-coefficients. Inferring an operator from the asserted Q or using twice CAA would
-assume the conclusion under test. Therefore the two E_OP fits and two
-KN(g,g) Q(E_OP) controls are explicitly unavailable. The source documents or
-an approved additional formula source must supply the definition before these
-items can be checked independently. No production expectation was changed.
+**FINDING (resolved by the addendum): E_OP was not independently reconstructible
+from the original permitted formula documents.** Those documents named it,
+stated its expected Q and control, and described the general block family, but
+did not specify its three block coefficients. The initial report correctly
+left two fits and two KN(g,g) controls unavailable rather than infer an operator
+from Q. The addendum identifies an orchestrator omission and now permits
+`B07/phase2/README.md:63`, which explicitly defines E_OP. Its three-block
+formula has now been implemented and all four rows agree. No production
+expectation or protected source file was changed.
+
+The block convention follows the bracket and star placement of B02 (9.3):
+first[m](Phi)(x) = [Phi wedge *x]_m, and
+second[m1,m2](Phi1,Phi2)(x) = *[Phi1 wedge *[Phi2 wedge *x]_m1]_m2.
+The second block has no external -1/2. This also follows from the newly
+allowed README's stated linear response: B02's formulas give
+*first[C](F)(xiR)=-E_F(Ric), *second[CC](F,B)(xiR)=0, and
+*second[AA](F,B)(xiR)=-S E_F(g). Hence the stated E_OP combination has
+*E_OP(xiR)=2E_F(Ric)-S E_F(g). The checker verifies this independently on all
+20 curvature basis inputs at both signatures before computing its quadratic
+fit. Neither a block coefficient nor its normalization is fitted to expected Q.
 
 **FINDING: the B02 README's xi summation range is unstated.** The reconstruction
 uses xi(R) = (1/2) sum_(a<b,c<d) R_abcd eta_c eta_d e^ab Gamma_c Gamma_d.
@@ -98,8 +115,8 @@ has (W+D).*(W+D)=-32; this nonzero parity-odd control detects a missing 1/2
 even though the fitted parity-odd coefficients vanish.
 
 KN(g,g) independently gives Ric=6g, S=24 and Ric.Ric=144 at both signatures.
-Its named-branch responses pin xi as above. Q(E_OP)=-576 remains an expected
-value, not an independently verified value.
+Its named-branch responses pin xi as above. The independently assembled E_OP
+now gives Q(E_OP)=-576 directly at both signatures.
 
 The exact supplied P4 witness at (3,1) belongs to xi(Weyl), checked by adjoining
 it to the independently built Weyl embedding and obtaining rank 10. For blade
@@ -126,6 +143,8 @@ The stabilizers themselves are not recomputed here.
 
 All fault switches are precommitted and affect this independent checker only.
 They do not modify the production implementation or its expected results.
+The following three counts describe the original, pre-addendum checker runs;
+the two added E_OP faults are recorded separately below.
 
 | Fault | Intended mathematical detection at each signature | Total discrepancies |
 |---|---|---|
@@ -154,7 +173,7 @@ it is retained as an infrastructure failure, not a mathematical run. Subsequent
 runs used the authorized uv cache access. The checker records HEAD and checks
 that it is unchanged at the end.
 
-Final producing commit: `80b81e22bb9b2c517448f47813f7608c92db3f79`.
+Original pre-addendum final producing commit: `80b81e22bb9b2c517448f47813f7608c92db3f79`.
 The only change from the initial producing commit is the final assertion gate.
 The two baseline comparison tables are identical (192 lines including the
 header: 186 agreements and four unavailable rows). Commands are
@@ -186,9 +205,53 @@ witness membership assertion was deferred: explicitly compare rank([A|x]) to
 rank(A), although xi is injective on the proven 10-dimensional Weyl basis and
 the blade-0001 leak rank independently establishes rank 10 on its image.
 
-## Complete baseline comparison table
+## E_OP addendum execution
 
-Every executed comparison and each unavailable row is reproduced verbatim
+Producing commit: `50732749a95fd9c9df53a73e8bf3d7b8f39864b1`, committed before
+the extended checker's first run. This adds the raw block construction, four
+formerly unavailable comparisons, and two linear-response checks. Existing
+named-branch, centralizer, leak, and witness calculations are unchanged.
+
+The command remains `uv run python -m experiments.B07.escape.rederive_codex`.
+Its addendum `run-01.log` records 192 agreements, zero disagreements, zero
+unavailable rows, exit 0, checker time 29874 ms and wall time 30686 ms.
+This log is distinct from the original pre-addendum `run-01.log` above.
+
+All 186 previous agreement rows are identical to the prior baseline. The four
+previously unavailable rows now agree, and the two additional linear-response
+checks agree. No unseeded numerical discrepancy occurred in the addendum.
+
+Two precommitted fault switches test the added E_OP implementation. Each is
+run by appending the named `--fault` value to the baseline command, and each
+fails the mathematical comparison assertion, not an import or unrelated check.
+
+| Addendum log | Checker milliseconds | Wall milliseconds | Result |
+|---|---:|---:|---|
+| fault-eop-first-sign.log | 33748 | 34689 | Exit 1; 186 agree, 6 disagree, 0 unavailable |
+| fault-eop-second-scale.log | 34943 | 35759 | Exit 1; 186 agree, 6 disagree, 0 unavailable |
+
+**FINDING (seeded eop-first-sign):** changing -2 first[C] to +2 first[C]
+fails the documented linear-response check at both signatures, changes each
+real fit to (0,0,-4,-9) with zero imaginary part, and changes each KN(g,g)
+value to -5184. These are all six discrepancies. Resolution: without the
+deliberate switch, the same committed implementation gives the six expected
+values. No production code or expectation was changed.
+
+**FINDING (seeded eop-second-scale):** changing +second[AA] to +second[AA]/2
+fails the documented linear-response check at both signatures, changes each
+real fit to (0,0,-4,0) with zero imaginary part, and changes each KN(g,g)
+value to 0. These are all six discrepancies. Resolution: without the
+deliberate switch, the same committed implementation gives the six expected
+values. No production code or expectation was changed.
+
+A follow-up read-only adversarial review checked the extension against the
+newly permitted source and found no substantive defect. It confirmed the raw
+second-block convention and the linear-response derivation. That reviewer
+did not execute code.
+
+## Complete addendum baseline comparison table
+
+Every executed comparison is reproduced verbatim
 below. The expected column comes from Task 2/3 `result.json` where present;
 adapter, basis-split, U(A), normalization, and witness controls use the explicit
 documented or hand-derived values described above.
@@ -214,7 +277,8 @@ documented or hand-derived values described above.
 | (3,1) Q(CAC) re fit (210 pairs) | (0, 0, 0, 0) | (0, 0, 0, 0) | agree |
 | (3,1) Q(CAC) im fit (210 pairs) | (0, 0, 0, 0) | (0, 0, 0, 0) | agree |
 | (3,1) CAC undressed Weyl rank | 0 | 0 | agree |
-| (3,1) Q(E_OP) re/im fits | not independently reconstructible | ((0, 0, -4, -1), (0, 0, 0, 0)) | unavailable |
+| (3,1) E_OP linear response 2E_F(Ric)-S E_F(g) (20 inputs) | True | True | agree |
+| (3,1) Q(E_OP) re/im fits | ((0, 0, -4, -1), (0, 0, 0, 0)) | ((0, 0, -4, -1), (0, 0, 0, 0)) | agree |
 | (3,1) hand W Ricci | (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) | (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) | agree |
 | (3,1) dual matches hand complement construction | True | True | agree |
 | (3,1) W.W nonvacuity | 16 | 16 | agree |
@@ -225,7 +289,7 @@ documented or hand-derived values described above.
 | (3,1) KN(g,g) Ric.Ric | 144 | 144 | agree |
 | (3,1) KN(g,g) *CCC(xi)=(-6)F | True | True | agree |
 | (3,1) KN(g,g) *CAA(xi)=(6)F | True | True | agree |
-| (3,1) KN(g,g) Q(E_OP) | not independently reconstructible | -576 | unavailable |
+| (3,1) KN(g,g) Q(E_OP) | -576 | -576 | agree |
 | (3,1) blade 0001 centralizer vs CCC residual | 3 | 3 | agree |
 | (3,1) blade 0001 centralizer vs CAA residual | 3 | 3 | agree |
 | (3,1) blade 0001 centralizer vs CAC residual | 3 | 3 | agree |
@@ -313,7 +377,8 @@ documented or hand-derived values described above.
 | (1,3) Q(CAC) re fit (210 pairs) | (0, 0, 0, 0) | (0, 0, 0, 0) | agree |
 | (1,3) Q(CAC) im fit (210 pairs) | (0, 0, 0, 0) | (0, 0, 0, 0) | agree |
 | (1,3) CAC undressed Weyl rank | 0 | 0 | agree |
-| (1,3) Q(E_OP) re/im fits | not independently reconstructible | ((0, 0, -4, -1), (0, 0, 0, 0)) | unavailable |
+| (1,3) E_OP linear response 2E_F(Ric)-S E_F(g) (20 inputs) | True | True | agree |
+| (1,3) Q(E_OP) re/im fits | ((0, 0, -4, -1), (0, 0, 0, 0)) | ((0, 0, -4, -1), (0, 0, 0, 0)) | agree |
 | (1,3) hand W Ricci | (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) | (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) | agree |
 | (1,3) dual matches hand complement construction | True | True | agree |
 | (1,3) W.W nonvacuity | 16 | 16 | agree |
@@ -324,7 +389,7 @@ documented or hand-derived values described above.
 | (1,3) KN(g,g) Ric.Ric | 144 | 144 | agree |
 | (1,3) KN(g,g) *CCC(xi)=(-6)F | True | True | agree |
 | (1,3) KN(g,g) *CAA(xi)=(6)F | True | True | agree |
-| (1,3) KN(g,g) Q(E_OP) | not independently reconstructible | -576 | unavailable |
+| (1,3) KN(g,g) Q(E_OP) | -576 | -576 | agree |
 | (1,3) blade 0001 centralizer vs CCC residual | 3 | 3 | agree |
 | (1,3) blade 0001 centralizer vs CAA residual | 3 | 3 | agree |
 | (1,3) blade 0001 centralizer vs CAC residual | 3 | 3 | agree |
