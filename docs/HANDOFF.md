@@ -4,15 +4,19 @@ Last updated: 2026-10-16 13:05 before compaction, by Claude (orchestrator, pane 
 
 ## Current work (resume here) — B07 Phase 2 EXECUTING (rev 2 approved by the user 2026-10-16)
 
-**Execution state (16:04):**
-- **Task 1 done:** e81d943 (`__init__.py`) and ed3f6d8 (`derivations.md`).
-- **Tasks 2–4 (Codex, pane 0:3):** in progress. Brief `.agent-handoff/b07p2-impl/task.md`; status and result in the same directory. Expected: 22 tests, suite 387, 13 faults RED; the runner runs in the background (~85 min) during Task 4.
-- **Grok (pane 0:4):** reviewing `derivations.md` (`.agent-handoff/b07p2-deriv-review-grok/`).
+**Execution state (late 2026-10-16):**
+- **Task 1 done:** e81d943 (`__init__.py`), ed3f6d8 (`derivations.md`), 1d9510b (Grok review folded: Fourier factor 2 adopted; H9 torsion objection rejected on the maths, since d_B's Leibniz rule needs no torsion-freeness, but the sentence now names hypotheses 3–4).
+- **Tasks 2–4 (Codex, pane 0:3):** in progress. Brief `.agent-handoff/b07p2-impl/task.md`. Tests 22, suite 387 and 13 faults RED were seen in the pane log; verify. The runner's item 1 is done (4D 1661 s, 14D 1681 s); the independent re-derivation passed.
+- **Argon "outside GR" discussion** (user request): Claude + Grok, 2 rounds, in `.agent-handoff/b07p2-argon-discuss/`.
+  - Verdicts: claims 1, 2, 4, 5 and 6 wrong; claim 3 (Test 5′) real but sampled; claim 7 (ε-variation) is one registered [ext], not a shown lift; claim 8 undecided.
+  - The agreed 4-line README section "GU's own claims vs GR-shaped model choices" is in `result-r2.md` §5. Use it in Task 5.
+- **User-approved follow-ups after Phase 2 closes:**
+  - **Grade-split probe:** C1 kernel per grade pair {0↔1, 0↔3, 1↔4, 3↔4} first, at (3,1). If the kernel dims sum to 6, all six zero-response directions lie off grade 2. Otherwise solve {1↔2, 2↔3} (576-column blocks, minutes).
+  - Optionally, the X*X isotypic decomposition at (3,1) for E_OP and CCC.
+- **Lean (Astra, pane 0:5):** `.agent-handoff/b07-argon-lean/task.md`, branch `b07-argon-lean` in the GU-b02-lean worktree. Targets: generous readings T1 umbilic Λ-term, T2 torsion-trace divergence, T3 ε-variation, T4 grade selection, T5 Schur. The user said to ignore the weekly quota. `b05-sign-lean` (4c4d88c) also awaits the user's merge OK.
 - **Next:**
-  - verify Codex's claims;
-  - fix `derivations.md` per Grok, but not under `experiments/B07` while Codex's runner is pending;
+  - verify Codex's claims and compare `result.json` with the smoke values;
   - Task 5: README, Codex audit, register, P7, then HANDOFF and a methods retro.
-- **Codex weekly budget was 17% at 16:00.**
 - **Do not adopt into the README** the user's pasted gloss "obstruction lives in the cubic structure": it overclaims, since the result is model-relative.
 
 **Plan approval history (below):**
