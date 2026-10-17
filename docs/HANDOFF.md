@@ -13,7 +13,7 @@ Last updated: 2026-10-16 13:05 before compaction, by Claude (orchestrator, pane 
 - **User-approved follow-ups after Phase 2 closes:**
   - **Grade-split probe:** C1 kernel per grade pair {0↔1, 0↔3, 1↔4, 3↔4} first, at (3,1). If the kernel dims sum to 6, all six zero-response directions lie off grade 2. Otherwise solve {1↔2, 2↔3} (576-column blocks, minutes).
   - Optionally, the X*X isotypic decomposition at (3,1) for E_OP and CCC.
-- **Lean (Astra, pane 0:5):** `.agent-handoff/b07-argon-lean/task.md`, branch `b07-argon-lean` in the GU-b02-lean worktree. Targets: generous readings T1 umbilic Λ-term, T2 torsion-trace divergence, T3 ε-variation, T4 grade selection, T5 Schur. The user said to ignore the weekly quota. `b05-sign-lean` (4c4d88c) also awaits the user's merge OK.
+- **Lean (Astra, pane 0:5):** `.agent-handoff/b07-argon-lean/task.md`, branch `b07-argon-lean` in the GU-b02-lean worktree. Targets: generous readings T1 umbilic Λ-term, T2 torsion-trace divergence, T3 ε-variation, T4 grade selection, T5 Schur. The user said to ignore the weekly quota. `b05-sign-lean` (4c4d88c) is already on master: it is an ancestor of master (checked 2026-10-16), so no merge was needed.
 - **Next:**
   - verify Codex's claims and compare `result.json` with the smoke values;
   - Task 5: README, Codex audit, register, P7, then HANDOFF and a methods retro.
