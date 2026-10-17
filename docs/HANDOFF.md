@@ -1,8 +1,8 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-16 (after P7), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe running** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
+Last updated: 2026-10-16 (after P7), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe done (3e1894c, 748ef7c, ac5f4f8)** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
 
-## Current work (resume here) — B07 Phase 2 COMPLETE; grade-split probe (user-approved) in progress
+## Current work (resume here) — B07 Phase 2 COMPLETE incl. grade-split probe; awaiting the user's next direction
 
 **Execution state (2026-10-16 19:02):**
 - **Done:**
@@ -14,7 +14,7 @@ Last updated: 2026-10-16 (after P7), by Claude (orchestrator, pane 0:2). **B01�
 - **Argon "outside GR" discussion:** Claude and Grok, `.agent-handoff/b07p2-argon-discuss/`. Its README section is in the Phase 2 README.
 - **Lean b07-argon-lean:** squash-merged to master as a1c5701 (user OK). The generous readings are T1–T5. FINDING 1 is a trace-free-torsion counterexample to weakening H11 hypothesis 2.
 - **b05-sign-lean** (4c4d88c) was already on master.
-- **Now:** the grade-split probe (user-approved; Claude scratch probe first, then a Codex brief to record it in the repo). C1 kernel per grade pair at (3,1): small pairs first ({0↔1, 0↔3, 1↔4, 3↔4}), then {1↔2, 2↔3} if needed. Optionally, the X*X isotypic decomposition.
+- **Grade-split probe DONE** (Codex 3e1894c code+5 tests, 748ef7c json, ac5f4f8 README+register; suite 392 passed; fault P14 RED). Claude verified: all 12 pair records equal Claude's independent scratch run; the 5 new tests passed on Claude's re-run; the intersection formula was checked. Result: one zero-response line in each of the six grade pairs, each needing both directed blocks; the Einstein lines are in 1↔2 and 2↔3; joint C1+C2 = 0 in every pair. Argon claim 8 is answered no for the flat model. Next candidates: the `[ext]` items in the plan's "After this plan" section, or the X*X isotypic decomposition. C1 kernel per grade pair at (3,1): small pairs first ({0↔1, 0↔3, 1↔4, 3↔4}), then {1↔2, 2↔3} if needed. Optionally, the X*X isotypic decomposition.
 - **Do not adopt into the README** the user's pasted gloss "obstruction lives in the cubic structure".
 
 **Plan approval history (below):**
