@@ -1,8 +1,34 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-17 (escape plan complete, non-Claude retry folded, 14D E2 witnesses complete), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe done (3e1894c, 748ef7c, ac5f4f8)** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
+Last updated: 2026-10-17 (option C plan rev 2 ready for approval; escape plan and 14D E2 witnesses complete), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe done (3e1894c, 748ef7c, ac5f4f8)** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
 
-## Current work (resume here) — option C pre-registration design at rev 3.1; next: implementation plan
+## Current work (resume here) — option C implementation plan rev 2 (e93bee6), awaiting user approval
+
+**Plan:** `docs/superpowers/plans/2026-10-17-b07-optionc.md`.
+- **Revisions and reviews.**
+  - rev 0 bffe631 → Codex: revise (Q3 at every root; controls 4–8; failure, deadline and checkpoint handling; fallback). A practical Claude review asked for 13 executor fixes.
+  - rev 1 a4aea5f → Codex confirmation: approve with fixes (6).
+  - rev 2 e93bee6 → Codex fold check: approve, no findings.
+- **Smoke run** (scratch clone, code identical to the plan):
+  - runner complete, payload SHA-256 5bf868be…;
+  - 14 new tests, 421 passed in the full suite;
+  - seeded faults C-F1..C-F27 all RED.
+- **Facts for the README.** These were seen after the design froze; readings are the design's.
+  - **Two unforced CAA root families,** exchanged by ν → iν:
+    - (1,3) w² = 1/4: ker M 6 > ker U 3, M semisimple, derivative form (3,3,0);
+    - (3,1) (ν∓2)³, complex ω: ker M 6 > ker U 3, M semisimple. Codex confirmed this one independently.
+  - **The massive/tachyonic exchange between signatures is NOT absorbed** by the (3c) m² convention: both conventions give m² = w².
+- **Open for the user:**
+  - plan approval and execution method;
+  - how the README presents the design's (3f) complex-root sentence, which needs the hypothesis ker M = ker U;
+  - the HANDOFF handoff-path cleanup.
+- **Execution after approval:**
+  - Task 1 Codex (code, tests, faults);
+  - Task 2 Codex (runner, SHA check);
+  - Task 3 fresh Codex (re-derivation);
+  - Task 4 Claude README, Grok audit, register, P7.
+
+## Previous: option C pre-registration design at rev 3.1
 
 **Option C (T-sector of I₂ + frozen-metric R2 reading), 2026-10-17.** The user chose option C with several pre-registered outcome classes instead of one success criterion. Argon's proposal was fact-checked by Grok: neutral 4D pairing wrong; free ± on the cross term unsupported; "Palatini recovery without the obstructed cubic" rejected. Design `docs/superpowers/specs/2026-10-17-b07-optionc-design.md`:
 - **Revisions and reviews.**
