@@ -155,7 +155,9 @@ class Algebra:
         if name == "E_OP":
             first, cc, _ = self.parts(x, self.F, self.B, "CCC")
             _, aa, _ = self.parts(x, self.F, self.B, "CAA")
-            return add((-2, first), (-1, cc), (1, aa))
+            # README's second[ab] denotes the unweighted nested block.
+            # parts() returns the contribution -1/2 times that block.
+            return add((-2, first), (2, cc), (-2, aa))
         f, b = (add((1, self.F), (1, self.Fp)), self.Bp) if name == "CAC" else (self.F, self.B)
         first, second, _ = self.parts(x, f, b, name)
         return add((1, first), (1, second))
@@ -350,7 +352,7 @@ def spectrum(n, alg):
               "multiplicity_det_U": exponent, "multiplicity_det_M": 2 * exponent,
               "control_ker_U_in_ker_M": True, "kernel_gap": vm.cols - vu.cols,
               "kernel_gap_reading": "hermitian_radical" if real_root else "cross_annihilator",
-              "partial_multiplicities_U": partial, "partial_multiplicities_M": "not computed",
+              "partial_multiplicities_U": partial, "partial_multiplicities_M": ([1] * (2 * exponent) if vm.cols == 2 * exponent else "not computed"),
               "semisimple_U": vu.cols == exponent, "semisimple_M": vm.cols == 2 * exponent}
         rec = {"factor": str(polynomial), "degree": int(s.degree(polynomial, nu)), "exponent": exponent,
                "massive_type": [str(w) for w in ws if w.is_positive],
@@ -383,7 +385,8 @@ def spectrum(n, alg):
                            "control_QU_quarter_second_derivative": zero(qu - quarter),
                            "derivative_form_rank": sum(din[:2]), "derivative_form_inertia": din,
                            "second_order_form_rank": sum(qin[:2]), "second_order_form_inertia": qin})
-        rec["Q4"] = q4
+        if q4:
+            rec["Q4"] = q4
         rec["Q4_status"] = "computed" if q4 else ("requires_algebraic_extension" if real_root else "not_applicable")
         records.append(rec)
     return {"degree": 64, "nilpotent_multiplicity": nilpotent, "factors": records}
@@ -420,6 +423,14 @@ def operator(alg, name):
     cov["covariance_verified"] = all(cov.values())
     assert cov["covariance_verified"]
     qtwo, response = q2(alg, name)
+    # Controls fixed by B02's closed form and Phase 2 README, not result.json.
+    pinned_response = {"CCC": ["-1", "0", "0", "0"],
+                       "CAA": ["-1", "0", "1/2", "0"],
+                       "CAC": ["-1", "-1", "1/2", "1/2"],
+                       "E_OP": ["2", "0", "-1", "0"]}
+    assert response == pinned_response[name]
+    if name == "E_OP":
+        assert q1["c1_nonzero"] == 0
     ti, si = (3, 0) if alg.p == 3 else (0, 1)
     rays = {"timelike": s.eye(4)[:, ti], "spacelike": s.eye(4)[:, si], "null": s.eye(4)[:, ti] + s.eye(4)[:, si]}
     nested_results = {}
@@ -482,4 +493,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
