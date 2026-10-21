@@ -1,6 +1,6 @@
 # B07 option C: the T-sector of I₂ and the frozen-metric connection reading
 
-**Status:** results recorded (`complete`; every applicable hard gate held) and independently re-derived by a fresh Codex session (1,444/1,444 compared records agree, 0 disagreements; written without opening the Task 1 code). README audited by Grok (7 findings, all folded: ready with fixes). P7 clean-clone reproduction pending.
+**Status:** results recorded (`complete`; every applicable hard gate held) and independently re-derived by a fresh Codex session (1,444/1,444 compared records agree, 0 disagreements; written without opening the Task 1 code). README audited by Grok (7 findings, all folded: ready with fixes). P7 clean-clone reproduction at `aac4e42` passed: runner `complete` (exit 0), canonical payload SHA-256 equal to the committed result's (`5bf868be…4248`); full suite 421 passed; 27/27 seeded faults RED.
 
 **Result, in one paragraph.** At a 4D point, at (3,1) and (1,3), on the flat background with ε = 1 and the metric frozen (reading V, δT = δA), the quadratic part of I₂ = ‖Υ‖² was computed exactly for CCC, CAA, CAC and E_OP. Every applicable hard gate held, including Lorentz covariance for all four operators; real u(A)-closure fails at the auxiliary signatures (2,2) and (4,0), which is the design's declared exception (b).
 - **Q1.** The κ₁¹ cross term is nonzero for CCC, CAA and CAC (outcome 1b): I₂ contains a first-order quadratic term in T that contributes to the field equation. For E_OP, C1 = 0, so its nonzero S₁ is a control (control 9), not an outcome.
@@ -183,7 +183,7 @@ All other factors are tachyonic-type: their Q4 (i)–(ii) entry is `not_applicab
 - **Pre-decided facts (9):** det M(0) ≠ 0 at κ₁ ≠ 0, no root with ω² = 0, E_OP C1 = 0 matching Phase 2, S₁ ≢ 0 where C1 = 0.
 - **Nested-kernel gates:** {u⊗λ} ⊆ ker(X∘(u∧·)) ⊆ ker S₀(u) on every ray, with exactly 16 exact directions; ker U ⊆ ker M at every root, over the field.
 
-**Tests and faults.** `tests/test_b07_optionc.py`: 14 tests (controls only; outcomes are recorded, never asserted). Task 1 run (Codex, at `aac4e42`): the 14 new tests passed, the full suite gave 421 passed, and 27 seeded faults C-F1..C-F27 (factor 2, phases, transpose/conjugation, G₃ vs G₁, projector sign, η_cη_d in ξ, realification conventions, the w² map, covariance index order, gates, routing, the deadline, late provenance, misreported ranks) were all RED, each on a test assertion or a designed control exception. P7 reproduction: see the status line.
+**Tests and faults.** `tests/test_b07_optionc.py`: 14 tests (controls only; outcomes are recorded, never asserted). Task 1 run (Codex, at `aac4e42`): the 14 new tests passed, the full suite gave 421 passed, and 27 seeded faults C-F1..C-F27 (factor 2, phases, transpose/conjugation, G₃ vs G₁, projector sign, η_cη_d in ξ, realification conventions, the w² map, covariance index order, gates, routing, the deadline, late provenance, misreported ranks) were all RED, each on a test assertion or a designed control exception. P7 reproduced all three in a clean clone (see the status line).
 
 ## Independent re-derivation
 

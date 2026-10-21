@@ -258,3 +258,16 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
     - Never edit a checkout while a suite or runner is running in it.
     - Every seeded fault must fail on a test assertion, not on an assert inside the code under test.
     - When a table summarizes counts, say whether the underlying maps also agree.
+- **2026-10-21 · B07 option C (T-sector of I₂, frozen-metric R2 reading; pre-registered) · Codex (Tasks 1–2 verbatim; independent re-derivation in a fresh session), Grok via pi (README audit), Claude (design, plan, smoke, README, register, P7).**
+  - *Worked:*
+    - Pre-registering outcome classes before any code ran kept the README to the design's readings. The one place the design was too strong (the (3f) complex-root forcing sentence needs ker M = ker U) was found in the smoke run, stated in the plan, and handled as a README note without editing the frozen design.
+    - Smoke-testing the plan's code made the run a confirmation: Codex's payload, the smoke payload and P7's payload have the same canonical SHA.
+    - Three plan revisions under Codex review (10, then 6, then 0 findings) left the executor with one question (pre-existing untracked files), and no code fix.
+    - The fresh-session re-derivation agreed on 1,444/1,444 records after fixing its own E_OP block normalization from the formula sources.
+  - *Didn't:*
+    - Sending `/new` to Codex through Git Bash without `MSYS_NO_PATHCONV=1` turned it into a file path, and the re-derivation brief reached the session that had written the Task 1 code. It was interrupted before writing anything and resent to a real fresh session.
+    - The README draft said "every control held" (real closure fails at the auxiliary signatures, a declared exception), listed an unpinned 3D toy as run, showed one ray's Q4 (iii) data as if ray-independent, and called E_OP's nonzero S₁ an outcome. Grok's audit caught all four.
+  - *Changes:*
+    - Send every slash command to any pane with `MSYS_NO_PATHCONV=1`, and confirm the fresh session from the context meter (100% left) before sending a brief that requires independence.
+    - Mention a declared exception wherever the README makes a "held" claim; list only fixtures that appear in the recorded control keys.
+    - When a datum is recorded per ray or per root, tabulate every ray or root, or say which one is shown.
