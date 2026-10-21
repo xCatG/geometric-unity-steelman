@@ -1,0 +1,3015 @@
+{
+ "auxiliary": [
+  {
+   "backend_controls": true,
+   "mass_sign": 1,
+   "operators": {
+    "CAA": {
+     "S2_identity": true,
+     "prime_identity": true,
+     "real_closure": false,
+     "reconstruction": true,
+     "transpose_identity": true
+    },
+    "CAC": {
+     "S2_identity": true,
+     "prime_identity": true,
+     "real_closure": false,
+     "reconstruction": true,
+     "transpose_identity": true
+    },
+    "CCC": {
+     "S2_identity": true,
+     "prime_identity": true,
+     "real_closure": false,
+     "reconstruction": true,
+     "transpose_identity": true
+    },
+    "E_OP": {
+     "S2_identity": true,
+     "prime_identity": true,
+     "real_closure": false,
+     "reconstruction": true,
+     "transpose_identity": true
+    }
+   },
+   "signature": [
+    2,
+    2
+   ],
+   "star_adjoint_sign_1": -1
+  },
+  {
+   "backend_controls": true,
+   "mass_sign": 1,
+   "operators": {
+    "CAA": {
+     "S2_identity": true,
+     "prime_identity": true,
+     "real_closure": false,
+     "reconstruction": true,
+     "transpose_identity": true
+    },
+    "CAC": {
+     "S2_identity": true,
+     "prime_identity": true,
+     "real_closure": false,
+     "reconstruction": true,
+     "transpose_identity": true
+    },
+    "CCC": {
+     "S2_identity": true,
+     "prime_identity": true,
+     "real_closure": false,
+     "reconstruction": true,
+     "transpose_identity": true
+    },
+    "E_OP": {
+     "S2_identity": true,
+     "prime_identity": true,
+     "real_closure": false,
+     "reconstruction": true,
+     "transpose_identity": true
+    }
+   },
+   "signature": [
+    4,
+    0
+   ],
+   "star_adjoint_sign_1": -1
+  }
+ ],
+ "backend_controls": {
+  "classify_massive": true,
+  "classify_non_real": true,
+  "classify_tachyonic": true,
+  "conjugation_convention": true,
+  "gram_toy_[1, -1]": true,
+  "gram_toy_[1, -1]_over_field": true,
+  "gram_toy_[1, 1]": true,
+  "gram_toy_[1, 1]_over_field": true,
+  "hermitian_d1_vs_gu_inertia": true,
+  "hermitian_d2_hand": true,
+  "jordan_chain": true,
+  "jordan_chain_realified": true,
+  "nilpotent_algebraic_multiplicity": true,
+  "real_eigenvalue_root": true,
+  "scalar_massive": true,
+  "scalar_massless_null_zero_polynomial": true,
+  "scalar_massless_timelike": true,
+  "second_order_form_d1_4": true,
+  "second_order_form_d2": true,
+  "singular_leading_degree_deficit": true
+ },
+ "design": "docs/superpowers/specs/2026-10-17-b07-optionc-design.md rev 3.1",
+ "scope": "identity: 4D point, (3,1) and (1,3), flat background, eps = 1, metric frozen, delta T = delta A, quadratic order; operators CCC, CAA, CAC (variation.BRANCHES) and E_OP (phase2 run.e_op); pinned star, fixed-X prime convention as a control; (2,2)/(4,0) convention controls only",
+ "seconds": 1340.1,
+ "signatures": [
+  {
+   "controls": {
+    "direct_hessian": [
+     "GQ(2, 0)",
+     "GQ(0, 4)",
+     "GQ(0, -4)",
+     "GQ(0, -4)",
+     "GQ(0, 0)"
+    ],
+    "hand_xi_entry": true,
+    "mass_sign": -1,
+    "projectors": {
+     "algebraic_part_is_curvature_span": true,
+     "equivariant": true,
+     "idempotent": true,
+     "mutually_annihilating": true,
+     "ranks": {
+      "P1": 1,
+      "P15": 15,
+      "P20": 20
+     },
+     "sum_identity": true
+    },
+    "star_adjoint_sign_1": -1
+   },
+   "operators": [
+    {
+     "Q1": {
+      "S1_identically_zero": false,
+      "S1_rank_at_e_m": [
+       38,
+       38,
+       38,
+       38
+      ],
+      "c1_nonzero": 192,
+      "derived_term3_nonzero_at_e0": true,
+      "grade_pairs_coupled": [
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        3,
+        4
+       ],
+       [
+        4,
+        3
+       ]
+      ],
+      "repaired_term2_nonzero_at_e0": true
+     },
+     "Q2": {
+      "ccc_inner_rank_15": 6,
+      "controls": {
+       "ccc_inner_zero_on_20_and_1": true,
+       "dims_E_Ea": [
+        20,
+        12,
+        32
+       ],
+       "intersections_sum_to_rank": true,
+       "schur_15_in_E_plus_Ea": true,
+       "schur_1_in_span_g": true
+      },
+      "dim_15_in_E": 0,
+      "dim_15_in_Ea": 6,
+      "one_part": {
+       "coefficients_EF_g_EFprime_g": [
+        "0",
+        "0"
+       ],
+       "rank": 0
+      },
+      "rank_15": 6
+     },
+     "Q3_Q4": {
+      "covariance": {
+       "A_intertwines": true,
+       "covariance_verified": true,
+       "hessian_covariant": true,
+       "pairing_invariant": true,
+       "star_intertwines": true,
+       "traceless": true
+      },
+      "kernel_S0_null": {
+       "G1_restricted_inertia": [
+        15,
+        13,
+        16
+       ],
+       "S1_restricted_inertia": [
+        3,
+        3,
+        38
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 33,
+       "dim_ker_S0": 44,
+       "quotient_kerA_over_exact": 17,
+       "quotient_kerS0_over_kerA": 11
+      },
+      "kernel_S0_spacelike": {
+       "G1_restricted_inertia": [
+        17,
+        16,
+        0
+       ],
+       "S1_restricted_inertia": [
+        0,
+        0,
+        33
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 33,
+       "dim_ker_S0": 33,
+       "quotient_kerA_over_exact": 17,
+       "quotient_kerS0_over_kerA": 0
+      },
+      "rank_S0_kappa0": {
+       "null": 20,
+       "spacelike": 31,
+       "timelike": 31
+      },
+      "timelike": {
+       "charpoly": {
+        "degree": 64,
+        "factors": [
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 1,
+           "dim_ker_U": 1,
+           "factor": "nu**2 + 16",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 2,
+           "multiplicity_det_U": 1,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             1
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 1,
+            "dim_ker_U": 1,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 2,
+            "multiplicity_det_U": 1,
+            "second_order_form_inertia": [
+             0,
+             1,
+             0
+            ],
+            "second_order_form_rank": 1,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "sqrt(1/16)",
+            "w0_squared": "1/16"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             1
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 1,
+            "dim_ker_U": 1,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 2,
+            "multiplicity_det_U": 1,
+            "second_order_form_inertia": [
+             0,
+             1,
+             0
+            ],
+            "second_order_form_rank": 1,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/16)",
+            "w0_squared": "1/16"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 1,
+          "factor": "nu**2 + 16",
+          "massive_type": [
+           "1/16",
+           "1/16"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/16",
+           "1/16"
+          ],
+          "tachyonic_type": []
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 3,
+           "dim_ker_U": 3,
+           "factor": "nu**2 + 12",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 6,
+           "multiplicity_det_U": 3,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             3
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 3,
+            "dim_ker_U": 3,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 6,
+            "multiplicity_det_U": 3,
+            "second_order_form_inertia": [
+             0,
+             3,
+             0
+            ],
+            "second_order_form_rank": 3,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "sqrt(1/12)",
+            "w0_squared": "1/12"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             3
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 3,
+            "dim_ker_U": 3,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 6,
+            "multiplicity_det_U": 3,
+            "second_order_form_inertia": [
+             0,
+             3,
+             0
+            ],
+            "second_order_form_rank": 3,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/12)",
+            "w0_squared": "1/12"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 3,
+          "factor": "nu**2 + 12",
+          "massive_type": [
+           "1/12",
+           "1/12"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/12",
+           "1/12"
+          ],
+          "tachyonic_type": []
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 5,
+           "dim_ker_U": 5,
+           "factor": "nu**2 + 4",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 10,
+           "multiplicity_det_U": 5,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             5
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 5,
+            "dim_ker_U": 5,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 10,
+            "multiplicity_det_U": 5,
+            "second_order_form_inertia": [
+             0,
+             5,
+             0
+            ],
+            "second_order_form_rank": 5,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "sqrt(1/4)",
+            "w0_squared": "1/4"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             5
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 5,
+            "dim_ker_U": 5,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 10,
+            "multiplicity_det_U": 5,
+            "second_order_form_inertia": [
+             0,
+             5,
+             0
+            ],
+            "second_order_form_rank": 5,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/4)",
+            "w0_squared": "1/4"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 5,
+          "factor": "nu**2 + 4",
+          "massive_type": [
+           "1/4",
+           "1/4"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/4",
+           "1/4"
+          ],
+          "tachyonic_type": []
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 6,
+           "dim_ker_U": 6,
+           "factor": "nu**2 + 8",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 12,
+           "multiplicity_det_U": 6,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             6
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 6,
+            "dim_ker_U": 6,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 12,
+            "multiplicity_det_U": 6,
+            "second_order_form_inertia": [
+             3,
+             3,
+             0
+            ],
+            "second_order_form_rank": 6,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "sqrt(1/8)",
+            "w0_squared": "1/8"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             6
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 6,
+            "dim_ker_U": 6,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 12,
+            "multiplicity_det_U": 6,
+            "second_order_form_inertia": [
+             3,
+             3,
+             0
+            ],
+            "second_order_form_rank": 6,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/8)",
+            "w0_squared": "1/8"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 6,
+          "factor": "nu**2 + 8",
+          "massive_type": [
+           "1/8",
+           "1/8"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/8",
+           "1/8"
+          ],
+          "tachyonic_type": []
+         }
+        ],
+        "nilpotent_multiplicity": 34
+       },
+       "kernel_S0": {
+        "G1_restricted_inertia": [
+         8,
+         25,
+         0
+        ],
+        "S1_restricted_inertia": [
+         0,
+         0,
+         33
+        ],
+        "controls": {
+         "exact_in_ker_A": true,
+         "exact_rank": true,
+         "ker_A_in_ker_S0": true,
+         "nullity_S0_at_least_exact": true
+        },
+        "dim_exact_directions": 16,
+        "dim_ker_A": 33,
+        "dim_ker_S0": 33,
+        "quotient_kerA_over_exact": 17,
+        "quotient_kerS0_over_kerA": 0
+       },
+       "rank_S0_kappa0": 31
+      }
+     },
+     "operator": "CCC",
+     "response": [
+      "-1",
+      "0",
+      "0",
+      "0"
+     ]
+    },
+    {
+     "Q1": {
+      "S1_identically_zero": false,
+      "S1_rank_at_e_m": [
+       38,
+       38,
+       38,
+       38
+      ],
+      "c1_nonzero": 144,
+      "derived_term3_nonzero_at_e0": true,
+      "grade_pairs_coupled": [
+       [
+        0,
+        3
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        3,
+        0
+       ],
+       [
+        3,
+        4
+       ],
+       [
+        4,
+        3
+       ]
+      ],
+      "repaired_term2_nonzero_at_e0": true
+     },
+     "Q2": {
+      "controls": {
+       "dims_E_Ea": [
+        20,
+        12,
+        32
+       ],
+       "intersections_sum_to_rank": true,
+       "schur_15_in_E_plus_Ea": true,
+       "schur_1_in_span_g": true
+      },
+      "dim_15_in_E": 0,
+      "dim_15_in_Ea": 6,
+      "one_part": {
+       "coefficients_EF_g_EFprime_g": [
+        "0",
+        "0"
+       ],
+       "rank": 0
+      },
+      "rank_15": 6
+     },
+     "Q3_Q4": {
+      "covariance": {
+       "A_intertwines": true,
+       "covariance_verified": true,
+       "hessian_covariant": true,
+       "pairing_invariant": true,
+       "star_intertwines": true,
+       "traceless": true
+      },
+      "kernel_S0_null": {
+       "G1_restricted_inertia": [
+        16,
+        13,
+        16
+       ],
+       "S1_restricted_inertia": [
+        3,
+        3,
+        39
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 30,
+       "dim_ker_S0": 45,
+       "quotient_kerA_over_exact": 14,
+       "quotient_kerS0_over_kerA": 15
+      },
+      "kernel_S0_spacelike": {
+       "G1_restricted_inertia": [
+        16,
+        14,
+        0
+       ],
+       "S1_restricted_inertia": [
+        0,
+        0,
+        30
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 30,
+       "dim_ker_S0": 30,
+       "quotient_kerA_over_exact": 14,
+       "quotient_kerS0_over_kerA": 0
+      },
+      "rank_S0_kappa0": {
+       "null": 19,
+       "spacelike": 34,
+       "timelike": 34
+      },
+      "timelike": {
+       "charpoly": {
+        "degree": 64,
+        "factors": [
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 1,
+           "dim_ker_U": 1,
+           "factor": "nu**2 - 8",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 2,
+           "multiplicity_det_U": 1,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 2,
+          "exponent": 1,
+          "factor": "nu**2 - 8",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/8",
+           "-1/8"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 6,
+           "dim_ker_U": 3,
+           "factor": "nu - 2",
+           "field_degree": 1,
+           "kernel_gap": 3,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 6,
+           "multiplicity_det_U": 3,
+           "partial_multiplicities_M": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": true,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 3,
+          "factor": "nu - 2",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/4"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 6,
+           "dim_ker_U": 3,
+           "factor": "nu + 2",
+           "field_degree": 1,
+           "kernel_gap": 3,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 6,
+           "multiplicity_det_U": 3,
+           "partial_multiplicities_M": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": true,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 3,
+          "factor": "nu + 2",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/4"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 3,
+           "dim_ker_U": 3,
+           "factor": "nu**2 + 8",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 6,
+           "multiplicity_det_U": 3,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             3
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 3,
+            "dim_ker_U": 3,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 6,
+            "multiplicity_det_U": 3,
+            "second_order_form_inertia": [
+             3,
+             0,
+             0
+            ],
+            "second_order_form_rank": 3,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "sqrt(1/8)",
+            "w0_squared": "1/8"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             3
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 3,
+            "dim_ker_U": 3,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 6,
+            "multiplicity_det_U": 3,
+            "second_order_form_inertia": [
+             3,
+             0,
+             0
+            ],
+            "second_order_form_rank": 3,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/8)",
+            "w0_squared": "1/8"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 3,
+          "factor": "nu**2 + 8",
+          "massive_type": [
+           "1/8",
+           "1/8"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/8",
+           "1/8"
+          ],
+          "tachyonic_type": []
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 5,
+           "dim_ker_U": 5,
+           "factor": "nu**2 + 4",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 10,
+           "multiplicity_det_U": 5,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             5
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 5,
+            "dim_ker_U": 5,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 10,
+            "multiplicity_det_U": 5,
+            "second_order_form_inertia": [
+             0,
+             5,
+             0
+            ],
+            "second_order_form_rank": 5,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "sqrt(1/4)",
+            "w0_squared": "1/4"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             5
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 5,
+            "dim_ker_U": 5,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 10,
+            "multiplicity_det_U": 5,
+            "second_order_form_inertia": [
+             0,
+             5,
+             0
+            ],
+            "second_order_form_rank": 5,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/4)",
+            "w0_squared": "1/4"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 5,
+          "factor": "nu**2 + 4",
+          "massive_type": [
+           "1/4",
+           "1/4"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/4",
+           "1/4"
+          ],
+          "tachyonic_type": []
+         }
+        ],
+        "nilpotent_multiplicity": 40
+       },
+       "kernel_S0": {
+        "G1_restricted_inertia": [
+         11,
+         19,
+         0
+        ],
+        "S1_restricted_inertia": [
+         0,
+         0,
+         30
+        ],
+        "controls": {
+         "exact_in_ker_A": true,
+         "exact_rank": true,
+         "ker_A_in_ker_S0": true,
+         "nullity_S0_at_least_exact": true
+        },
+        "dim_exact_directions": 16,
+        "dim_ker_A": 30,
+        "dim_ker_S0": 30,
+        "quotient_kerA_over_exact": 14,
+        "quotient_kerS0_over_kerA": 0
+       },
+       "rank_S0_kappa0": 34
+      }
+     },
+     "operator": "CAA",
+     "response": [
+      "-1",
+      "0",
+      "1/2",
+      "0"
+     ]
+    },
+    {
+     "Q1": {
+      "S1_identically_zero": false,
+      "S1_rank_at_e_m": [
+       24,
+       24,
+       24,
+       24
+      ],
+      "c1_nonzero": 192,
+      "derived_term3_nonzero_at_e0": true,
+      "grade_pairs_coupled": [
+       [
+        0,
+        1
+       ],
+       [
+        0,
+        3
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        2,
+        3
+       ],
+       [
+        3,
+        0
+       ],
+       [
+        3,
+        2
+       ]
+      ],
+      "repaired_term2_nonzero_at_e0": true
+     },
+     "Q2": {
+      "controls": {
+       "dims_E_Ea": [
+        20,
+        12,
+        32
+       ],
+       "intersections_sum_to_rank": true,
+       "schur_15_in_E_plus_Ea": true,
+       "schur_1_in_span_g": true
+      },
+      "dim_15_in_E": 0,
+      "dim_15_in_Ea": 6,
+      "one_part": {
+       "coefficients_EF_g_EFprime_g": [
+        "0",
+        "0"
+       ],
+       "rank": 0
+      },
+      "rank_15": 6
+     },
+     "Q3_Q4": {
+      "covariance": {
+       "A_intertwines": true,
+       "covariance_verified": true,
+       "hessian_covariant": true,
+       "pairing_invariant": true,
+       "star_intertwines": true,
+       "traceless": true
+      },
+      "kernel_S0_null": {
+       "G1_restricted_inertia": [
+        26,
+        26,
+        6
+       ],
+       "S1_restricted_inertia": [
+        7,
+        7,
+        44
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 40,
+       "dim_ker_S0": 58,
+       "quotient_kerA_over_exact": 24,
+       "quotient_kerS0_over_kerA": 18
+      },
+      "kernel_S0_spacelike": {
+       "G1_restricted_inertia": [
+        20,
+        20,
+        12
+       ],
+       "S1_restricted_inertia": [
+        3,
+        3,
+        46
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 40,
+       "dim_ker_S0": 52,
+       "quotient_kerA_over_exact": 24,
+       "quotient_kerS0_over_kerA": 12
+      },
+      "rank_S0_kappa0": {
+       "null": 6,
+       "spacelike": 12,
+       "timelike": 12
+      },
+      "timelike": {
+       "charpoly": {
+        "degree": 64,
+        "factors": [],
+        "nilpotent_multiplicity": 64
+       },
+       "kernel_S0": {
+        "G1_restricted_inertia": [
+         20,
+         20,
+         12
+        ],
+        "S1_restricted_inertia": [
+         3,
+         3,
+         46
+        ],
+        "controls": {
+         "exact_in_ker_A": true,
+         "exact_rank": true,
+         "ker_A_in_ker_S0": true,
+         "nullity_S0_at_least_exact": true
+        },
+        "dim_exact_directions": 16,
+        "dim_ker_A": 40,
+        "dim_ker_S0": 52,
+        "quotient_kerA_over_exact": 24,
+        "quotient_kerS0_over_kerA": 12
+       },
+       "rank_S0_kappa0": 12
+      }
+     },
+     "operator": "CAC",
+     "response": [
+      "-1",
+      "-1",
+      "1/2",
+      "1/2"
+     ]
+    },
+    {
+     "Q1": {
+      "S1_identically_zero": false,
+      "S1_rank_at_e_m": [
+       30,
+       30,
+       30,
+       30
+      ],
+      "c1_nonzero": 0,
+      "derived_term3_nonzero_at_e0": true,
+      "grade_pairs_coupled": [
+       [
+        0,
+        3
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        3,
+        0
+       ]
+      ],
+      "repaired_term2_nonzero_at_e0": true
+     },
+     "Q2": {
+      "controls": {
+       "dims_E_Ea": [
+        20,
+        12,
+        32
+       ],
+       "intersections_sum_to_rank": true,
+       "schur_15_in_E_plus_Ea": true,
+       "schur_1_in_span_g": true
+      },
+      "dim_15_in_E": 0,
+      "dim_15_in_Ea": 6,
+      "one_part": {
+       "coefficients_EF_g_EFprime_g": [
+        "0",
+        "0"
+       ],
+       "rank": 0
+      },
+      "rank_15": 6
+     },
+     "Q3_Q4": {
+      "covariance": {
+       "A_intertwines": true,
+       "covariance_verified": true,
+       "hessian_covariant": true,
+       "pairing_invariant": true,
+       "star_intertwines": true,
+       "traceless": true
+      },
+      "kernel_S0_null": {
+       "G1_restricted_inertia": [
+        17,
+        16,
+        14
+       ],
+       "S1_restricted_inertia": [
+        1,
+        1,
+        45
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 34,
+       "dim_ker_S0": 47,
+       "quotient_kerA_over_exact": 18,
+       "quotient_kerS0_over_kerA": 13
+      },
+      "kernel_S0_spacelike": {
+       "G1_restricted_inertia": [
+        17,
+        17,
+        0
+       ],
+       "S1_restricted_inertia": [
+        0,
+        0,
+        34
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 34,
+       "dim_ker_S0": 34,
+       "quotient_kerA_over_exact": 18,
+       "quotient_kerS0_over_kerA": 0
+      },
+      "rank_S0_kappa0": {
+       "null": 17,
+       "spacelike": 30,
+       "timelike": 30
+      },
+      "timelike": {
+       "charpoly": {
+        "degree": 64,
+        "factors": [
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 1,
+           "dim_ker_U": 1,
+           "factor": "nu**2 + 64",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 2,
+           "multiplicity_det_U": 1,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             1
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 1,
+            "dim_ker_U": 1,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 2,
+            "multiplicity_det_U": 1,
+            "second_order_form_inertia": [
+             0,
+             1,
+             0
+            ],
+            "second_order_form_rank": 1,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "sqrt(1/64)",
+            "w0_squared": "1/64"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             1
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 1,
+            "dim_ker_U": 1,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 2,
+            "multiplicity_det_U": 1,
+            "second_order_form_inertia": [
+             0,
+             1,
+             0
+            ],
+            "second_order_form_rank": 1,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/64)",
+            "w0_squared": "1/64"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 1,
+          "factor": "nu**2 + 64",
+          "massive_type": [
+           "1/64",
+           "1/64"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/64",
+           "1/64"
+          ],
+          "tachyonic_type": []
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 6,
+           "dim_ker_U": 6,
+           "factor": "nu**2 + 32",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 12,
+           "multiplicity_det_U": 6,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             6
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 6,
+            "dim_ker_U": 6,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 12,
+            "multiplicity_det_U": 6,
+            "second_order_form_inertia": [
+             6,
+             0,
+             0
+            ],
+            "second_order_form_rank": 6,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "sqrt(1/32)",
+            "w0_squared": "1/32"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             6
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 6,
+            "dim_ker_U": 6,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 12,
+            "multiplicity_det_U": 6,
+            "second_order_form_inertia": [
+             6,
+             0,
+             0
+            ],
+            "second_order_form_rank": 6,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/32)",
+            "w0_squared": "1/32"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 6,
+          "factor": "nu**2 + 32",
+          "massive_type": [
+           "1/32",
+           "1/32"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/32",
+           "1/32"
+          ],
+          "tachyonic_type": []
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 8,
+           "dim_ker_U": 8,
+           "factor": "nu**2 + 16",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 16,
+           "multiplicity_det_U": 8,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             8
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 8,
+            "dim_ker_U": 8,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 16,
+            "multiplicity_det_U": 8,
+            "second_order_form_inertia": [
+             0,
+             8,
+             0
+            ],
+            "second_order_form_rank": 8,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "sqrt(1/16)",
+            "w0_squared": "1/16"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             8
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 8,
+            "dim_ker_U": 8,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 16,
+            "multiplicity_det_U": 8,
+            "second_order_form_inertia": [
+             0,
+             8,
+             0
+            ],
+            "second_order_form_rank": 8,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/16)",
+            "w0_squared": "1/16"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 8,
+          "factor": "nu**2 + 16",
+          "massive_type": [
+           "1/16",
+           "1/16"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/16",
+           "1/16"
+          ],
+          "tachyonic_type": []
+         }
+        ],
+        "nilpotent_multiplicity": 34
+       },
+       "kernel_S0": {
+        "G1_restricted_inertia": [
+         14,
+         20,
+         0
+        ],
+        "S1_restricted_inertia": [
+         0,
+         0,
+         34
+        ],
+        "controls": {
+         "exact_in_ker_A": true,
+         "exact_rank": true,
+         "ker_A_in_ker_S0": true,
+         "nullity_S0_at_least_exact": true
+        },
+        "dim_exact_directions": 16,
+        "dim_ker_A": 34,
+        "dim_ker_S0": 34,
+        "quotient_kerA_over_exact": 18,
+        "quotient_kerS0_over_kerA": 0
+       },
+       "rank_S0_kappa0": 30
+      }
+     },
+     "operator": "E_OP",
+     "response": [
+      "2",
+      "0",
+      "-1",
+      "0"
+     ]
+    }
+   ],
+   "signature": [
+    3,
+    1
+   ],
+   "status": "complete"
+  },
+  {
+   "controls": {
+    "direct_hessian": [
+     "GQ(2, 0)",
+     "GQ(0, 4)",
+     "GQ(0, -4)",
+     "GQ(0, -4)",
+     "GQ(0, 0)"
+    ],
+    "hand_xi_entry": true,
+    "mass_sign": -1,
+    "projectors": {
+     "algebraic_part_is_curvature_span": true,
+     "equivariant": true,
+     "idempotent": true,
+     "mutually_annihilating": true,
+     "ranks": {
+      "P1": 1,
+      "P15": 15,
+      "P20": 20
+     },
+     "sum_identity": true
+    },
+    "star_adjoint_sign_1": -1
+   },
+   "operators": [
+    {
+     "Q1": {
+      "S1_identically_zero": false,
+      "S1_rank_at_e_m": [
+       38,
+       38,
+       38,
+       38
+      ],
+      "c1_nonzero": 192,
+      "derived_term3_nonzero_at_e0": true,
+      "grade_pairs_coupled": [
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        3,
+        4
+       ],
+       [
+        4,
+        3
+       ]
+      ],
+      "repaired_term2_nonzero_at_e0": true
+     },
+     "Q2": {
+      "ccc_inner_rank_15": 6,
+      "controls": {
+       "ccc_inner_zero_on_20_and_1": true,
+       "dims_E_Ea": [
+        20,
+        12,
+        32
+       ],
+       "intersections_sum_to_rank": true,
+       "schur_15_in_E_plus_Ea": true,
+       "schur_1_in_span_g": true
+      },
+      "dim_15_in_E": 0,
+      "dim_15_in_Ea": 6,
+      "one_part": {
+       "coefficients_EF_g_EFprime_g": [
+        "0",
+        "0"
+       ],
+       "rank": 0
+      },
+      "rank_15": 6
+     },
+     "Q3_Q4": {
+      "covariance": {
+       "A_intertwines": true,
+       "covariance_verified": true,
+       "hessian_covariant": true,
+       "pairing_invariant": true,
+       "star_intertwines": true,
+       "traceless": true
+      },
+      "kernel_S0_null": {
+       "G1_restricted_inertia": [
+        13,
+        15,
+        16
+       ],
+       "S1_restricted_inertia": [
+        3,
+        3,
+        38
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 33,
+       "dim_ker_S0": 44,
+       "quotient_kerA_over_exact": 17,
+       "quotient_kerS0_over_kerA": 11
+      },
+      "kernel_S0_spacelike": {
+       "G1_restricted_inertia": [
+        16,
+        17,
+        0
+       ],
+       "S1_restricted_inertia": [
+        0,
+        0,
+        33
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 33,
+       "dim_ker_S0": 33,
+       "quotient_kerA_over_exact": 17,
+       "quotient_kerS0_over_kerA": 0
+      },
+      "rank_S0_kappa0": {
+       "null": 20,
+       "spacelike": 31,
+       "timelike": 31
+      },
+      "timelike": {
+       "charpoly": {
+        "degree": 64,
+        "factors": [
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 1,
+           "dim_ker_U": 1,
+           "factor": "nu - 4",
+           "field_degree": 1,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 2,
+           "multiplicity_det_U": 1,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 1,
+          "factor": "nu - 4",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/16"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 1,
+           "dim_ker_U": 1,
+           "factor": "nu + 4",
+           "field_degree": 1,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 2,
+           "multiplicity_det_U": 1,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 1,
+          "factor": "nu + 4",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/16"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 3,
+           "dim_ker_U": 3,
+           "factor": "nu**2 - 12",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 6,
+           "multiplicity_det_U": 3,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 2,
+          "exponent": 3,
+          "factor": "nu**2 - 12",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/12",
+           "-1/12"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 5,
+           "dim_ker_U": 5,
+           "factor": "nu - 2",
+           "field_degree": 1,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 10,
+           "multiplicity_det_U": 5,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 5,
+          "factor": "nu - 2",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/4"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 5,
+           "dim_ker_U": 5,
+           "factor": "nu + 2",
+           "field_degree": 1,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 10,
+           "multiplicity_det_U": 5,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 5,
+          "factor": "nu + 2",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/4"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 6,
+           "dim_ker_U": 6,
+           "factor": "nu**2 - 8",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 12,
+           "multiplicity_det_U": 6,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 2,
+          "exponent": 6,
+          "factor": "nu**2 - 8",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/8",
+           "-1/8"
+          ]
+         }
+        ],
+        "nilpotent_multiplicity": 34
+       },
+       "kernel_S0": {
+        "G1_restricted_inertia": [
+         17,
+         16,
+         0
+        ],
+        "S1_restricted_inertia": [
+         0,
+         0,
+         33
+        ],
+        "controls": {
+         "exact_in_ker_A": true,
+         "exact_rank": true,
+         "ker_A_in_ker_S0": true,
+         "nullity_S0_at_least_exact": true
+        },
+        "dim_exact_directions": 16,
+        "dim_ker_A": 33,
+        "dim_ker_S0": 33,
+        "quotient_kerA_over_exact": 17,
+        "quotient_kerS0_over_kerA": 0
+       },
+       "rank_S0_kappa0": 31
+      }
+     },
+     "operator": "CCC",
+     "response": [
+      "-1",
+      "0",
+      "0",
+      "0"
+     ]
+    },
+    {
+     "Q1": {
+      "S1_identically_zero": false,
+      "S1_rank_at_e_m": [
+       38,
+       38,
+       38,
+       38
+      ],
+      "c1_nonzero": 144,
+      "derived_term3_nonzero_at_e0": true,
+      "grade_pairs_coupled": [
+       [
+        0,
+        3
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        3,
+        0
+       ],
+       [
+        3,
+        4
+       ],
+       [
+        4,
+        3
+       ]
+      ],
+      "repaired_term2_nonzero_at_e0": true
+     },
+     "Q2": {
+      "controls": {
+       "dims_E_Ea": [
+        20,
+        12,
+        32
+       ],
+       "intersections_sum_to_rank": true,
+       "schur_15_in_E_plus_Ea": true,
+       "schur_1_in_span_g": true
+      },
+      "dim_15_in_E": 0,
+      "dim_15_in_Ea": 6,
+      "one_part": {
+       "coefficients_EF_g_EFprime_g": [
+        "0",
+        "0"
+       ],
+       "rank": 0
+      },
+      "rank_15": 6
+     },
+     "Q3_Q4": {
+      "covariance": {
+       "A_intertwines": true,
+       "covariance_verified": true,
+       "hessian_covariant": true,
+       "pairing_invariant": true,
+       "star_intertwines": true,
+       "traceless": true
+      },
+      "kernel_S0_null": {
+       "G1_restricted_inertia": [
+        14,
+        15,
+        16
+       ],
+       "S1_restricted_inertia": [
+        3,
+        3,
+        39
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 30,
+       "dim_ker_S0": 45,
+       "quotient_kerA_over_exact": 14,
+       "quotient_kerS0_over_kerA": 15
+      },
+      "kernel_S0_spacelike": {
+       "G1_restricted_inertia": [
+        13,
+        17,
+        0
+       ],
+       "S1_restricted_inertia": [
+        0,
+        0,
+        30
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 30,
+       "dim_ker_S0": 30,
+       "quotient_kerA_over_exact": 14,
+       "quotient_kerS0_over_kerA": 0
+      },
+      "rank_S0_kappa0": {
+       "null": 19,
+       "spacelike": 34,
+       "timelike": 34
+      },
+      "timelike": {
+       "charpoly": {
+        "degree": 64,
+        "factors": [
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 1,
+           "dim_ker_U": 1,
+           "factor": "nu**2 + 8",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 2,
+           "multiplicity_det_U": 1,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             1
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 1,
+            "dim_ker_U": 1,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 2,
+            "multiplicity_det_U": 1,
+            "second_order_form_inertia": [
+             0,
+             1,
+             0
+            ],
+            "second_order_form_rank": 1,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "sqrt(1/8)",
+            "w0_squared": "1/8"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             0,
+             0,
+             1
+            ],
+            "derivative_form_rank": 0,
+            "dim_ker_M": 1,
+            "dim_ker_U": 1,
+            "kernel_gap_hermitian_radical": 0,
+            "multiplicity_det_M": 2,
+            "multiplicity_det_U": 1,
+            "second_order_form_inertia": [
+             0,
+             1,
+             0
+            ],
+            "second_order_form_rank": 1,
+            "semisimple_M": false,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/8)",
+            "w0_squared": "1/8"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 1,
+          "factor": "nu**2 + 8",
+          "massive_type": [
+           "1/8",
+           "1/8"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/8",
+           "1/8"
+          ],
+          "tachyonic_type": []
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 3,
+           "dim_ker_U": 3,
+           "factor": "nu**2 - 8",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 6,
+           "multiplicity_det_U": 3,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 2,
+          "exponent": 3,
+          "factor": "nu**2 - 8",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/8",
+           "-1/8"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 6,
+           "dim_ker_U": 3,
+           "factor": "nu**2 + 4",
+           "field_degree": 2,
+           "kernel_gap": 3,
+           "kernel_gap_reading": "hermitian_radical",
+           "multiplicity_det_M": 6,
+           "multiplicity_det_U": 3,
+           "partial_multiplicities_M": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": true,
+           "semisimple_U": true
+          },
+          "Q4": [
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             3,
+             3,
+             0
+            ],
+            "derivative_form_rank": 6,
+            "dim_ker_M": 6,
+            "dim_ker_U": 3,
+            "kernel_gap_hermitian_radical": 3,
+            "multiplicity_det_M": 6,
+            "multiplicity_det_U": 3,
+            "second_order_form_inertia": [
+             0,
+             0,
+             3
+            ],
+            "second_order_form_rank": 0,
+            "semisimple_M": true,
+            "semisimple_U": true,
+            "w0": "sqrt(1/4)",
+            "w0_squared": "1/4"
+           },
+           {
+            "control_QU_quarter_second_derivative": true,
+            "control_derivative_form_zero_on_ker_U": true,
+            "control_ker_U_in_ker_M": true,
+            "derivative_form_inertia": [
+             3,
+             3,
+             0
+            ],
+            "derivative_form_rank": 6,
+            "dim_ker_M": 6,
+            "dim_ker_U": 3,
+            "kernel_gap_hermitian_radical": 3,
+            "multiplicity_det_M": 6,
+            "multiplicity_det_U": 3,
+            "second_order_form_inertia": [
+             0,
+             0,
+             3
+            ],
+            "second_order_form_rank": 0,
+            "semisimple_M": true,
+            "semisimple_U": true,
+            "w0": "-sqrt(1/4)",
+            "w0_squared": "1/4"
+           }
+          ],
+          "Q4_status": "computed",
+          "degree": 2,
+          "exponent": 3,
+          "factor": "nu**2 + 4",
+          "massive_type": [
+           "1/4",
+           "1/4"
+          ],
+          "non_real": 0,
+          "rational_massive": [
+           "1/4",
+           "1/4"
+          ],
+          "tachyonic_type": []
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 5,
+           "dim_ker_U": 5,
+           "factor": "nu - 2",
+           "field_degree": 1,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 10,
+           "multiplicity_det_U": 5,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 5,
+          "factor": "nu - 2",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/4"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 5,
+           "dim_ker_U": 5,
+           "factor": "nu + 2",
+           "field_degree": 1,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 10,
+           "multiplicity_det_U": 5,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 5,
+          "factor": "nu + 2",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/4"
+          ]
+         }
+        ],
+        "nilpotent_multiplicity": 40
+       },
+       "kernel_S0": {
+        "G1_restricted_inertia": [
+         14,
+         16,
+         0
+        ],
+        "S1_restricted_inertia": [
+         0,
+         0,
+         30
+        ],
+        "controls": {
+         "exact_in_ker_A": true,
+         "exact_rank": true,
+         "ker_A_in_ker_S0": true,
+         "nullity_S0_at_least_exact": true
+        },
+        "dim_exact_directions": 16,
+        "dim_ker_A": 30,
+        "dim_ker_S0": 30,
+        "quotient_kerA_over_exact": 14,
+        "quotient_kerS0_over_kerA": 0
+       },
+       "rank_S0_kappa0": 34
+      }
+     },
+     "operator": "CAA",
+     "response": [
+      "-1",
+      "0",
+      "1/2",
+      "0"
+     ]
+    },
+    {
+     "Q1": {
+      "S1_identically_zero": false,
+      "S1_rank_at_e_m": [
+       24,
+       24,
+       24,
+       24
+      ],
+      "c1_nonzero": 192,
+      "derived_term3_nonzero_at_e0": true,
+      "grade_pairs_coupled": [
+       [
+        0,
+        1
+       ],
+       [
+        0,
+        3
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        2,
+        3
+       ],
+       [
+        3,
+        0
+       ],
+       [
+        3,
+        2
+       ]
+      ],
+      "repaired_term2_nonzero_at_e0": true
+     },
+     "Q2": {
+      "controls": {
+       "dims_E_Ea": [
+        20,
+        12,
+        32
+       ],
+       "intersections_sum_to_rank": true,
+       "schur_15_in_E_plus_Ea": true,
+       "schur_1_in_span_g": true
+      },
+      "dim_15_in_E": 0,
+      "dim_15_in_Ea": 6,
+      "one_part": {
+       "coefficients_EF_g_EFprime_g": [
+        "0",
+        "0"
+       ],
+       "rank": 0
+      },
+      "rank_15": 6
+     },
+     "Q3_Q4": {
+      "covariance": {
+       "A_intertwines": true,
+       "covariance_verified": true,
+       "hessian_covariant": true,
+       "pairing_invariant": true,
+       "star_intertwines": true,
+       "traceless": true
+      },
+      "kernel_S0_null": {
+       "G1_restricted_inertia": [
+        26,
+        26,
+        6
+       ],
+       "S1_restricted_inertia": [
+        7,
+        7,
+        44
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 40,
+       "dim_ker_S0": 58,
+       "quotient_kerA_over_exact": 24,
+       "quotient_kerS0_over_kerA": 18
+      },
+      "kernel_S0_spacelike": {
+       "G1_restricted_inertia": [
+        20,
+        20,
+        12
+       ],
+       "S1_restricted_inertia": [
+        3,
+        3,
+        46
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 40,
+       "dim_ker_S0": 52,
+       "quotient_kerA_over_exact": 24,
+       "quotient_kerS0_over_kerA": 12
+      },
+      "rank_S0_kappa0": {
+       "null": 6,
+       "spacelike": 12,
+       "timelike": 12
+      },
+      "timelike": {
+       "charpoly": {
+        "degree": 64,
+        "factors": [],
+        "nilpotent_multiplicity": 64
+       },
+       "kernel_S0": {
+        "G1_restricted_inertia": [
+         20,
+         20,
+         12
+        ],
+        "S1_restricted_inertia": [
+         3,
+         3,
+         46
+        ],
+        "controls": {
+         "exact_in_ker_A": true,
+         "exact_rank": true,
+         "ker_A_in_ker_S0": true,
+         "nullity_S0_at_least_exact": true
+        },
+        "dim_exact_directions": 16,
+        "dim_ker_A": 40,
+        "dim_ker_S0": 52,
+        "quotient_kerA_over_exact": 24,
+        "quotient_kerS0_over_kerA": 12
+       },
+       "rank_S0_kappa0": 12
+      }
+     },
+     "operator": "CAC",
+     "response": [
+      "-1",
+      "-1",
+      "1/2",
+      "1/2"
+     ]
+    },
+    {
+     "Q1": {
+      "S1_identically_zero": false,
+      "S1_rank_at_e_m": [
+       30,
+       30,
+       30,
+       30
+      ],
+      "c1_nonzero": 0,
+      "derived_term3_nonzero_at_e0": true,
+      "grade_pairs_coupled": [
+       [
+        0,
+        3
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        3,
+        0
+       ]
+      ],
+      "repaired_term2_nonzero_at_e0": true
+     },
+     "Q2": {
+      "controls": {
+       "dims_E_Ea": [
+        20,
+        12,
+        32
+       ],
+       "intersections_sum_to_rank": true,
+       "schur_15_in_E_plus_Ea": true,
+       "schur_1_in_span_g": true
+      },
+      "dim_15_in_E": 0,
+      "dim_15_in_Ea": 6,
+      "one_part": {
+       "coefficients_EF_g_EFprime_g": [
+        "0",
+        "0"
+       ],
+       "rank": 0
+      },
+      "rank_15": 6
+     },
+     "Q3_Q4": {
+      "covariance": {
+       "A_intertwines": true,
+       "covariance_verified": true,
+       "hessian_covariant": true,
+       "pairing_invariant": true,
+       "star_intertwines": true,
+       "traceless": true
+      },
+      "kernel_S0_null": {
+       "G1_restricted_inertia": [
+        15,
+        18,
+        14
+       ],
+       "S1_restricted_inertia": [
+        1,
+        1,
+        45
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 34,
+       "dim_ker_S0": 47,
+       "quotient_kerA_over_exact": 18,
+       "quotient_kerS0_over_kerA": 13
+      },
+      "kernel_S0_spacelike": {
+       "G1_restricted_inertia": [
+        14,
+        20,
+        0
+       ],
+       "S1_restricted_inertia": [
+        0,
+        0,
+        34
+       ],
+       "controls": {
+        "exact_in_ker_A": true,
+        "exact_rank": true,
+        "ker_A_in_ker_S0": true,
+        "nullity_S0_at_least_exact": true
+       },
+       "dim_exact_directions": 16,
+       "dim_ker_A": 34,
+       "dim_ker_S0": 34,
+       "quotient_kerA_over_exact": 18,
+       "quotient_kerS0_over_kerA": 0
+      },
+      "rank_S0_kappa0": {
+       "null": 17,
+       "spacelike": 30,
+       "timelike": 30
+      },
+      "timelike": {
+       "charpoly": {
+        "degree": 64,
+        "factors": [
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 1,
+           "dim_ker_U": 1,
+           "factor": "nu - 8",
+           "field_degree": 1,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 2,
+           "multiplicity_det_U": 1,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 1,
+          "factor": "nu - 8",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/64"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 1,
+           "dim_ker_U": 1,
+           "factor": "nu + 8",
+           "field_degree": 1,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 2,
+           "multiplicity_det_U": 1,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 1,
+          "factor": "nu + 8",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/64"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 6,
+           "dim_ker_U": 6,
+           "factor": "nu**2 - 32",
+           "field_degree": 2,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 12,
+           "multiplicity_det_U": 6,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 2,
+          "exponent": 6,
+          "factor": "nu**2 - 32",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/32",
+           "-1/32"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 8,
+           "dim_ker_U": 8,
+           "factor": "nu - 4",
+           "field_degree": 1,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 16,
+           "multiplicity_det_U": 8,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 8,
+          "factor": "nu - 4",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/16"
+          ]
+         },
+         {
+          "Q3": {
+           "control_ker_U_in_ker_M": true,
+           "dim_ker_M": 8,
+           "dim_ker_U": 8,
+           "factor": "nu + 4",
+           "field_degree": 1,
+           "kernel_gap": 0,
+           "kernel_gap_reading": "cross_annihilator",
+           "multiplicity_det_M": 16,
+           "multiplicity_det_U": 8,
+           "partial_multiplicities_M": "not computed",
+           "partial_multiplicities_U": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+           ],
+           "semisimple_M": false,
+           "semisimple_U": true
+          },
+          "Q4_status": "not_applicable",
+          "degree": 1,
+          "exponent": 8,
+          "factor": "nu + 4",
+          "massive_type": [],
+          "non_real": 0,
+          "rational_massive": [],
+          "tachyonic_type": [
+           "-1/16"
+          ]
+         }
+        ],
+        "nilpotent_multiplicity": 34
+       },
+       "kernel_S0": {
+        "G1_restricted_inertia": [
+         17,
+         17,
+         0
+        ],
+        "S1_restricted_inertia": [
+         0,
+         0,
+         34
+        ],
+        "controls": {
+         "exact_in_ker_A": true,
+         "exact_rank": true,
+         "ker_A_in_ker_S0": true,
+         "nullity_S0_at_least_exact": true
+        },
+        "dim_exact_directions": 16,
+        "dim_ker_A": 34,
+        "dim_ker_S0": 34,
+        "quotient_kerA_over_exact": 18,
+        "quotient_kerS0_over_kerA": 0
+       },
+       "rank_S0_kappa0": 30
+      }
+     },
+     "operator": "E_OP",
+     "response": [
+      "2",
+      "0",
+      "-1",
+      "0"
+     ]
+    }
+   ],
+   "signature": [
+    1,
+    3
+   ],
+   "status": "complete"
+  }
+ ],
+ "source_commit": "aac4e42c0681dee13c75222ee8a9d31bced6d6fe",
+ "status": "complete",
+ "uncomputed": []
+}
