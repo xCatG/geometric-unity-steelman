@@ -6,7 +6,7 @@ Mathlib v4.24.0, exact manifest revision f897ebcf72cd16f89ab4577d0c826cd14afaafc
 
 ## Clean-project build
 
-Only the resolved `C:/work/src/GU-b02-lean/lean/.lake/build` directory was removed.
+Only the resolved `<lean-worktree>/lean/.lake/build` directory was removed.
 Mathlib/dependency caches were retained. Command: `lake build` (default B02 and bridge targets).
 This measures a clean build of this project, not compilation of Mathlib from source or download time.
 

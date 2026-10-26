@@ -7,7 +7,7 @@ f897ebcf72cd16f89ab4577d0c826cd14afaafc7. Existing dependency caches were reused
 ## Clean combined build
 
 Removed only the verified project output directory
-`C:/work/src/GU-b02-lean/lean/.lake/build`, retaining `.lake/packages` caches.
+`<lean-worktree>/lean/.lake/build`, retaining `.lake/packages` caches.
 Command from lean/: `lake build`, default targets B02, B03, bridge.
 This is project-rebuild time, excluding dependency download/recompilation.
 

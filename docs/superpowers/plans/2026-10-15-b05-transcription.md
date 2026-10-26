@@ -71,7 +71,7 @@
 - **Model-relative survey.** Every survey predicate (`well_typed`, `all_nonzero_under_model`, `degree_ok`) is a property of the enumerated readings in `operator_check.py`, not of the draft. Readings the code does not enumerate (branch register: B05-Q and any found in Task 2) can change it.
 - **Candidate forms.** GU p. 24 embeds complex Dirac Spin(7,7) in U(64,64) without printing a Hermitian form. `pairing.forms` gives two candidate representatives, and every statement using them is labelled as such.
 - **Commits.** On master. Run `git add -- <new paths>` first, then `git commit -m … -- <paths>`, never a bare commit. Commit the producing code before `result.json` (P8). Codex's trailer is `Co-Authored-By: Codex <noreply@openai.com>`, Claude's is `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
-- **Untouchables.** Do not touch the untracked `argon*.md` files or `C:\work\src\GU-b02-lean`. No Fable spend.
+- **Untouchables.** Do not touch the untracked `argon*.md` files or `<lean-worktree>`. No Fable spend.
 
 ## Review Focus
 

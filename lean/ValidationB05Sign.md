@@ -41,7 +41,7 @@ The toolchain and dependency revisions are unchanged: Lean 4.24.0
 
 - Clean `lake build` exited 0 in **211.495 seconds**, rebuilding the
   entire project output directory (B02, B03, B05Sign and bridge). Only the
-  resolved `C:/work/src/GU-b02-lean/lean/.lake/build` was removed; installed
+  resolved `<lean-worktree>/lean/.lake/build` was removed; installed
   dependency packages and their cached builds were retained.
 - **44 new public theorems**, plus the group instance, both homomorphism
   structures and the concrete derivation, audited with `#print axioms`.

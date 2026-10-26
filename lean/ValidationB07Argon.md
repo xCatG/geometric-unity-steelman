@@ -3,7 +3,7 @@
 - Lean 4.24.0, Windows x86_64, compiler commit `797c613eb9b6d4ec95db23e3e00af9ac6657f24b`.
 - Mathlib v4.24.0, lockfile commit `f897ebcf72cd16f89ab4577d0c826cd14afaafc7`.
 - Clean whole-project `lake build`: **passed, 206.944256 seconds, 8786 jobs**.
-- Only the resolved `C:/work/src/GU-b02-lean/lean/.lake/build` was removed;
+- Only the resolved `<lean-worktree>/lean/.lake/build` was removed;
   dependency caches were retained. Existing B02, B03, B05Sign and bridge targets
   were rebuilt together with B07Argon.
 - `lake env lean Audit.lean`: **passed, 83.5472351 seconds**, 368 records.
