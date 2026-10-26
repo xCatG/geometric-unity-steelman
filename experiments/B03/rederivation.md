@@ -16,7 +16,7 @@ physical spectrum is derived.
 ## Reproduction and independence
 
 Scratch scripts, as requested by the Task 5 brief, are untracked under
-`.agent-handoff/b03-task5/`: `derive_tables.py`, its freshly generated
+`notes:b03-task5/`: `derive_tables.py`, its freshly generated
 `independent.lie`, and `derive_matrices.py`. They are cited here as local
 reproduction artifacts, not tracked dependencies. Their hashes are below.
 The durable mathematical route, commands, conventions and outputs are recorded
@@ -26,11 +26,11 @@ From the repository root in native Windows PowerShell:
 
 ```powershell
 # T: direct LiE plus independently parsed comparisons
-.venv/Scripts/python.exe -B .agent-handoff/b03-task5/derive_tables.py
+.venv/Scripts/python.exe -B notes:b03-task5/derive_tables.py
 # L: the actual external oracle invocation performed by T
-wsl -d Ubuntu-24.04 -- bash -lc 'lie < /mnt/c/work/src/GU/.agent-handoff/b03-task5/independent.lie'
+wsl -d Ubuntu-24.04 -- bash -lc 'lie < /mnt/c/work/src/GU/notes:b03-task5/independent.lie'
 # M: independently built Pauli matrices
-.venv/Scripts/python.exe -B .agent-handoff/b03-task5/derive_matrices.py
+.venv/Scripts/python.exe -B notes:b03-task5/derive_matrices.py
 ```
 
 All three commands exit 0 with empty stderr. T writes fresh input instead of

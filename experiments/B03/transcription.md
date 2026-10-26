@@ -2,14 +2,14 @@
 
 Transcriber: Claude (Opus 5.5), 2026-10-15. Revision 1.
 
-- **Revision 0** was written before Codex's independent second reading (`.agent-handoff/b03-oracle/second-reader.md`).
+- **Revision 0** was written before Codex's independent second reading (`notes:b03-oracle/second-reader.md`).
 - **Revision 1** applies Codex's comparison (`transcription-comparison.md` in the same directory), which found no disagreement in content and asked for five corrections:
   1. the symbol gimel (ג, named on p. 26);
   2. (12.21) added;
   3. branch 7 signatures corrected;
   4. branch 4 scope narrowed;
   5. the chirality dictionary extended to 6 and 144.
-- Representation facts quoted in branch 2 come from the LiE oracle run (`.agent-handoff/b03-oracle/`). Claude re-derived them by explicit weight multisets (`.agent-handoff/b03-transcription/weights_check.py`).
+- Representation facts quoted in branch 2 come from the LiE oracle run (`notes:b03-oracle/`). Claude re-derived them by explicit weight multisets (`notes:b03-transcription/weights_check.py`).
 - Dimension arithmetic marked ✓ is Claude's hand check.
 
 ## Source
@@ -118,7 +118,7 @@ $$\mathcal F^\pm_{1/2}=\begin{pmatrix}2_\mp\otimes16_+\\ \oplus\\ 2_\pm\otimes16
 All structures carry subscript L.
 - Rows 20 and 21 appear more than once, with starred multiplicities.
 - Hand check: Σ multiplicity × dimension over every printed row, counting each repeated row where it appears, is **144** ✓.
-- Every row satisfies dim = dim SU(3) rep × dim SU(2) rep, and every charge list equals T₃ + n/6 over the SU(2) multiplet (script check, all 25 printed rows; `.agent-handoff/b03-transcription/check_tables.{py,out}`).
+- Every row satisfies dim = dim SU(3) rep × dim SU(2) rep, and every charge list equals T₃ + n/6 over the SU(2) multiplet (script check, all 25 printed rows; `notes:b03-transcription/check_tables.{py,out}`).
 - The table therefore reads as the Standard-Model content of one 144. Its caption does not say this.
 
 **p. 53, §11.4.** The draft lists three reduction stages:

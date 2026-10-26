@@ -13,7 +13,7 @@ Inputs:
 **Provenance.** Every result below was known before the committed run: from the LiE oracle, Claude's plan smoke test and the plan review (ansatz, "Known before the run"). None is a prediction. The committed run reproduces them with tracked code. That code is checked against an exact external fixture (LiE) and fault-tested: 297 tests passed at the producing commit, and 13 seeded faults each fail an assertion.
 
 - **Exactness fix.** `835d7c8` hardened the public numeric entries of `gu/reps.py` (P4), after the run. The suite is now 310 tests, and the 13 faults are still RED.
-- **Clean-clone reruns.** Run in clean clones, the runner reproduces the committed `result.json` in every field except `source_commit`. Claude ran it at `895fc08` and again at `835d7c8` (log: `.agent-handoff/b03-task5/claude-p7.log`). Codex ran it independently at `835d7c8`.
+- **Clean-clone reruns.** Run in clean clones, the runner reproduces the committed `result.json` in every field except `source_commit`. Claude ran it at `895fc08` and again at `835d7c8` (log: `notes:b03-task5/claude-p7.log`). Codex ran it independently at `835d7c8`.
 
 **Independent re-derivation** (Codex, [`rederivation.md`](rederivation.md)). It uses fresh LiE input and separately built Pauli/Kronecker gamma matrices, with no imports from `gu` or `experiments`. All 44 table and comparison entries agree, as do J² and C = ±Π in every split. Codex also audited every number in this README: three wording corrections, now applied, and no numerical disagreement.
 

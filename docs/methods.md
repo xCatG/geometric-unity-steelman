@@ -48,7 +48,7 @@ Codex owns code, tests and the register. Claude owns transcriptions, reconciliat
 
 ### P7. Handoff hygiene
 
-- Briefs live at `.agent-handoff/<task>/task.md`.
+- Briefs live at `notes:<task>/task.md`.
 - The worker writes `status`: `ACK`, `WORKING: <step>`, `BLOCKED: <why>`, `DONE` or `FAILED`.
 - The worker writes `result.md` with the commands run and their output, the seeded-fault table, any deviations from the plan, and retro notes.
 - The orchestrator reruns the decisive checks itself before accepting the work.
@@ -82,7 +82,7 @@ Commit the pre-registration first and the results second. One task produces one 
 - [ ] Ran `uv run pytest -q` myself and got the same results as the worker reported.
 - [ ] Read the seeded-fault table. Reproduced one fault myself.
 - [ ] Every new expected value has a source outside the code under test (P3).
-- [ ] No float on any claim path; no `.agent-handoff/` link in tracked files.
+- [ ] No float on any claim path; no `notes:` link in tracked files.
 - [ ] Deviations from the plan are justified, and the plan is updated if a deviation sticks.
 - [ ] Retro notes merged into the log below.
 
@@ -98,7 +98,7 @@ Each entry: date, task, who, what worked, what didn't, what to change. Promote a
 - **2026-10-15 · Tasks 3–4 · Claude.** Transcribing from rendered page images (pymupdf at 110 dpi) worked well; text extraction alone would have lost the fractions in (3.9). The reconciliation produced a finding the plan didn't anticipate (B01 F1, the base mirror). *Change:* reconciliation READMEs end with a "What this does not establish" section.
 - **2026-10-15 · Task 4 · Codex (worker) and Claude (review).**
   - *Worked:* the adversarial re-derivation earned its keep. It confirmed all the arithmetic, and it found two errors in Claude's README that a passing signature table could not detect: an exact-form overclaim (λ = 1/2 "no rescaling") and a false repair (tie the trace sign to the base, which gives (4,10), not (7,7)). Claude reproduced the counterexample exactly. Codex's second subagent read the PDF independently.
-  - *Didn't:* Claude's brief asked for `git grep agent-handoff` over all of `docs/`, which legitimately matches the methods and spec text. Codex recorded the exception rather than editing protected files, which was the right call.
+  - *Didn't:* Claude's brief asked for `git grep notes:` over all of `docs/`, which legitimately matches the methods and spec text. Codex recorded the exception rather than editing protected files, which was the right call.
   - *Changes:* new P9 (proposed by Codex). Acceptance checks in briefs must be scoped to exactly the files they police.
 - **2026-10-15 · Tasks 5–8 · Codex (worker) and Claude (review).**
   - *Worked:* 10 seeded faults, all caught, each restoration verified by SHA-256. Every expected value has a one-line outside source (P3). Codex caught two plan bugs no test had exercised: (1) `is_in_algebra`/`is_in_group` admitted real-orthogonal, non-complex-linear matrices; (2) `int(x)` casts in `embed` silently truncated rationals and could overflow int64 in `curvature`.

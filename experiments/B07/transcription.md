@@ -3,7 +3,7 @@
 Transcriber: Claude (Opus 5.5), 2026-10-16. **Revision 1.1** (rev 1 plus Grok's correction of N0's mechanism in the [T, T] row; see the N0 note).
 
 - **Revision 0** (`0912d4c`) was written before the blind second reading.
-- **Revision 1** applies Codex's comparison (`.agent-handoff/b07-transcription/transcription-comparison.md`; the blind reading by a fresh subagent is `second-reader.md` in the same directory). All coefficients, algebraic signs, matrix entries and star placements in (9.1)–(9.22) agree between the two readings. The corrections:
+- **Revision 1** applies Codex's comparison (`notes:b07-transcription/transcription-comparison.md`; the blind reading by a fresh subagent is `second-reader.md` in the same directory). All coefficients, algebraic signs, matrix entries and star placements in (9.1)–(9.22) agree between the two readings. The corrections:
   1. **H8 term 3 has a definite wrong sign in (9.13).** Under the pinned convention ∗† = −∗ between Ω¹ and Ω^{d−1}, so the derived term is −κ₁∗⊚F_A, not "±". Claude re-derived this (⟨∗a, u⟩ = −⟨a, ∗u⟩ from the anti-isometry and ∗∗ = +1 on Ω¹).
   2. **Conflict 8 is withdrawn as stated.** It identified (9.20)'s 𝒟 with (9.6)'s 𝔇 without support; the remaining issue is the undefined operator and embedding. Its quotation of the right side is corrected to Υ^F_ω.
   3. **Verbatim details:** the second colon in (9.1); no parentheses around the space stack in (9.5); the "Displaced Torsion" brace in (9.8) is an underbrace; item 3 of (9.4)'s "where" list is written out (it has ⊚_ε and omits the g_{μν} annotation); footnote 10 is on p. 43.

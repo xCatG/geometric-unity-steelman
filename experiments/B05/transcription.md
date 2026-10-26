@@ -3,7 +3,7 @@
 Transcriber: Claude (Opus 5.5), 2026-10-15. **Revision 1.**
 
 - **Revision 0** (`68559dd`) was written before the blind second reading.
-- **Revision 1** applies Codex's comparison (`.agent-handoff/b05-transcription/transcription-comparison.md`). A fresh subagent produced the blind reading in `second-reader.md` in the same directory, without seeing the plan, the reviews or rev 0. All 16 matrix positions, 18 summands, signs and decorations agree with rev 0, and `source_operator.py` needs no change. The corrections are:
+- **Revision 1** applies Codex's comparison (`notes:b05-transcription/transcription-comparison.md`). A fresh subagent produced the blind reading in `second-reader.md` in the same directory, without seeing the plan, the reviews or rev 0. All 16 matrix positions, 18 summands, signs and decorations agree with rev 0, and `source_operator.py` needs no change. The corrections are:
   1. **The operator label.** It is a slashed calligraphic 𝒟̸_ω, not 𝒟_ω. Claude checked this on the enlarged image.
   2. **Hand derivation 4's third-component cross-check was wrong.** Claude verified the arithmetic. The claim that the source fixes the metric pairing is withdrawn. A new branch, B05-Y, records a per-occurrence degree conflict for ⊚ in (9.18)–(9.19).
   3. **p. 51 evidence for the field ±.** Added.

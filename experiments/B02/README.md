@@ -123,12 +123,12 @@ Some reconstructed branch passes 5b, so (9.3) is not a counterexample family. It
 - **Test 1 (degree), test 2 (real form), test 3(a) (dressed covariance), test 4(iii) (Spin₀ equivariance):** proved in `proofs.md`.
 - **Tests 2(b) and 4(i)/(ii):** `identity` checks in `tests/test_shiab.py`.
 - **Test 3(b), Cayley-dressed covariance:** exact samples in `tests/test_dressing.py`. They pass in (3,1), (7,7) and (9,5), with sparse Cayley matching the library Cayley.
-- **Seeded faults** (P2): eleven, all red, including −½ → +½ in `assemble` turning the standalone verifier red at `(3,1,0,4,F,B,CAA)`. Claude independently seeded −½ → −1 and got the same verifier failure. See `.agent-handoff/b02-impl/result.md` and `claude-seeded-fault.md`; these are untracked working notes, cited for provenance only.
+- **Seeded faults** (P2): eleven, all red, including −½ → +½ in `assemble` turning the standalone verifier red at `(3,1,0,4,F,B,CAA)`. Claude independently seeded −½ → −1 and got the same verifier failure. See `notes:b02-impl/result.md` and `claude-seeded-fault.md`; these are untracked working notes, cited for provenance only.
 - **Test suite:** 222 passed.
 
 ## Formal check (Lean 4, `lean/`)
 
-The work was done by a GPT-6-Astra worker on branch `b02-lean`, which is merged. It was reviewed by Grok, with verdict *accept* (`.agent-handoff/b02-lean-review-grok/`). The machine-checked boundaries are in `lean/COVERAGE.md` and `lean/THEOREMS.md`. The build and a 3115-case exact Lean/Python bridge pass. There are no `sorry`s and no custom axioms. Theorems that use `native_decide` are listed there; they are not kernel certificates.
+The work was done by a GPT-6-Astra worker on branch `b02-lean`, which is merged. It was reviewed by Grok, with verdict *accept* (`notes:b02-lean-review-grok/`). The machine-checked boundaries are in `lean/COVERAGE.md` and `lean/THEOREMS.md`. The build and a 3115-case exact Lean/Python bridge pass. There are no `sorry`s and no custom axioms. Theorems that use `native_decide` are listed there; they are not kernel certificates.
 
 **Machine-checked on the executable sparse model:**
 - **The CCC headline.** The inner commutator against B and against B′ vanishes. This is **stronger than stated here**: it needs pair symmetry only, and holds for every n and any integer η.

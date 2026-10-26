@@ -1,6 +1,6 @@
 # Handoff notes: GU steelman (resume here)
 
-Last updated: 2026-10-21 (option C executed, re-derived, audited and P7-reproduced; capstone write-up planning next), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe done (3e1894c, 748ef7c, ac5f4f8)** — see **Current work** below first. Read this file first after any context reset, then `.agent-handoff/auto-snapshot.md`, then `docs/methods.md`.
+Last updated: 2026-10-21 (option C executed, re-derived, audited and P7-reproduced; capstone write-up planning next), by Claude (orchestrator, pane 0:2). **B01–B03, B05-specification, B07 Phase 1 and B07 Phase 2 complete; Lean b07-argon-lean merged (a1c5701); grade-split probe done (3e1894c, 748ef7c, ac5f4f8)** — see **Current work** below first. Read this file first after any context reset, then `notes:auto-snapshot.md`, then `docs/methods.md`.
 
 ## Current work (resume here) — option C COMPLETE; next: plan the capstone write-up
 
@@ -56,7 +56,7 @@ Last updated: 2026-10-21 (option C executed, re-derived, audited and P7-reproduc
 - E2: the dressed Shiab leaks Weyl curvature even under Spin-image bivector dressings (rank 6); P4 holds only under a sufficient transported-Weyl condition.
 - Smoke clone in the scratchpad (`escape/repo`, 169.8 s, 9 tests).
 
-**Escape plan EXECUTING (approved by the user 2026-10-16, quota-conserving routing):** Claude does Tasks 1–3 and the README; Codex was reserved for Task 4, but both Codex panes (0:3, 0:5) hit weekly 0%. So, per the user's fallback, **Task 4 went to Grok** (pane 0:4, fresh `/new` session, model re-set to grok-4.7; brief `.agent-handoff/b07-escape-rederive/task.md`).
+**Escape plan EXECUTING (approved by the user 2026-10-16, quota-conserving routing):** Claude does Tasks 1–3 and the README; Codex was reserved for Task 4, but both Codex panes (0:3, 0:5) hit weekly 0%. So, per the user's fallback, **Task 4 went to Grok** (pane 0:4, fresh `/new` session, model re-set to grok-4.7; brief `notes:b07-escape-rederive/task.md`).
 - Task 1: 8c3592e `experiments/B07/escape/derivations.md` (Grok: accept with 4 fixes, folded).
 - Task 2: b000c3f code + 9 tests, verbatim from the plan. 9 passed (45 s); full suite 401 passed (14:28); seeded faults E-F1..E-F8 all RED. E-F6's first failing assertion is the skip count (9 ≠ 8), not membership.
 - Task 3: 2b75c7e `result.json` (234.6 s, exit 0). 0 differences from the smoke payload apart from `seconds`/`source_commit`.
@@ -75,7 +75,7 @@ Last updated: 2026-10-21 (option C executed, re-derived, audited and P7-reproduc
   - README: 6e63318, with Codex's 6 audit findings folded.
   - Register: a677edb.
 - **P7 passed:** clean clone at 8a44e8c: RUN_EXIT 0, 387 passed, 13/13 faults RED, result.json equal to master apart from `seconds` and `source_commit`. README status updated; methods.md retro entry written.
-- **Argon "outside GR" discussion:** Claude and Grok, `.agent-handoff/b07p2-argon-discuss/`. Its README section is in the Phase 2 README.
+- **Argon "outside GR" discussion:** Claude and Grok, `notes:b07p2-argon-discuss/`. Its README section is in the Phase 2 README.
 - **Lean b07-argon-lean:** squash-merged to master as a1c5701 (user OK). The generous readings are T1–T5. FINDING 1 is a trace-free-torsion counterexample to weakening H11 hypothesis 2.
 - **b05-sign-lean** (4c4d88c) was already on master.
 - **Grade-split probe DONE** (Codex 3e1894c code+5 tests, 748ef7c json, ac5f4f8 README+register; suite 392 passed; fault P14 RED). Claude verified: all 12 pair records equal Claude's independent scratch run; the 5 new tests passed on Claude's re-run; the intersection formula was checked. Result: one zero-response line in each of the six grade pairs, each needing both directed blocks; the Einstein lines are in 1↔2 and 2↔3; joint C1+C2 = 0 in every pair. Argon claim 8 is answered no for the flat model. Next candidates: the `[ext]` items in the plan's "After this plan" section, or the X*X isotypic decomposition. C1 kernel per grade pair at (3,1): small pairs first ({0↔1, 0↔3, 1↔4, 3↔4}), then {1↔2, 2↔3} if needed. Optionally, the X*X isotypic decomposition.
@@ -83,11 +83,11 @@ Last updated: 2026-10-21 (option C executed, re-derived, audited and P7-reproduc
 
 **Plan approval history (below):**
 
-**B07 Phase 1 is COMPLETE** (README `experiments/B07/README.md`; result c7229e9; re-derivation dccc0a4; audit fixes 01c328c; register cf90b4c + P7 flip 93a595a; P7 0f965ca: 365 passed, payload identical, 8 faults RED). Evidence `.agent-handoff/b07-{impl,rederivation,audit,p7,impl-review-grok}/`.
+**B07 Phase 1 is COMPLETE** (README `experiments/B07/README.md`; result c7229e9; re-derivation dccc0a4; audit fixes 01c328c; register cf90b4c + P7 flip 93a595a; P7 0f965ca: 365 passed, payload identical, 8 faults RED). Evidence `notes:b07-{impl,rederivation,audit,p7,impl-review-grok}/`.
 
 **User requests since Phase 1 (2026-10-16), in order:**
 1. "combined B07 Phase 2 plan": (1) `[ext]` repair test — the actual variational operator ½(L+L†) of (9.4), is L† algebraic on curvature, any (Φ¹,Φ²)/symmetrized ⊚ with L = L† and B02 κ = ½; 4D then 14D on CAA/CAC; (2) exact variation of (9.11) vs (9.12)–(9.15), literal `[GU-orig]` mismatches + `[GU-recon]` repaired. Draft → Codex + Grok review → user approval.
-2. "read @argon_b7.md and share with codex/grok" — DONE. Reviews `.agent-handoff/argon-b7-review/{codex,grok}.md`: both "partly sound". Argon's no-go (interior-star Shiab can't be self-adjoint with Ricci) REFUTED in 4D; its totally-antisymmetric-symbol criterion misses internal-index symmetry; grade-weighted pairings are Spin- not ad-invariant (B07-Q); Paradigm II (vary one leg / ε) is an `[ext]` model change; Paradigm III half right (term-3 sign missed; mass sign (−1)^q); C_Bianchi undefined; 14D universal ≈ 3.4e11 entries.
+2. "read @argon_b7.md and share with codex/grok" — DONE. Reviews `notes:argon-b7-review/{codex,grok}.md`: both "partly sound". Argon's no-go (interior-star Shiab can't be self-adjoint with Ricci) REFUTED in 4D; its totally-antisymmetric-symbol criterion misses internal-index symmetry; grade-weighted pairings are Spin- not ad-invariant (B07-Q); Paradigm II (vary one leg / ε) is an `[ext]` model change; Paradigm III half right (term-3 sign missed; mass sign (−1)^q); C_Bianchi undefined; 14D universal ≈ 3.4e11 entries.
 3. **"Approved. Proceed with drafting Phase 2, but include the unreduced 4D Spin-equivariant basis search"**; ensure (1) N0, N1, N2 fully computed at T²; (2) search parameterizes the generalized multi-bracket span; (3) P4 exactness strictly enforced. Send to Codex + Grok under the usual protocol; bring the reviewed plan back for final approval. (Supersedes Phase 1's record-only N0 decision.)
 
 **Plan rev 2 committed: 6bc202d** (`docs/superpowers/plans/2026-10-16-b07-phase2.md`). Revision history:
@@ -95,7 +95,7 @@ Last updated: 2026-10-21 (option C executed, re-derived, audited and P7-reproduc
 - **rev 1** (834f0dd): Grok accepted; Codex said accept with fixes (2 math, 2 code, 1 scope string).
 - **rev 2** (6bc202d): folds that confirmation round.
 
-Reviews: `.agent-handoff/b07p2-plan-review{,-grok}{,-r1}/result.md`.
+Reviews: `notes:b07p2-plan-review{,-grok}{,-r1}/result.md`.
 
 **Smoke results (final):**
 - **Rev 1 runner** (4959 s): payload identical to rev 0 in every section, plus `ym_symbol` rows. Rev 2 code: 22 tests, suite 387, 13 faults RED.
@@ -139,7 +139,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
 ## Agents and rules
 
 - **Codex** (GPT-6-Astra, Full Access) is in tmux **pane 0:3**. It is the *only* worker; **agy is not used**. Codex may spawn its own subagents.
-- **Handoff:** write `.agent-handoff/<task>/task.md`, then send a one-line pointer: `tmux send-keys -t 0:3 -l "— Claude: new task. Read …/task.md …"`, then Enter, then a second Enter. Watch `status` with a background loop. `.agent-handoff/` is git-excluded.
+- **Handoff:** write `notes:<task>/task.md`, then send a one-line pointer: `tmux send-keys -t 0:3 -l "— Claude: new task. Read …/task.md …"`, then Enter, then a second Enter. Watch `status` with a background loop. `notes:` is git-excluded.
 - **Slash commands to Codex** need `MSYS_NO_PATHCONV=1` (Git Bash mangles `/compact`). Compact Codex when its context drops below about 60%. Done means idle at about 96–100% left; don't wait for exactly 100%.
 - **Commits** go on master, always with a pathspec (`git commit -m … -- <paths>`), because we share one git index. Claude's trailer is `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`; Codex's is `Co-Authored-By: Codex <noreply@openai.com>`.
 - **Fable 5.1 budget:** hard cap $20, about $2 per call, reserved before dispatch. Announce each call to the user first. Ledger: `docs/fable-ledger.md`. **Spent: $0.** The user asked about a Fable review; Claude advised waiting for the B02 symbolic-covariance derivation or a stuck repair.
@@ -155,7 +155,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - **N1:** the trace magnitude is unspecified in the draft.
   - **Repair:** tie s_V (not the trace sign) to the base sign.
 - **P2 library, Tasks 5–8:** `gu/{inertia,clifford,forms,curvature,adjoint}.py`, 164 tests passing (`uv run pytest -q`, about 30 s).
-- **Task 9 steps 1–3:** B02 transcription rev 2 and ansatz amendment 1 (`f75bb66`), after Codex's review (verdict *revise*, 9 findings; evidence in `.agent-handoff/b02-transcription/`, reproduced by Claude). Key facts:
+- **Task 9 steps 1–3:** B02 transcription rev 2 and ansatz amendment 1 (`f75bb66`), after Codex's review (verdict *revise*, 9 findings; evidence in `notes:b02-transcription/`, reproduced by Claude). Key facts:
   - The appendix (pp. 65–66, (12.26)–(12.27)) defines [·,·] = commutator and {·,·} = i·anticommutator. (9.3) has 3 square brackets, so the **literal reading is CCC**.
   - Sampled (not yet identity): under CCC the "−½" scalar term of (9.3) vanishes on Levi-Civita curvature (κ = 0). CAA gives κ = ½ under N-a (κ = 1 under N-b). This is the likely headline B02 finding; the plan must make it identity-scope.
   - Real-form grade pattern of (3.27) is identical in (7,7) and (9,5). Invariant Φ spaces are real-2-dimensional each: Φ¹ = αF + βF′, Φ² = γB + δB′.
@@ -169,7 +169,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - Sampled 5′ observation: odd dressings do **not** annihilate Weyl.
   - Predicted classification (README task): κ = γ/2 for CAA. So κ = ½ is exactly the unit normalization of B (N-a), while CCC gives κ = 0 for every Φ.
 
-- **B02 plan revision 2** (`docs/superpowers/plans/2026-10-15-b02-direct-check.md`) folds in Codex's two-subagent review (verdict *revise*, R1–R8; `.agent-handoff/b02-plan-review/`) and argon's three test additions:
+- **B02 plan revision 2** (`docs/superpowers/plans/2026-10-15-b02-direct-check.md`) folds in Codex's two-subagent review (verdict *revise*, R1–R8; `notes:b02-plan-review/`) and argon's three test additions:
   - exactness via `exact()`;
   - the corrected Task 6 classification: κ undefined for m₀ = A; CAC κ = sδ/2 for β = sα; no N-b Einstein branch; scalar boundary at κ = 1/n; null Φ² directions B ± B′;
   - `git add` before every new-file commit;
@@ -182,7 +182,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - N(αF + βF′) = n(α² − β²) and N(γB + δB′) = C(n,2)(δ² − γ²).
 
   Argon reviewed rev 2: zero blockers.
-- **B02 plan rev 3** folds in the independent Grok review (pi; `.agent-handoff/b02-plan-review-grok/`; verdict *revise*, findings G1–G5, all reproduced by Claude) and argon's docstring nit (the chart has C(n,4) extra coordinates).
+- **B02 plan rev 3** folds in the independent Grok review (pi; `notes:b02-plan-review-grok/`; verdict *revise*, findings G1–G5, all reproduced by Claude) and argon's docstring nit (the chart has C(n,4) extra coordinates).
   - **G1:** the other Hodge convention is exactly Φ² → −Φ², so the Einstein point moves to γ = −1.
   - **G2:** the README leads with the convention-stable result (literal CCC has no scalar term). κ = ½ requires N-a plus the pinned star; it is ¼ under σ = ½ΓΓ and 1 under N-b.
   - **Claude:** even q flips κ. All of this project's signatures have odd q.
@@ -195,7 +195,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - Codex's 11 seeded faults were all red, including −½ → +½, which turned the verifier red.
   - Claude seeded −½ → −1 in a scratch copy, and the verifier went red at `(3,1,0,4,F,B,CAA)`.
   - No change from the plan.
-- **Task 5 done:** `experiments/B02/proofs.md` (`93cf975`, revised `1c89d5b` after Grok's adversarial check, `.agent-handoff/b02-proofs-check-grok/`). Every argument holds. Wording fixes:
+- **Task 5 done:** `experiments/B02/proofs.md` (`93cf975`, revised `1c89d5b` after Grok's adversarial check, `notes:b02-proofs-check-grok/`). Every argument holds. Wording fixes:
   - narrow scope for the CCC headline (even n, pinned ξ with η_cη_d, global scale, either standard star; *not* any ξ index convention or pair-dependent star);
   - κ = 0 also needs the first-term multiple;
   - Spin₀ is generated by exponentials;
@@ -204,7 +204,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   Claude also ran the full n = 4 identity check at (1,3) in scratch: it passes; it is not in `result.json`.
 - **Task 6 done, except for the Lean unification.**
   - README `a70c6d4`, revised `88c99b2`, `723593b` and `fc7d5e6`.
-  - Codex re-derived the classification independently and confirmed it (`.agent-handoff/b02-verdict/result.md`, 70 exact checks).
+  - Codex re-derived the classification independently and confirmed it (`notes:b02-verdict/result.md`, 70 exact checks).
   - Codex's README audit R1–R4 is applied:
     - the headline is "stable under the conventions varied, with ξ pinned";
     - T = 0 is unidentifiable, not r_T = 0;
@@ -216,17 +216,17 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - Retro: `fc7d5e6`.
 - **Lean side task (the user's request, 2026-10-15).**
   - The user started a second GPT-6-Astra in **pane 0:5** to formalize all of `proofs.md` in Lean 4 + Mathlib.
-  - It works in the worktree `C:\work\src\GU-b02-lean`, branch `b02-lean`, created from 36add8f. Brief and status are in `.agent-handoff/b02-lean/`. `progress.md` gets `FINDING:` lines.
+  - It works in the worktree `C:\work\src\GU-b02-lean`, branch `b02-lean`, created from 36add8f. Brief and status are in `notes:b02-lean/`. `progress.md` gets `FINDING:` lines.
   - Extra dependencies (elan, Mathlib) are approved by the user.
-  - **On Lean DONE, the user asked for a Grok review (pi, 0:4).** The brief is ready at `.agent-handoff/b02-lean-review-grok/task.md`. It covers definition fidelity against the Python, statement fidelity, the hypotheses and axioms audit, and reproducing the build and bridge. A background waiter auto-sends the pointer to pi on `DONE`. If the waiter is gone after a reset, send it by hand.
+  - **On Lean DONE, the user asked for a Grok review (pi, 0:4).** The brief is ready at `notes:b02-lean-review-grok/task.md`. It covers definition fidelity against the Python, statement fidelity, the hypotheses and axioms audit, and reproducing the build and bridge. A background waiter auto-sends the pointer to pi on `DONE`. If the waiter is gone after a reset, send it by hand.
   - **Unify at the end of Task 6:** review its `result.md`, covering the claim-to-theorem fidelity table, `#print axioms` and the Python bridge cross-check. Fold any FINDING into proofs.md and the README, merge `b02-lean`, then update the register's "no Lean proof claimed" line.
 - **B03 (P3) started 2026-10-15 (the user's request, while the Lean worker runs).**
   - Claude: transcription rev 0 at `experiments/B03/transcription.md` (`8c83fc5`). It covers pp. 50–53 and 61–62, with 7 `[GU-recon]` branches and properties B1–B6. Key open items:
     - the chirality dictionary (11.6) vs (12.20);
     - the location of the "imposter" generation: ℱ ⊂ 832 in (12.22), vs the p. 53 names on rows of a 144;
     - the U(1) embedding (n = 6Y fits all 25 rows of the p. 53 table).
-  - Codex: `.agent-handoff/b03-oracle/`. It installs LiE in WSL (or a fallback), runs the positive controls (Spin(10) 16 → SU(5)) and the D7 ⊃ D2 × D5 tables for S±, RS± and V⊗S±, gives an independent second reading of the pages, and proposes a `reps.py` interface. It must not commit.
-  - **Codex oracle: DONE** (`.agent-handoff/b03-oracle/result.md`).
+  - Codex: `notes:b03-oracle/`. It installs LiE in WSL (or a fallback), runs the positive controls (Spin(10) 16 → SU(5)) and the D7 ⊃ D2 × D5 tables for S±, RS± and V⊗S±, gives an independent second reading of the pages, and proposes a `reps.py` interface. It must not commit.
+  - **Codex oracle: DONE** (`notes:b03-oracle/result.md`).
     - LiE 2.2.2 is installed in WSL Ubuntu-24.04 (apt).
     - The Spin(10) 16 → 10₁ + 5̄₋₃ + 1₅ control passes.
     - The full D7 → D2 × D5 tables cover S±, RS± and V⊗S±. The gamma trace has the **opposite** chirality. RS keeps its own spinor-shaped 64: 832 = 576 + 192 + 64.
@@ -234,7 +234,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
     - Spinors are Majorana–Weyl in (7,7) and quaternionic in (9,5).
   - **Claude verified (P7).**
     - Reran LiE: byte-identical output.
-    - Independent route by explicit weight multisets: `.agent-handoff/b03-transcription/weights_check.py`, all True.
+    - Independent route by explicit weight multisets: `notes:b03-transcription/weights_check.py`, all True.
   - **Transcription rev 1** (`58e275d`) applies Codex's 5 corrections, including a declared chirality dictionary (144₊ = H̄, mixed relative to 16₊ = 16).
   - **Still open for the ansatz:**
     - where the "imposter" generation sits: ℱ ⊂ 832 per (12.22) and pp. 65 and 68, vs the p. 53 names on rows of a 144;
@@ -242,7 +242,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
     - J for RS, to be checked with explicit matrices.
   - **Ansatz.**
     - rev 0: `a0bc8e0`.
-    - Codex two-subagent review: *revise*, R1–R5, in `.agent-handoff/b03-ansatz-review/`.
+    - Codex two-subagent review: *revise*, R1–R5, in `notes:b03-ansatz-review/`.
     - rev 1 applies it:
       - pinned real-axis splits plus a Cartan adapter (test 0); library C vs S± flips with signature;
       - tr Q = d·tr P targets;
@@ -263,8 +263,8 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
       - p. 52 = 16 / 16̄, and p. 53 = H̄ = 144₊ exactly;
       - J² = +1 (7,7) / −1 (9,5);
       - χ = 0.
-    - **Codex two-subagent plan review dispatched:** `.agent-handoff/b03-plan-review/`. Claude expects one finding: `rs_character` uses the Q″ formula, not the `projector_Q` matrix.
-  - **Plan review:** Codex said *revise*, with findings 1–4 (`.agent-handoff/b03-plan-review/`). **Plan rev 1 applies all four:**
+    - **Codex two-subagent plan review dispatched:** `notes:b03-plan-review/`. Claude expects one finding: `rs_character` uses the Q″ formula, not the `projector_Q` matrix.
+  - **Plan review:** Codex said *revise*, with findings 1–4 (`notes:b03-plan-review/`). **Plan rev 1 applies all four:**
     1. The character gate reads the production Q, through a shared `verify_split`; wrong-projector and zero-Q controls added.
     2. A P4 exactness layer in reps.
     3. Expected values come from LiE compared directly with the draft rows; the ansatz ledger is corrected (rev 1.2, `a70337e`).
@@ -279,19 +279,19 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
     - include the Layer-1 scope note;
     - give no location verdict on "imposter";
     - say that generations and decoupling need dynamics.
-  - **Plan rev 1.2 + ansatz rev 1.3** (`a5a3b99`, 2023 lines) fold in **Grok's review** (`.agent-handoff/b03-plan-review-grok/`; *accept with fixes*, 3 findings, all reproduced):
+  - **Plan rev 1.2 + ansatz rev 1.3** (`a5a3b99`, 2023 lines) fold in **Grok's review** (`notes:b03-plan-review-grok/`; *accept with fixes*, 3 findings, all reproduced):
     - `projector_controls` builds a traceless map T and a gamma-inserted map W from the gammas; `verify_split` and the test assert Q T = d T, γ·T = 0, Q W = 0 (the old assert was implied by Q² = dQ);
     - F10 keys by (SU3, SU2, n), so it fails at the Imposter quark sum `2 == 3` (checked);
     - E′ is the charge formula, not the y₄, y₅ flip (ansatz wording).
     - Fresh rebuild (`scratchpad/b03fresh3`): 297 pass, 13/13 faults RED.
-  - **Tasks 1–4 DONE** (user approved dispatch; Codex, `.agent-handoff/b03-impl/result.md`). Commits `5b85fd9`, `ee6c59f`, `71409f3`, `895fc08` (code, = `source_commit`), `2cf2c71` (result.json).
+  - **Tasks 1–4 DONE** (user approved dispatch; Codex, `notes:b03-impl/result.md`). Commits `5b85fd9`, `ee6c59f`, `71409f3`, `895fc08` (code, = `source_commit`), `2cf2c71` (result.json).
     - **Claude P7:** all 9 committed code files equal the plan's blocks (newline-normalized); fixture SHA `576888f2…`; `result.json` regenerated from a clone at `895fc08` is identical; full suite at `2cf2c71` = 297 passed.
     - Results: p51 10/10 blocks hold, (12.20) both hold, full Dirac holds, p52 = 16 / 16̄, p53 = H̄ (23 terms); fibre 1920; J² = +1 (7,7), −1 (9,5); 8 imposter records, 6 J-partner pairs.
     - **Open (Codex P6, reproduced by Claude):** two P4 holes in the frozen `gu/reps.py`, neither touching the pinned run: `sm_weight_flipped` sums the raw argument (NumPy int64 overflow → spurious ValueError); `Simple.to_dynkin_root`/`ip` skip `weight()` coercion (overflow; float accepted). Fix = coerce via `weight(...)` at each public entry, add controls. User approved bundling it with Codex's Task 5.
-  - **Task 5 DONE.** Codex: `835d7c8` (reps.py P4 fix: every public numeric entry coerced; 310 tests; 13/13 faults RED; clean-clone result.json equal except source_commit), `9bfaf04` (`experiments/B03/rederivation.md`: fresh LiE + own Pauli gammas, 44/44 entries agree), `dda3bd5` (register: B03 entry, partial-Lean wording). Claude: README `d91fa21`/`de24f31`/`df64ed9` (audit's 3 wording fixes applied), retro `01c58ff`. Claude P7 log: `.agent-handoff/b03-task5/claude-p7.log` (runner at 835d7c8 equal except source_commit; suite 310 at dda3bd5).
+  - **Task 5 DONE.** Codex: `835d7c8` (reps.py P4 fix: every public numeric entry coerced; 310 tests; 13/13 faults RED; clean-clone result.json equal except source_commit), `9bfaf04` (`experiments/B03/rederivation.md`: fresh LiE + own Pauli gammas, 44/44 entries agree), `dda3bd5` (register: B03 entry, partial-Lean wording). Claude: README `d91fa21`/`de24f31`/`df64ed9` (audit's 3 wording fixes applied), retro `01c58ff`. Claude P7 log: `notes:b03-task5/claude-p7.log` (runner at 835d7c8 equal except source_commit; suite 310 at dda3bd5).
   - **B03 verdict (README):** all branching identities hold (full-module forms convention-free; chiral forms under the declared dictionary, 144+ = H̄); p.52 = 16/16̄, p.53 = H̄ under E; J² = +1 (7,7) / −1 (9,5); both imposter candidates (ℱ⊗16, 𝒵⊗H̄) contain one generation pattern per chirality, no location verdict; fibre 1920, χ = 0; generations/decoupling need dynamics.
-  - **B03 Lean (user-requested), DONE, Grok ACCEPTED (no findings):** GPT-6-Astra, branch `b03-lean` (4fc432a, c8980cb, 8e62882 on 736dd77) in worktree `C:\work\src\GU-b02-lean`; report `.agent-handoff/b03-lean/result.md`. 81 public B03 theorems; all four splits; all kernel `decide +kernel` (no `native_decide`, no sorry, standard axioms only); J commutation proved for every bivector (stronger than brief); no FINDING. Claude verified: `lake build` OK, Audit 81/81 standard axioms, `b03_check.py` PASS (127 matrices, 14644 columns, 16 fields). Grok review: `.agent-handoff/b03-lean-review-grok/task.md` (pi 0:4). Grok verdict `accept`, no findings (`.agent-handoff/b03-lean-review-grok/result.md`; Claude spot-checked order95b = order77 against `SPLITS`). MERGED to master as c22e8ac (user OK).
-  - **Next item = B05, transcription/specification stage (user-approved direction):** Codex and Grok second opinions (`.agent-handoff/next-item-{codex,grok}/result.md`) both said: pin the fermionic operator (9.16) and every field's transformation law before any covariance/rejection test; B03's J is not a reality condition (J²=−1 at (9,5)). Plan rev 0 `docs/superpowers/plans/2026-10-15-b05-transcription.md` (443a16a): Task 1 transcription + typed (9.16) (Claude), Task 2 blind second reader (Codex), Task 3 NP §3.2 object map (Codex), Task 4 `pairing.py` + `operator_check.py` + runner (Codex), Task 5 `spec.md` transformation laws/reality branches/invariance criterion (Claude), Task 6 audit + register (Codex). Smoke: fresh rebuild from plan text 26/26, full suite 336, faults F1–F6 RED. Smoke observation (not a finding): no label branch of (9.16) fully consistent; only (metric, exterior d₀, ⊚ m=1 n=0 r=1) degree-consistent. Rev 0 reviews: both *revise* (`.agent-handoff/b05-plan-review/result.md` 7 findings, `.agent-handoff/b05-plan-review-grok/result.md` 5). Key: rev 0's R1 criterion had a sign error (δψ̄ = ψ̄S♯, not −ψ̄S♯). Rev 1 (89fd065) folds all in: 43 B05 tests, full 353, faults F1–F8 RED, survey well_typed=32/64 all_nonzero=0 degree_ok=4/90 (model-relative). Rev 1 confirmation: Grok accept; Codex accept with fixes A (CRLF fault anchors), B (sign ±1 validation), C (4 of 360 degree branches), Task 6 order — all applied in rev 1.1 (c43aa3e); fresh rebuild 43/43, faults 8 RED on LF and CRLF. Argon audit (pasted by user) verified by Claude and folded into rev 1.2 (32d654d): bar-label convention (ζ̄₋ := (ζ₊)†A ≡ dual_field combinatorics), (ζ̄₋,ζ₋) cell-collision as hand derivation 6 (checked: no enumerated chirality reading makes d₀ζ₋ and ϖ₊₋ζ₋ both nonzero with exterior d₀), R1 has δA=0 (congruence-transformed A = contragredient branch), README diagnostic framing. User approved rev 1.2. Task 1 committed 68559dd (`experiments/B05/transcription.md` rev 0, `source_operator.py`). Source cross-check found: (9.18)–(9.19) type ⊚ on spinor 2-forms → 13-forms (metric-pairing sense), (8.5)/(8.6) consistent with C∈𝔲, iC∉𝔲; (6.22) A_ω=∇⁰+ϖ. Tasks 2 (fresh blind reader) + 3 (NP §3.2 map) dispatched to Codex 0:3 (`.agent-handoff/b05-transcription/task.md`). Then: Claude transcription rev 1 from the comparison, then Task 4 (Codex code), Task 5 (Claude spec/README), Task 6.
+  - **B03 Lean (user-requested), DONE, Grok ACCEPTED (no findings):** GPT-6-Astra, branch `b03-lean` (4fc432a, c8980cb, 8e62882 on 736dd77) in worktree `C:\work\src\GU-b02-lean`; report `notes:b03-lean/result.md`. 81 public B03 theorems; all four splits; all kernel `decide +kernel` (no `native_decide`, no sorry, standard axioms only); J commutation proved for every bivector (stronger than brief); no FINDING. Claude verified: `lake build` OK, Audit 81/81 standard axioms, `b03_check.py` PASS (127 matrices, 14644 columns, 16 fields). Grok review: `notes:b03-lean-review-grok/task.md` (pi 0:4). Grok verdict `accept`, no findings (`notes:b03-lean-review-grok/result.md`; Claude spot-checked order95b = order77 against `SPLITS`). MERGED to master as c22e8ac (user OK).
+  - **Next item = B05, transcription/specification stage (user-approved direction):** Codex and Grok second opinions (`notes:next-item-{codex,grok}/result.md`) both said: pin the fermionic operator (9.16) and every field's transformation law before any covariance/rejection test; B03's J is not a reality condition (J²=−1 at (9,5)). Plan rev 0 `docs/superpowers/plans/2026-10-15-b05-transcription.md` (443a16a): Task 1 transcription + typed (9.16) (Claude), Task 2 blind second reader (Codex), Task 3 NP §3.2 object map (Codex), Task 4 `pairing.py` + `operator_check.py` + runner (Codex), Task 5 `spec.md` transformation laws/reality branches/invariance criterion (Claude), Task 6 audit + register (Codex). Smoke: fresh rebuild from plan text 26/26, full suite 336, faults F1–F6 RED. Smoke observation (not a finding): no label branch of (9.16) fully consistent; only (metric, exterior d₀, ⊚ m=1 n=0 r=1) degree-consistent. Rev 0 reviews: both *revise* (`notes:b05-plan-review/result.md` 7 findings, `notes:b05-plan-review-grok/result.md` 5). Key: rev 0's R1 criterion had a sign error (δψ̄ = ψ̄S♯, not −ψ̄S♯). Rev 1 (89fd065) folds all in: 43 B05 tests, full 353, faults F1–F8 RED, survey well_typed=32/64 all_nonzero=0 degree_ok=4/90 (model-relative). Rev 1 confirmation: Grok accept; Codex accept with fixes A (CRLF fault anchors), B (sign ±1 validation), C (4 of 360 degree branches), Task 6 order — all applied in rev 1.1 (c43aa3e); fresh rebuild 43/43, faults 8 RED on LF and CRLF. Argon audit (pasted by user) verified by Claude and folded into rev 1.2 (32d654d): bar-label convention (ζ̄₋ := (ζ₊)†A ≡ dual_field combinatorics), (ζ̄₋,ζ₋) cell-collision as hand derivation 6 (checked: no enumerated chirality reading makes d₀ζ₋ and ϖ₊₋ζ₋ both nonzero with exterior d₀), R1 has δA=0 (congruence-transformed A = contragredient branch), README diagnostic framing. User approved rev 1.2. Task 1 committed 68559dd (`experiments/B05/transcription.md` rev 0, `source_operator.py`). Source cross-check found: (9.18)–(9.19) type ⊚ on spinor 2-forms → 13-forms (metric-pairing sense), (8.5)/(8.6) consistent with C∈𝔲, iC∉𝔲; (6.22) A_ω=∇⁰+ϖ. Tasks 2 (fresh blind reader) + 3 (NP §3.2 map) dispatched to Codex 0:3 (`notes:b05-transcription/task.md`). Then: Claude transcription rev 1 from the comparison, then Task 4 (Codex code), Task 5 (Claude spec/README), Task 6.
   - (Superseded: user chose B05 specification, then B07 + Lean; see **Current work**.)
   - **Smoke-copy caveat:** files in `b03smoke/` are CRLF. Python edits there must keep newlines (read and write bytes); `faults.py` matches either newline style.
 - **Lean (B02): merged** (`e48a0e3`, from `b02-lean`).
@@ -300,7 +300,7 @@ A personal deep-dive (the user's choice "(b)": curiosity, not polish). We give W
   - **Pending:**
     - Codex updates the register's "No Lean proof … claimed" line, in its next register task (the B03 Task 5 brief).
     - **Keep the worktree** `C:\work\src\GU-b02-lean` (6.8 GB of Mathlib build cache). The user wants Lean validation in later steps too. To reuse it, check out a fresh branch from current master there (`lean/` is merged) before briefing a Lean worker.
-- **Agents:** Codex is in pane 0:3. A second GPT-6-Astra (the Lean worker) is in pane 0:5. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired. Scratchpad: `C:/Users/yenchi/AppData/Local/Temp/claude/C--work-src-GU/3062a13c-f3b7-47e3-935c-cd657b34eb26/scratchpad/`.
+- **Agents:** Codex is in pane 0:3. A second GPT-6-Astra (the Lean worker) is in pane 0:5. pi is in pane 0:4, running Grok, a different model family, which makes it useful as a third independent reviewer and for web lookups. agy is retired.
 
 **Next**
 1. ~~Resolve Codex's review~~ (done, `f75bb66`). ~~Retro~~ (done). ~~Write the B02 plan~~ (done).

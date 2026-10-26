@@ -15,7 +15,7 @@
 - No floats on any claim path. `GQ` rejects floats, bools and complex (P4).
 - Every test docstring states its claim and scope (`identity` / `sampled` / `counterexample`); a test without one is a control (P1).
 - Seed 2–3 realistic faults per new module. Each must fail an **assertion** (not a NameError), and the restore must be verified (P2). Adapters get a positive example and an ambient impostor (P2b).
-- Expected values come from outside the code under test (P3). The closed-form response comes from the hand derivation in `.agent-handoff/b02-transcription/evidence/derivation.md`, extended bilinearly in Task 5.
+- Expected values come from outside the code under test (P3). The closed-form response comes from the hand derivation in `notes:b02-transcription/evidence/derivation.md`, extended bilinearly in Task 5.
 - Small signature first: every check runs on (3,1) before (7,7) and (9,5) (P5).
 - Commits go on master with an explicit pathspec. Code is committed before `result.json`, whose `source_commit` must name a commit containing the producing code (P8). Codex's trailer: `Co-Authored-By: Codex <noreply@openai.com>`.
 - Gates use the pre-registered target κ = ½ and the branch's own embedding E_T (P10).
@@ -29,7 +29,7 @@
 4. **Wrong controls.** Dressing by a Spin-image ε is **not** a no-op: Φ is invariant under the joint form + Clifford action, while dressing acts on the Clifford factor alone. The no-op control uses a central ε (Task 3). This was a real error in the first draft of this plan's tests.
 5. **Exactness leaks.** Two were found in review: `Fraction(np.int64)` keeps the fixed-width numerator, so `GQ(np.int64(2**62))*4` was 0 (R1); and `int()` casts in `xi` and `embed_tensor` dropped rationals and silently truncated floats (R2). The fix routes every coefficient through `gu.cliffform.exact`, which converts to Python `int`/`Fraction` and raises on floats. Tests: Task 1 (large integers), Task 2 (rational inputs, float rejection).
 
-**Revision 2 (2026-10-15).** This revision folds in Codex's two-subagent plan review (`.agent-handoff/b02-plan-review/`; verdict *revise*, R1–R8) and argon's review.
+**Revision 2 (2026-10-15).** This revision folds in Codex's two-subagent plan review (`notes:b02-plan-review/`; verdict *revise*, R1–R8) and argon's review.
 - **R1/R2 (exactness):** `exact()`, plus controls.
 - **R3–R5 (Task 6 classification):** corrected families, the N-b domain, the scalar-sector boundary, and null Φ² directions.
 - **R6:** `git add` before every new-file commit.
@@ -38,7 +38,7 @@
 - **Argon:** a mixed-Φ formula test, an end-to-end Spin₀ equivariance test, and a general `_in_u_A` that checks `shiab` outputs (Test 2) with a mixed-phase impostor.
 - **Claude:** one dressing sample was identically zero, because KN(E₀₁+E₁₀, diag(1,2,0,…)) = 0. It was replaced, and `test_xi_samples_are_nonzero` added.
 
-**Revision 3 (2026-10-15).** This revision folds in an independent Grok review via pi (`.agent-handoff/b02-plan-review-grok/`; verdict *revise*, 5 new findings, all reproduced by Claude).
+**Revision 3 (2026-10-15).** This revision folds in an independent Grok review via pi (`notes:b02-plan-review-grok/`; verdict *revise*, 5 new findings, all reproduced by Claude).
 - **G1 (Hodge convention):** the other standard star, ∗′ = (−1)^{k(n−k)}∗, is *exactly* the pinned operator with Φ² → −Φ². Claude checked this for all 8 modes × {F, F′} × {B, B′} in (3,1) and (2,2); the proof goes in Task 5. Task 6 now carries the star as a branch: under ∗′ the Einstein point is γ = −1.
 - **G2 (normalization):** the verdict must lead with the scale-stable consequence (CCC has no scalar term at any scale). κ = ½ belongs to unit Γ_aΓ_b (N-a). Under the spin generator σ_ab = ½Γ_aΓ_b it is ¼, and under N-b it is 1 (Task 6).
 - **G3:** Task 6 no longer asks to confirm κ "against `result.json`", which contains no κ. κ is derived from the formula the runner asserts.
@@ -1317,6 +1317,6 @@ Codex then checks it adversarially (a brief, with a `result.md`).
   - 3(b) and 5′ data;
   - "What this does not establish". This section covers non-Levi-Civita gauge curvature, where the inner-commutator cancellation needs pair symmetry, and the lost preferred operator (transcription P6).
 
-- [ ] **Step 3 (Codex):** re-derive the README's classification independently, then update the B02 register entry with its three tags and links to tracked files only. Write the result to `.agent-handoff/<task>/result.md`.
+- [ ] **Step 3 (Codex):** re-derive the README's classification independently, then update the B02 register entry with its three tags and links to tracked files only. Write the result to `notes:<task>/result.md`.
 
 - [ ] **Step 4 (Claude):** resolve any disagreements, add the retro entry to `docs/methods.md`, update `docs/HANDOFF.md`, and commit each with its own pathspec.

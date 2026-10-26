@@ -4,7 +4,7 @@
 
 **Goal:** Produce a reviewed, typed specification of GU's fermionic sector that is complete enough to *pose* B05's covariance test: the operator (9.16) with its alternatives, every field's type, the pairing, the candidate reality conditions, and each candidate generator's action on every field. Everything the draft leaves open is either branched or marked `unspecified`. **This plan delivers no verdict on any gauge symmetry, anomaly, or reality condition.**
 
-**Revision 1 (2026-10-15).** This revision folds in the independent reviews by Codex (`.agent-handoff/b05-plan-review/result.md`, two subagents, verdict *revise*, 7 findings) and Grok (`.agent-handoff/b05-plan-review-grok/result.md`, verdict *revise*, 5 findings).
+**Revision 1 (2026-10-15).** This revision folds in the independent reviews by Codex (`notes:b05-plan-review/result.md`, two subagents, verdict *revise*, 7 findings) and Grok (`notes:b05-plan-review-grok/result.md`, verdict *revise*, 5 findings).
 - **R1 sign (both reviews, high).** Rev 0 required S̄ = −S♯ for the Dirac-adjoint branch. That is wrong: with ψ̄ = ψ†A and A fixed, δψ̄ = ψ̄S♯, where S♯ = A⁻¹S†A. Rev 0's pre-registered axial control passed only because of the extra minus. The criterion is now S̄ = S♯ for R1. The controls are now executable tests (`test_r1_dirac_adjoint_variation`, `test_r0_independent_bar_variation`, and the (2,2) flip), plus a seeded fault, F8, that reinstates the old minus.
 - **Survey semantics (Codex 2, Grok 2).**
   - Statuses now separate `nonzero`, `pairs_to_zero` (a legal zero), `extended_zero`, `undetermined` and `domain_mismatch`.
@@ -25,7 +25,7 @@
   - The NP ownership exception is now explicit.
   - Translations are written (1, ϖ) at group level.
 
-**Revision 1.1 (2026-10-15).** This revision folds in the confirmation reviews of rev 1 (`.agent-handoff/b05-plan-review{,-grok}/rev1/result.md`): Grok *accept*, Codex *accept with fixes*. Codex's fixes:
+**Revision 1.1 (2026-10-15).** This revision folds in the confirmation reviews of rev 1 (`notes:b05-plan-review{,-grok}/rev1/result.md`): Grok *accept*, Codex *accept with fixes*. Codex's fixes:
 - **A:** the fault anchors are translated to the file's newline convention, and the script is verified on a CRLF checkout.
 - **B:** summand signs go through `as_int` and must be ±1, with controls.
 - **C:** the degree denominator is 360, not 90.
@@ -38,7 +38,7 @@
 - **R1 with A fixed.** In R1, A is a fixed algebraic matrix (δA = 0) for internal and axial transformations. If A were instead transformed by congruence to stay invariant, δA = −(S†A + AS), and the law reverts to the contragredient S̄ = −S. That is its own named branch, not R1.
 - **README framing.** The README must use argon's diagnostic wording for `all_nonzero_under_model = 0` (Task 5, Step 5).
 
-**Why this comes first.** Codex and Grok reviewed independently which register item should come next (`.agent-handoff/next-item-{codex,grok}/result.md`). Both agreed on these points:
+**Why this comes first.** Codex and Grok reviewed independently which register item should come next (`notes:next-item-{codex,grok}/result.md`). Both agreed on these points:
 - A covariance or rejection test has nothing to fail against until the kinetic operator is pinned. No B01–B03 output pins one.
 - A generator must be tested by transforming barred fields, unbarred fields, connection, Clifford data and dressings together. A commutator with a frozen operator measures a stabilizer, not a gauge symmetry. For example, if K anticommutes with C, the axial phase S = iC leaves ψ̄Kψ invariant under the Dirac-adjoint law even though iC ∉ 𝔲(A). Under an independent bar with S̄ = S = C, it is invariant too, even though [K,C] ≠ 0.
 - B03's J is not a default reality condition. At (9,5), J² = −1, so Jψ = ψ has no nonzero solution. At (7,7), choosing a fixed real subspace is extra input. The Dirac pairing A is a different operator from J.
@@ -62,7 +62,7 @@
 
 ## Global Constraints
 
-- **Source.** The GU draft is the same PDF as in B01–B03: SHA-256 `3f28d742234a9841fc8e51ff172053200aa3eddf3ece38154a3328b9ebd186d4`, at `.agent-handoff/b01-task4/evidence/GU-draft.pdf`. Pages are read as rendered images. Text extraction is a cross-check only, because it drops ⊚, ϖ, the bars and the subscripts in (9.16).
+- **Source.** The GU draft is the same PDF as in B01–B03: SHA-256 `3f28d742234a9841fc8e51ff172053200aa3eddf3ece38154a3328b9ebd186d4`, at `notes:b01-task4/evidence/GU-draft.pdf`. Pages are read as rendered images. Text extraction is a cross-check only, because it drops ⊚, ϖ, the bars and the subscripts in (9.16).
 - **No verdicts.** The full branch table and its model-relative predicates are recorded, never asserted. An empty predicate list is something to explain in `transcription.md`/`spec.md`; it is neither an implementation failure nor a finding about GU.
 - **Exactness (P4).** No floats anywhere. `pairing.py` uses only `gu.clifford.Mono` algebra.
 - **Expected values come from outside the code under test (P3).** Every asserted value is either a textbook control (the Weyl kinetic term, a vanishing same-chirality bilinear, the Dirac mass coupling) or a hand derivation written in the test docstring and in `transcription.md` §Hand derivations.
@@ -118,7 +118,7 @@ These are the failure modes most likely to produce a wrong specification, with t
 - [ ] **Step 1: Verify the source and render the pages.**
 
 ```bash
-sha256sum .agent-handoff/b01-task4/evidence/GU-draft.pdf   # expect 3f28d742…186d4
+sha256sum notes:b01-task4/evidence/GU-draft.pdf   # expect 3f28d742…186d4
 ```
 
 Render the pages below at 150 dpi into the scratchpad (not the repo) with PyMuPDF, then read each image:
@@ -208,7 +208,7 @@ git commit -m "B05 transcription rev 0 and typed (9.16)" -- experiments/B05/__in
 ### Task 2: Blind second reading (Codex), then transcription rev 1 (Claude)
 
 **Files:**
-- Create (untracked): `.agent-handoff/b05-transcription/second-reader.md`, `transcription-comparison.md`
+- Create (untracked): `notes:b05-transcription/second-reader.md`, `transcription-comparison.md`
 - Modify: `experiments/B05/transcription.md` (rev 1), and, if the comparison requires it, `source_operator.py`
 
 - [ ] **Step 1 (Codex, blind, fresh reader):** Assign this to a fresh subagent that has seen neither this plan nor the plan reviews, which contain the typed matrix. Without opening `experiments/B05/transcription.md` or `source_operator.py`, render the same pages and write `second-reader.md` from scratch. Include:
@@ -223,9 +223,9 @@ git commit -m "B05 transcription rev 0 and typed (9.16)" -- experiments/B05/__in
 
 **Files:**
 - Create: `experiments/B05/np_objection.md`
-- Create (untracked evidence): `.agent-handoff/b05-np/NP.pdf` and its SHA-256
+- Create (untracked evidence): `notes:b05-np/NP.pdf` and its SHA-256
 
-- [ ] **Step 1:** Download `https://files.timothynguyen.org/geometric_unity.pdf` into `.agent-handoff/b05-np/` and record the SHA-256 and the access date. Render pp. 6–7 and transcribe §3.2 verbatim.
+- [ ] **Step 1:** Download `https://files.timothynguyen.org/geometric_unity.pdf` into `notes:b05-np/` and record the SHA-256 and the access date. Render pp. 6–7 and transcribe §3.2 verbatim.
 - [ ] **Step 2:** Write the object map, one row per NP object:
   - the group (U(128));
   - the "central U(1)";
@@ -1071,7 +1071,7 @@ Whether this tension is the draft's or the model's is decided by Task 1's hand v
 
 ### Task 6: Audit and register (Codex)
 
-- [ ] **Step 1:** Audit every number and claim in `README.md` and `spec.md` against `result.json`, `transcription.md`, `np_objection.md` and the rendered pages. Write `.agent-handoff/b05-task6/readme-audit.md`. Do not edit Claude's files.
+- [ ] **Step 1:** Audit every number and claim in `README.md` and `spec.md` against `result.json`, `transcription.md`, `np_objection.md` and the rendered pages. Write `notes:b05-task6/readme-audit.md`. Do not edit Claude's files.
 - [ ] **Step 2 (Claude):** Resolve the substantive audit findings in the README/spec, and commit them.
 - [ ] **Step 3 (Codex):** Only after Step 2, update the B05 entry in `docs/gaps/register.md`: the status, and the next check as stated in the final README, linking tracked files only. Commit it with its own pathspec.
 - [ ] **Step 4 (Claude):** Re-run the decisive checks (P7):

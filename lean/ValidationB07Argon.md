@@ -21,5 +21,5 @@
 - No edits to existing B02/B03/B05Sign proof modules or dependency versions.
 
 The comparison script and full clean-build/audit logs are in the assigned
-`.agent-handoff/b07-argon-lean/` directory of the main checkout. Coverage and
+`notes:b07-argon-lean/` directory of the main checkout. Coverage and
 all model boundaries are recorded in COVERAGE.md and THEOREMS.md.

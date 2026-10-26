@@ -7,7 +7,7 @@ Provenance:
 
 **Revisions.**
 - Revision 0 is `a0bc8e0`.
-- Revision 1 (2026-10-15) applies Codex's two-subagent review (`.agent-handoff/b03-ansatz-review/result.md`, verdict *revise*, R1–R5):
+- Revision 1 (2026-10-15) applies Codex's two-subagent review (`notes:b03-ansatz-review/result.md`, verdict *revise*, R1–R5):
   - R1: projector targets now name tr P and tr Q separately, and the RS space is im Q.
   - R2: E is pinned by explicit maps; E′ is demoted to a conjugacy control.
   - R3: a concrete gamma-to-weight adapter is added (test 0).
@@ -18,8 +18,8 @@ Provenance:
   - The adapter is defined in the Euclidean frame, as in the review's chirality probe.
   - The signatures of every split are unchanged.
   - Claude's plan smoke test ran after this revision; its outcomes are not evidence.
-- **Revision 1.2** (2026-10-15, before any production code) corrects the knowledge ledger only (plan review finding 3, `.agent-handoff/b03-plan-review/`). The §11.3 comparisons and the full test 5–8 data were first computed in Claude's plan smoke test, and then independently by the plan review (LiE output against the draft rows, without the B03 code). The ledger below now says so. No convention, test or gate changes.
-- **Revision 1.3** (2026-10-15, before any production code) corrects one sentence (Grok plan review finding 3, `.agent-handoff/b03-plan-review-grok/`). E′ is the charge formula n′ = (−n₅ + 6X)/5, not the pointwise y₄, y₅ flip. It remains a character-equality control. No convention, test or gate changes. In the same review, test 3's "P fixes a vector" control became a hand-built traceless map (plan rev 1.2).
+- **Revision 1.2** (2026-10-15, before any production code) corrects the knowledge ledger only (plan review finding 3, `notes:b03-plan-review/`). The §11.3 comparisons and the full test 5–8 data were first computed in Claude's plan smoke test, and then independently by the plan review (LiE output against the draft rows, without the B03 code). The ledger below now says so. No convention, test or gate changes.
+- **Revision 1.3** (2026-10-15, before any production code) corrects one sentence (Grok plan review finding 3, `notes:b03-plan-review-grok/`). E′ is the charge formula n′ = (−n₅ + 6X)/5, not the pointwise y₄, y₅ flip. It remains a character-equality control. No convention, test or gate changes. In the same review, test 3's "P fixes a vector" control became a hand-built traceless map (plan rev 1.2).
 - The review's scratch scripts computed some outcomes before revision 1. These are listed under "Known before the run". This revision pre-registers what is still unknown:
   - the row-by-row comparison of the §11.3 tables;
   - every concrete-matrix result produced by tracked code;
@@ -136,4 +136,4 @@ The committed run's role is to reproduce these with tracked, fault-tested code a
   - `gu/reps.py`: A_n and D_n Freudenthal, complex characters only, exact integers, no identification by dimension alone, with a proved finite candidate bound;
   - a Rarita–Schwinger, J and adapter module beside `gu.clifford`.
 - **External oracle.** LiE 2.2.2 (Ubuntu noble). The fixtures (LiE input script, raw output, version, restriction matrices, charge convention, hashes) are generated outside pytest and tracked. Tests read the fixtures and need no WSL. The fixture generator checks LiE's error text and a completion marker.
-- **Seeded faults for the plan:** the review's table (`.agent-handoff/b03-ansatz-review/result.md`, "Practical plan guidance"), plus the two test-0 faults above. Each must fail an assertion and be restored by hash.
+- **Seeded faults for the plan:** the review's table (`notes:b03-ansatz-review/result.md`, "Practical plan guidance"), plus the two test-0 faults above. Each must fail an assertion and be restored by hash.

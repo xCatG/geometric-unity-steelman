@@ -1,6 +1,6 @@
 # P1 (B01) and P2 Library Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. In this project, code tasks are executed by Codex (pane 0:3) through `.agent-handoff/<task>/` briefs. Claude owns the transcription, reconciliation and review tasks.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. In this project, code tasks are executed by Codex (pane 0:3) through `notes:<task>/` briefs. Claude owns the transcription, reconciliation and review tasks.
 
 **Goal:** Settle B01 (the inertia of the chimeric metric, reconciled with the April 2021 draft) and build the exact-arithmetic library that B02 needs: inertia, Clifford with the Dirac pairing A, forms, curvature and the u(64,64) adjoint. The plan ends with the B02 transcription and pre-registration. A follow-up plan implements the B02 check itself, because that code depends on the transcription.
 
@@ -13,7 +13,7 @@
 ## Global Constraints
 
 - Exact arithmetic only. No floating-point signature, rank or equality claims (spec §4).
-- `verified:<path>` points only into tracked `experiments/`, `tests/` or `lean/`; never `.agent-handoff/` (spec §2).
+- `verified:<path>` points only into tracked `experiments/`, `tests/` or `lean/`; never `notes:` (spec §2).
 - Every claim carries provenance, evidence status and scope (`counterexample` / `sampled` / `identity`); `holds` requires `identity` (spec §2, §6).
 - `(p,q)` is a parameter; library code never hard-codes (7,7) or (9,5) (spec §5).
 - The geometric Spin(p,q) and the internal gauge group U(64,64) are kept apart; dressed gauge identities use only h with h†Ah = A (spec §4).
@@ -429,7 +429,7 @@ git commit -m "B01: independent transcription of GU (3.8)-(3.10) and section 3.5
 
 **Files:**
 - Create: `experiments/B01/README.md` (Claude), `experiments/B01/rederivation.md` (Codex)
-- Modify: `docs/gaps/register.md` (Codex; B01 and A01 entries and any evidence link into `.agent-handoff/`)
+- Modify: `docs/gaps/register.md` (Codex; B01 and A01 entries and any evidence link into `notes:`)
 
 - [ ] **Step 1 (Claude): Write the convention map.** In `README.md`, map each draft symbol from `transcription.md` onto `ETA`, `B_λ`, `s_H`, `s_V`. Apply the reconciliation criterion in `ansatz.md` and state one of:
   - `match: λ = …, (s_H, s_V) = …`, with the resulting inertia read from `result.json`;
@@ -437,10 +437,10 @@ git commit -m "B01: independent transcription of GU (3.8)-(3.10) and section 3.5
 
   Every claim gets provenance, evidence (`verified:experiments/B01/result.json` or `unverified`) and scope. List the degenerate boundary λ = 1/4 and every sign choice the draft leaves open. Do not name a single "selected" signature unless the draft fixes all of the choices.
 - [ ] **Step 2 (Codex): Re-derive the result independently** by a different route, in `rederivation.md`. Without running `dewitt_family.py`, split Sym² = (trace line) ⊕ (traceless part) by hand. Show that B_λ is block-diagonal: the trace direction has norm 4(1−4λ) and the traceless block has inertia (6,3) independent of λ. Then confirm the vertical and chimeric inertia table by hand addition. Report any disagreement with `result.json` or `README.md`.
-- [ ] **Step 3 (Codex): Update the register.** Point the B01 and A01 evidence to `experiments/B01/`. Remove every link into `.agent-handoff/`. Set the B01 status per README.md, with all three tags.
+- [ ] **Step 3 (Codex): Update the register.** Point the B01 and A01 evidence to `experiments/B01/`. Remove every link into `notes:`. Set the B01 status per README.md, with all three tags.
 - [ ] **Step 4: Verify links**
 
-Run: `grep -n "agent-handoff" docs/gaps/register.md`
+Run: `grep -n "notes:" docs/gaps/register.md`
 Expected: no output.
 
 - [ ] **Step 5: Commit** (two commits, one per author)
@@ -1193,7 +1193,7 @@ git commit -m "Add exact u(64,64) membership and Cayley group elements"
   - phases and normalization;
   - the expected scalar and traceless-Ricci responses, with relative coefficients, or "unresolved".
 - [ ] **Step 2 (Claude): Write `ansatz.md`.** Pre-register spec §5 tests 1–5 with their pass criteria and scopes, the open-data case Shiab_ε(W), and the signatures (7,7) and (9,5).
-- [ ] **Step 3 (Codex): Review the transcription** against the PDF. Write disagreements to `.agent-handoff/b02-transcription/result.md`; Claude resolves them in `transcription.md`.
+- [ ] **Step 3 (Codex): Review the transcription** against the PDF. Write disagreements to `notes:b02-transcription/result.md`; Claude resolves them in `transcription.md`.
 - [ ] **Step 4: Commit the pre-registration** before any B02 code exists
 
 ```bash

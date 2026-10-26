@@ -19,7 +19,7 @@ the distinction between a ring identity and a value at a point.
 
 Read against `experiments/B05/spec.md` section 1.2,
 `docs/gaps/register.md` B05 sign-conflict entry, and the prior
-`.agent-handoff/b05-task6/readme-audit.md` Finding 1 plus its
+`notes:b05-task6/readme-audit.md` Finding 1 plus its
 `evidence/checks.json` central-phase jet. No disagreement with that
 correctly interpreted jet was found.
 
@@ -28,9 +28,9 @@ correctly interpreted jet was found.
 From `lean/` in the designated worktree:
 
 ```powershell
-& C:/Users/yenchi/.elan/bin/lake.exe build
+lake build
 & .tools/python-env/Scripts/python.exe bridge/inventory.py
-& C:/Users/yenchi/.elan/bin/lake.exe env lean Audit.lean
+lake env lean Audit.lean
 ```
 
 The toolchain and dependency revisions are unchanged: Lean 4.24.0

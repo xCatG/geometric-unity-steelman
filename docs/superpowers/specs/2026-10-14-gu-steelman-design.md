@@ -21,7 +21,7 @@ Every claim carries **one provenance tag, one evidence status and one scope**. T
 
 | Evidence status | Meaning |
 |---|---|
-| `verified:<path>` | Backed by a tracked script, test or proof under `experiments/`, `tests/` or `lean/`, with the command, its output and the source commit. Never under `.agent-handoff/`, which git ignores. |
+| `verified:<path>` | Backed by a tracked script, test or proof under `experiments/`, `tests/` or `lean/`, with the command, its output and the source commit. Never under `notes:`, which git ignores. |
 | `unverified` | Everything else |
 
 | Scope | Meaning |
@@ -43,7 +43,7 @@ A verified `[ext]` stays `[ext]`. Rules:
 | Codex (GPT-6-Astra) | pane 0:3 | Gap register, library, experiments, Lean, and literature/sources (`docs/gaps/sources/`). May spawn its own subagents, e.g. an independent reviewer or a source collector, when the brief allows. |
 | Fable 5.1 | Claude subagent | Theory bottlenecks only, under the rules in §8 |
 
-agy is not used (a tool update broke it). Handoffs follow tmux-agent-orchestration: `.agent-handoff/<task>/`, one writer per file.
+agy is not used (a tool update broke it). Handoffs follow tmux-agent-orchestration: `notes:<task>/`, one writer per file.
 
 ### Verification protocol: replication, not just reproduction
 
